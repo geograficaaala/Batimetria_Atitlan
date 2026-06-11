@@ -1,75 +1,542 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>II. Metodología batimétrica y SIG</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>II. Metodología batimétrica y procesamiento SIG</title>
 <style>
-  :root{--azul-profundo:#0a1628;--acento:#5ba3d9;--acento-claro:#8ec5e8;--blanco:#f0f4f8;--gris-texto:#c8d8e8;--linea:rgba(93,163,217,0.25);}
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{background-color:var(--azul-profundo);color:var(--blanco);font-family:'Times New Roman',Times,serif;font-size:12pt;min-height:100vh;overflow-x:hidden;}
-  .contour-bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
-  .contour-bg svg{width:100%;height:100%;opacity:0.05;}
-  header{position:sticky;top:0;z-index:100;background:rgba(10,22,40,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--linea);}
-  nav{max-width:1100px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;height:52px;overflow-x:auto;}
-  nav a{font-family:'Times New Roman',Times,serif;font-size:10.5pt;color:var(--gris-texto);text-decoration:none;padding:0 1.1rem;height:52px;display:flex;align-items:center;border-right:1px solid var(--linea);white-space:nowrap;transition:color 0.2s,background 0.2s;letter-spacing:0.02em;}
-  nav a:first-child{border-left:1px solid var(--linea);}
-  nav a:hover{color:var(--acento-claro);background:rgba(93,163,217,0.07);}
-  nav a.activo{color:var(--acento);font-style:italic;}
-  main{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:3.5rem 2rem 5rem;}
-  .seccion-label{font-size:9pt;letter-spacing:0.2em;text-transform:uppercase;color:var(--acento);margin-bottom:0.5rem;}
-  h1{font-size:18pt;font-weight:normal;font-style:italic;line-height:1.3;color:var(--blanco);margin-bottom:0.4rem;}
-  .presentador{font-size:9.5pt;color:var(--gris-texto);margin-bottom:2.2rem;padding-bottom:1.4rem;border-bottom:1px solid var(--linea);}
-  h2{font-size:12pt;font-weight:bold;color:var(--acento-claro);margin:2rem 0 0.7rem;letter-spacing:0.03em;}
-  p{text-align:justify;line-height:1.0;margin-bottom:0.9rem;color:var(--blanco);font-size:12pt;}
-  code{font-family:Consolas,Monaco,monospace;font-size:10pt;color:var(--acento-claro);}
-  .dato-destacado{border-left:2px solid var(--acento);padding:0.6rem 1rem;margin:1.4rem 0;background:rgba(93,163,217,0.06);font-style:italic;color:var(--acento-claro);font-size:11.5pt;line-height:1.0;}
-  .tabla-datos{width:100%;border-collapse:collapse;margin:1.4rem 0;font-size:11pt;}
-  .tabla-datos thead tr{border-bottom:1px solid var(--acento);}
-  .tabla-datos th{text-align:left;padding:0.5rem 0.8rem;font-weight:normal;font-style:italic;color:var(--acento-claro);font-size:10.5pt;}
-  .tabla-datos td{padding:0.45rem 0.8rem;border-bottom:1px solid var(--linea);color:var(--blanco);line-height:1.0;}
-  .tabla-datos tr:last-child td{border-bottom:none;}
-  .flujo{display:flex;flex-direction:column;gap:0;margin:1.4rem 0;}
-  .flujo-paso{display:flex;align-items:flex-start;gap:1rem;padding:0.65rem 0;border-bottom:1px solid var(--linea);}
-  .flujo-paso:last-child{border-bottom:none;}
-  .flujo-num{font-size:9pt;color:var(--acento);letter-spacing:0.1em;min-width:2rem;padding-top:0.1rem;}
-  .flujo-texto{font-size:11.5pt;color:var(--blanco);line-height:1.0;}
-  .flujo-software{font-size:9.5pt;color:var(--gris-texto);margin-top:0.25rem;}
-  .referencia{font-size:9.5pt;color:var(--gris-texto);margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--linea);line-height:1.0;}
-  .depth-bar{position:fixed;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--azul-profundo),var(--acento),var(--azul-profundo));z-index:200;}
-  .nav-pie{display:flex;justify-content:space-between;margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--linea);}
-  .nav-pie a{font-size:10pt;color:var(--gris-texto);text-decoration:none;font-style:italic;transition:color 0.2s;}
-  .nav-pie a:hover{color:var(--acento-claro);}
+  :root{
+    --bg:#07162d;
+    --bg-2:#0c2240;
+    --card:#102849;
+    --card-2:#0f2644;
+    --line:rgba(132,184,234,0.22);
+    --text:#eef6ff;
+    --muted:#c8d7ea;
+    --soft:#9ec9ef;
+    --accent:#76baf0;
+    --accent-2:#9ed3ff;
+    --primary-line:#ff6464;
+    --secondary-line:#f8d666;
+    --lake:#73b8ee;
+    --success:#8ce0bc;
+    --shadow:0 20px 60px rgba(0,0,0,0.28);
+    --radius:20px;
+  }
 
-  .animacion-wrap{margin:1.6rem 0 2rem;padding:1rem;border:1px solid var(--linea);background:rgba(93,163,217,0.05);}
-  .animacion-head{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:0.9rem;}
-  .animacion-titulo{font-size:11.5pt;color:var(--acento-claro);font-style:italic;}
-  .animacion-acciones{display:flex;gap:0.7rem;align-items:center;flex-wrap:wrap;}
-  .mapa-btn{background:transparent;color:var(--blanco);border:1px solid var(--acento);padding:0.45rem 0.8rem;font-family:'Times New Roman',Times,serif;font-size:10.5pt;cursor:pointer;transition:background 0.2s,color 0.2s;}
-  .mapa-btn:hover{background:rgba(93,163,217,0.12);color:var(--acento-claro);}
-  .mapa-estado{font-size:9.5pt;color:var(--gris-texto);}
-  .mapa-figura{margin:0;}
-  .mapa-svg{width:100%;height:auto;display:block;border:1px solid rgba(93,163,217,0.18);background:linear-gradient(180deg, rgba(142,197,232,0.08), rgba(91,163,217,0.03));}
-  .mapa-leyenda{display:flex;gap:1.1rem;flex-wrap:wrap;margin-top:0.9rem;font-size:10pt;color:var(--gris-texto);}
-  .mapa-leyenda span{display:inline-flex;align-items:center;gap:0.45rem;}
-  .swatch{width:18px;height:2px;display:inline-block;}
-  .swatch.lago{width:14px;height:14px;background:#4fa3dd;border:1px solid rgba(255,255,255,0.25);}
-  .swatch.principal{background:#ff5252;}
-  .swatch.secundaria{background:#f9d65c;}
-  .nota-mapa{font-size:9.8pt;color:var(--gris-texto);margin-top:0.8rem;line-height:1.15;}
-  .creditos-mapa{font-size:9pt;color:var(--gris-texto);margin-top:0.5rem;opacity:0.9;}
-  .fallback-msg{font-size:10pt;color:var(--gris-texto);padding:0.8rem;border-top:1px solid var(--linea);}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    min-height:100vh;
+    background:
+      radial-gradient(circle at 10% 10%, rgba(118,186,240,0.08), transparent 32%),
+      radial-gradient(circle at 88% 88%, rgba(118,186,240,0.08), transparent 30%),
+      linear-gradient(180deg, #061326 0%, #081a33 45%, #07152a 100%);
+    color:var(--text);
+    font-family:"Times New Roman", Georgia, serif;
+    font-size:18px;
+    line-height:1.58;
+    overflow-x:hidden;
+  }
+
+  .contour-bg{
+    position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden;
+  }
+  .contour-bg svg{width:100%;height:100%;opacity:0.14}
+
+  header{
+    position:sticky; top:0; z-index:80;
+    background:rgba(7,22,45,0.86);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(132,184,234,0.18);
+  }
+  nav{
+    width:min(98vw,1720px);
+    margin:0 auto;
+    padding:0 1rem;
+    display:flex; align-items:center;
+    min-height:64px;
+    overflow-x:auto;
+  }
+  nav a{
+    color:var(--muted);
+    text-decoration:none;
+    font-size:1rem;
+    padding:1rem 1.2rem;
+    border-right:1px solid rgba(132,184,234,0.16);
+    white-space:nowrap;
+    transition:0.25s ease;
+  }
+  nav a:first-child{border-left:1px solid rgba(132,184,234,0.16)}
+  nav a:hover{background:rgba(118,186,240,0.08); color:var(--accent-2)}
+  nav a.activo{color:var(--accent); font-style:italic}
+
+  main{
+    position:relative;
+    z-index:1;
+    width:min(98vw,1720px);
+    margin:0 auto;
+    padding:2.3rem 1.8rem 4rem;
+  }
+
+  .seccion-label{
+    color:var(--accent);
+    text-transform:uppercase;
+    letter-spacing:0.2em;
+    font-size:0.84rem;
+    margin-bottom:0.6rem;
+  }
+  h1{
+    font-size:2.55rem;
+    font-style:italic;
+    font-weight:normal;
+    line-height:1.15;
+    margin-bottom:0.55rem;
+  }
+  .presentador{
+    color:var(--muted);
+    font-size:1.05rem;
+    padding-bottom:1.4rem;
+    border-bottom:1px solid var(--line);
+    margin-bottom:1.8rem;
+  }
+  .layout{
+    display:grid;
+    grid-template-columns: 1.08fr 1.32fr;
+    gap:1.5rem;
+    align-items:start;
+  }
+  .text-panel, .viz-panel{
+    background:linear-gradient(180deg, rgba(16,40,73,0.72), rgba(10,27,49,0.78));
+    border:1px solid rgba(132,184,234,0.16);
+    box-shadow:var(--shadow);
+    border-radius:var(--radius);
+    padding:1.45rem 1.45rem 1.35rem;
+  }
+
+  h2{
+    font-size:1.25rem;
+    color:var(--accent-2);
+    margin:1.2rem 0 0.72rem;
+    letter-spacing:0.02em;
+  }
+  .text-panel h2:first-of-type{margin-top:0}
+  p{margin-bottom:0.95rem; color:var(--text)}
+  code{
+    font-family:Consolas,Monaco,monospace;
+    color:var(--accent-2);
+    background:rgba(118,186,240,0.08);
+    padding:0.05rem 0.28rem;
+    border-radius:6px;
+  }
+
+  .tabla-datos{
+    width:100%;
+    border-collapse:collapse;
+    margin:1rem 0 1.35rem;
+    font-size:1rem;
+  }
+  .tabla-datos th, .tabla-datos td{
+    text-align:left;
+    padding:0.76rem 0.78rem;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  .tabla-datos th{
+    color:var(--accent-2);
+    font-style:italic;
+    font-weight:normal;
+    font-size:0.98rem;
+  }
+  .tabla-datos tr:last-child td{border-bottom:none}
+
+  .dato-destacado{
+    border-left:3px solid var(--accent);
+    border-radius:0 14px 14px 0;
+    padding:0.95rem 1rem;
+    background:rgba(118,186,240,0.09);
+    color:var(--accent-2);
+    font-style:italic;
+    margin:1rem 0 1.4rem;
+  }
+
+  .flujo{
+    display:flex;
+    flex-direction:column;
+    gap:0.5rem;
+    margin-top:1rem;
+  }
+  .flujo-paso{
+    display:grid;
+    grid-template-columns: 58px 1fr;
+    gap:1rem;
+    padding:0.9rem 0;
+    border-bottom:1px solid var(--line);
+  }
+  .flujo-paso:last-child{border-bottom:none}
+  .flujo-num{
+    color:var(--accent);
+    letter-spacing:0.12em;
+    font-size:0.86rem;
+    padding-top:0.15rem;
+  }
+  .flujo-texto{font-size:1.08rem}
+  .flujo-software{font-size:0.95rem; color:var(--muted); margin-top:0.28rem}
+
+  .subtle-note{
+    color:var(--muted);
+    font-size:0.96rem;
+    line-height:1.5;
+  }
+
+  .viz-title{
+    display:flex;
+    justify-content:space-between;
+    gap:1rem;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    margin-bottom:1rem;
+  }
+  .viz-title h2{
+    margin:0;
+    font-size:1.7rem;
+    font-style:italic;
+    font-weight:normal;
+    color:var(--text);
+  }
+  .viz-title p{
+    margin:0.3rem 0 0;
+    color:var(--muted);
+    font-size:1rem;
+  }
+
+  .controls-grid{
+    display:grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap:1rem;
+    margin:1rem 0 1rem;
+  }
+
+  .control-card{
+    grid-column:span 12;
+    background:linear-gradient(180deg, rgba(18,45,79,0.85), rgba(12,31,55,0.95));
+    border:1px solid rgba(132,184,234,0.16);
+    border-radius:18px;
+    padding:1rem 1rem 1.05rem;
+  }
+
+  .control-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:1rem;
+    flex-wrap:wrap;
+    margin-bottom:0.8rem;
+  }
+  .control-head h3{
+    font-size:1.08rem;
+    color:var(--accent-2);
+    font-weight:normal;
+    font-style:italic;
+  }
+
+  .scenario-row{
+    display:grid;
+    grid-template-columns: 1.25fr 1fr 1fr 1fr;
+    gap:0.85rem;
+    align-items:end;
+  }
+  .field{
+    display:flex;
+    flex-direction:column;
+    gap:0.38rem;
+  }
+  .field label{
+    font-size:0.92rem;
+    color:var(--muted);
+  }
+
+  select, input[type="number"]{
+    width:100%;
+    border:none;
+    outline:none;
+    color:var(--text);
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(132,184,234,0.16);
+    border-radius:12px;
+    padding:0.82rem 0.9rem;
+    font-family:"Times New Roman", Georgia, serif;
+    font-size:1rem;
+    transition:0.2s ease;
+  }
+  select:focus, input[type="number"]:focus{
+    border-color:rgba(158,211,255,0.52);
+    box-shadow:0 0 0 3px rgba(118,186,240,0.12);
+  }
+
+  .button-row{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:0.8rem;
+    margin-top:0.9rem;
+  }
+  .btn{
+    appearance:none;
+    border:none;
+    cursor:pointer;
+    border-radius:14px;
+    padding:0.82rem 1.14rem;
+    font-size:1rem;
+    font-family:"Times New Roman", Georgia, serif;
+    transition:0.22s ease;
+    box-shadow:0 12px 24px rgba(0,0,0,0.18);
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn:active{transform:translateY(0)}
+
+  .btn-primary{
+    color:#06203c;
+    background:linear-gradient(180deg, #a7d8ff, #79bcf1);
+  }
+  .btn-secondary{
+    color:var(--text);
+    background:linear-gradient(180deg, rgba(118,186,240,0.18), rgba(118,186,240,0.08));
+    border:1px solid rgba(132,184,234,0.18);
+  }
+  .btn-ghost{
+    color:var(--muted);
+    background:transparent;
+    border:1px solid rgba(132,184,234,0.18);
+  }
+
+  .toggles{
+    display:grid;
+    grid-template-columns: repeat(4, minmax(160px, 1fr));
+    gap:0.8rem;
+    margin-top:1rem;
+  }
+  .toggle{
+    display:flex;
+    align-items:center;
+    gap:0.68rem;
+    padding:0.82rem 0.88rem;
+    border-radius:14px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(132,184,234,0.13);
+    color:var(--text);
+    cursor:pointer;
+    user-select:none;
+    min-height:58px;
+  }
+  .toggle input{
+    accent-color:#9ed3ff;
+    width:18px; height:18px;
+    flex-shrink:0;
+  }
+  .toggle span{
+    font-size:0.97rem;
+    line-height:1.25;
+  }
+
+  .custom-grid{
+    display:none;
+    grid-template-columns: repeat(6, 1fr);
+    gap:0.85rem;
+    margin-top:1rem;
+    padding-top:1rem;
+    border-top:1px solid var(--line);
+  }
+  .custom-grid.active{display:grid}
+
+  .status-strip{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:0.8rem;
+    margin:1rem 0 1rem;
+  }
+  .metric-pill{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(132,184,234,0.14);
+    border-radius:16px;
+    padding:0.9rem 1rem;
+  }
+  .metric-pill .label{
+    color:var(--muted);
+    font-size:0.88rem;
+    margin-bottom:0.2rem;
+  }
+  .metric-pill .value{
+    font-size:1.18rem;
+    color:var(--text);
+  }
+  .metric-pill .value small{
+    color:var(--muted);
+    font-size:0.85rem;
+  }
+
+  .map-stage{
+    margin-top:0.45rem;
+    background:linear-gradient(180deg, rgba(22,47,82,0.9), rgba(12,28,51,0.94));
+    border:1px solid rgba(132,184,234,0.16);
+    border-radius:24px;
+    padding:1rem;
+    position:relative;
+    overflow:hidden;
+  }
+  .map-shell{
+    position:relative;
+    aspect-ratio: 1.52 / 1;
+    min-height:740px;
+    border-radius:20px;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 50% 45%, rgba(140,199,241,0.06), transparent 46%),
+      linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border:1px solid rgba(132,184,234,0.14);
+  }
+  #surveyMap{
+    position:absolute; inset:0;
+    width:100%; height:100%; display:block;
+  }
+
+  .map-caption{
+    display:flex;
+    justify-content:space-between;
+    gap:1rem;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    margin-top:0.9rem;
+  }
+  .legend{
+    display:flex;
+    flex-wrap:wrap;
+    gap:1rem 1.2rem;
+    color:var(--muted);
+    font-size:1rem;
+  }
+  .legend span{
+    display:inline-flex;
+    align-items:center;
+    gap:0.5rem;
+  }
+  .swatch{display:inline-block}
+  .swatch.square{
+    width:16px; height:16px;
+    background:var(--lake);
+    border:1px solid rgba(255,255,255,0.24);
+  }
+  .swatch.line-primary{
+    width:26px; height:0;
+    border-top:3px solid var(--primary-line);
+  }
+  .swatch.line-secondary{
+    width:26px; height:0;
+    border-top:3px solid var(--secondary-line);
+  }
+  .stage-note{
+    max-width:530px;
+    color:var(--muted);
+    font-size:0.96rem;
+  }
+
+  .analysis-grid{
+    display:grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap:0.9rem;
+    margin-top:1.15rem;
+  }
+  .analysis-card{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(132,184,234,0.14);
+    border-radius:16px;
+    padding:0.9rem 0.95rem;
+  }
+  .analysis-card .k{
+    color:var(--muted);
+    font-size:0.88rem;
+    margin-bottom:0.22rem;
+  }
+  .analysis-card .v{
+    color:var(--text);
+    font-size:1.04rem;
+    line-height:1.32;
+  }
+  .analysis-card.span-2{grid-column:span 2}
+  .analysis-card.span-3{grid-column:span 3}
+  .analysis-card.full{grid-column:1 / -1}
+
+  .footnote{
+    margin-top:1rem;
+    padding:1rem 1.05rem 0;
+    border-top:1px solid var(--line);
+    color:var(--muted);
+    font-size:0.97rem;
+  }
+
+  .referencia{
+    font-size:0.96rem;
+    color:var(--muted);
+    margin-top:1.8rem;
+    padding-top:1rem;
+    border-top:1px solid var(--line);
+  }
+
+  .nav-pie{
+    display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap;
+    margin-top:2rem; padding-top:1.1rem; border-top:1px solid var(--line);
+  }
+  .nav-pie a{
+    color:var(--muted);
+    text-decoration:none;
+    font-style:italic;
+    transition:0.2s ease;
+  }
+  .nav-pie a:hover{color:var(--accent-2)}
+
+  .depth-bar{
+    position:fixed; bottom:0; left:0; right:0; height:4px;
+    background:linear-gradient(90deg, rgba(118,186,240,0.12), rgba(118,186,240,0.96), rgba(118,186,240,0.12));
+    z-index:90;
+  }
+
+  @media (max-width: 1360px){
+    .layout{grid-template-columns:1fr}
+    .scenario-row{grid-template-columns:1fr 1fr}
+    .custom-grid{grid-template-columns:repeat(3,1fr)}
+    .analysis-grid{grid-template-columns:repeat(3,1fr)}
+    .status-strip{grid-template-columns:repeat(2,1fr)}
+  }
+
+  @media (max-width: 920px){
+    body{font-size:17px}
+    main{width:min(100vw, 1600px); padding:1.4rem 0.9rem 3rem}
+    h1{font-size:2rem}
+    .scenario-row{grid-template-columns:1fr}
+    .toggles{grid-template-columns:1fr 1fr}
+    .custom-grid{grid-template-columns:1fr 1fr}
+    .analysis-grid{grid-template-columns:1fr 1fr}
+    .map-shell{min-height:540px}
+  }
+
+  @media (max-width: 640px){
+    .toggles{grid-template-columns:1fr}
+    .custom-grid{grid-template-columns:1fr}
+    .status-strip{grid-template-columns:1fr}
+    .analysis-grid{grid-template-columns:1fr}
+    .analysis-card.span-2,.analysis-card.span-3{grid-column:auto}
+    .map-shell{min-height:430px}
+  }
 </style>
 </head>
 <body>
 <div class="contour-bg">
-  <svg viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-    <ellipse cx="1300" cy="800" rx="600" ry="360" fill="none" stroke="#5ba3d9" stroke-width="1.2"/>
-    <ellipse cx="1300" cy="800" rx="460" ry="275" fill="none" stroke="#5ba3d9" stroke-width="0.9"/>
-    <ellipse cx="1300" cy="800" rx="325" ry="195" fill="none" stroke="#5ba3d9" stroke-width="0.7"/>
-    <ellipse cx="100" cy="100" rx="420" ry="270" fill="none" stroke="#5ba3d9" stroke-width="0.9"/>
-    <ellipse cx="100" cy="100" rx="300" ry="190" fill="none" stroke="#5ba3d9" stroke-width="0.7"/>
-    <ellipse cx="100" cy="100" rx="185" ry="118" fill="none" stroke="#5ba3d9" stroke-width="0.5"/>
+  <svg viewBox="0 0 1600 1200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="90" cy="120" rx="480" ry="320" fill="none" stroke="#6fb7ef" stroke-width="1"/>
+    <ellipse cx="90" cy="120" rx="330" ry="215" fill="none" stroke="#6fb7ef" stroke-width="0.9"/>
+    <ellipse cx="1480" cy="1080" rx="560" ry="360" fill="none" stroke="#6fb7ef" stroke-width="1.1"/>
+    <ellipse cx="1480" cy="1080" rx="390" ry="248" fill="none" stroke="#6fb7ef" stroke-width="0.9"/>
+    <ellipse cx="1280" cy="180" rx="260" ry="175" fill="none" stroke="#6fb7ef" stroke-width="0.7"/>
   </svg>
 </div>
 
@@ -86,102 +553,244 @@
 </header>
 
 <main>
-  <p class="seccion-label">Sección II &nbsp;·&nbsp; José Lisandro Alvarado Pol</p>
+  <p class="seccion-label">Sección II · José Lisandro Alvarado Pol</p>
   <h1>Metodología batimétrica y procesamiento SIG</h1>
   <p class="presentador">Reyes Morales, F., Ujpan, D. &amp; Valiente, S. (2018). <em>Batimetría y análisis morfométrico del lago de Atitlán (Guatemala)</em>. Revista Científica, 27(2), 48–58.</p>
 
-  <h2>Levantamiento batimétrico en campo</h2>
-  <p>El levantamiento batimétrico del lago de Atitlán se realizó durante los meses de mayo y junio de 2014. Los datos de profundidad se tomaron a lo largo y ancho de todo el espejo de agua mediante una ecosonda multifrecuencia Hydrotrac. Los puntos de medición fueron georreferenciados con un sistema de posicionamiento global GPS/DGPS Hemisphere, de modo que cada registro de profundidad constituyó un punto espacial con coordenada X, coordenada Y y profundidad Z (Reyes Morales et al., 2018, p. 50).</p>
+  <div class="layout">
+    <section class="text-panel">
+      <h2>Levantamiento batimétrico en campo</h2>
+      <p>El levantamiento batimétrico del lago de Atitlán se realizó durante los meses de mayo y junio de 2014. Los datos de profundidad se tomaron a lo largo y ancho de todo el espejo de agua mediante una ecosonda multifrecuencia Hydrotrac. Los puntos de medición fueron georreferenciados con un sistema de posicionamiento global GPS/DGPS Hemisphere, de modo que cada registro de profundidad constituyó un punto espacial con coordenada X, coordenada Y y profundidad Z.</p>
 
-  <h2>Diseño del levantamiento</h2>
-  <p>El diseño fue sistemático y cubrió el lago en dos direcciones para generar una red de mediciones suficientemente amplia. Las características del levantamiento se resumen a continuación:</p>
+      <h2>Diseño del levantamiento</h2>
+      <p>El diseño fue sistemático y cubrió el lago en dos direcciones para generar una red de mediciones suficientemente amplia. Las características reportadas para el recorrido de muestreo se resumen a continuación:</p>
 
-  <table class="tabla-datos">
-    <thead>
-      <tr>
-        <th>Tipo de línea</th>
-        <th>Cantidad</th>
-        <th>Separación</th>
-        <th>Orientación (ida / retorno)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Líneas principales de navegación</td>
-        <td>270</td>
-        <td>100 m</td>
-        <td>140° / 320°</td>
-      </tr>
-      <tr>
-        <td>Líneas secundarias de navegación</td>
-        <td>13</td>
-        <td>1,000 m</td>
-        <td>247° / 67°</td>
-      </tr>
-    </tbody>
-  </table>
+      <table class="tabla-datos">
+        <thead>
+          <tr>
+            <th>Tipo de línea</th>
+            <th>Cantidad</th>
+            <th>Separación</th>
+            <th>Orientación (ida / retorno)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Líneas principales de navegación</td>
+            <td>270</td>
+            <td>100 m</td>
+            <td>140° / 320°</td>
+          </tr>
+          <tr>
+            <td>Líneas secundarias de navegación</td>
+            <td>13</td>
+            <td>1,000 m</td>
+            <td>247° / 67°</td>
+          </tr>
+        </tbody>
+      </table>
 
-  <h2>Reconstrucción visual del recorrido de muestreo</h2>
-  <p>Con base en el documento, a continuación se integra una reconstrucción animada del patrón de navegación. El lago se dibuja a partir del archivo <code>LagoAtitlan.geojson</code>; las líneas principales se muestran en rojo y las secundarias en amarillo. La visualización representa el diseño metodológico reportado en el paper, no el recorrido GPS original.</p>
+      <div class="dato-destacado">Esta sección combina dos niveles de lectura: la reconstrucción de la metodología reportada y una exploración comparativa de orientaciones alternativas para observar cómo cambia el patrón visual de cobertura dentro del lago.</div>
 
-  <div class="animacion-wrap">
-    <div class="animacion-head">
-      <div class="animacion-titulo">Animación metodológica del levantamiento batimétrico</div>
-      <div class="animacion-acciones">
-        <button id="replayAnimation" class="mapa-btn" type="button">Reproducir animación</button>
-        <span id="estadoAnimacion" class="mapa-estado">Cargando geometría del lago…</span>
+      <h2>Procesamiento de datos y software utilizado</h2>
+      <p>Los datos obtenidos en campo fueron procesados con tres programas especializados: Hypack Max, 3D Surfer 12 y ArcGIS 10.2. Estos permitieron obtener el mapa batimétrico y los principales parámetros morfométricos del lago, tales como volumen, área, perímetro, profundidad máxima, longitud y anchura máxima.</p>
+
+      <div class="flujo">
+        <div class="flujo-paso">
+          <span class="flujo-num">01</span>
+          <div>
+            <div class="flujo-texto">Adquisición hidrográfica y control de navegación</div>
+            <div class="flujo-software">Hypack Max — planificación de líneas, registro de profundidades con ecosonda y asociación de datos con coordenadas GPS/DGPS.</div>
+          </div>
+        </div>
+        <div class="flujo-paso">
+          <span class="flujo-num">02</span>
+          <div>
+            <div class="flujo-texto">Interpolación y generación de superficie continua</div>
+            <div class="flujo-software">3D Surfer 12 — interpolación de puntos XYZ, generación de curvas de nivel batimétricas y superficies 2D/3D.</div>
+          </div>
+        </div>
+        <div class="flujo-paso">
+          <span class="flujo-num">03</span>
+          <div>
+            <div class="flujo-texto">Integración SIG y cálculo de parámetros morfométricos</div>
+            <div class="flujo-software">ArcGIS 10.2 — organización de capas, cálculo de área y perímetro, y producción cartográfica final.</div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <figure class="mapa-figura">
-      <svg id="surveyMap" class="mapa-svg" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid meet" aria-label="Reconstrucción del patrón de navegación para el levantamiento batimétrico del lago de Atitlán"></svg>
-      <figcaption class="mapa-leyenda">
-        <span><i class="swatch lago"></i>Lago Atitlán</span>
-        <span><i class="swatch principal"></i>Líneas principales (100 m, 140° / 320°)</span>
-        <span><i class="swatch secundaria"></i>Líneas secundarias (1,000 m, 247° / 67°)</span>
-      </figcaption>
-    </figure>
+      <h2>Cálculo del fetch efectivo</h2>
+      <p>Para obtener el fetch efectivo —la distancia máxima sobre la cual el viento puede actuar sobre el espejo de agua y producir oleaje— se analizaron datos de dirección del viento provenientes de cinco estaciones climatológicas de AMSCLAE: tres ubicadas en la parte norte de la cuenca y dos en la parte sur. Después de obtener la orientación promedio de acción del viento, se estimó la longitud mediante planos digitalizados.</p>
 
-    <p class="nota-mapa">La orientación y separación de las líneas se basa en la metodología reportada: 270 líneas principales separadas 100 m, y 13 líneas secundarias separadas 1,000 m. El recorte visual de las líneas se hace sobre la geometría del lago suministrada en el GeoJSON.</p>
-    <p class="creditos-mapa">Fuente metodológica: Reyes Morales, Ujpan y Valiente (2018), pp. 50–51.</p>
+      <p class="subtle-note">La lectura comparativa que aparece en la visualización inferior es exploratoria y busca apoyar la interpretación espacial del diseño de muestreo. No sustituye los registros instrumentales ni la trayectoria GPS original del levantamiento.</p>
+
+      <p class="referencia">Reyes Morales, F., Ujpan, D., &amp; Valiente, S. (2018). <em>Batimetría y análisis morfométrico del lago de Atitlán (Guatemala)</em>. Revista Científica, 27(2), 48–58. DOI: 10.54495/Rev.Cientifica.v27i2.70 · pp. 50–51.</p>
+    </section>
+
+    <section class="viz-panel">
+      <div class="viz-title">
+        <div>
+          <h2>Reconstrucción metodológica real y escenarios hipotéticos</h2>
+          <p>Exploración interactiva de orientaciones de muestreo dentro del lago de Atitlán.</p>
+        </div>
+      </div>
+
+      <div class="controls-grid">
+        <div class="control-card">
+          <div class="control-head">
+            <h3>Escenario de navegación</h3>
+          </div>
+
+          <div class="scenario-row">
+            <div class="field">
+              <label for="scenarioSelect">Selecciona un escenario</label>
+              <select id="scenarioSelect">
+                <option value="real">Escenario real · 140° / 320° + 247° / 67°</option>
+                <option value="a">Hipótesis A · 0° / 180°</option>
+                <option value="b">Hipótesis B · 90° / 270°</option>
+                <option value="c">Hipótesis C · 45° / 225°</option>
+                <option value="custom">Hipótesis D · orientación personalizada</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="scenarioMode">Modo</label>
+              <select id="scenarioMode">
+                <option value="real">Reconstrucción metodológica real</option>
+                <option value="hyp">Exploración comparativa</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="primarySpacing">Separación principal (m)</label>
+              <input id="primarySpacing" type="number" min="20" max="5000" step="10" value="100" />
+            </div>
+
+            <div class="field">
+              <label for="secondarySpacing">Separación secundaria (m)</label>
+              <input id="secondarySpacing" type="number" min="100" max="5000" step="50" value="1000" />
+            </div>
+          </div>
+
+          <div id="customGrid" class="custom-grid">
+            <div class="field">
+              <label for="customPrimaryGo">Orientación principal · ida</label>
+              <input id="customPrimaryGo" type="number" min="0" max="359" step="1" value="140" />
+            </div>
+            <div class="field">
+              <label for="customPrimaryBack">Orientación principal · retorno</label>
+              <input id="customPrimaryBack" type="number" min="0" max="359" step="1" value="320" />
+            </div>
+            <div class="field">
+              <label for="customSecondaryGo">Orientación secundaria · ida</label>
+              <input id="customSecondaryGo" type="number" min="0" max="359" step="1" value="247" />
+            </div>
+            <div class="field">
+              <label for="customSecondaryBack">Orientación secundaria · retorno</label>
+              <input id="customSecondaryBack" type="number" min="0" max="359" step="1" value="67" />
+            </div>
+            <div class="field">
+              <label for="customPrimaryCount">N.º líneas principales</label>
+              <input id="customPrimaryCount" type="number" min="10" max="600" step="1" value="270" />
+            </div>
+            <div class="field">
+              <label for="customSecondaryCount">N.º líneas secundarias</label>
+              <input id="customSecondaryCount" type="number" min="0" max="120" step="1" value="13" />
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button class="btn btn-primary" id="playBtn">Reproducir</button>
+            <button class="btn btn-secondary" id="pauseBtn">Pausar</button>
+            <button class="btn btn-ghost" id="resetBtn">Reiniciar</button>
+            <button class="btn btn-secondary" id="applyScenarioBtn">Aplicar escenario</button>
+          </div>
+
+          <div class="toggles">
+            <label class="toggle"><input type="checkbox" id="toggleScheme" /><span>Mostrar solo esquema</span></label>
+            <label class="toggle"><input type="checkbox" id="toggleCoverage" checked /><span>Mostrar cobertura completa</span></label>
+            <label class="toggle"><input type="checkbox" id="toggleSecondary" checked /><span>Mostrar secundarias</span></label>
+            <label class="toggle"><input type="checkbox" id="toggleDot" checked /><span>Mostrar punto de navegación</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="status-strip">
+        <div class="metric-pill">
+          <div class="label">Estado de la animación</div>
+          <div class="value" id="statusText">Listo para reproducir.</div>
+        </div>
+        <div class="metric-pill">
+          <div class="label">Transectos principales</div>
+          <div class="value"><span id="primaryCountLabel">0</span> <small>/ <span id="primaryTotalLabel">270</span></small></div>
+        </div>
+        <div class="metric-pill">
+          <div class="label">Transectos secundarios</div>
+          <div class="value"><span id="secondaryCountLabel">0</span> <small>/ <span id="secondaryTotalLabel">13</span></small></div>
+        </div>
+        <div class="metric-pill">
+          <div class="label">Escenario activo</div>
+          <div class="value" id="scenarioLabel">Metodología real</div>
+        </div>
+      </div>
+
+      <div class="map-stage">
+        <div class="map-shell">
+          <svg id="surveyMap" viewBox="0 0 1320 860" preserveAspectRatio="xMidYMid meet" aria-label="Visualización interactiva del patrón de navegación batimétrica"></svg>
+        </div>
+
+        <div class="map-caption">
+          <div class="legend">
+            <span><i class="swatch square"></i>Lago Atitlán</span>
+            <span><i class="swatch line-primary"></i>Líneas principales</span>
+            <span><i class="swatch line-secondary"></i>Líneas secundarias</span>
+          </div>
+          <div class="stage-note">Esta visualización reconstruye el diseño metodológico reportado por Reyes Morales et al. (2018) y no representa la trayectoria GPS original.</div>
+        </div>
+      </div>
+
+      <div class="analysis-grid">
+        <div class="analysis-card">
+          <div class="k">Escenario</div>
+          <div class="v" id="analysisScenario">Metodología real</div>
+        </div>
+        <div class="analysis-card">
+          <div class="k">Orientación principal</div>
+          <div class="v" id="analysisPrimary">140° / 320°</div>
+        </div>
+        <div class="analysis-card">
+          <div class="k">Orientación secundaria</div>
+          <div class="v" id="analysisSecondary">247° / 67°</div>
+        </div>
+        <div class="analysis-card">
+          <div class="k">Cobertura visual</div>
+          <div class="v" id="analysisCoverage">Alta</div>
+        </div>
+        <div class="analysis-card">
+          <div class="k">Longitud media</div>
+          <div class="v" id="analysisMeanLength">Media-alta</div>
+        </div>
+        <div class="analysis-card">
+          <div class="k">Cruce con eje mayor</div>
+          <div class="v" id="analysisAxisCross">Favorable</div>
+        </div>
+        <div class="analysis-card span-2">
+          <div class="k">Densidad de muestreo</div>
+          <div class="v" id="analysisDensity">Alta</div>
+        </div>
+        <div class="analysis-card span-2">
+          <div class="k">Observación</div>
+          <div class="v" id="analysisIssue">Buena adaptación a la cubeta principal y a la geometría general del lago.</div>
+        </div>
+        <div class="analysis-card span-2">
+          <div class="k">Lectura interpretativa</div>
+          <div class="v" id="analysisReading">La orientación principal reportada en el estudio favorece una lectura espacial robusta del espejo de agua y permite atravesar buena parte del lago con una cobertura visual muy densa.</div>
+        </div>
+      </div>
+
+      <div class="footnote">La comparación entre escenarios es exploratoria: ayuda a observar cómo la orientación y la separación de los transectos modifican la forma aparente de la cobertura, la longitud visible de las líneas y la relación con la geometría del lago.</div>
+    </section>
   </div>
-
-  <h2>Procesamiento de datos y software utilizado</h2>
-  <p>Los datos obtenidos en campo fueron procesados con tres programas especializados: Hypack Max, 3D Surfer 12 y ArcGIS 10.2. Estos permitieron obtener el mapa batimétrico y los principales parámetros morfométricos del lago, tales como volumen, área, perímetro, profundidad máxima, longitud y anchura máxima (Reyes Morales et al., 2018, p. 50).</p>
-
-  <div class="flujo">
-    <div class="flujo-paso">
-      <span class="flujo-num">01</span>
-      <div>
-        <div class="flujo-texto">Adquisición hidrográfica y control de navegación</div>
-        <div class="flujo-software">Hypack Max — planificación de líneas, registro de profundidades con ecosonda, asociación de datos con coordenadas GPS/DGPS.</div>
-      </div>
-    </div>
-    <div class="flujo-paso">
-      <span class="flujo-num">02</span>
-      <div>
-        <div class="flujo-texto">Interpolación y generación de superficie continua</div>
-        <div class="flujo-software">3D Surfer 12 — gridding e interpolación de puntos XYZ, producción de curvas de nivel batimétricas y superficies 2D/3D.</div>
-      </div>
-    </div>
-    <div class="flujo-paso">
-      <span class="flujo-num">03</span>
-      <div>
-        <div class="flujo-texto">Integración SIG y cálculo de parámetros morfométricos</div>
-        <div class="flujo-software">ArcGIS 10.2 — organización de capas, visualización espacial, cálculo de área, perímetro y producción de mapas finales.</div>
-      </div>
-    </div>
-  </div>
-
-  <h2>Cálculo del fetch efectivo</h2>
-  <p>Para obtener el fetch efectivo —la distancia máxima sobre la cual el viento puede actuar sobre el espejo de agua y producir oleaje— se analizaron datos de dirección del viento provenientes de cinco estaciones climatológicas de AMSCLAE: tres ubicadas en la parte norte de la cuenca y dos en la parte sur. Después de obtener la orientación promedio de acción del viento, se estimó la longitud mediante planos digitalizados (Reyes Morales et al., 2018, p. 51).</p>
-
-  <div class="dato-destacado">Cada registro de profundidad no era un número aislado, sino un punto espacial con tres dimensiones: coordenada X, coordenada Y y profundidad Z. Esta tríada es la base del mapa batimétrico.</div>
-
-  <h2>Parámetros morfométricos obtenidos</h2>
-  <p>El procesamiento produjo 16 parámetros morfométricos. Entre los más relevantes se encuentran: volumen, área superficial, perímetro, profundidad máxima, profundidad media, profundidad relativa, índice de desarrollo de costa, índice de desarrollo de volumen, longitud máxima, anchura máxima, anchura media, fetch efectivo y la clasificación de la forma del lago según la curva hipsográfica.</p>
-
-  <p class="referencia">Reyes Morales, F., Ujpan, D., &amp; Valiente, S. (2018). Batimetría y análisis morfométrico del lago de Atitlán (Guatemala). <em>Revista Científica</em>, 27(2), 48–58. https://doi.org/10.54495/Rev.Cientifica.v27i2.70 &nbsp;·&nbsp; pp. 50–51.</p>
 
   <div class="nav-pie">
     <a href="seccion1.html">← I. Introducción</a>
@@ -190,242 +799,660 @@
 </main>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  var svg = document.getElementById("surveyMap");
-  var replayBtn = document.getElementById("replayAnimation");
-  var estado = document.getElementById("estadoAnimacion");
+document.addEventListener("DOMContentLoaded", function(){
+  const svg = document.getElementById("surveyMap");
 
-  if (!svg) {
-    console.error("No existe el SVG con id='surveyMap'.");
-    return;
-  }
+  const scenarioSelect = document.getElementById("scenarioSelect");
+  const scenarioMode = document.getElementById("scenarioMode");
+  const primarySpacingInput = document.getElementById("primarySpacing");
+  const secondarySpacingInput = document.getElementById("secondarySpacing");
+  const customGrid = document.getElementById("customGrid");
+  const customPrimaryGo = document.getElementById("customPrimaryGo");
+  const customPrimaryBack = document.getElementById("customPrimaryBack");
+  const customSecondaryGo = document.getElementById("customSecondaryGo");
+  const customSecondaryBack = document.getElementById("customSecondaryBack");
+  const customPrimaryCount = document.getElementById("customPrimaryCount");
+  const customSecondaryCount = document.getElementById("customSecondaryCount");
 
-  var SVG_NS = "http://www.w3.org/2000/svg";
-  var W = 1000;
-  var H = 700;
-  var M = 55;
-  var isAnimating = false;
-  var stopRequested = false;
+  const playBtn = document.getElementById("playBtn");
+  const pauseBtn = document.getElementById("pauseBtn");
+  const resetBtn = document.getElementById("resetBtn");
+  const applyScenarioBtn = document.getElementById("applyScenarioBtn");
 
-  function status(txt) {
-    if (estado) estado.textContent = txt;
-  }
+  const toggleScheme = document.getElementById("toggleScheme");
+  const toggleCoverage = document.getElementById("toggleCoverage");
+  const toggleSecondary = document.getElementById("toggleSecondary");
+  const toggleDot = document.getElementById("toggleDot");
 
-  function makeSvg(tag, attrs) {
-    var node = document.createElementNS(SVG_NS, tag);
-    attrs = attrs || {};
-    Object.keys(attrs).forEach(function (key) {
-      node.setAttribute(key, attrs[key]);
-    });
-    return node;
-  }
+  const statusText = document.getElementById("statusText");
+  const primaryCountLabel = document.getElementById("primaryCountLabel");
+  const primaryTotalLabel = document.getElementById("primaryTotalLabel");
+  const secondaryCountLabel = document.getElementById("secondaryCountLabel");
+  const secondaryTotalLabel = document.getElementById("secondaryTotalLabel");
+  const scenarioLabel = document.getElementById("scenarioLabel");
 
-  function getGeometry(geojson) {
-    if (!geojson) return null;
-    if (geojson.type === "FeatureCollection") {
-      if (!geojson.features || !geojson.features.length) return null;
-      return geojson.features[0].geometry;
+  const analysisScenario = document.getElementById("analysisScenario");
+  const analysisPrimary = document.getElementById("analysisPrimary");
+  const analysisSecondary = document.getElementById("analysisSecondary");
+  const analysisCoverage = document.getElementById("analysisCoverage");
+  const analysisMeanLength = document.getElementById("analysisMeanLength");
+  const analysisAxisCross = document.getElementById("analysisAxisCross");
+  const analysisDensity = document.getElementById("analysisDensity");
+  const analysisIssue = document.getElementById("analysisIssue");
+  const analysisReading = document.getElementById("analysisReading");
+
+  if(!svg){ return; }
+
+  const NS = "http://www.w3.org/2000/svg";
+  const VIEW_W = 1320;
+  const VIEW_H = 860;
+  const MARGIN_X = 48;
+  const MARGIN_Y = 38;
+
+  const SCENARIOS = {
+    real: {
+      key: "real",
+      label: "Metodología real",
+      mode: "real",
+      primaryGo: 140,
+      primaryBack: 320,
+      secondaryGo: 247,
+      secondaryBack: 67,
+      primaryCount: 270,
+      secondaryCount: 13
+    },
+    a: {
+      key: "a",
+      label: "Hipótesis A",
+      mode: "hyp",
+      primaryGo: 0,
+      primaryBack: 180,
+      secondaryGo: 90,
+      secondaryBack: 270,
+      primaryCount: 270,
+      secondaryCount: 13
+    },
+    b: {
+      key: "b",
+      label: "Hipótesis B",
+      mode: "hyp",
+      primaryGo: 90,
+      primaryBack: 270,
+      secondaryGo: 0,
+      secondaryBack: 180,
+      primaryCount: 270,
+      secondaryCount: 13
+    },
+    c: {
+      key: "c",
+      label: "Hipótesis C",
+      mode: "hyp",
+      primaryGo: 45,
+      primaryBack: 225,
+      secondaryGo: 135,
+      secondaryBack: 315,
+      primaryCount: 270,
+      secondaryCount: 13
     }
-    if (geojson.type === "Feature") return geojson.geometry;
+  };
+
+  const state = {
+    isPaused: false,
+    isAnimating: false,
+    stopRequested: false,
+    built: null,
+    geometry: null,
+    outerRing: null,
+    lakeGroup: null,
+    lineLayer: null,
+    dot: null,
+    activeScenario: null,
+    lastUsedFallback: false
+  };
+
+  function setStatus(msg){ statusText.textContent = msg; }
+
+  function makeSvg(tag, attrs){
+    const n = document.createElementNS(NS, tag);
+    Object.keys(attrs || {}).forEach(k => n.setAttribute(k, attrs[k]));
+    return n;
+  }
+
+  function normalizeAngle(v){
+    let a = Number(v);
+    if(!isFinite(a)) a = 0;
+    a = ((a % 360) + 360) % 360;
+    return a;
+  }
+
+  function toggleCustomInputs(){
+    const showCustom = scenarioSelect.value === "custom";
+    customGrid.classList.toggle("active", showCustom);
+  }
+
+  function getScenarioConfig(){
+    let base;
+    if(scenarioSelect.value === "custom"){
+      base = {
+        key: "custom",
+        label: "Hipótesis D",
+        mode: "hyp",
+        primaryGo: normalizeAngle(customPrimaryGo.value),
+        primaryBack: normalizeAngle(customPrimaryBack.value),
+        secondaryGo: normalizeAngle(customSecondaryGo.value),
+        secondaryBack: normalizeAngle(customSecondaryBack.value),
+        primaryCount: Math.max(10, Math.min(600, Number(customPrimaryCount.value) || 270)),
+        secondaryCount: Math.max(0, Math.min(120, Number(customSecondaryCount.value) || 13))
+      };
+    } else {
+      base = Object.assign({}, SCENARIOS[scenarioSelect.value || "real"]);
+    }
+
+    base.mode = scenarioMode.value || base.mode || "real";
+    base.primarySpacing = Math.max(20, Number(primarySpacingInput.value) || 100);
+    base.secondarySpacing = Math.max(50, Number(secondarySpacingInput.value) || 1000);
+    return base;
+  }
+
+  function getGeometry(geojson){
+    if(!geojson) return null;
+    if(geojson.type === "FeatureCollection"){
+      if(!geojson.features || !geojson.features.length) return null;
+      const geomFeature = geojson.features.find(f => f.geometry && (f.geometry.type === "Polygon" || f.geometry.type === "MultiPolygon"));
+      return geomFeature ? geomFeature.geometry : geojson.features[0].geometry;
+    }
+    if(geojson.type === "Feature") return geojson.geometry;
     return geojson;
   }
 
-  function getRings(geojson) {
-    var geom = getGeometry(geojson);
-    if (!geom) return [];
-
-    if (geom.type === "Polygon") {
-      return geom.coordinates || [];
-    }
-
-    if (geom.type === "MultiPolygon") {
-      var rings = [];
-      (geom.coordinates || []).forEach(function (polygon) {
-        polygon.forEach(function (ring) {
-          rings.push(ring);
-        });
-      });
+  function getRings(geojson){
+    const geom = getGeometry(geojson);
+    if(!geom) return [];
+    if(geom.type === "Polygon"){ return geom.coordinates || []; }
+    if(geom.type === "MultiPolygon"){
+      const rings = [];
+      (geom.coordinates || []).forEach(poly => poly.forEach(r => rings.push(r)));
       return rings;
     }
-
     return [];
   }
 
-  function fallbackLakeRings() {
-    /*
-      Fallback simple para que el HTML nunca quede en blanco si el GeoJSON no carga.
-      Cuando LagoAtitlan.geojson existe en docs/, el script usa la geometría real.
-    */
+  function fallbackRings(){
     return [[
-      [-91.24, 14.73], [-91.20, 14.76], [-91.14, 14.77], [-91.08, 14.76],
-      [-91.02, 14.73], [-91.00, 14.68], [-91.03, 14.63], [-91.09, 14.61],
-      [-91.13, 14.58], [-91.18, 14.59], [-91.22, 14.62], [-91.25, 14.67],
-      [-91.24, 14.73]
+      [-91.260, 14.720], [-91.248, 14.735], [-91.232, 14.740], [-91.212, 14.748], [-91.187, 14.752],
+      [-91.158, 14.760], [-91.125, 14.770], [-91.092, 14.764], [-91.060, 14.754], [-91.034, 14.740],
+      [-91.016, 14.716], [-91.010, 14.690], [-91.020, 14.660], [-91.034, 14.636], [-91.056, 14.624],
+      [-91.074, 14.602], [-91.096, 14.590], [-91.116, 14.582], [-91.136, 14.570], [-91.160, 14.576],
+      [-91.182, 14.580], [-91.204, 14.570], [-91.220, 14.545], [-91.230, 14.518], [-91.236, 14.492],
+      [-91.242, 14.472], [-91.252, 14.452], [-91.260, 14.472], [-91.257, 14.500], [-91.248, 14.528],
+      [-91.240, 14.556], [-91.226, 14.584], [-91.212, 14.610], [-91.215, 14.626], [-91.226, 14.642],
+      [-91.242, 14.660], [-91.252, 14.684], [-91.260, 14.720]
     ]];
   }
 
-  function projectRings(rings) {
-    var points = [];
-    rings.forEach(function (ring) {
-      ring.forEach(function (p) {
-        if (Array.isArray(p) && p.length >= 2) points.push(p);
-      });
-    });
+  function projectRings(rings){
+    const pts = [];
+    rings.forEach(r => r.forEach(p => pts.push(p)));
+    const lon0 = pts.reduce((acc, p) => acc + Number(p[0]), 0) / pts.length;
+    const lat0 = pts.reduce((acc, p) => acc + Number(p[1]), 0) / pts.length;
+    const R = 6378137;
+    const cosLat = Math.cos(lat0 * Math.PI / 180);
 
-    var sumLon = 0;
-    var sumLat = 0;
-
-    points.forEach(function (p) {
-      sumLon += Number(p[0]);
-      sumLat += Number(p[1]);
-    });
-
-    var lon0 = sumLon / points.length;
-    var lat0 = sumLat / points.length;
-    var R = 6378137;
-    var cosLat = Math.cos(lat0 * Math.PI / 180);
-
-    return rings.map(function (ring) {
-      return ring.map(function (p) {
-        var lon = Number(p[0]);
-        var lat = Number(p[1]);
-        return {
-          x: (lon - lon0) * Math.PI / 180 * R * cosLat,
-          y: (lat - lat0) * Math.PI / 180 * R
-        };
-      });
-    });
+    return rings.map(ring => ring.map(p => ({
+      x: (Number(p[0]) - lon0) * Math.PI / 180 * R * cosLat,
+      y: (Number(p[1]) - lat0) * Math.PI / 180 * R
+    })));
   }
 
-  function boundsOf(rings) {
-    var minX = Infinity;
-    var minY = Infinity;
-    var maxX = -Infinity;
-    var maxY = -Infinity;
-
-    rings.forEach(function (ring) {
-      ring.forEach(function (p) {
-        minX = Math.min(minX, p.x);
-        minY = Math.min(minY, p.y);
-        maxX = Math.max(maxX, p.x);
-        maxY = Math.max(maxY, p.y);
-      });
-    });
-
-    return { minX: minX, minY: minY, maxX: maxX, maxY: maxY };
+  function boundsOf(projectedRings){
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    projectedRings.forEach(ring => ring.forEach(p => {
+      minX = Math.min(minX, p.x);
+      minY = Math.min(minY, p.y);
+      maxX = Math.max(maxX, p.x);
+      maxY = Math.max(maxY, p.y);
+    }));
+    return {minX, minY, maxX, maxY};
   }
 
-  function makeTransform(bounds) {
-    var width = bounds.maxX - bounds.minX || 1;
-    var height = bounds.maxY - bounds.minY || 1;
-    var scale = Math.min((W - M * 2) / width, (H - M * 2) / height);
-
-    return function (p) {
+  function buildTransform(bounds){
+    const width = bounds.maxX - bounds.minX || 1;
+    const height = bounds.maxY - bounds.minY || 1;
+    const scale = Math.min((VIEW_W - MARGIN_X * 2) / width, (VIEW_H - MARGIN_Y * 2) / height);
+    const tx = MARGIN_X + ((VIEW_W - MARGIN_X * 2) - width * scale) / 2;
+    const ty = MARGIN_Y + ((VIEW_H - MARGIN_Y * 2) - height * scale) / 2;
+    return function(p){
       return {
-        x: M + (p.x - bounds.minX) * scale,
-        y: H - M - (p.y - bounds.minY) * scale
+        x: tx + (p.x - bounds.minX) * scale,
+        y: VIEW_H - ty - (p.y - bounds.minY) * scale
       };
     };
   }
 
-  function pathFromRing(ring, transform) {
-    return ring.map(function (p, i) {
-      var q = transform(p);
+  function pathFromRing(ring, transform){
+    return ring.map((p, i) => {
+      const q = transform(p);
       return (i === 0 ? "M" : "L") + q.x.toFixed(2) + " " + q.y.toFixed(2);
     }).join(" ") + " Z";
   }
 
-  function makeLines(bounds, transform, cantidad, separacionMetros, grados, color, width) {
-    var theta = grados * Math.PI / 180;
+  function getCenter(bounds){
+    return { x: (bounds.minX + bounds.maxX) / 2, y: (bounds.minY + bounds.maxY) / 2 };
+  }
 
-    var dir = {
-      x: Math.sin(theta),
-      y: Math.cos(theta)
-    };
+  function principalAxisAngle(ring){
+    const n = ring.length;
+    const meanX = ring.reduce((s, p) => s + p.x, 0) / n;
+    const meanY = ring.reduce((s, p) => s + p.y, 0) / n;
+    let sxx = 0, syy = 0, sxy = 0;
+    ring.forEach(p => {
+      const dx = p.x - meanX;
+      const dy = p.y - meanY;
+      sxx += dx * dx;
+      syy += dy * dy;
+      sxy += dx * dy;
+    });
+    const angleFromX = 0.5 * Math.atan2(2 * sxy, (sxx - syy));
+    let degrees = 90 - angleFromX * 180 / Math.PI;
+    degrees = ((degrees % 180) + 180) % 180;
+    return degrees;
+  }
 
-    var normal = {
-      x: -dir.y,
-      y: dir.x
-    };
+  function angleDiff180(a, b){
+    let d = Math.abs(((a - b) % 180 + 180) % 180);
+    if(d > 90) d = 180 - d;
+    return d;
+  }
 
-    var cx = (bounds.minX + bounds.maxX) / 2;
-    var cy = (bounds.minY + bounds.maxY) / 2;
-    var diag = Math.hypot(bounds.maxX - bounds.minX, bounds.maxY - bounds.minY) * 2.6;
-    var lines = [];
+  function pointInPolygon(point, ring){
+    let inside = false;
+    for(let i = 0, j = ring.length - 1; i < ring.length; j = i++){
+      const xi = ring[i].x, yi = ring[i].y;
+      const xj = ring[j].x, yj = ring[j].y;
+      const intersect = ((yi > point.y) !== (yj > point.y)) &&
+                        (point.x < (xj - xi) * (point.y - yi) / ((yj - yi) || 1e-9) + xi);
+      if(intersect) inside = !inside;
+    }
+    return inside;
+  }
 
-    for (var i = 0; i < cantidad; i++) {
-      var k = i - (cantidad - 1) / 2;
-      var px = cx + normal.x * k * separacionMetros;
-      var py = cy + normal.y * k * separacionMetros;
+  function lineInsideLength(a, b, ring){
+    const samples = 280;
+    let total = 0;
+    let visibleSegments = 0;
+    let prev = null, prevInside = false;
 
-      var reverse = i % 2 === 1 ? -1 : 1;
-
-      var a = {
-        x: px - dir.x * diag * reverse,
-        y: py - dir.y * diag * reverse
+    for(let i = 0; i <= samples; i++){
+      const t = i / samples;
+      const p = {
+        x: a.x + (b.x - a.x) * t,
+        y: a.y + (b.y - a.y) * t
       };
+      const inside = pointInPolygon(p, ring);
 
-      var b = {
-        x: px + dir.x * diag * reverse,
-        y: py + dir.y * diag * reverse
-      };
+      if(prev){
+        const segLength = Math.hypot(p.x - prev.x, p.y - prev.y);
+        if(inside && prevInside){
+          total += segLength;
+        } else if(inside !== prevInside){
+          total += segLength * 0.5;
+          visibleSegments += 1;
+        }
+      }
+      prev = p;
+      prevInside = inside;
+    }
+    return { total, visibleSegments };
+  }
 
-      var p1 = transform(a);
-      var p2 = transform(b);
+  function generateLines(opts, transform, bounds, outerRing){
+    const thetaGo = opts.go * Math.PI / 180;
+    const thetaBack = opts.back * Math.PI / 180;
+    const dirGo = { x: Math.sin(thetaGo), y: Math.cos(thetaGo) };
+    const dirBack = { x: Math.sin(thetaBack), y: Math.cos(thetaBack) };
+    const normal = { x: -dirGo.y, y: dirGo.x };
 
-      lines.push(makeSvg("line", {
-        x1: p1.x.toFixed(2),
-        y1: p1.y.toFixed(2),
-        x2: p2.x.toFixed(2),
-        y2: p2.y.toFixed(2),
-        stroke: color,
-        "stroke-width": width,
-        "stroke-linecap": "round",
-        opacity: "0.95",
+    const center = getCenter(bounds);
+    const diag = Math.hypot(bounds.maxX - bounds.minX, bounds.maxY - bounds.minY) * 2.85;
+
+    const lines = [];
+    for(let i = 0; i < opts.count; i++){
+      const k = i - (opts.count - 1) / 2;
+      const px = center.x + normal.x * k * opts.spacing;
+      const py = center.y + normal.y * k * opts.spacing;
+      const dir = i % 2 === 0 ? dirGo : dirBack;
+      const a = { x: px - dir.x * diag, y: py - dir.y * diag };
+      const b = { x: px + dir.x * diag, y: py + dir.y * diag };
+
+      const insideStats = lineInsideLength(a, b, outerRing);
+      const p1 = transform(a);
+      const p2 = transform(b);
+
+      lines.push({
+        index: i,
+        a, b,
+        p1, p2,
+        insideLength: insideStats.total,
+        visibleSegments: insideStats.visibleSegments,
+        angle: i % 2 === 0 ? opts.go : opts.back,
+        type: opts.type
+      });
+    }
+    return lines.filter(l => l.insideLength > 40);
+  }
+
+  function sampleForScheme(lines, type){
+    if(!toggleScheme.checked) return lines.slice();
+    const step = type === "primary" ? 8 : 2;
+    return lines.filter((_, idx) => idx % step === 0);
+  }
+
+  function densityLabel(spacing){
+    if(spacing <= 120) return "Alta";
+    if(spacing <= 250) return "Media-alta";
+    if(spacing <= 700) return "Media";
+    return "Baja";
+  }
+
+  function coverageLabel(meanInside, bounds){
+    const majorDim = Math.max(bounds.maxX - bounds.minX, bounds.maxY - bounds.minY);
+    const ratio = meanInside / majorDim;
+    if(ratio >= 0.72) return "Alta";
+    if(ratio >= 0.56) return "Media-alta";
+    if(ratio >= 0.42) return "Media";
+    return "Baja";
+  }
+
+  function meanLengthLabel(meanInside, bounds){
+    const majorDim = Math.max(bounds.maxX - bounds.minX, bounds.maxY - bounds.minY);
+    const ratio = meanInside / majorDim;
+    if(ratio >= 0.72) return "Alta";
+    if(ratio >= 0.56) return "Media-alta";
+    if(ratio >= 0.42) return "Media";
+    return "Baja";
+  }
+
+  function axisCrossLabel(diff){
+    if(diff <= 18) return "Favorable";
+    if(diff <= 42) return "Intermedio";
+    return "Menos alineado";
+  }
+
+  function analysisTexts(cfg, meanInside, bounds, diff){
+    const cov = coverageLabel(meanInside, bounds);
+    const meanText = meanLengthLabel(meanInside, bounds);
+    const cross = axisCrossLabel(diff);
+    const dens = densityLabel(cfg.primarySpacing);
+
+    let issue = "";
+    let reading = "";
+
+    if(cfg.key === "real" || cfg.mode === "real"){
+      issue = "Buena adaptación a la cubeta principal y a la geometría general del lago.";
+      reading = "La orientación principal reportada en el estudio favorece una lectura espacial robusta del espejo de agua y permite atravesar buena parte del lago con una cobertura visual muy densa.";
+    } else if(diff <= 18){
+      issue = "La orientación cruza el lago con continuidad, aunque puede producir una lectura más rígida en algunos bordes irregulares.";
+      reading = "El escenario alternativo mantiene un cruce fuerte sobre el eje mayor del lago. Visualmente se observa una cobertura continua y una longitud media de transectos relativamente alta.";
+    } else if(diff <= 42){
+      issue = "La cobertura sigue siendo amplia, pero la geometría irregular del contorno introduce variaciones más visibles en la longitud interna de los transectos.";
+      reading = "El patrón alternativo se comporta de forma razonablemente eficiente, aunque ya se percibe una adaptación intermedia a la forma del lago y una mayor heterogeneidad espacial en los tramos visibles.";
+    } else {
+      issue = "La orientación parece menos alineada con la forma dominante del lago y puede generar una lectura espacial más fragmentada.";
+      reading = "En este escenario la cobertura se percibe más rígida y menos adaptada al eje mayor del lago. Los transectos atraviesan menos longitud interna en promedio y cambian más abruptamente entre sectores.";
+    }
+
+    if(toggleScheme.checked){
+      reading += " La vista actual está simplificada para enfatizar el patrón general de la orientación.";
+    }
+    if(!toggleSecondary.checked){
+      reading += " En esta visualización las líneas secundarias están ocultas para concentrar la lectura en la red principal.";
+    }
+
+    return {cov, meanText, cross, dens, issue, reading};
+  }
+
+  function setCounters(primaryShown, primaryTotal, secondaryShown, secondaryTotal){
+    primaryCountLabel.textContent = String(primaryShown);
+    primaryTotalLabel.textContent = String(primaryTotal);
+    secondaryCountLabel.textContent = String(secondaryShown);
+    secondaryTotalLabel.textContent = String(secondaryTotal);
+  }
+
+  function updatePauseButton(){
+    pauseBtn.textContent = state.isPaused ? "Continuar" : "Pausar";
+  }
+
+  function moveDot(entry, progress){
+    if(!state.dot || !toggleDot.checked){
+      if(state.dot) state.dot.setAttribute("opacity", "0");
+      return;
+    }
+    const x = entry.p1.x + (entry.p2.x - entry.p1.x) * progress;
+    const y = entry.p1.y + (entry.p2.y - entry.p1.y) * progress;
+    state.dot.setAttribute("cx", x.toFixed(2));
+    state.dot.setAttribute("cy", y.toFixed(2));
+    state.dot.setAttribute("opacity", "0.98");
+  }
+
+  function hideDot(){
+    if(state.dot) state.dot.setAttribute("opacity", "0");
+  }
+
+  function finalizeLineAppearance(entry){
+    const keep = toggleCoverage.checked;
+    if(!entry.el) return;
+    if(keep){
+      if(entry.type === "primary"){
+        entry.el.setAttribute("opacity", "0.18");
+        entry.el.setAttribute("stroke-width", toggleScheme.checked ? "2.0" : "1.35");
+      } else {
+        entry.el.setAttribute("opacity", "0.28");
+        entry.el.setAttribute("stroke-width", toggleScheme.checked ? "3.0" : "2.2");
+      }
+    } else {
+      entry.el.setAttribute("opacity", "0");
+    }
+  }
+
+  function prepareEntry(entry, color, width){
+    const line = makeSvg("line", {
+      x1: entry.p1.x.toFixed(2),
+      y1: entry.p1.y.toFixed(2),
+      x2: entry.p2.x.toFixed(2),
+      y2: entry.p2.y.toFixed(2),
+      stroke: color,
+      "stroke-width": width,
+      "stroke-linecap": "round",
+      "vector-effect": "non-scaling-stroke",
+      opacity: "0.95"
+    });
+    const len = Math.max(1, line.getTotalLength ? line.getTotalLength() : Math.hypot(entry.p2.x - entry.p1.x, entry.p2.y - entry.p1.y));
+    line.style.strokeDasharray = String(len);
+    line.style.strokeDashoffset = String(len);
+    entry.length = len;
+    entry.el = line;
+    return line;
+  }
+
+  function buildMapData(cfg){
+    state.stopRequested = true;
+    state.isAnimating = false;
+    state.isPaused = false;
+    updatePauseButton();
+
+    const transform = buildTransform(state.geometry.bounds);
+    svg.innerHTML = "";
+
+    const defs = makeSvg("defs");
+    const filter = makeSvg("filter", { id: "lakeGlow", x: "-40%", y: "-40%", width: "180%", height: "180%" });
+    filter.appendChild(makeSvg("feGaussianBlur", { stdDeviation: "10", result: "blur" }));
+    filter.appendChild(makeSvg("feColorMatrix", {
+      type: "matrix",
+      values: "0 0 0 0 0.45  0 0 0 0 0.74  0 0 0 0 0.96  0 0 0 0.24 0"
+    }));
+    defs.appendChild(filter);
+
+    const clip = makeSvg("clipPath", { id: "lakeClip" });
+    const lakeGroup = makeSvg("g");
+    const glowGroup = makeSvg("g", { opacity: "0.72", filter: "url(#lakeGlow)" });
+    const lineLayer = makeSvg("g", { "clip-path": "url(#lakeClip)" });
+
+    state.geometry.projectedRings.forEach((ring, idx) => {
+      const d = pathFromRing(ring, transform);
+      clip.appendChild(makeSvg("path", { d: d }));
+      glowGroup.appendChild(makeSvg("path", {
+        d: d,
+        fill: "#79bff5",
+        "fill-opacity": "0.20",
+        stroke: "none"
+      }));
+      lakeGroup.appendChild(makeSvg("path", {
+        d: d,
+        fill: idx === 0 ? "#6fb7ef" : "#0a1730",
+        "fill-opacity": idx === 0 ? "0.80" : "1",
+        stroke: idx === 0 ? "#d9eeff" : "#0a1730",
+        "stroke-width": idx === 0 ? "1.9" : "1.2",
         "vector-effect": "non-scaling-stroke"
       }));
-    }
+    });
 
-    return lines;
+    defs.appendChild(clip);
+    svg.appendChild(defs);
+    svg.appendChild(glowGroup);
+    svg.appendChild(lakeGroup);
+    svg.appendChild(lineLayer);
+
+    const dot = makeSvg("circle", {
+      cx: "0", cy: "0", r: "5.4",
+      fill: "#ffffff",
+      stroke: "#69c1ff",
+      "stroke-width": "2.3",
+      opacity: toggleDot.checked ? "0" : "0"
+    });
+    lineLayer.appendChild(dot);
+
+    const primaryRaw = generateLines({
+      count: cfg.primaryCount,
+      spacing: cfg.primarySpacing,
+      go: cfg.primaryGo,
+      back: cfg.primaryBack,
+      type: "primary"
+    }, transform, state.geometry.bounds, state.outerRing);
+
+    const secondaryRaw = generateLines({
+      count: cfg.secondaryCount,
+      spacing: cfg.secondarySpacing,
+      go: cfg.secondaryGo,
+      back: cfg.secondaryBack,
+      type: "secondary"
+    }, transform, state.geometry.bounds, state.outerRing);
+
+    const primaryDisplay = sampleForScheme(primaryRaw, "primary");
+    const secondaryDisplay = toggleSecondary.checked ? sampleForScheme(secondaryRaw, "secondary") : [];
+
+    primaryDisplay.forEach(entry => {
+      const line = prepareEntry(entry, "#ff6464", toggleScheme.checked ? "2.0" : "1.38");
+      lineLayer.appendChild(line);
+    });
+
+    secondaryDisplay.forEach(entry => {
+      const line = prepareEntry(entry, "#f8d666", toggleScheme.checked ? "3.0" : "2.2");
+      lineLayer.appendChild(line);
+    });
+
+    state.built = {
+      cfg,
+      transform,
+      primaryRaw,
+      secondaryRaw,
+      primaryDisplay,
+      secondaryDisplay
+    };
+    state.lakeGroup = lakeGroup;
+    state.lineLayer = lineLayer;
+    state.dot = dot;
+    state.activeScenario = cfg;
+    state.stopRequested = false;
+
+    setCounters(0, cfg.primaryCount, 0, cfg.secondaryCount);
+    scenarioLabel.textContent = cfg.label + (cfg.mode === "hyp" ? " · exploración" : "");
+    setStatus("Listo para reproducir.");
+
+    updateAnalysis();
   }
 
-  function prepareLine(line) {
-    try {
-      var len = line.getTotalLength();
-      line.style.strokeDasharray = String(len);
-      line.style.strokeDashoffset = String(len);
-      line.style.visibility = "visible";
-    } catch (e) {
-      console.warn("No se pudo preparar una línea SVG.", e);
-    }
+  function updateAnalysis(){
+    if(!state.built) return;
+    const cfg = state.built.cfg;
+    const primaryLengths = state.built.primaryRaw.map(l => l.insideLength);
+    const meanInside = primaryLengths.reduce((a,b)=>a+b,0) / Math.max(1, primaryLengths.length);
+    const axisAngle = principalAxisAngle(state.outerRing);
+    const diff = angleDiff180(cfg.primaryGo, axisAngle);
+    const texts = analysisTexts(cfg, meanInside, state.geometry.bounds, diff);
+
+    analysisScenario.textContent = cfg.label + (cfg.mode === "hyp" ? " · exploración" : "");
+    analysisPrimary.textContent = cfg.primaryGo + "° / " + cfg.primaryBack + "°";
+    analysisSecondary.textContent = cfg.secondaryGo + "° / " + cfg.secondaryBack + "°";
+    analysisCoverage.textContent = texts.cov;
+    analysisMeanLength.textContent = texts.meanText;
+    analysisAxisCross.textContent = texts.cross;
+    analysisDensity.textContent = texts.dens;
+    analysisIssue.textContent = texts.issue;
+    analysisReading.textContent = texts.reading;
   }
 
-  function animateLine(line, duration) {
-    return new Promise(function (resolve) {
-      var len = 0;
+  function resetVisualLines(){
+    if(!state.built) return;
+    state.stopRequested = true;
+    state.isAnimating = false;
+    state.isPaused = false;
+    updatePauseButton();
+    const allEntries = state.built.primaryDisplay.concat(state.built.secondaryDisplay);
+    allEntries.forEach(entry => {
+      if(!entry.el) return;
+      entry.el.style.strokeDasharray = String(entry.length);
+      entry.el.style.strokeDashoffset = String(entry.length);
+      entry.el.setAttribute("opacity", "0.95");
+      entry.el.setAttribute("stroke-width", entry.type === "primary" ? (toggleScheme.checked ? "2.0" : "1.38") : (toggleScheme.checked ? "3.0" : "2.2"));
+    });
+    setCounters(0, state.built.cfg.primaryCount, 0, state.built.cfg.secondaryCount);
+    hideDot();
+    setStatus("Reiniciado. Listo para reproducir.");
+    state.stopRequested = false;
+  }
 
-      try {
-        len = line.getTotalLength();
-      } catch (e) {
-        resolve();
-        return;
-      }
+  function animateEntry(entry, duration){
+    return new Promise(resolve => {
+      if(!entry.el){ resolve(); return; }
+      let start = null;
+      let pauseStart = null;
 
-      var start = performance.now();
-
-      function frame(now) {
-        if (stopRequested) {
+      function frame(ts){
+        if(state.stopRequested){
           resolve();
           return;
         }
 
-        var t = Math.min((now - start) / duration, 1);
-        line.style.strokeDashoffset = String(len * (1 - t));
+        if(state.isPaused){
+          if(pauseStart === null) pauseStart = ts;
+          requestAnimationFrame(frame);
+          return;
+        }
 
-        if (t < 1) {
+        if(pauseStart !== null && start !== null){
+          start += (ts - pauseStart);
+          pauseStart = null;
+        }
+
+        if(start === null) start = ts;
+        const progress = Math.min((ts - start) / duration, 1);
+        entry.el.style.strokeDashoffset = String(entry.length * (1 - progress));
+        moveDot(entry, progress);
+
+        if(progress < 1){
           requestAnimationFrame(frame);
         } else {
-          line.style.strokeDashoffset = "0";
+          finalizeLineAppearance(entry);
           resolve();
         }
       }
@@ -434,128 +1461,141 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  async function animateAll(primaryLines, secondaryLines) {
-    if (isAnimating) return;
+  async function runAnimation(){
+    if(!state.built || state.isAnimating) return;
+    state.isAnimating = true;
+    state.stopRequested = false;
+    state.isPaused = false;
+    updatePauseButton();
+    resetVisualLines();
 
-    isAnimating = true;
-    stopRequested = false;
+    const primary = state.built.primaryDisplay;
+    const secondary = state.built.secondaryDisplay;
 
-    status("Animando líneas principales: 270 transectos a 100 m…");
+    setStatus("Animando líneas principales…");
+    for(let i = 0; i < primary.length; i++){
+      await animateEntry(primary[i], toggleScheme.checked ? 150 : 24);
+      if(state.stopRequested) break;
 
-    for (var i = 0; i < primaryLines.length; i++) {
-      await animateLine(primaryLines[i], 28);
-      if (stopRequested) break;
+      let shown = i + 1;
+      if(toggleScheme.checked){
+        shown = Math.min(state.built.cfg.primaryCount, Math.round(((i + 1) / primary.length) * state.built.cfg.primaryCount));
+      }
+      primaryCountLabel.textContent = String(shown);
     }
 
-    if (!stopRequested) {
-      status("Animando líneas secundarias: 13 transectos a 1,000 m…");
+    if(!state.stopRequested && toggleSecondary.checked && secondary.length){
+      setStatus("Animando líneas secundarias…");
+      for(let j = 0; j < secondary.length; j++){
+        await animateEntry(secondary[j], toggleScheme.checked ? 430 : 210);
+        if(state.stopRequested) break;
 
-      for (var j = 0; j < secondaryLines.length; j++) {
-        await animateLine(secondaryLines[j], 240);
-        if (stopRequested) break;
+        let shown = j + 1;
+        if(toggleScheme.checked){
+          shown = Math.min(state.built.cfg.secondaryCount, Math.round(((j + 1) / secondary.length) * state.built.cfg.secondaryCount));
+        }
+        secondaryCountLabel.textContent = String(shown);
       }
     }
 
-    if (!stopRequested) status("Animación terminada.");
-    isAnimating = false;
-  }
+    hideDot();
 
-  function drawMap(rings, usedFallback) {
-    var projected = projectRings(rings);
-    var bounds = boundsOf(projected);
-    var transform = makeTransform(bounds);
-
-    svg.innerHTML = "";
-
-    var defs = makeSvg("defs");
-    var clip = makeSvg("clipPath", { id: "lakeClip" });
-    var lakeLayer = makeSvg("g", { id: "lakeLayer" });
-    var lineLayer = makeSvg("g", {
-      id: "lineLayer",
-      "clip-path": "url(#lakeClip)"
-    });
-
-    projected.forEach(function (ring) {
-      var d = pathFromRing(ring, transform);
-
-      clip.appendChild(makeSvg("path", { d: d }));
-
-      lakeLayer.appendChild(makeSvg("path", {
-        d: d,
-        fill: "#4fa3dd",
-        "fill-opacity": "0.78",
-        stroke: "#d8eefb",
-        "stroke-width": "2",
-        "vector-effect": "non-scaling-stroke"
-      }));
-    });
-
-    defs.appendChild(clip);
-    svg.appendChild(defs);
-    svg.appendChild(lakeLayer);
-    svg.appendChild(lineLayer);
-
-    var primaryLines = makeLines(bounds, transform, 270, 100, 140, "#ff5252", 1.3);
-    var secondaryLines = makeLines(bounds, transform, 13, 1000, 247, "#f9d65c", 2.2);
-
-    primaryLines.forEach(function (line) {
-      lineLayer.appendChild(line);
-      prepareLine(line);
-    });
-
-    secondaryLines.forEach(function (line) {
-      lineLayer.appendChild(line);
-      prepareLine(line);
-    });
-
-    if (replayBtn) {
-      replayBtn.onclick = function () {
-        stopRequested = true;
-
-        setTimeout(function () {
-          stopRequested = false;
-          primaryLines.concat(secondaryLines).forEach(prepareLine);
-          animateAll(primaryLines, secondaryLines);
-        }, 80);
-      };
+    if(!state.stopRequested){
+      primaryCountLabel.textContent = String(state.built.cfg.primaryCount);
+      secondaryCountLabel.textContent = String(toggleSecondary.checked ? state.built.cfg.secondaryCount : 0);
+      setStatus("Animación terminada.");
     }
 
-    if (usedFallback) {
-      status("GeoJSON no cargado; se muestra una silueta de respaldo.");
-    } else {
-      status("Listo para reproducir.");
-    }
-
-    animateAll(primaryLines, secondaryLines);
+    state.isAnimating = false;
   }
 
-  async function init() {
-    try {
-      status("Cargando LagoAtitlan.geojson…");
-
-      var response = await fetch("LagoAtitlan.geojson");
-
-      if (!response.ok) {
-        throw new Error("No se pudo cargar LagoAtitlan.geojson.");
-      }
-
-      var geojson = await response.json();
-      var rings = getRings(geojson);
-
-      if (!rings.length) {
-        throw new Error("El GeoJSON no tiene geometría Polygon o MultiPolygon.");
-      }
-
-      drawMap(rings, false);
-    } catch (err) {
-      console.warn(err);
-      drawMap(fallbackLakeRings(), true);
-    }
+  function applyScenario(){
+    const cfg = getScenarioConfig();
+    buildMapData(cfg);
   }
 
-  init();
+  async function loadGeometry(){
+    let rings = [];
+    let usedFallback = false;
+
+    try{
+      const response = await fetch("LagoAtitlan.geojson");
+      if(!response.ok) throw new Error("No se pudo cargar la geometría.");
+      const geojson = await response.json();
+      rings = getRings(geojson);
+      if(!rings.length) throw new Error("Sin anillos válidos.");
+    } catch(err){
+      rings = fallbackRings();
+      usedFallback = true;
+    }
+
+    const projected = projectRings(rings);
+    state.geometry = {
+      rings,
+      projectedRings: projected,
+      bounds: boundsOf(projected)
+    };
+    state.outerRing = projected[0];
+    state.lastUsedFallback = usedFallback;
+  }
+
+  scenarioSelect.addEventListener("change", function(){
+    toggleCustomInputs();
+    if(this.value === "real"){
+      scenarioMode.value = "real";
+      primarySpacingInput.value = 100;
+      secondarySpacingInput.value = 1000;
+    } else if(this.value !== "custom"){
+      scenarioMode.value = "hyp";
+    }
+    applyScenario();
+  });
+
+  scenarioMode.addEventListener("change", applyScenario);
+  primarySpacingInput.addEventListener("change", applyScenario);
+  secondarySpacingInput.addEventListener("change", applyScenario);
+
+  [customPrimaryGo, customPrimaryBack, customSecondaryGo, customSecondaryBack, customPrimaryCount, customSecondaryCount].forEach(input => {
+    input.addEventListener("change", function(){
+      if(scenarioSelect.value === "custom"){ applyScenario(); }
+    });
+  });
+
+  [toggleScheme, toggleCoverage, toggleSecondary, toggleDot].forEach(input => {
+    input.addEventListener("change", function(){
+      if(this === toggleDot && state.dot && !toggleDot.checked){ hideDot(); }
+      applyScenario();
+    });
+  });
+
+  applyScenarioBtn.addEventListener("click", applyScenario);
+
+  playBtn.addEventListener("click", function(){
+    runAnimation();
+  });
+
+  pauseBtn.addEventListener("click", function(){
+    if(!state.isAnimating) return;
+    state.isPaused = !state.isPaused;
+    updatePauseButton();
+    setStatus(state.isPaused ? "Animación en pausa." : "Animación reanudada.");
+  });
+
+  resetBtn.addEventListener("click", function(){
+    resetVisualLines();
+  });
+
+  (async function init(){
+    setStatus("Cargando escenario...");
+    toggleCustomInputs();
+    await loadGeometry();
+    if(state.lastUsedFallback){
+      setStatus("Listo para reproducir.");
+    }
+    applyScenario();
+    runAnimation();
+  })();
 });
 </script>
-
 </body>
 </html>
