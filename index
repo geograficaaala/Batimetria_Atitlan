@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Batimetría del Lago de Atitlán</title>
+<style>
+  :root {
+    --azul-profundo: #0a1628;
+    --acento: #5ba3d9;
+    --acento-claro: #8ec5e8;
+    --blanco: #f0f4f8;
+    --gris-texto: #c8d8e8;
+    --linea: rgba(93, 163, 217, 0.25);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background-color: var(--azul-profundo);
+    color: var(--blanco);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12pt;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  .contour-bg {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+  }
+  .contour-bg svg { width: 100%; height: 100%; opacity: 0.07; }
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10, 22, 40, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--linea);
+  }
+  nav {
+    max-width: 1100px; margin: 0 auto; padding: 0 2rem;
+    display: flex; align-items: center; height: 52px; overflow-x: auto;
+  }
+  nav a {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 10.5pt; color: var(--gris-texto); text-decoration: none;
+    padding: 0 1.1rem; height: 52px; display: flex; align-items: center;
+    border-right: 1px solid var(--linea); white-space: nowrap;
+    transition: color 0.2s, background 0.2s; letter-spacing: 0.02em;
+  }
+  nav a:first-child { border-left: 1px solid var(--linea); }
+  nav a:hover { color: var(--acento-claro); background: rgba(93,163,217,0.07); }
+  nav a.activo { color: var(--acento); font-style: italic; }
+  main {
+    position: relative; z-index: 1; max-width: 860px; margin: 0 auto;
+    padding: 5rem 2rem 4rem; display: flex; flex-direction: column;
+    align-items: center; text-align: center;
+    min-height: calc(100vh - 52px); justify-content: center;
+  }
+  .linea-decorativa { width: 80px; height: 1px; background: var(--acento); margin: 0 auto 2.2rem; }
+  .simposio {
+    font-size: 10pt; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--acento-claro); margin-bottom: 0.5rem; line-height: 1.0;
+  }
+  .curso {
+    font-size: 10pt; letter-spacing: 0.08em; color: var(--gris-texto);
+    margin-bottom: 2.8rem; line-height: 1.0; font-style: italic;
+  }
+  .titulo-paper {
+    font-size: 22pt; font-weight: normal; font-style: italic;
+    line-height: 1.35; color: var(--blanco); margin-bottom: 0.6rem; max-width: 720px;
+  }
+  .autores-paper { font-size: 10pt; color: var(--acento-claro); margin-bottom: 0.4rem; line-height: 1.0; }
+  .doi { font-size: 9pt; color: var(--gris-texto); margin-bottom: 3.2rem; line-height: 1.0; }
+  .separador {
+    width: 120px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--acento), transparent);
+    margin: 0 auto 2.8rem;
+  }
+  .presentado-label {
+    font-size: 9.5pt; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--acento-claro); margin-bottom: 1.4rem; line-height: 1.0;
+  }
+  .tabla-integrantes {
+    width: 100%; max-width: 640px; border-collapse: collapse; margin: 0 auto 3.2rem;
+  }
+  .tabla-integrantes tr { border-bottom: 1px solid var(--linea); }
+  .tabla-integrantes tr:first-child { border-top: 1px solid var(--linea); }
+  .tabla-integrantes td {
+    padding: 0.65rem 1rem; text-align: left;
+    font-size: 11pt; line-height: 1.0; color: var(--blanco);
+  }
+  .tabla-integrantes td.nombre { font-style: italic; }
+  .tabla-integrantes td.tema {
+    font-size: 9.5pt; color: var(--gris-texto); text-align: right; padding-left: 0;
+  }
+  .fecha { font-size: 9.5pt; letter-spacing: 0.1em; color: var(--gris-texto); line-height: 1.0; }
+  .depth-bar {
+    position: fixed; bottom: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(to right, var(--azul-profundo), var(--acento), var(--azul-profundo));
+    z-index: 200;
+  }
+</style>
+</head>
+<body>
+<div class="contour-bg">
+  <svg viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="700" cy="450" rx="620" ry="370" fill="none" stroke="#5ba3d9" stroke-width="1.2"/>
+    <ellipse cx="700" cy="450" rx="540" ry="310" fill="none" stroke="#5ba3d9" stroke-width="1"/>
+    <ellipse cx="700" cy="450" rx="460" ry="255" fill="none" stroke="#5ba3d9" stroke-width="0.9"/>
+    <ellipse cx="700" cy="450" rx="380" ry="205" fill="none" stroke="#5ba3d9" stroke-width="0.8"/>
+    <ellipse cx="700" cy="450" rx="300" ry="158" fill="none" stroke="#5ba3d9" stroke-width="0.7"/>
+    <ellipse cx="700" cy="450" rx="220" ry="115" fill="none" stroke="#5ba3d9" stroke-width="0.6"/>
+    <ellipse cx="700" cy="450" rx="145" ry="75" fill="none" stroke="#5ba3d9" stroke-width="0.5"/>
+    <ellipse cx="700" cy="450" rx="75" ry="38" fill="none" stroke="#5ba3d9" stroke-width="0.4"/>
+  </svg>
+</div>
+<div class="depth-bar"></div>
+<header>
+  <nav>
+    <a href="index.html" class="activo">Portada</a>
+    <a href="docs/seccion1.html">I. Introducción</a>
+    <a href="docs/seccion2.html">II. Metodología</a>
+    <a href="docs/seccion3.html">III. Resultados</a>
+    <a href="docs/seccion4.html">IV. Discusión</a>
+  </nav>
+</header>
+<main>
+  <div class="linea-decorativa"></div>
+  <p class="simposio">V Simposio Internacional de Aguas Continentales de las Américas</p>
+  <p class="curso">Curso Básico de Limnología</p>
+  <h1 class="titulo-paper">Batimetría y análisis morfométrico del lago de Atitlán (Guatemala)</h1>
+  <p class="autores-paper">Reyes Morales, F., Ujpan, D. &amp; Valiente, S. (2018)</p>
+  <p class="doi">Revista Científica, Vol. 27, No. 2, pp. 48–58 &nbsp;·&nbsp; DOI: 10.54495/Rev.Cientifica.v27i2.70</p>
+  <div class="separador"></div>
+  <p class="presentado-label">Presentado por</p>
+  <table class="tabla-integrantes">
+    <tr>
+      <td class="nombre">Yosimar Alexhander Fuentes López</td>
+      <td class="tema">Introducción y Área de Estudio</td>
+    </tr>
+    <tr>
+      <td class="nombre">Jénnifer Eliza Pérez Cox</td>
+      <td class="tema">Resultados batimétricos y morfométricos</td>
+    </tr>
+    <tr>
+      <td class="nombre">Glenda Araceli Buch Chávez</td>
+      <td class="tema">Discusión e implicaciones limnológicas</td>
+    </tr>
+    <tr>
+      <td class="nombre">José Lisandro Alvarado Pol</td>
+      <td class="tema">Metodología batimétrica y SIG</td>
+    </tr>
+  </table>
+  <p class="fecha">2025</p>
+</main>
+</body>
+</html>
