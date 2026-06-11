@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>II. Metodología batimétrica y SIG</title>
+<!-- Requiere docs/LagoAtitlan.geojson y docs/batimetria_atitlan_optimizada_repo.tif -->
 <style>
   :root{
     --azul-profundo:#0a1628;
@@ -549,6 +550,177 @@
     .personalizado{grid-template-columns:1fr;}
     .mapa-frame{height:380px;}
   }
+
+
+  .processing-block{
+    margin:1.8rem 0 2.4rem;
+    border:1px solid var(--linea);
+    background:linear-gradient(180deg,rgba(93,163,217,0.07),rgba(93,163,217,0.035));
+    box-shadow:0 18px 45px rgba(0,0,0,0.18);
+    padding:1.15rem;
+  }
+
+  .processing-tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.7rem;
+    margin-bottom:1rem;
+  }
+
+  .proc-tab{
+    background:rgba(240,244,248,0.055);
+    color:var(--gris-texto);
+    border:1px solid rgba(142,197,232,0.32);
+    padding:0.68rem 0.95rem;
+    font-family:'Times New Roman',Times,serif;
+    font-size:12pt;
+    cursor:pointer;
+    transition:background 0.2s,color 0.2s,transform 0.2s;
+  }
+
+  .proc-tab:hover{
+    color:var(--acento-claro);
+    background:rgba(93,163,217,0.14);
+    transform:translateY(-1px);
+  }
+
+  .proc-tab.activo{
+    color:var(--blanco);
+    background:rgba(142,197,232,0.22);
+    border-color:rgba(142,197,232,0.72);
+  }
+
+  .processing-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.7rem;
+    margin-bottom:1rem;
+  }
+
+  .processing-btn{
+    background:rgba(142,197,232,0.2);
+    color:var(--blanco);
+    border:1px solid rgba(142,197,232,0.62);
+    padding:0.62rem 0.95rem;
+    font-family:'Times New Roman',Times,serif;
+    font-size:12pt;
+    cursor:pointer;
+    transition:background 0.2s,color 0.2s,transform 0.2s;
+  }
+
+  .processing-btn:hover{
+    background:rgba(93,163,217,0.22);
+    color:var(--acento-claro);
+    transform:translateY(-1px);
+  }
+
+  .processing-btn.secundario{
+    background:rgba(240,244,248,0.04);
+    border-color:rgba(142,197,232,0.32);
+  }
+
+  .processing-layout{
+    display:grid;
+    grid-template-columns:minmax(0,1.62fr) minmax(290px,0.88fr);
+    gap:1rem;
+    align-items:stretch;
+  }
+
+  .processing-view{
+    border:1px solid rgba(142,197,232,0.22);
+    background:
+      radial-gradient(circle at 50% 50%,rgba(91,163,217,0.10),transparent 46%),
+      linear-gradient(180deg,rgba(16,35,61,0.98),rgba(11,26,47,0.98));
+    min-height:560px;
+    position:relative;
+    overflow:hidden;
+  }
+
+  .proc-panel{
+    display:none;
+    width:100%;
+    height:100%;
+    min-height:560px;
+  }
+
+  .proc-panel.activo{display:block;}
+
+  .proc-panel canvas{
+    width:100%;
+    height:560px;
+    display:block;
+  }
+
+  .processing-info{
+    border:1px solid rgba(142,197,232,0.2);
+    background:rgba(10,22,40,0.48);
+    padding:1rem;
+  }
+
+  .processing-info h3{
+    color:var(--acento-claro);
+    font-size:14pt;
+    font-style:italic;
+    font-weight:normal;
+    margin-bottom:0.6rem;
+  }
+
+  .processing-info p{
+    font-size:12.5pt;
+    line-height:1.35;
+    text-align:justify;
+  }
+
+  .processing-stats{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:0.55rem;
+    margin:0.9rem 0;
+  }
+
+  .processing-stats div{
+    border-bottom:1px solid var(--linea);
+    padding-bottom:0.45rem;
+  }
+
+  .processing-stats span{
+    display:block;
+    color:var(--gris-texto);
+    font-size:10.5pt;
+  }
+
+  .processing-stats strong{
+    display:block;
+    color:var(--blanco);
+    font-size:12.2pt;
+    font-weight:normal;
+  }
+
+  .processing-note{color:var(--gris-texto)!important;font-size:11.2pt!important;}
+
+  .mini-pipeline{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:0.35rem;
+    margin-top:0.8rem;
+  }
+
+  .mini-pipeline span{
+    border:1px solid rgba(142,197,232,0.18);
+    background:rgba(240,244,248,0.035);
+    color:var(--gris-texto);
+    padding:0.35rem 0.25rem;
+    font-size:9.8pt;
+    text-align:center;
+  }
+
+  @media(max-width:900px){
+    .processing-layout{grid-template-columns:1fr;}
+    .processing-view,.proc-panel{min-height:440px;}
+    .proc-panel canvas{height:440px;}
+    .mini-pipeline{grid-template-columns:1fr 1fr;}
+  }
+
 </style>
 </head>
 
@@ -740,16 +912,15 @@
     </div>
 
     <div class="fundamento-tecnico">
-      <h3>Cómo se interpretan la densidad, la orientación y el fetch</h3>
+      <h3>Cómo se interpretan la densidad y la orientación</h3>
       <p>En un levantamiento batimétrico con transectos, la separación entre líneas no se elige de forma aislada: depende del producto final que se quiere generar, la precisión esperada, el tamaño del lago, la irregularidad del fondo y la capacidad del ecosonda. Una guía aplicada a reservorios pequeños recomienda definir transectos previamente en SIG, orientarlos de forma consistente respecto al eje largo del lago y usar líneas oblicuas adicionales como control de calidad.</p>
       <p>En estudios hidrográficos modernos, la densidad de datos se evalúa cada vez más como cobertura y capacidad de representar el relieve sumergido, no solo como “muchas líneas”. Por eso, una separación menor aumenta la densidad y reduce el riesgo de interpolar mal pendientes, canales o cambios abruptos del fondo; una separación mayor puede ahorrar tiempo, pero simplifica el modelo batimétrico.</p>
-      <p>El fetch no cambia porque cambiemos las líneas de navegación: el fetch físico depende de la dirección del viento, la distancia libre sobre el agua, la forma de la costa, la batimetría y la profundidad efectiva. Lo que sí cambia en las hipótesis es la forma en que el muestreo cruzaría zonas potencialmente influenciadas por el viento. En el caso de Atitlán, el estudio reporta un fetch efectivo de 9.58 km sobre 23° NNE; por eso las hipótesis se leen como escenarios de diseño de muestreo, no como nuevos valores de fetch.</p>
       <ul>
-        <li><strong>Hipótesis A, 0°/180°:</strong> se aproxima más al eje norte-sur y podría leer mejor variaciones asociadas a un viento dominante cercano al NNE, pero puede perder contraste transversal en sectores anchos del lago.</li>
-        <li><strong>Hipótesis B, 90°/270°:</strong> cruza el lago de este a oeste; sirve para comparar bordes opuestos y anchura, pero sería menos directa para seguir procesos alineados con un fetch NNE.</li>
-        <li><strong>Hipótesis C, 45°/225°:</strong> ofrece un compromiso oblicuo; puede ayudar a cortar la geometría irregular del lago desde otra dirección, aunque no reproduce el diseño reportado.</li>
+        <li><strong>Hipótesis A, 0°/180°:</strong> se aproximaría más a una lectura norte-sur del lago; podría favorecer perfiles longitudinales, pero reduciría el contraste transversal en sectores anchos.</li>
+        <li><strong>Hipótesis B, 90°/270°:</strong> cruzaría el lago de este a oeste; serviría para comparar bordes opuestos y anchura, aunque podría perder continuidad respecto al eje dominante de la cubeta.</li>
+        <li><strong>Hipótesis C, 45°/225°:</strong> ofrece un compromiso oblicuo; puede ayudar a cortar bahías y bordes irregulares desde otra dirección, aunque no reproduce el diseño reportado.</li>
       </ul>
-      <p class="referencias-tecnicas">Referencias de apoyo para esta interpretación: Reyes Morales, Ujpan y Valiente (2018); Wilson y Richards, USGS (2006); Malhotra y Fonseca, NOAA/WEMo (2007); IHO S-44 e historia de estándares hidrográficos; Udvardy et al. (2025).</p>
+      <p class="referencias-tecnicas">Referencias de apoyo para esta interpretación: Reyes Morales, Ujpan y Valiente (2018); Wilson y Richards, USGS (2006); IHO S-44 e historia de estándares hidrográficos; Udvardy et al. (2025).</p>
     </div>
 
     <p class="nota-mapa">Esta visualización reconstruye el diseño metodológico reportado por Reyes Morales et al. (2018) y no representa la trayectoria GPS original. Lo que se conserva es la forma del lago, la orientación de los transectos y la separación metodológica entre líneas.</p>
@@ -779,6 +950,56 @@
         <div class="flujo-texto">Integración SIG y cálculo de parámetros morfométricos</div>
         <div class="flujo-software">ArcGIS 10.2 — organización de capas, visualización espacial, cálculo de área, perímetro y producción de mapas finales.</div>
       </div>
+    </div>
+  </div>
+
+
+
+  <h2>Simulación del procesamiento batimétrico</h2>
+  <p>Después del levantamiento en campo, los registros de profundidad deben organizarse, revisarse e interpolarse para convertirse en una superficie batimétrica continua. Este bloque compara un flujo de procesamiento en software hidrográfico especializado con un flujo actual basado en Python y datos raster.</p>
+
+  <div class="processing-block">
+    <div class="processing-tabs">
+      <button class="proc-tab activo" data-target="panelHypack" type="button">Flujo de procesamiento en HYPACK Max y 3D Surfer</button>
+      <button class="proc-tab" data-target="panelPython" type="button">Flujo de procesamiento con Python</button>
+    </div>
+
+    <div class="processing-actions">
+      <button id="playHypackFlow" class="processing-btn" type="button">Reproducir HYPACK / Surfer</button>
+      <button id="playPythonFlow" class="processing-btn" type="button">Reproducir Python</button>
+      <button id="resetProcessingFlow" class="processing-btn secundario" type="button">Reiniciar</button>
+    </div>
+
+    <div class="processing-layout">
+      <div class="processing-view">
+        <div id="panelHypack" class="proc-panel activo">
+          <canvas id="hypackCanvas" aria-label="Flujo de procesamiento en HYPACK Max y 3D Surfer"></canvas>
+        </div>
+        <div id="panelPython" class="proc-panel">
+          <canvas id="pythonCanvas" aria-label="Flujo de procesamiento con Python usando GeoTIFF batimétrico"></canvas>
+        </div>
+      </div>
+
+      <aside class="processing-info">
+        <h3 id="processingStepTitle">Flujo de procesamiento</h3>
+        <p id="processingStepText">Selecciona una pestaña y reproduce la simulación.</p>
+
+        <div id="processingStats" class="processing-stats">
+          <div><span>Fuente raster</span><strong>batimetria_atitlan_optimizada_repo.tif</strong></div>
+          <div><span>Software especializado</span><strong>HYPACK Max + 3D Surfer</strong></div>
+          <div><span>Flujo actual</span><strong>Python + raster científico</strong></div>
+        </div>
+
+        <p class="processing-note">En el flujo con Python se puede leer el GeoTIFF con Rasterio o GeoTIFF.js, tratar la matriz con NumPy, interpolar o suavizar con SciPy, extraer curvas con algoritmos tipo marching squares y visualizar el resultado con Canvas, SVG o D3.</p>
+
+        <div class="mini-pipeline">
+          <span>Captura</span>
+          <span>XYZ</span>
+          <span>Limpieza</span>
+          <span>Interpolación</span>
+          <span>Mapa</span>
+        </div>
+      </aside>
     </div>
   </div>
 
@@ -1156,32 +1377,32 @@ document.addEventListener("DOMContentLoaded", function(){
       analisisCobertura.textContent = "Alta";
       analisisLongitud.textContent = "Media-alta";
       analisisCruce.textContent = "Favorable";
-      lecturaEscenario.textContent = "La orientación principal reportada permite cubrir de forma densa el espejo de agua y atravesar buena parte de la cubeta principal del lago. Como el fetch efectivo del estudio se estimó a partir del viento y no de las líneas de navegación, el valor físico de 9.58 km sobre 23° NNE no cambiaría; lo que cambiaría sería la forma en que el muestreo intersecta las zonas potencialmente expuestas al viento y las pendientes litorales.";
+      lecturaEscenario.textContent = "La orientación principal reportada permite cubrir de forma densa el espejo de agua y atravesar buena parte de la cubeta principal del lago, con una red de transectos capaz de sostener una interpolación batimétrica detallada.";
     }else if(sc.key === "a"){
       analisisCobertura.textContent = "Alta";
       analisisLongitud.textContent = "Media-alta";
       analisisCruce.textContent = "Cercano al eje N-S";
-      lecturaEscenario.textContent = "Si se hubiese elegido una orientación 0°/180°, el muestreo habría seguido más de cerca una dirección compatible con el fetch NNE reportado. Eso podría favorecer perfiles longitudinales vinculados al viento y al oleaje, pero también reduciría la lectura transversal de la anchura del lago y de algunas irregularidades de costa.";
+      lecturaEscenario.textContent = "Si se hubiese elegido una orientación 0°/180°, el muestreo habría favorecido perfiles norte-sur y una lectura más longitudinal de la cubeta, pero podría reducir la lectura transversal de la anchura del lago y de algunas irregularidades de costa.";
     }else if(sc.key === "b"){
       analisisCobertura.textContent = "Media-alta";
       analisisLongitud.textContent = "Media";
       analisisCruce.textContent = "Transversal al NNE";
-      lecturaEscenario.textContent = "Con una orientación 90°/270°, las líneas cruzarían el lago de este a oeste. Esto ayudaría a comparar bordes opuestos y cambios transversales, pero sería menos directo para seguir la dirección del fetch NNE; por eso podría describir peor procesos alineados con el viento dominante.";
+      lecturaEscenario.textContent = "Con una orientación 90°/270°, las líneas cruzarían el lago de este a oeste. Esto ayudaría a comparar bordes opuestos y cambios transversales, pero podría perder continuidad en sectores donde la cubeta se alarga o cambia de dirección.";
     }else if(sc.key === "c"){
       analisisCobertura.textContent = "Media-alta";
       analisisLongitud.textContent = "Media-alta";
       analisisCruce.textContent = "Oblicuo";
-      lecturaEscenario.textContent = "La orientación 45°/225° funciona como escenario oblicuo de compromiso. Podría cortar mejor algunas bahías y bordes irregulares que una red puramente norte-sur o este-oeste; sin embargo, seguiría siendo una hipótesis comparativa y no cambia el fetch físico estimado por viento, costa y batimetría.";
+      lecturaEscenario.textContent = "La orientación 45°/225° funciona como escenario oblicuo de compromiso. Podría cortar mejor algunas bahías y bordes irregulares que una red puramente norte-sur o este-oeste; sin embargo, seguiría siendo una hipótesis comparativa respecto al diseño reportado.";
     }else if(diff <= 20){
       analisisCobertura.textContent = "Media-alta";
       analisisLongitud.textContent = "Media";
       analisisCruce.textContent = "Intermedio";
-      lecturaEscenario.textContent = "La cobertura sigue siendo amplia, pero la geometría irregular del lago genera variaciones más visibles entre transectos. Como escenario hipotético, esta orientación funciona para evaluar si una red oblicua habría equilibrado mejor los cortes longitudinales y transversales, aunque el fetch seguiría dependiendo de viento, costa y batimetría.";
+      lecturaEscenario.textContent = "La cobertura sigue siendo amplia, pero la geometría irregular del lago genera variaciones más visibles entre transectos. Como escenario hipotético, esta orientación funciona para evaluar si una red oblicua habría equilibrado mejor los cortes longitudinales y transversales.";
     }else{
       analisisCobertura.textContent = "Media";
       analisisLongitud.textContent = "Media-baja";
       analisisCruce.textContent = "Menos alineado";
-      lecturaEscenario.textContent = "La orientación produce una cobertura más rígida y menos adaptada al eje dominante del lago. Si se hubiera usado una orientación más transversal al fetch NNE, se podrían comparar mejor orillas opuestas, pero habría menor continuidad para seguir la dirección de acción del viento sobre el espejo de agua.";
+      lecturaEscenario.textContent = "La orientación produce una cobertura más rígida y menos adaptada al eje dominante del lago. Una red demasiado transversal podría comparar mejor orillas opuestas, pero tendría menor continuidad para describir la forma general de la cubeta.";
     }
   }
 
@@ -1313,5 +1534,365 @@ document.addEventListener("DOMContentLoaded", function(){
   init();
 });
 </script>
+
+
+<script type="module">
+import * as GeoTIFF from "https://cdn.jsdelivr.net/npm/geotiff@2.1.3/+esm";
+
+const TIFF_URL = "batimetria_atitlan_optimizada_repo.tif";
+
+const tabs = document.querySelectorAll(".proc-tab");
+const panels = document.querySelectorAll(".proc-panel");
+const hypackBtn = document.getElementById("playHypackFlow");
+const pythonBtn = document.getElementById("playPythonFlow");
+const resetBtn = document.getElementById("resetProcessingFlow");
+const hypackCanvas = document.getElementById("hypackCanvas");
+const pythonCanvas = document.getElementById("pythonCanvas");
+const hypackCtx = hypackCanvas ? hypackCanvas.getContext("2d") : null;
+const pythonCtx = pythonCanvas ? pythonCanvas.getContext("2d") : null;
+const stepTitle = document.getElementById("processingStepTitle");
+const stepText = document.getElementById("processingStepText");
+const processingStats = document.getElementById("processingStats");
+
+let bathy = null;
+let isProcessingRunning = false;
+
+function setStep(title, text){
+  if(stepTitle) stepTitle.textContent = title;
+  if(stepText) stepText.textContent = text;
+}
+
+function wait(ms){return new Promise(resolve=>setTimeout(resolve,ms));}
+
+function resizeCanvas(canvas){
+  if(!canvas) return;
+  const rect = canvas.getBoundingClientRect();
+  const ratio = window.devicePixelRatio || 1;
+  canvas.width = Math.max(900,Math.floor(rect.width * ratio));
+  canvas.height = Math.max(540,Math.floor(rect.height * ratio));
+}
+
+function colorRamp(depth,minDepth,maxDepth,alpha=255){
+  if(!Number.isFinite(depth)) return [0,0,0,0];
+  const t = Math.max(0,Math.min(1,(depth - maxDepth)/(minDepth - maxDepth)));
+  const shallow = [105,185,232];
+  const mid = [33,92,155];
+  const deep = [5,19,44];
+  let c1,c2,u;
+  if(t < 0.5){c1=shallow;c2=mid;u=t/0.5;}
+  else{c1=mid;c2=deep;u=(t-0.5)/0.5;}
+  const r = Math.round(c1[0] + (c2[0]-c1[0])*u);
+  const g = Math.round(c1[1] + (c2[1]-c1[1])*u);
+  const b = Math.round(c1[2] + (c2[2]-c1[2])*u);
+  return [r,g,b,alpha];
+}
+
+function drawBathy(ctx,canvas,data,width,height,options={}){
+  const {revealMin=-325,revealMax=0,mode="full",alpha=255,contours=false,shade=false} = options;
+  const image = ctx.createImageData(canvas.width,canvas.height);
+  const xScale = width / canvas.width;
+  const yScale = height / canvas.height;
+  for(let y=0;y<canvas.height;y++){
+    const sy = Math.floor(y*yScale);
+    for(let x=0;x<canvas.width;x++){
+      const sx = Math.floor(x*xScale);
+      const v = data[sy*width+sx];
+      const idx = (y*canvas.width+x)*4;
+      if(!Number.isFinite(v) || v <= -9000 || v > 5){image.data[idx+3]=0;continue;}
+      if(mode === "range" && (v < revealMin || v > revealMax)){image.data[idx+3]=0;continue;}
+      let [r,g,b,a] = colorRamp(v,-325,0,alpha);
+      if(shade){
+        const left = data[sy*width + Math.max(0,sx-1)];
+        const right = data[sy*width + Math.min(width-1,sx+1)];
+        const up = data[Math.max(0,sy-1)*width + sx];
+        const down = data[Math.min(height-1,sy+1)*width + sx];
+        const grad = ((Number.isFinite(right)?right:v) - (Number.isFinite(left)?left:v))*0.6 + ((Number.isFinite(down)?down:v) - (Number.isFinite(up)?up:v))*0.4;
+        const light = Math.max(0.78,Math.min(1.18,1 + grad*0.015));
+        r = Math.max(0,Math.min(255,Math.round(r*light)));
+        g = Math.max(0,Math.min(255,Math.round(g*light)));
+        b = Math.max(0,Math.min(255,Math.round(b*light)));
+      }
+      image.data[idx] = r;
+      image.data[idx+1] = g;
+      image.data[idx+2] = b;
+      image.data[idx+3] = a;
+    }
+  }
+  ctx.putImageData(image,0,0);
+  if(contours) drawSoftContours(ctx,canvas,data,width,height,[-50,-100,-150,-200,-250,-300]);
+}
+
+function drawSoftContours(ctx,canvas,data,width,height,levels){
+  const xScale = canvas.width / width;
+  const yScale = canvas.height / height;
+  ctx.save();
+  levels.forEach((level,idx)=>{
+    ctx.beginPath();
+    ctx.globalAlpha = idx%2===0 ? 0.48 : 0.34;
+    ctx.lineWidth = idx%2===0 ? 1.05 : 0.75;
+    ctx.strokeStyle = "rgba(240,244,248,0.9)";
+    for(let y=1;y<height-1;y+=2){
+      let drawing = false;
+      for(let x=1;x<width-1;x+=2){
+        const v = data[y*width+x];
+        const vr = data[y*width+x+1];
+        const vb = data[(y+1)*width+x];
+        if(!Number.isFinite(v) || v <= -9000){drawing=false;continue;}
+        const crosses = (Number.isFinite(vr) && (v-level)*(vr-level)<0) || (Number.isFinite(vb) && (v-level)*(vb-level)<0);
+        if(crosses){
+          const px = x*xScale;
+          const py = y*yScale;
+          if(!drawing){ctx.moveTo(px,py);drawing=true;}
+          else ctx.lineTo(px,py);
+        }else drawing=false;
+      }
+    }
+    ctx.stroke();
+  });
+  ctx.restore();
+}
+
+async function loadBathy(){
+  if(bathy) return bathy;
+  setStep("Cargando raster batimétrico","Leyendo el GeoTIFF optimizado desde docs/batimetria_atitlan_optimizada_repo.tif.");
+  const tiff = await GeoTIFF.fromUrl(TIFF_URL);
+  const image = await tiff.getImage();
+  const sourceWidth = image.getWidth();
+  const sourceHeight = image.getHeight();
+  const targetWidth = 920;
+  const targetHeight = Math.round(sourceHeight * (targetWidth/sourceWidth));
+  const rasters = await image.readRasters({width:targetWidth,height:targetHeight,resampleMethod:"bilinear"});
+  const raw = rasters[0];
+  const data = new Float32Array(raw.length);
+  let min=Infinity,max=-Infinity,sum=0,count=0;
+  const ranges = {s0:0,s50:0,s100:0,s200:0,s325:0};
+  for(let i=0;i<raw.length;i++){
+    const v = Number(raw[i]);
+    if(Number.isFinite(v) && v > -9000 && v <= 5){
+      data[i] = v;
+      min = Math.min(min,v);
+      max = Math.max(max,v);
+      sum += v;
+      count++;
+      if(v >= -50) ranges.s50++;
+      else if(v >= -100) ranges.s100++;
+      else if(v >= -200) ranges.s200++;
+      else ranges.s325++;
+    }else data[i] = NaN;
+  }
+  bathy = {data,width:targetWidth,height:targetHeight,min,max,mean:sum/count,count,sourceWidth,sourceHeight,ranges};
+  if(processingStats){
+    processingStats.innerHTML = `
+      <div><span>Raster original</span><strong>${sourceWidth} × ${sourceHeight} px</strong></div>
+      <div><span>Vista procesada</span><strong>${targetWidth} × ${targetHeight} px</strong></div>
+      <div><span>Profundidad mínima</span><strong>${min.toFixed(1)} m</strong></div>
+      <div><span>Profundidad media raster</span><strong>${bathy.mean.toFixed(1)} m</strong></div>
+    `;
+  }
+  return bathy;
+}
+
+function drawHypackBase(){
+  if(!hypackCtx) return;
+  resizeCanvas(hypackCanvas);
+  const w = hypackCanvas.width;
+  const h = hypackCanvas.height;
+  hypackCtx.clearRect(0,0,w,h);
+  const grd = hypackCtx.createLinearGradient(0,0,0,h);
+  grd.addColorStop(0,"#102944");
+  grd.addColorStop(1,"#07162d");
+  hypackCtx.fillStyle = grd;
+  hypackCtx.fillRect(0,0,w,h);
+  hypackCtx.save();
+  hypackCtx.translate(w*0.5,h*0.52);
+  hypackCtx.scale(w*0.36,h*0.31);
+  hypackCtx.beginPath();
+  hypackCtx.moveTo(-0.92,-0.05);
+  hypackCtx.bezierCurveTo(-0.72,-0.48,-0.22,-0.60,0.20,-0.50);
+  hypackCtx.bezierCurveTo(0.70,-0.38,0.95,-0.05,0.82,0.28);
+  hypackCtx.bezierCurveTo(0.60,0.78,0.05,0.72,-0.18,0.48);
+  hypackCtx.bezierCurveTo(-0.42,0.92,-0.78,0.50,-0.70,0.18);
+  hypackCtx.bezierCurveTo(-0.98,0.10,-1.03,0.02,-0.92,-0.05);
+  hypackCtx.closePath();
+  hypackCtx.fillStyle = "rgba(91,163,217,0.68)";
+  hypackCtx.strokeStyle = "rgba(216,238,251,0.9)";
+  hypackCtx.lineWidth = 0.012;
+  hypackCtx.fill();
+  hypackCtx.stroke();
+  hypackCtx.restore();
+}
+
+function drawHypackLines(progress=1){
+  const w = hypackCanvas.width;
+  const h = hypackCanvas.height;
+  hypackCtx.save();
+  hypackCtx.translate(w*0.5,h*0.52);
+  hypackCtx.rotate(140*Math.PI/180);
+  hypackCtx.strokeStyle = "rgba(255,91,91,0.72)";
+  hypackCtx.lineWidth = 1.25;
+  const total = 48;
+  const visible = Math.floor(total*progress);
+  for(let i=-24;i<=visible-24;i++){
+    hypackCtx.beginPath();
+    hypackCtx.moveTo(i*14,-w*0.42);
+    hypackCtx.lineTo(i*14,w*0.42);
+    hypackCtx.stroke();
+  }
+  hypackCtx.restore();
+  hypackCtx.save();
+  hypackCtx.translate(w*0.5,h*0.52);
+  hypackCtx.rotate(247*Math.PI/180);
+  hypackCtx.strokeStyle = "rgba(248,216,102,0.78)";
+  hypackCtx.lineWidth = 2;
+  const secTotal = 9;
+  const secVisible = Math.floor(secTotal*progress);
+  for(let i=-4;i<=secVisible-4;i++){
+    hypackCtx.beginPath();
+    hypackCtx.moveTo(i*52,-w*0.42);
+    hypackCtx.lineTo(i*52,w*0.42);
+    hypackCtx.stroke();
+  }
+  hypackCtx.restore();
+}
+
+function drawSoundingPoints(progress=1){
+  const w = hypackCanvas.width;
+  const h = hypackCanvas.height;
+  const n = Math.floor(520*progress);
+  hypackCtx.save();
+  for(let i=0;i<n;i++){
+    const angle = 140*Math.PI/180;
+    const lane = (i%42)-21;
+    const along = ((i*19)%820)-410;
+    const x0 = lane*12.5;
+    const y0 = along;
+    const x = w*0.5 + x0*Math.cos(angle) - y0*Math.sin(angle);
+    const y = h*0.52 + x0*Math.sin(angle) + y0*Math.cos(angle);
+    const dx = (x-w*0.5)/(w*0.36);
+    const dy = (y-h*0.52)/(h*0.31);
+    if(dx*dx*0.82 + dy*dy < 0.88){
+      const depth = Math.min(1,Math.max(0,(dx*dx+dy*dy)));
+      hypackCtx.fillStyle = `rgba(${220-depth*80},${238-depth*90},${251-depth*70},0.72)`;
+      hypackCtx.beginPath();
+      hypackCtx.arc(x,y,1.15 + depth*0.55,0,Math.PI*2);
+      hypackCtx.fill();
+    }
+  }
+  hypackCtx.restore();
+}
+
+function drawInterpolatedSurface(progress=1){
+  const w = hypackCanvas.width;
+  const h = hypackCanvas.height;
+  hypackCtx.save();
+  hypackCtx.globalAlpha = progress*0.94;
+  hypackCtx.translate(w*0.5,h*0.52);
+  hypackCtx.scale(w*0.36,h*0.31);
+  for(let r=0.92;r>0.10;r-=0.092){
+    hypackCtx.beginPath();
+    hypackCtx.ellipse(0,0.02,r,r*0.58,-0.05,0,Math.PI*2);
+    const t = 1-r;
+    const rr = Math.round(92 - t*76);
+    const gg = Math.round(163 - t*120);
+    const bb = Math.round(217 - t*150);
+    hypackCtx.fillStyle = `rgba(${rr},${gg},${bb},0.18)`;
+    hypackCtx.strokeStyle = `rgba(240,244,248,${0.13 + t*0.20})`;
+    hypackCtx.lineWidth = 0.006;
+    hypackCtx.fill();
+    hypackCtx.stroke();
+  }
+  hypackCtx.restore();
+}
+
+async function runHypackFlow(){
+  if(isProcessingRunning) return;
+  isProcessingRunning = true;
+  drawHypackBase();
+  setStep("Planificación de líneas","El flujo inicia con líneas de navegación que organizan la captura hidrográfica y mantienen control espacial del recorrido.");
+  for(let p=0;p<=1;p+=0.025){drawHypackBase();drawHypackLines(p);await wait(28);}
+  setStep("Registro de profundidad","La ecosonda y el GPS/DGPS generan registros puntuales con coordenada y profundidad, equivalentes a puntos XYZ.");
+  for(let p=0;p<=1;p+=0.025){drawHypackBase();drawHypackLines(1);drawSoundingPoints(p);await wait(28);}
+  setStep("Revisión y nube XYZ","Los puntos se revisan, se organizan y se preparan para pasar de registros discretos a una superficie interpolada.");
+  for(let p=0;p<=1;p+=0.035){drawHypackBase();drawSoundingPoints(1);await wait(22);}
+  setStep("Interpolación en superficie","En 3D Surfer, la nube de puntos se transforma en una superficie continua y en curvas batimétricas.");
+  for(let p=0;p<=1;p+=0.025){drawHypackBase();drawSoundingPoints(1);drawInterpolatedSurface(p);await wait(28);}
+  setStep("Producto batimétrico","El producto final combina superficie interpolada, curvas de profundidad y lectura morfométrica del lago.");
+  drawHypackBase();drawInterpolatedSurface(1);drawHypackLines(0.55);drawSoundingPoints(0.65);
+  isProcessingRunning = false;
+}
+
+async function runPythonFlow(){
+  if(isProcessingRunning) return;
+  isProcessingRunning = true;
+  resizeCanvas(pythonCanvas);
+  let raster;
+  try{raster = await loadBathy();}
+  catch(err){
+    setStep("No se pudo leer el GeoTIFF","Revisa que batimetria_atitlan_optimizada_repo.tif esté en la misma carpeta que seccion2.html y que la página esté abierta desde GitHub Pages o un servidor local.");
+    console.error(err);
+    isProcessingRunning = false;
+    return;
+  }
+  pythonCtx.clearRect(0,0,pythonCanvas.width,pythonCanvas.height);
+  setStep("Lectura del GeoTIFF","Python puede iniciar leyendo el raster batimétrico, sus valores de profundidad, NoData y metadatos espaciales.");
+  await wait(500);
+  setStep("Limpieza de NoData","Se separan los píxeles válidos del lago y se omiten valores externos o sin información.");
+  for(let a=35;a<=255;a+=12){
+    pythonCtx.clearRect(0,0,pythonCanvas.width,pythonCanvas.height);
+    drawBathy(pythonCtx,pythonCanvas,raster.data,raster.width,raster.height,{mode:"full",alpha:a,shade:true});
+    await wait(34);
+  }
+  const ranges = [
+    {min:-50,max:0,label:"0 a -50 m"},
+    {min:-100,max:-50,label:"-50 a -100 m"},
+    {min:-200,max:-100,label:"-100 a -200 m"},
+    {min:-325,max:-200,label:"-200 a -325 m"}
+  ];
+  setStep("Clasificación por profundidad","La superficie puede revelarse por rangos para leer zonas someras, medias y profundas.");
+  for(const r of ranges){
+    stepText.textContent = `Revelando rango batimétrico ${r.label}.`;
+    pythonCtx.clearRect(0,0,pythonCanvas.width,pythonCanvas.height);
+    drawBathy(pythonCtx,pythonCanvas,raster.data,raster.width,raster.height,{mode:"range",revealMin:r.min,revealMax:r.max,alpha:248,shade:true});
+    await wait(700);
+  }
+  setStep("Curvas batimétricas","A partir del raster se extraen curvas por niveles de profundidad para construir el mapa final.");
+  for(let p=0;p<=1;p+=0.04){
+    pythonCtx.clearRect(0,0,pythonCanvas.width,pythonCanvas.height);
+    drawBathy(pythonCtx,pythonCanvas,raster.data,raster.width,raster.height,{mode:"full",alpha:255,shade:true,contours:p>0.25});
+    await wait(35);
+  }
+  setStep("Flujo reproducible","Con Python, cada decisión puede documentarse: lectura, limpieza, clasificación, contornos, perfiles y estadísticas.");
+  drawBathy(pythonCtx,pythonCanvas,raster.data,raster.width,raster.height,{mode:"full",alpha:255,shade:true,contours:true});
+  isProcessingRunning = false;
+}
+
+function resetProcessingFlows(){
+  isProcessingRunning = false;
+  resizeCanvas(hypackCanvas);
+  resizeCanvas(pythonCanvas);
+  if(hypackCtx){hypackCtx.clearRect(0,0,hypackCanvas.width,hypackCanvas.height);drawHypackBase();}
+  if(pythonCtx){pythonCtx.clearRect(0,0,pythonCanvas.width,pythonCanvas.height);}
+  setStep("Flujo de procesamiento","Selecciona una pestaña y reproduce la simulación.");
+}
+
+if(tabs.length){
+  tabs.forEach(tab=>{
+    tab.addEventListener("click",()=>{
+      tabs.forEach(t=>t.classList.remove("activo"));
+      panels.forEach(p=>p.classList.remove("activo"));
+      tab.classList.add("activo");
+      const target = document.getElementById(tab.dataset.target);
+      if(target) target.classList.add("activo");
+      resetProcessingFlows();
+    });
+  });
+  hypackBtn?.addEventListener("click",runHypackFlow);
+  pythonBtn?.addEventListener("click",runPythonFlow);
+  resetBtn?.addEventListener("click",resetProcessingFlows);
+  window.addEventListener("resize",()=>{setTimeout(resetProcessingFlows,120);});
+  resetProcessingFlows();
+}
+</script>
+
 </body>
 </html>
