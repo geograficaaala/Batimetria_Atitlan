@@ -86,7 +86,7 @@
   main{
     position:relative;
     z-index:1;
-    max-width:1180px;
+    max-width:1240px;
     margin:0 auto;
     padding:3rem 2.2rem 5rem;
   }
@@ -406,7 +406,7 @@
 
   .mapa-frame{
     width:100%;
-    height:660px;
+    height:540px;
     border:1px solid rgba(142,197,232,0.22);
     background:
       radial-gradient(circle at 50% 50%,rgba(91,163,217,0.10),transparent 46%),
@@ -493,6 +493,46 @@
     line-height:1.3;
   }
 
+
+  .fundamento-tecnico{
+    margin-top:1.1rem;
+    padding:1rem;
+    border:1px solid rgba(142,197,232,0.18);
+    background:rgba(16,35,61,0.52);
+  }
+
+  .fundamento-tecnico h3{
+    color:var(--acento-claro);
+    font-size:14pt;
+    font-weight:normal;
+    font-style:italic;
+    margin-bottom:0.65rem;
+  }
+
+  .fundamento-tecnico p{
+    font-size:12.5pt;
+    line-height:1.35;
+    margin-bottom:0.8rem;
+  }
+
+  .fundamento-tecnico ul{
+    margin:0.3rem 0 0.75rem 1.2rem;
+    color:var(--blanco);
+  }
+
+  .fundamento-tecnico li{
+    font-size:12.2pt;
+    line-height:1.35;
+    margin-bottom:0.45rem;
+  }
+
+  .referencias-tecnicas{
+    color:var(--gris-texto);
+    font-size:10.8pt !important;
+    line-height:1.3 !important;
+    margin-top:0.8rem;
+  }
+
   @media(max-width:900px){
     main{padding:2.2rem 1rem 4rem;}
     .controles{grid-template-columns:1fr;}
@@ -500,14 +540,14 @@
     .checks{grid-template-columns:1fr 1fr;}
     .estado-grid{grid-template-columns:1fr 1fr;}
     .analisis-grid{grid-template-columns:1fr;}
-    .mapa-frame{height:520px;}
+    .mapa-frame{height:470px;}
   }
 
   @media(max-width:560px){
     .checks{grid-template-columns:1fr;}
     .estado-grid{grid-template-columns:1fr;}
     .personalizado{grid-template-columns:1fr;}
-    .mapa-frame{height:420px;}
+    .mapa-frame{height:380px;}
   }
 </style>
 </head>
@@ -573,7 +613,7 @@
   </table>
 
   <h2>Reconstrucción visual del recorrido de muestreo</h2>
-  <p>La siguiente visualización permite observar el patrón metodológico reportado y compararlo con orientaciones hipotéticas. En el escenario real se reproducen las orientaciones indicadas por el documento: líneas principales a 140°/320° y líneas secundarias a 247°/67°.</p>
+  <p>La siguiente visualización permite observar el patrón metodológico reportado y compararlo con orientaciones hipotéticas. En el escenario real se reproducen las orientaciones indicadas por el documento: líneas principales a 140°/320° y líneas secundarias a 247°/67°. Las hipótesis no pretenden sustituir el estudio original; sirven para explorar cómo cambiaría la lectura espacial si las líneas se hubieran trazado en otra dirección.</p>
 
   <div class="animacion-wrap">
     <div class="animacion-head">
@@ -699,6 +739,19 @@
       <p id="lecturaEscenario" class="lectura">La orientación principal reportada permite cubrir de forma densa el espejo de agua y atravesar buena parte de la cubeta principal del lago.</p>
     </div>
 
+    <div class="fundamento-tecnico">
+      <h3>Cómo se interpretan la densidad, la orientación y el fetch</h3>
+      <p>En un levantamiento batimétrico con transectos, la separación entre líneas no se elige de forma aislada: depende del producto final que se quiere generar, la precisión esperada, el tamaño del lago, la irregularidad del fondo y la capacidad del ecosonda. Una guía aplicada a reservorios pequeños recomienda definir transectos previamente en SIG, orientarlos de forma consistente respecto al eje largo del lago y usar líneas oblicuas adicionales como control de calidad.</p>
+      <p>En estudios hidrográficos modernos, la densidad de datos se evalúa cada vez más como cobertura y capacidad de representar el relieve sumergido, no solo como “muchas líneas”. Por eso, una separación menor aumenta la densidad y reduce el riesgo de interpolar mal pendientes, canales o cambios abruptos del fondo; una separación mayor puede ahorrar tiempo, pero simplifica el modelo batimétrico.</p>
+      <p>El fetch no cambia porque cambiemos las líneas de navegación: el fetch físico depende de la dirección del viento, la distancia libre sobre el agua, la forma de la costa, la batimetría y la profundidad efectiva. Lo que sí cambia en las hipótesis es la forma en que el muestreo cruzaría zonas potencialmente influenciadas por el viento. En el caso de Atitlán, el estudio reporta un fetch efectivo de 9.58 km sobre 23° NNE; por eso las hipótesis se leen como escenarios de diseño de muestreo, no como nuevos valores de fetch.</p>
+      <ul>
+        <li><strong>Hipótesis A, 0°/180°:</strong> se aproxima más al eje norte-sur y podría leer mejor variaciones asociadas a un viento dominante cercano al NNE, pero puede perder contraste transversal en sectores anchos del lago.</li>
+        <li><strong>Hipótesis B, 90°/270°:</strong> cruza el lago de este a oeste; sirve para comparar bordes opuestos y anchura, pero sería menos directa para seguir procesos alineados con un fetch NNE.</li>
+        <li><strong>Hipótesis C, 45°/225°:</strong> ofrece un compromiso oblicuo; puede ayudar a cortar la geometría irregular del lago desde otra dirección, aunque no reproduce el diseño reportado.</li>
+      </ul>
+      <p class="referencias-tecnicas">Referencias de apoyo para esta interpretación: Reyes Morales, Ujpan y Valiente (2018); Wilson y Richards, USGS (2006); Malhotra y Fonseca, NOAA/WEMo (2007); IHO S-44 e historia de estándares hidrográficos; Udvardy et al. (2025).</p>
+    </div>
+
     <p class="nota-mapa">Esta visualización reconstruye el diseño metodológico reportado por Reyes Morales et al. (2018) y no representa la trayectoria GPS original. Lo que se conserva es la forma del lago, la orientación de los transectos y la separación metodológica entre líneas.</p>
   </div>
 
@@ -751,7 +804,7 @@ document.addEventListener("DOMContentLoaded", function(){
   const NS = "http://www.w3.org/2000/svg";
   const W = 1000;
   const H = 700;
-  const M = 34;
+  const M = 78;
 
   const escenario = document.getElementById("escenario");
   const personalizado = document.getElementById("personalizado");
@@ -990,8 +1043,8 @@ document.addEventListener("DOMContentLoaded", function(){
   function finalLine(entry){
     if(!entry.el) return;
     if(coberturaCompleta.checked){
-      entry.el.setAttribute("opacity", entry.type==="primary" ? "0.16" : "0.28");
-      entry.el.setAttribute("stroke-width", entry.type==="primary" ? "1.25" : "2.2");
+      entry.el.setAttribute("opacity", entry.type==="primary" ? "0.92" : "0.72");
+      entry.el.setAttribute("stroke-width", entry.type==="primary" ? "1.35" : "2.15");
     }else{
       entry.el.setAttribute("opacity","0");
     }
@@ -1103,22 +1156,32 @@ document.addEventListener("DOMContentLoaded", function(){
       analisisCobertura.textContent = "Alta";
       analisisLongitud.textContent = "Media-alta";
       analisisCruce.textContent = "Favorable";
-      lecturaEscenario.textContent = "La orientación principal reportada permite cubrir de forma densa el espejo de agua y atravesar buena parte de la cubeta principal del lago. Las líneas secundarias funcionan como una lectura transversal complementaria.";
-    }else if(diff <= 20){
+      lecturaEscenario.textContent = "La orientación principal reportada permite cubrir de forma densa el espejo de agua y atravesar buena parte de la cubeta principal del lago. Como el fetch efectivo del estudio se estimó a partir del viento y no de las líneas de navegación, el valor físico de 9.58 km sobre 23° NNE no cambiaría; lo que cambiaría sería la forma en que el muestreo intersecta las zonas potencialmente expuestas al viento y las pendientes litorales.";
+    }else if(sc.key === "a"){
       analisisCobertura.textContent = "Alta";
       analisisLongitud.textContent = "Media-alta";
-      analisisCruce.textContent = "Favorable";
-      lecturaEscenario.textContent = "Este escenario mantiene un cruce fuerte con la dirección dominante del lago. Visualmente produce transectos largos y una cobertura continua, aunque no corresponde al diseño reportado por el estudio.";
-    }else if(diff <= 45){
+      analisisCruce.textContent = "Cercano al eje N-S";
+      lecturaEscenario.textContent = "Si se hubiese elegido una orientación 0°/180°, el muestreo habría seguido más de cerca una dirección compatible con el fetch NNE reportado. Eso podría favorecer perfiles longitudinales vinculados al viento y al oleaje, pero también reduciría la lectura transversal de la anchura del lago y de algunas irregularidades de costa.";
+    }else if(sc.key === "b"){
+      analisisCobertura.textContent = "Media-alta";
+      analisisLongitud.textContent = "Media";
+      analisisCruce.textContent = "Transversal al NNE";
+      lecturaEscenario.textContent = "Con una orientación 90°/270°, las líneas cruzarían el lago de este a oeste. Esto ayudaría a comparar bordes opuestos y cambios transversales, pero sería menos directo para seguir la dirección del fetch NNE; por eso podría describir peor procesos alineados con el viento dominante.";
+    }else if(sc.key === "c"){
+      analisisCobertura.textContent = "Media-alta";
+      analisisLongitud.textContent = "Media-alta";
+      analisisCruce.textContent = "Oblicuo";
+      lecturaEscenario.textContent = "La orientación 45°/225° funciona como escenario oblicuo de compromiso. Podría cortar mejor algunas bahías y bordes irregulares que una red puramente norte-sur o este-oeste; sin embargo, seguiría siendo una hipótesis comparativa y no cambia el fetch físico estimado por viento, costa y batimetría.";
+    }else if(diff <= 20){
       analisisCobertura.textContent = "Media-alta";
       analisisLongitud.textContent = "Media";
       analisisCruce.textContent = "Intermedio";
-      lecturaEscenario.textContent = "La cobertura sigue siendo amplia, pero la geometría irregular del lago genera variaciones más visibles entre transectos. Es útil como comparación para observar cómo cambia la lectura espacial al modificar la orientación.";
+      lecturaEscenario.textContent = "La cobertura sigue siendo amplia, pero la geometría irregular del lago genera variaciones más visibles entre transectos. Como escenario hipotético, esta orientación funciona para evaluar si una red oblicua habría equilibrado mejor los cortes longitudinales y transversales, aunque el fetch seguiría dependiendo de viento, costa y batimetría.";
     }else{
       analisisCobertura.textContent = "Media";
       analisisLongitud.textContent = "Media-baja";
       analisisCruce.textContent = "Menos alineado";
-      lecturaEscenario.textContent = "La orientación produce una cobertura más rígida y menos adaptada al eje dominante del lago. Algunas líneas atraviesan tramos más cortos, por lo que el patrón se percibe más fragmentado.";
+      lecturaEscenario.textContent = "La orientación produce una cobertura más rígida y menos adaptada al eje dominante del lago. Si se hubiera usado una orientación más transversal al fetch NNE, se podrían comparar mejor orillas opuestas, pero habría menor continuidad para seguir la dirección de acción del viento sobre el espejo de agua.";
     }
   }
 
@@ -1166,7 +1229,7 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     primary.forEach(e=>{
-      lineLayer.appendChild(addLine(e,"#ff5b5b",soloEsquema.checked ? 2.2 : 1.15,"0.95"));
+      lineLayer.appendChild(addLine(e,"#ff5b5b",soloEsquema.checked ? 2.2 : 1.35,"0.95"));
       prepareLine(e);
     });
 
