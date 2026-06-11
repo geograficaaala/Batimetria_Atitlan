@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IV. Discusión e implicaciones limnológicas</title>
+<style>
+  :root{--azul-profundo:#0a1628;--acento:#5ba3d9;--acento-claro:#8ec5e8;--blanco:#f0f4f8;--gris-texto:#c8d8e8;--linea:rgba(93,163,217,0.25);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background-color:var(--azul-profundo);color:var(--blanco);font-family:'Times New Roman',Times,serif;font-size:12pt;min-height:100vh;overflow-x:hidden;}
+  .contour-bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+  .contour-bg svg{width:100%;height:100%;opacity:0.05;}
+  header{position:sticky;top:0;z-index:100;background:rgba(10,22,40,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--linea);}
+  nav{max-width:1100px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;height:52px;overflow-x:auto;}
+  nav a{font-family:'Times New Roman',Times,serif;font-size:10.5pt;color:var(--gris-texto);text-decoration:none;padding:0 1.1rem;height:52px;display:flex;align-items:center;border-right:1px solid var(--linea);white-space:nowrap;transition:color 0.2s,background 0.2s;letter-spacing:0.02em;}
+  nav a:first-child{border-left:1px solid var(--linea);}
+  nav a:hover{color:var(--acento-claro);background:rgba(93,163,217,0.07);}
+  nav a.activo{color:var(--acento);font-style:italic;}
+  main{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:3.5rem 2rem 5rem;}
+  .seccion-label{font-size:9pt;letter-spacing:0.2em;text-transform:uppercase;color:var(--acento);margin-bottom:0.5rem;}
+  h1{font-size:18pt;font-weight:normal;font-style:italic;line-height:1.3;color:var(--blanco);margin-bottom:0.4rem;}
+  .presentador{font-size:9.5pt;color:var(--gris-texto);margin-bottom:2.2rem;padding-bottom:1.4rem;border-bottom:1px solid var(--linea);}
+  h2{font-size:12pt;font-weight:bold;color:var(--acento-claro);margin:2rem 0 0.7rem;letter-spacing:0.03em;}
+  p{text-align:justify;line-height:1.0;margin-bottom:0.9rem;color:var(--blanco);font-size:12pt;}
+  .dato-destacado{border-left:2px solid var(--acento);padding:0.6rem 1rem;margin:1.4rem 0;background:rgba(93,163,217,0.06);font-style:italic;color:var(--acento-claro);font-size:11.5pt;line-height:1.0;}
+  .tabla-comp{width:100%;border-collapse:collapse;margin:1.4rem 0;font-size:11pt;}
+  .tabla-comp thead tr{border-bottom:1px solid var(--acento);}
+  .tabla-comp th{text-align:left;padding:0.5rem 0.8rem;font-weight:normal;font-style:italic;color:var(--acento-claro);font-size:10.5pt;}
+  .tabla-comp td{padding:0.44rem 0.8rem;border-bottom:1px solid var(--linea);color:var(--blanco);line-height:1.0;}
+  .tabla-comp td.val{text-align:right;color:var(--acento-claro);}
+  .tabla-comp td.dest{color:var(--acento);}
+  .tabla-comp tr:last-child td{border-bottom:none;}
+  .lista-eventos{margin:0.8rem 0 1rem 0;padding-left:0;list-style:none;}
+  .lista-eventos li{padding:0.3rem 0 0.3rem 1.2rem;border-bottom:1px solid var(--linea);font-size:11.5pt;color:var(--blanco);position:relative;line-height:1.0;}
+  .lista-eventos li::before{content:"—";position:absolute;left:0;color:var(--acento);}
+  .lista-eventos li:last-child{border-bottom:none;}
+  .referencia{font-size:9.5pt;color:var(--gris-texto);margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--linea);line-height:1.0;}
+  .depth-bar{position:fixed;bottom:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--azul-profundo),var(--acento),var(--azul-profundo));z-index:200;}
+  .nav-pie{display:flex;justify-content:space-between;margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--linea);}
+  .nav-pie a{font-size:10pt;color:var(--gris-texto);text-decoration:none;font-style:italic;transition:color 0.2s;}
+  .nav-pie a:hover{color:var(--acento-claro);}
+</style>
+</head>
+<body>
+<div class="contour-bg">
+  <svg viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="400" cy="450" rx="580" ry="360" fill="none" stroke="#5ba3d9" stroke-width="1.2"/>
+    <ellipse cx="400" cy="450" rx="440" ry="272" fill="none" stroke="#5ba3d9" stroke-width="0.9"/>
+    <ellipse cx="400" cy="450" rx="310" ry="192" fill="none" stroke="#5ba3d9" stroke-width="0.7"/>
+    <ellipse cx="400" cy="450" rx="190" ry="118" fill="none" stroke="#5ba3d9" stroke-width="0.5"/>
+    <ellipse cx="1200" cy="180" rx="380" ry="240" fill="none" stroke="#5ba3d9" stroke-width="0.9"/>
+    <ellipse cx="1200" cy="180" rx="265" ry="165" fill="none" stroke="#5ba3d9" stroke-width="0.7"/>
+    <ellipse cx="1200" cy="180" rx="155" ry="97" fill="none" stroke="#5ba3d9" stroke-width="0.5"/>
+  </svg>
+</div>
+<div class="depth-bar"></div>
+<header>
+  <nav>
+    <a href="../index.html">Portada</a>
+    <a href="seccion1.html">I. Introducción</a>
+    <a href="seccion2.html">II. Metodología</a>
+    <a href="seccion3.html">III. Resultados</a>
+    <a href="seccion4.html" class="activo">IV. Discusión</a>
+  </nav>
+</header>
+<main>
+  <p class="seccion-label">Sección IV &nbsp;·&nbsp; Glenda Araceli Buch Chávez</p>
+  <h1>Discusión, comparación 1975–2014 e implicaciones limnológicas</h1>
+  <p class="presentador">Reyes Morales, F., Ujpan, D. &amp; Valiente, S. (2018). <em>Batimetría y análisis morfométrico del lago de Atitlán (Guatemala)</em>. Revista Científica, 27(2), 48–58.</p>
+
+  <h2>Comparación entre los mapas de 1975 y 2014</h2>
+  <p>Las principales diferencias entre el mapa batimétrico de 2014 y el realizado en 1975 se observan principalmente en las áreas someras o en las zonas cercanas a la orilla del lago. En términos generales, las diferencias morfométricas y morfológicas son pocas, lo que indica que la morfología general de la cubeta se ha mantenido estable durante casi cuatro décadas (Reyes Morales et al., 2018, p. 55).</p>
+  <p>Los perfiles A–AF y D–DF muestran que la parte norte del lago tiene pendientes pronunciadas en los primeros metros de la zona litoral: la profundidad puede ascender abruptamente desde los 50 m hasta los 300 m. En contraste, los perfiles B–BF y C–CF muestran que la parte sur del lago presenta pendientes suaves desde la orilla hacia el centro.</p>
+
+  <h2>Factores que explican las diferencias observadas</h2>
+  <p>Los autores proponen que las diferencias entre ambos mapas pueden estar asociadas a la oscilación del nivel máximo del agua, originada por eventos climáticos extremos y actividad sísmica. Los eventos mencionados en el artículo incluyen:</p>
+  <ul class="lista-eventos">
+    <li>Terremoto de 1976</li>
+    <li>Huracán Mitch (1998)</li>
+    <li>Huracán Stan (2005)</li>
+    <li>Tormenta Agatha (2010)</li>
+    <li>Terremoto de 2012</li>
+  </ul>
+  <p>Las corrientes y el oleaje generados por los vientos nor-noroeste, junto con estos eventos naturales, han influido en el transporte y en la deposición de sedimentos que ingresan por escorrentía superficial en la zona paralela a la orilla del lago (Reyes Morales et al., 2018, p. 55).</p>
+  <p>Las diferencias mínimas observadas también pueden deberse a la oscilación estacional del nivel del agua, que puede variar entre 0.45 m y 0.90 m de profundidad en un ciclo anual, dependiendo de la pluviometría, los aportes de aguas superficiales y los procesos de evaporación y precipitación (Xaminez &amp; Reyes, 2016, citado en Reyes Morales et al., 2018, p. 56).</p>
+
+  <h2>Índice de desarrollo de costa e implicaciones ecológicas</h2>
+  <p>El índice de desarrollo de costa fue de 2.56. Un valor igual a 1 correspondería a un lago perfectamente circular; el valor aumenta a medida que la forma se alarga o la orilla se vuelve más irregular. El lago de Atitlán tiene, por lo tanto, un índice de desarrollo de costa alto, lo que indica una línea de costa irregular con mayores posibilidades para el desarrollo de comunidades bentónicas y una zona litoral más amplia (Reyes Morales et al., 2018, p. 55).</p>
+
+  <h2>Volumen e índice de desarrollo de volumen</h2>
+  <p>El volumen y el índice de desarrollo de volumen (Vd) son indicadores del grado de evolución de la cubeta. Lagos jóvenes tienden a tener forma cónica o en V; lagos más evolucionados presentan forma de U. Para el lago de Atitlán, el volumen fue de 25.47 km³ y el Vd de 1.86, lo que indica un ambiente acuático evolucionado, de tipo cóncavo y en forma de U (Reyes Morales et al., 2018, p. 55).</p>
+  <p>La comparación con otros lagos profundos y volcánicos confirma que Atitlán se encuentra dentro del rango típico de este tipo de sistemas:</p>
+  <table class="tabla-comp">
+    <thead>
+      <tr><th>Lago</th><th style="text-align:right;">Índice de desarrollo de volumen (Vd)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="dest">Lago de Atitlán (Guatemala)</td><td class="val">1.86</td></tr>
+      <tr><td>Lago Tahoe (EE. UU.)</td><td class="val">1.87</td></tr>
+      <tr><td>Crater Lake (EE. UU.)</td><td class="val">1.65</td></tr>
+      <tr><td>Lago Baikal (Rusia)</td><td class="val">1.65</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Fetch efectivo y dinámica de la termoclina</h2>
+  <p>El fetch efectivo fue de 9.58 km sobre los 23° NNE. Este parámetro está relacionado con la profundidad de la termoclina: la distancia sobre la cual el viento actúa sobre el espejo de agua determina la capacidad del viento de romper la estratificación térmica de la columna de agua (termoclina) y de oxigenar las capas superficiales (oxiclina) (Reyes Morales et al., 2018, pp. 55–56).</p>
+
+  <h2>Profundidad media, profundidad relativa y estabilidad de la columna de agua</h2>
+  <p>La profundidad media es el parámetro morfométrico que mejor caracteriza el funcionamiento y la producción de un cuerpo de agua. La relación Dm/Dmáx fue de 0.62, lo cual caracteriza una cubeta de forma elipsoidal, con fondos de pendiente baja y paredes litorales inclinadas (Reyes Morales et al., 2018, p. 56).</p>
+  <p>La profundidad relativa fue de 2.59 %. Wetzel (1983) señala que la mayoría de los lagos tienen una profundidad relativa menor del 2 %, mientras que los profundos y de superficie pequeña tienen valores mayores al 4 % y presentan mayor estabilidad. El valor de Atitlán (2.59 %) indica que la estabilidad de su columna de agua es alta. La termoclina del lago es bastante estable, pues la superficie relativa de intercambio de calor con la atmósfera es menor (Reyes Morales et al., 2018, p. 56).</p>
+
+  <div class="dato-destacado">La termoclina y oxiclina del lago de Atitlán se ubican entre los 25 y 35 m de profundidad, y la distribución del fitoplancton ocurre entre los 5 y 15 m (Reyes et al., 2016, citado en Reyes Morales et al., 2018, p. 57).</div>
+
+  <h2>Conclusión interpretativa</h2>
+  <p>Los valores morfométricos del lago de Atitlán se encuentran dentro de los rangos típicos de lagos de origen volcánico. El lago es un sistema profundo con cubeta en forma de U, pendientes altas, línea de costa irregular y gradientes verticales físicos y químicos marcados. Estas características condicionan la dinámica temporal y vertical de las comunidades biológicas y hacen del mapa batimétrico una infraestructura científica: una base sobre la cual pueden apoyarse investigaciones futuras en circulación del agua, transporte de sedimentos, hábitats bentónicos, planificación de monitoreos y evaluación de riesgos ante eventos climáticos extremos (Reyes Morales et al., 2018, pp. 56–57).</p>
+
+  <p class="referencia">Reyes Morales, F., Ujpan, D., &amp; Valiente, S. (2018). Batimetría y análisis morfométrico del lago de Atitlán (Guatemala). <em>Revista Científica</em>, 27(2), 48–58. https://doi.org/10.54495/Rev.Cientifica.v27i2.70 &nbsp;·&nbsp; pp. 55–57.</p>
+  <div class="nav-pie">
+    <a href="seccion3.html">← III. Resultados</a>
+    <a href="../index.html">Portada →</a>
+  </div>
+</main>
+</body>
+</html>
