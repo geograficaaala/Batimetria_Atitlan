@@ -78,7 +78,34 @@
   .bar{height:170px;border-radius:8px;border:1px solid rgba(255,255,255,.18);background:linear-gradient(to bottom,#e6f7ff 0%,#91d3ff 28%,#1870bf 58%,#032759 84%,#01152f 100%);}
   .bar-labels{display:flex;flex-direction:column;justify-content:space-between;font-size:10pt;color:var(--gris-texto);}
   .bar-labels b{color:#fff;font-weight:normal;}
-  @media(max-width:980px){.explorador-grid{grid-template-columns:1fr;}.side{border-left:none;border-top:1px solid var(--linea);}#mapCanvas{min-height:480px;}.explorador-head{display:block;}.tool-row{justify-content:flex-start;margin-top:.9rem;}}
+
+  .explorador-head{padding:1rem 1.35rem;border-bottom:1px solid var(--linea);display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+  .explorador-title{font-size:15pt;font-style:normal;color:#fff;line-height:1.15;font-weight:bold;}
+  .explorador-sub{display:none;}
+  .tool-row{display:flex;align-items:center;gap:.65rem;justify-content:flex-end;}
+  .tool-label{font-size:10.5pt;color:var(--gris-texto);letter-spacing:.05em;text-transform:uppercase;}
+  .mode-select{min-width:250px;appearance:none;border:1px solid rgba(142,197,232,.34);background:linear-gradient(180deg,rgba(15,34,58,.95),rgba(10,25,43,.98));color:#edf7ff;font-family:inherit;font-size:11pt;padding:.55rem 2.2rem .55rem .85rem;border-radius:12px;outline:none;cursor:pointer;background-image:linear-gradient(45deg,transparent 50%,#8ec5e8 50%),linear-gradient(135deg,#8ec5e8 50%,transparent 50%);background-position:calc(100% - 18px) calc(50% - 3px),calc(100% - 12px) calc(50% - 3px);background-size:6px 6px,6px 6px;background-repeat:no-repeat;}
+  .mode-select:focus{border-color:#8ec5e8;box-shadow:0 0 0 2px rgba(142,197,232,.12);}
+  .explorador-grid{display:grid;grid-template-columns:minmax(0,2.1fr) 360px;min-height:620px;}
+  .metrics-grid .mini b{font-size:13.8pt;}
+  .chart-card{padding:.7rem .7rem .55rem;}
+  #chartCanvas{width:100%;height:230px;border-radius:12px;background:transparent;border:1px solid rgba(142,197,232,.16);}
+  .chart-card.inactive #chartCanvas{border-color:rgba(142,197,232,.08);background:transparent;}
+  .profile-tabs{display:none;gap:.35rem;flex-wrap:wrap;margin-bottom:.55rem;}
+  .profile-tabs.show{display:flex;}
+  .profile-tab{appearance:none;border:1px solid rgba(142,197,232,.28);background:rgba(91,163,217,.08);color:#dcecff;padding:.32rem .55rem;border-radius:999px;font-family:inherit;font-size:10pt;cursor:pointer;}
+  .profile-tab.active,.profile-tab:hover{background:rgba(91,163,217,.24);color:#fff;border-color:rgba(142,197,232,.65);}
+  .metric-card.colorbar{display:flex;align-items:flex-start;gap:.8rem;padding:0.9rem;}
+  .legend-title{font-size:10pt;letter-spacing:.08em;color:var(--acento-claro);text-transform:uppercase;margin-bottom:.45rem;}
+  .bar{height:178px;width:32px;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:linear-gradient(to bottom,#eef8ff 0%,#bcdfff 20%,#73b9ee 40%,#2d79c9 62%,#0a387a 82%,#01152f 100%);position:relative;}
+  .bar::before,.bar::after{content:'';position:absolute;left:100%;width:8px;border-top:1px solid rgba(255,255,255,.35);} 
+  .bar::before{top:0;} .bar::after{bottom:0;}
+  .bar-labels{display:grid;grid-template-rows:auto 1fr auto 1fr auto;align-items:stretch;font-size:10pt;color:var(--gris-texto);line-height:1.2;padding-top:.05rem;}
+  .bar-labels .tick{display:flex;align-items:center;gap:.35rem;}
+  .bar-labels .tick::before{content:'';display:inline-block;width:8px;border-top:1px solid rgba(255,255,255,.35);} 
+  .bar-labels b{color:#fff;font-weight:normal;}
+
+  @media(max-width:980px){.explorador-grid{grid-template-columns:1fr;}.side{border-left:none;border-top:1px solid var(--linea);}#mapCanvas{min-height:480px;}.explorador-head{display:block;}.tool-row{justify-content:flex-start;margin-top:.9rem;}.mode-select{min-width:220px;}}
 </style>
 </head>
 <body>
@@ -114,24 +141,26 @@
   <section class="explorador" id="explorador-batimetrico">
     <div class="explorador-head">
       <div>
-        <div class="explorador-title">Explorador interactivo de resultados batimétricos</div>
-        <div class="explorador-sub">Modelo web derivado del GeoTIFF batimétrico. Profundidades en azul: más oscuro = mayor profundidad.</div>
+        <div class="explorador-title">Resultados batimétricos</div>
       </div>
       <div class="tool-row" id="toolRow">
-        <button class="tool-btn active" data-mode="general">Vista general</button>
-        <button class="tool-btn" data-mode="perimetro">Perímetro</button>
-        <button class="tool-btn" data-mode="espejo">Espejo de agua</button>
-        <button class="tool-btn" data-mode="volumen">Volumen</button>
-        <button class="tool-btn" data-mode="profmax">Prof. máxima</button>
-        <button class="tool-btn" data-mode="profmedia">Prof. media</button>
-        <button class="tool-btn" data-mode="transecto">Transectos</button>
-        <button class="tool-btn" data-mode="hipso">Hipsográfica</button>
+        <label class="tool-label" for="modeSelect">Variable</label>
+        <select id="modeSelect" class="mode-select">
+          <option value="general">Vista general</option>
+          <option value="espejo">Espejo de agua</option>
+          <option value="perimetro">Perímetro</option>
+          <option value="volumen">Volumen</option>
+          <option value="profmax">Profundidad máxima</option>
+          <option value="profmedia">Profundidad media</option>
+          <option value="perfiles">Perfiles A–D</option>
+          <option value="hipso">Curva hipsográfica</option>
+        </select>
       </div>
     </div>
     <div class="explorador-grid">
       <div class="map-wrap">
         <canvas id="mapCanvas"></canvas>
-        <div class="map-hint" id="mapHint">Vista general del modelo batimétrico. Usa el menú superior para activar animaciones y análisis.</div>
+        <div class="map-hint" id="mapHint">Vista inicial del espejo de agua y de la batimetría del lago.</div>
       </div>
       <aside class="side">
         <div class="metric-card">
@@ -142,7 +171,7 @@
           <div class="control-label"><span>Descenso del nivel del lago</span><b id="dropReadout">0 m</b></div>
           <input type="range" id="dropSlider" min="0" max="328" value="0" step="1">
           <div class="preset-row">
-            <button data-drop="0">0 m</button><button data-drop="82">25 %</button><button data-drop="164">50 %</button><button data-drop="246">75 %</button><button data-drop="328">Fondo</button>
+            <button data-drop="0">0 m</button><button data-drop="82">25 %</button><button data-drop="164">50 %</button><button data-drop="202.4">Prof. media</button><button data-drop="328">Fondo</button>
           </div>
         </div>
         <div class="metrics-grid">
@@ -151,10 +180,27 @@
           <div class="mini"><span>Área del espejo de agua</span><b id="mArea">125.77 km²</b></div>
           <div class="mini"><span>Prof. máxima actual</span><b id="mMaxD">327.6 m</b></div>
         </div>
-        <canvas id="chartCanvas"></canvas>
+        <div class="metric-card chart-card inactive" id="chartCard">
+          <div class="profile-tabs" id="profileTabs">
+            <button class="profile-tab active" data-profile="A">Perfil A</button>
+            <button class="profile-tab" data-profile="B">Perfil B</button>
+            <button class="profile-tab" data-profile="C">Perfil C</button>
+            <button class="profile-tab" data-profile="D">Perfil D</button>
+          </div>
+          <canvas id="chartCanvas"></canvas>
+        </div>
         <div class="metric-card colorbar">
-          <div class="bar"></div>
-          <div class="bar-labels"><b>0 m</b><span>somero</span><span>profundo</span><b>327.56 m</b></div>
+          <div>
+            <div class="legend-title">Leyenda batimétrica</div>
+            <div class="bar"></div>
+          </div>
+          <div class="bar-labels">
+            <div class="tick"><b>0 m</b></div>
+            <div>somero</div>
+            <div class="tick"><span>profundo</span></div>
+            <div></div>
+            <div class="tick"><b>327.56 m</b></div>
+          </div>
         </div>
       </aside>
     </div>
@@ -218,8 +264,24 @@
   const offBase=document.createElement('canvas'), bctx=offBase.getContext('2d'); offBase.width=W; offBase.height=H;
   const offWater=document.createElement('canvas'), wctx=offWater.getContext('2d'); offWater.width=W; offWater.height=H;
   const offRed=document.createElement('canvas'), rctx=offRed.getContext('2d'); offRed.width=W; offRed.height=H;
-  let mode='general', drop=0, perimProgress=0, animReq=null, redAlpha=0;
-  let p1=null, p2=null, profile=null;
+  const correctedBoundary=[[127.0,502.5],[124.0,502.5],[121.5,502.0],[119.5,501.0],[117.5,500.0],[116.5,498.0],[117.0,495.5],[117.5,493.0],[118.5,491.0],[118.5,488.0],[118.0,485.5],[116.5,484.0],[115.0,482.5],[113.5,481.0],[112.5,479.0],[113.0,476.5],[113.5,474.0],[114.5,472.0],[114.5,469.0],[113.5,467.0],[113.0,464.5],[112.0,462.5],[110.5,461.0],[109.0,459.5],[107.5,458.0],[107.5,455.0],[109.0,453.5],[111.0,452.5],[113.0,451.5],[114.5,450.0],[115.5,448.0],[117.0,446.5],[118.5,445.0],[120.0,443.5],[121.5,442.0],[123.5,441.0],[125.5,440.0],[127.5,439.0],[129.0,437.5],[130.5,436.0],[131.0,433.5],[132.0,431.5],[133.5,430.0],[135.0,428.5],[136.5,427.0],[137.0,424.5],[137.5,422.0],[138.5,420.0],[141.0,419.5],[144.0,419.5],[146.0,418.5],[147.5,417.0],[149.0,415.5],[150.5,414.0],[152.0,412.5],[153.0,410.5],[153.0,408.5],[152.0,406.5],[150.5,405.0],[151.0,402.5],[153.0,401.5],[155.5,402.0],[158.0,402.5],[161.0,402.5],[163.5,402.0],[165.0,400.5],[166.5,399.0],[168.0,397.5],[169.0,395.5],[170.5,394.0],[170.5,391.0],[169.5,389.0],[168.5,387.0],[168.5,384.0],[169.5,382.0],[171.0,380.5],[172.0,378.5],[173.0,376.5],[174.0,374.5],[174.5,372.0],[174.5,369.0],[175.5,367.0],[176.5,365.0],[178.0,363.5],[181.0,363.5],[184.0,363.5],[186.0,362.5],[187.5,361.0],[188.5,359.0],[190.0,357.5],[189.5,356.0],[188.5,354.0],[187.5,352.0],[187.0,349.5],[186.0,347.5],[184.5,346.0],[182.0,345.5],[179.0,345.5],[177.0,346.5],[175.0,347.5],[173.5,349.0],[171.0,349.5],[169.5,348.0],[170.0,345.5],[170.5,343.0],[171.5,341.0],[171.5,338.0],[172.5,336.0],[173.5,334.0],[174.5,332.0],[175.5,330.0],[176.5,328.0],[177.0,325.5],[178.0,323.5],[179.0,321.5],[179.5,319.0],[180.5,317.0],[181.5,315.0],[180.0,313.5],[178.5,312.0],[176.5,311.0],[174.5,310.0],[172.0,309.5],[170.0,308.5],[169.5,306.0],[169.5,303.0],[169.5,300.0],[169.0,297.5],[167.5,296.0],[166.5,294.0],[165.5,292.0],[165.5,289.0],[166.5,287.0],[167.5,285.0],[167.5,282.0],[166.5,280.0],[164.5,279.0],[163.0,277.5],[161.5,276.0],[159.5,275.0],[158.0,273.5],[156.0,272.5],[154.0,271.5],[152.5,270.0],[151.0,268.5],[149.5,267.0],[148.0,265.5],[146.0,264.5],[144.0,263.5],[142.0,262.5],[139.0,262.5],[137.0,261.5],[135.5,260.0],[134.0,258.5],[132.5,257.0],[130.0,256.5],[128.0,255.5],[125.5,255.0],[123.0,254.5],[121.0,253.5],[119.0,252.5],[117.5,251.0],[115.5,250.0],[114.0,248.5],[112.0,247.5],[110.0,246.5],[108.5,245.0],[107.0,243.5],[105.5,242.0],[104.0,240.5],[102.5,239.0],[101.0,237.5],[99.5,236.0],[98.0,234.5],[96.0,233.5],[94.0,232.5],[92.0,231.5],[90.0,230.5],[88.5,229.0],[87.0,227.5],[85.0,226.5],[83.5,225.0],[82.5,223.0],[81.5,221.0],[80.0,219.5],[78.5,218.0],[77.0,216.5],[75.0,215.5],[73.5,214.0],[71.5,213.0],[70.0,211.5],[68.5,210.0],[68.5,207.0],[68.0,204.5],[67.5,202.0],[66.5,200.0],[65.5,198.0],[64.0,196.5],[62.5,195.0],[61.5,193.0],[62.0,190.5],[62.0,188.5],[59.0,188.5],[57.0,189.5],[55.0,190.5],[53.5,192.0],[52.0,193.5],[50.5,195.0],[49.5,197.0],[48.0,198.5],[46.5,200.0],[45.0,201.5],[42.0,201.5],[39.0,201.5],[37.5,200.0],[36.5,198.0],[35.5,196.0],[34.5,194.0],[32.0,193.5],[30.0,194.5],[27.5,195.0],[25.5,196.0],[24.0,197.5],[22.5,199.0],[20.0,199.5],[18.0,198.5],[17.0,196.5],[15.5,195.0],[14.0,193.5],[12.0,192.5],[10.5,191.0],[9.0,189.5],[8.0,187.5],[7.5,185.0],[6.5,183.0],[5.5,181.0],[5.0,178.5],[4.5,176.0],[3.5,174.0],[2.5,172.0],[1.5,170.0],[1.5,167.0],[0.5,165.0],[0.5,162.0],[0.5,159.0],[1.5,157.0],[2.0,154.5],[3.5,153.0],[5.0,151.5],[6.5,150.0],[8.5,149.0],[10.5,148.0],[12.5,147.0],[13.5,145.0],[14.5,143.0],[14.5,140.0],[14.5,137.0],[15.5,135.0],[17.0,133.5],[18.5,132.0],[20.5,131.0],[22.0,129.5],[23.5,128.0],[25.0,126.5],[27.0,125.5],[28.5,124.0],[30.5,123.0],[32.0,121.5],[35.0,121.5],[37.5,122.0],[40.0,122.5],[42.0,123.5],[45.0,123.5],[47.0,122.5],[49.0,121.5],[51.0,120.5],[53.0,119.5],[55.0,118.5],[57.0,117.5],[59.0,116.5],[61.0,115.5],[63.0,114.5],[65.0,113.5],[67.0,112.5],[68.5,111.0],[70.5,110.0],[71.5,108.0],[72.0,106.5],[71.5,104.0],[71.5,101.0],[72.5,99.0],[73.5,97.0],[74.5,95.0],[75.5,93.0],[77.0,91.5],[79.0,90.5],[81.0,89.5],[83.0,88.5],[85.0,87.5],[88.0,87.5],[90.0,88.5],[91.5,90.0],[92.5,92.0],[92.5,95.0],[93.5,97.0],[94.5,99.0],[95.0,101.5],[97.0,102.5],[98.5,101.0],[98.5,98.0],[101.0,97.5],[103.5,97.0],[105.5,96.0],[107.0,94.5],[109.0,93.5],[111.5,93.0],[112.5,91.0],[114.0,89.5],[116.0,88.5],[118.0,89.5],[120.5,90.0],[122.5,91.0],[124.0,92.5],[126.0,93.5],[127.5,95.0],[129.0,94.5],[131.0,93.5],[134.0,93.5],[137.0,93.5],[140.0,93.5],[142.5,93.0],[145.0,92.5],[147.0,91.5],[149.0,90.5],[151.5,90.0],[153.5,89.0],[156.0,88.5],[158.0,87.5],[158.5,85.0],[159.5,83.0],[159.5,80.0],[159.5,77.0],[159.5,74.0],[158.5,72.0],[158.5,69.0],[160.0,67.5],[161.5,66.0],[163.5,65.0],[165.5,64.0],[167.0,62.5],[169.0,61.5],[171.0,60.5],[174.0,60.5],[176.5,61.0],[178.5,62.0],[180.5,63.0],[182.0,64.5],[185.0,64.5],[187.0,65.5],[189.0,66.5],[191.0,67.5],[192.5,69.0],[194.5,70.0],[196.0,71.5],[197.5,73.0],[199.0,72.5],[200.5,71.0],[201.5,69.0],[203.0,67.5],[204.5,66.0],[206.0,64.5],[207.5,63.0],[210.0,62.5],[212.0,61.5],[215.0,61.5],[217.0,60.5],[220.0,60.5],[222.5,60.0],[224.5,59.0],[226.0,57.5],[227.5,56.0],[229.0,54.5],[230.0,52.5],[231.5,51.0],[233.0,49.5],[235.0,48.5],[236.5,47.0],[238.0,45.5],[240.0,44.5],[242.0,43.5],[244.0,42.5],[247.0,42.5],[250.0,42.5],[253.0,42.5],[255.0,43.5],[258.0,43.5],[261.0,43.5],[264.0,43.5],[267.0,43.5],[269.0,42.5],[271.0,41.5],[272.5,40.0],[274.0,38.5],[274.5,36.0],[275.5,34.0],[276.5,32.0],[278.0,30.5],[280.0,29.5],[282.0,28.5],[284.0,27.5],[286.5,28.0],[289.0,28.5],[291.0,29.5],[293.5,30.0],[296.0,30.5],[298.0,29.5],[301.0,29.5],[303.0,28.5],[305.0,27.5],[307.5,27.0],[309.5,26.0],[311.5,25.0],[314.0,24.5],[317.0,24.5],[319.0,25.5],[321.0,26.5],[322.5,28.0],[324.0,29.5],[325.5,31.0],[327.0,32.5],[328.5,34.0],[331.0,34.5],[333.5,34.0],[335.5,33.0],[337.0,31.5],[337.5,29.0],[338.5,27.0],[339.5,25.0],[340.5,23.0],[342.0,21.5],[344.0,20.5],[347.0,20.5],[349.0,21.5],[352.0,21.5],[354.0,20.5],[356.0,19.5],[359.0,19.5],[361.0,18.5],[363.0,19.5],[365.5,20.0],[367.5,21.0],[369.0,22.5],[371.0,23.5],[372.5,25.0],[375.0,25.5],[377.0,26.5],[379.0,27.5],[382.0,27.5],[384.0,28.5],[387.0,28.5],[390.0,28.5],[392.0,27.5],[394.5,27.0],[396.5,26.0],[398.5,25.0],[400.0,23.5],[402.0,22.5],[404.0,21.5],[405.5,20.0],[407.0,18.5],[408.5,17.0],[410.0,15.5],[411.5,14.0],[413.0,12.5],[414.5,11.0],[416.0,9.5],[417.5,8.0],[418.5,6.0],[420.0,4.5],[421.5,3.0],[423.0,1.5],[424.5,0.0],[427.0,-0.5],[430.0,-0.5],[432.5,0.0],[434.5,1.0],[436.5,2.0],[438.5,3.0],[441.0,3.5],[443.0,4.5],[445.0,5.5],[446.5,7.0],[446.5,10.0],[446.5,13.0],[446.5,16.0],[446.5,19.0],[446.5,22.0],[447.5,24.0],[448.5,26.0],[448.5,29.0],[449.5,31.0],[451.0,32.5],[452.5,34.0],[454.0,35.5],[456.0,36.5],[457.5,38.0],[459.0,39.5],[461.0,40.5],[462.5,42.0],[464.0,43.5],[465.5,45.0],[467.0,46.5],[468.0,48.5],[469.5,50.0],[471.0,51.5],[473.0,52.5],[475.0,53.5],[477.0,54.5],[480.0,54.5],[483.0,54.5],[486.0,54.5],[489.0,54.5],[492.0,54.5],[495.0,54.5],[498.0,54.5],[500.0,55.5],[502.5,56.0],[504.5,57.0],[506.5,58.0],[508.0,59.5],[510.0,60.5],[512.0,61.5],[514.0,62.5],[517.0,62.5],[518.5,64.0],[520.0,65.5],[521.5,67.0],[522.5,69.0],[524.0,70.5],[525.0,72.5],[526.0,74.5],[527.5,76.0],[528.5,78.0],[530.0,79.5],[531.0,81.5],[531.5,84.0],[531.5,87.0],[532.5,89.0],[533.5,91.0],[534.5,93.0],[535.5,95.0],[537.0,96.5],[538.5,95.0],[540.5,94.0],[543.0,93.5],[546.0,93.5],[547.5,95.0],[549.0,96.5],[550.5,98.0],[552.0,99.5],[553.5,101.0],[555.0,102.5],[556.0,104.5],[557.5,106.0],[558.5,108.0],[559.5,110.0],[561.0,111.5],[561.5,114.0],[561.5,117.0],[562.0,119.5],[563.0,121.5],[563.5,124.0],[564.5,126.0],[564.5,129.0],[565.0,131.5],[565.5,134.0],[566.5,136.0],[566.5,139.0],[567.0,141.5],[567.5,144.0],[568.5,146.0],[569.5,148.0],[570.5,150.0],[570.5,153.0],[569.5,155.0],[568.5,157.0],[568.0,159.5],[567.5,162.0],[569.5,163.0],[569.5,166.0],[570.5,168.0],[573.0,168.5],[575.5,169.0],[577.5,170.0],[578.5,172.0],[578.5,175.0],[580.0,176.5],[582.0,177.5],[584.0,178.5],[586.0,179.5],[588.0,180.5],[590.0,181.5],[592.5,182.0],[595.0,182.5],[597.0,183.5],[599.0,184.5],[601.5,185.0],[603.0,186.5],[605.0,187.5],[607.0,188.5],[608.5,190.0],[609.5,192.0],[610.5,194.0],[611.5,196.0],[614.0,196.5],[615.5,198.0],[616.5,200.0],[616.5,203.0],[616.5,206.0],[616.5,209.0],[616.0,211.5],[615.0,213.5],[614.5,216.0],[614.0,218.5],[613.5,221.0],[613.5,224.0],[612.5,226.0],[612.5,229.0],[611.5,231.0],[612.0,233.5],[612.5,236.0],[612.5,239.0],[612.0,241.5],[611.5,244.0],[610.5,246.0],[609.5,248.0],[610.0,250.5],[611.0,252.5],[611.5,255.0],[612.5,257.0],[612.5,260.0],[612.5,263.0],[613.0,265.5],[614.0,267.5],[615.5,269.0],[617.0,270.5],[618.5,272.0],[619.5,274.0],[619.5,277.0],[619.5,280.0],[618.5,282.0],[617.0,283.5],[615.5,285.0],[615.5,288.0],[616.0,290.5],[617.0,292.5],[618.0,294.5],[618.5,297.0],[618.5,300.0],[619.0,302.5],[619.5,305.0],[619.5,308.0],[619.5,311.0],[618.5,313.0],[618.0,315.5],[617.5,318.0],[616.5,320.0],[616.0,322.5],[615.0,324.5],[613.5,326.0],[611.0,326.5],[608.5,326.0],[606.0,325.5],[603.0,325.5],[600.0,325.5],[598.0,324.5],[596.0,323.5],[593.0,323.5],[590.5,323.0],[588.0,322.5],[585.0,322.5],[582.0,322.5],[580.0,323.5],[579.5,326.0],[580.5,328.0],[581.0,330.5],[581.5,333.0],[581.5,336.0],[580.5,338.0],[579.0,339.5],[577.5,341.0],[576.5,343.0],[575.0,344.5],[573.5,346.0],[572.0,347.5],[570.0,348.5],[568.5,350.0],[567.0,351.5],[565.0,352.5],[563.0,353.5],[561.0,354.5],[559.0,355.5],[557.0,356.5],[555.5,358.0],[554.0,359.5],[553.0,361.5],[552.5,364.0],[553.5,366.0],[555.0,367.5],[556.5,369.0],[557.5,371.0],[558.5,373.0],[558.5,376.0],[558.5,379.0],[557.0,380.5],[555.5,382.0],[553.5,383.0],[552.5,385.0],[551.5,387.0],[550.5,389.0],[550.0,391.5],[550.0,393.5],[550.5,396.0],[550.5,399.0],[550.5,402.0],[550.5,405.0],[550.5,408.0],[550.0,410.5],[548.5,412.0],[547.5,414.0],[546.0,415.5],[544.5,417.0],[543.5,419.0],[542.0,420.5],[540.5,422.0],[539.0,423.5],[537.0,424.5],[534.0,424.5],[532.5,423.0],[532.5,420.0],[534.0,418.5],[534.5,416.0],[533.5,414.0],[532.0,412.5],[530.5,411.0],[529.0,409.5],[527.0,408.5],[525.5,408.0],[523.0,408.5],[521.0,409.5],[518.0,409.5],[516.0,408.5],[515.5,406.0],[516.5,404.0],[517.5,402.0],[519.0,400.5],[519.5,398.0],[520.5,396.0],[521.5,394.0],[523.0,392.5],[524.5,391.0],[526.0,389.5],[527.5,388.0],[528.5,386.0],[528.5,383.0],[527.0,381.5],[525.0,380.5],[524.5,378.0],[524.5,375.0],[524.5,372.0],[524.5,369.0],[523.5,367.0],[522.5,365.0],[522.5,362.0],[521.0,360.5],[518.0,360.5],[516.0,361.5],[514.0,360.5],[514.0,358.5],[514.5,356.0],[515.5,354.0],[515.0,351.5],[513.5,350.0],[512.0,348.5],[510.5,347.0],[508.0,346.5],[506.0,347.5],[503.0,347.5],[500.5,347.0],[499.0,345.5],[496.0,345.5],[494.0,346.5],[491.0,346.5],[490.0,344.5],[487.0,344.5],[484.0,344.5],[483.5,342.0],[483.5,339.0],[482.5,337.0],[481.5,335.0],[480.5,333.0],[480.5,330.0],[481.5,328.0],[483.5,327.0],[484.0,325.5],[482.0,324.5],[479.0,324.5],[477.5,323.0],[477.5,320.0],[479.0,318.5],[482.0,318.5],[485.0,318.5],[487.0,317.5],[489.5,317.0],[491.0,315.5],[492.5,314.0],[493.5,312.0],[492.5,310.0],[491.0,308.5],[489.5,307.0],[488.0,305.5],[486.5,307.0],[485.0,308.5],[482.0,308.5],[480.5,310.0],[480.0,312.5],[479.5,315.0],[478.0,316.5],[476.0,317.5],[474.5,319.0],[473.0,320.5],[471.0,321.5],[469.0,322.5],[467.0,323.5],[465.0,324.5],[462.0,324.5],[460.5,323.0],[460.5,320.0],[461.5,318.0],[461.0,315.5],[458.0,315.5],[456.5,314.0],[455.5,312.0],[456.5,310.0],[457.5,308.0],[458.5,306.0],[460.0,304.5],[460.0,302.5],[458.0,303.5],[456.0,304.5],[454.5,306.0],[452.5,307.0],[450.0,307.5],[447.5,307.0],[446.5,305.0],[446.5,302.0],[445.0,300.5],[443.0,299.5],[442.5,297.0],[442.5,294.0],[443.0,291.5],[443.5,289.0],[442.0,287.5],[439.5,287.0],[439.5,284.0],[440.0,281.5],[440.5,279.0],[440.5,276.0],[440.5,273.0],[439.5,271.0],[437.5,270.0],[436.5,271.0],[436.5,274.0],[436.5,277.0],[437.5,279.0],[436.5,281.0],[434.5,281.0],[433.0,279.5],[431.5,278.0],[429.0,277.5],[426.0,277.5],[424.0,276.5],[423.5,274.0],[421.5,274.0],[419.5,275.0],[418.0,276.5],[416.0,277.5],[413.5,278.0],[411.0,278.5],[408.5,279.0],[406.5,280.0],[405.0,281.5],[403.0,282.5],[400.0,282.5],[397.0,282.5],[394.0,282.5],[391.0,282.5],[389.0,281.5],[386.0,281.5],[383.5,281.0],[381.0,280.5],[379.0,279.5],[377.0,280.5],[374.0,280.5],[372.0,279.5],[370.0,278.5],[368.0,277.5],[366.0,278.5],[363.5,279.0],[361.5,280.0],[360.0,281.5],[358.0,282.5],[356.5,284.0],[355.0,285.5],[353.0,286.5],[351.0,285.5],[349.0,284.5],[347.5,283.0],[346.0,281.5],[344.5,280.0],[342.5,280.0],[341.5,282.0],[340.0,283.5],[337.0,283.5],[334.5,283.0],[333.0,283.5],[330.0,283.5],[328.0,284.5],[325.0,284.5],[323.0,285.5],[321.5,287.0],[320.5,289.0],[321.5,291.0],[321.5,294.0],[321.5,297.0],[322.5,299.0],[322.5,302.0],[322.5,305.0],[322.5,308.0],[321.0,309.5],[320.0,311.5],[318.0,312.5],[315.5,312.0],[313.5,311.0],[312.0,309.5],[310.5,308.0],[308.5,307.0],[306.0,306.5],[303.0,306.5],[300.5,306.0],[298.5,305.0],[296.0,304.5],[294.5,306.0],[293.5,308.0],[294.5,310.0],[294.5,313.0],[295.5,315.0],[295.5,318.0],[293.0,318.5],[290.0,318.5],[287.0,318.5],[284.0,318.5],[282.5,317.0],[281.0,315.5],[279.5,314.0],[278.0,312.5],[275.0,312.5],[272.0,312.5],[270.0,313.5],[268.0,314.5],[266.0,315.5],[264.0,316.5],[262.0,317.5],[259.0,317.5],[256.5,317.0],[254.0,316.5],[252.0,315.5],[250.0,314.5],[248.0,313.5],[245.5,313.0],[243.0,312.5],[241.0,311.5],[240.0,312.5],[242.0,313.5],[244.5,314.0],[246.5,315.0],[248.5,316.0],[248.5,319.0],[247.0,320.5],[245.0,321.5],[243.0,322.5],[242.5,325.0],[242.5,328.0],[242.5,331.0],[242.5,334.0],[242.0,336.5],[240.5,338.0],[239.0,339.5],[237.0,340.5],[235.0,341.5],[232.0,341.5],[230.0,340.5],[227.5,340.0],[225.5,339.0],[224.5,340.0],[224.5,343.0],[224.5,346.0],[225.5,348.0],[226.0,350.5],[226.5,353.0],[225.5,355.0],[224.5,357.0],[223.0,358.5],[221.5,360.0],[219.0,360.5],[216.0,360.5],[213.0,360.5],[211.0,361.5],[209.0,362.5],[207.5,364.0],[205.5,365.0],[204.0,366.5],[204.5,368.0],[206.0,369.5],[207.5,371.0],[209.0,372.5],[211.0,373.5],[213.0,374.5],[214.5,376.0],[215.5,378.0],[216.5,380.0],[215.5,382.0],[215.5,385.0],[215.5,388.0],[215.5,391.0],[214.5,393.0],[213.0,394.5],[210.0,394.5],[207.0,394.5],[204.0,394.5],[201.0,394.5],[199.0,395.5],[197.0,396.5],[195.0,397.5],[193.5,399.0],[192.5,401.0],[191.5,403.0],[190.5,405.0],[189.5,407.0],[188.5,409.0],[188.5,412.0],[188.0,413.5],[190.0,414.5],[192.0,415.5],[195.0,415.5],[196.5,417.0],[197.5,419.0],[198.5,421.0],[200.5,422.0],[201.5,424.0],[201.5,427.0],[200.0,428.5],[198.5,430.0],[197.5,432.0],[197.5,435.0],[197.5,438.0],[197.5,441.0],[197.0,443.5],[195.5,445.0],[193.5,446.0],[191.5,447.0],[189.5,448.0],[187.5,449.0],[185.5,450.0],[183.5,451.0],[182.0,452.5],[180.5,454.0],[179.0,455.5],[178.0,457.5],[177.0,459.5],[176.5,462.0],[176.0,464.5],[175.5,467.0],[174.5,469.0],[174.0,471.5],[172.5,473.0],[170.5,474.0],[168.5,475.0],[167.0,476.5],[165.0,477.5],[163.0,478.5],[161.5,480.0],[160.0,481.5],[158.0,482.5],[156.5,484.0],[155.5,486.0],[153.5,487.0],[152.0,488.5],[151.0,490.5],[150.0,492.5],[148.5,494.0],[147.0,495.5],[145.5,497.0],[144.0,498.5],[142.0,499.5],[139.0,499.5],[137.0,500.5],[134.0,500.5],[132.0,501.5],[129.0,501.5],[127.0,502.5]];
+  function interpProfile(distance, keyDepths){ const n=180, ds=[], zs=[]; for(let i=0;i<n;i++){ let u=i/(n-1), pos=u*(keyDepths.length-1), k=Math.floor(pos), t=pos-k; let z=keyDepths[Math.min(k,keyDepths.length-1)]*(1-t)+keyDepths[Math.min(k+1,keyDepths.length-1)]*t; ds.push(u*distance); zs.push(z); } return {ds,zs}; }
+
+  const profileSets={
+    A:{name:'Perfil A – AF',distance:17.5,desc:'Descenso brusco desde la orilla norte hacia la zona profunda central. Pendiente litoral pronunciada en el extremo occidental.',series:interpProfile(17.5,[0,18,65,145,245,315,300,276,232,168,82,18,0])},
+    B:{name:'Perfil B – BF',distance:16.0,desc:'Descenso moderado desde el norte. Fondo relativamente plano en la zona central a profundidades superiores a 250 m.',series:interpProfile(16.0,[0,22,74,132,198,246,266,272,270,268,261,214,148,72,16,0])},
+    C:{name:'Perfil C – CF',distance:13.0,desc:'Pendiente suave desde la orilla sur hacia el centro. Zona litoral más gradual que en la parte norte del lago.',series:interpProfile(13.0,[0,8,26,52,94,138,186,228,252,242,208,156,96,38,0])},
+    D:{name:'Perfil D – DF',distance:15.0,desc:'Irregularidades en el fondo, con pequeñas crestas y depresiones secundarias visibles entre los 150 y 270 m.',series:interpProfile(15.0,[0,18,54,118,176,228,188,246,214,266,224,248,206,132,58,0])}
+  };
+  const transectLines={
+    A:{a:{x:174,y:108},b:{x:210,y:382}},
+    B:{a:{x:275,y:96},b:{x:317,y:392}},
+    C:{a:{x:385,y:104},b:{x:430,y:392}},
+    D:{a:{x:493,y:122},b:{x:545,y:383}}
+  };
+
+  let mode='espejo', drop=0, perimProgress=0, animReq=null, redAlpha=0;
+  let selectedProfile='A';
 
   function colorDepth(d){
     let t=Math.max(0,Math.min(1,d/P.maxDepthM));
@@ -262,58 +324,58 @@
   function render(){
     const cw=canvas.clientWidth,ch=canvas.clientHeight; ctx.clearRect(0,0,cw,ch); ctx.fillStyle='#07111f'; ctx.fillRect(0,0,cw,ch);
     const f=fit(); ctx.imageSmoothingEnabled=true; ctx.drawImage(offBase,f.ox,f.oy,W*f.s,H*f.s);
-    if(['general','volumen','espejo','transecto','profmax','profmedia'].includes(mode)){ makeWater(drop,false); ctx.drawImage(offWater,f.ox,f.oy,W*f.s,H*f.s); }
-    pathBoundary(1,'rgba(142,197,232,.72)',2.0);
-    if(mode==='perimetro'){pathBoundary(1,'rgba(255,255,255,.18)',1.2); pathBoundary(perimProgress,'#d62828',4.2);}
-    if(mode==='espejo' || redAlpha>0){makeWater(drop,true); ctx.globalAlpha=mode==='espejo'?0.62:redAlpha; ctx.drawImage(offRed,f.ox,f.oy,W*f.s,H*f.s); ctx.globalAlpha=1;}
-    if(mode==='profmedia') drawMeanDepth(f);
+    if(['general','volumen','espejo','profmax','profmedia','perfiles','hipso'].includes(mode)){ makeWater(drop,false); ctx.drawImage(offWater,f.ox,f.oy,W*f.s,H*f.s); }
+    pathBoundary(1,'rgba(200,231,255,.82)',2.2);
+    if(mode==='perimetro'){pathBoundary(perimProgress,'#d62828',4.0);}
+    if(mode==='espejo' || redAlpha>0){makeWater(drop,true); ctx.globalAlpha=mode==='espejo'?0.42:redAlpha; ctx.drawImage(offRed,f.ox,f.oy,W*f.s,H*f.s); ctx.globalAlpha=1;}
     if(mode==='profmax') drawDeepest(f);
-    if(mode==='transecto') drawTransect(f);
+    if(mode==='perfiles') drawProfileLines(f);
+
   }
   function drawDeepest(f){let d=D.deepest, p=px(d.x,d.y); ctx.strokeStyle='#d62828'; ctx.fillStyle='#d62828'; ctx.lineWidth=3; ctx.beginPath(); ctx.arc(p[0],p[1],10,0,Math.PI*2); ctx.stroke(); ctx.beginPath(); ctx.arc(p[0],p[1],4,0,Math.PI*2); ctx.fill(); label(p[0]+14,p[1]-12,'Profundidad máxima: 327.56 m');}
-  function drawMeanDepth(f){
-    const img=rctx.createImageData(W,H); for(let i=0;i<depthDm.length;i++){let dm=depthDm[i],j=i*4;if(dm>=0 && dm/10>=P.meanDepthM){img.data[j]=255;img.data[j+1]=183;img.data[j+2]=3;img.data[j+3]=115;}} rctx.putImageData(img,0,0); ctx.drawImage(offRed,f.ox,f.oy,W*f.s,H*f.s); label(f.ox+18,f.oy+22,'Plano/corte de profundidad media: 202.40 m');
-  }
   function label(x,y,text){ctx.save();ctx.font='15px Times New Roman'; let w=ctx.measureText(text).width; ctx.fillStyle='rgba(5,13,25,.82)'; ctx.strokeStyle='rgba(142,197,232,.35)'; roundRect(ctx,x,y-22,w+18,30,8); ctx.fill(); ctx.stroke(); ctx.fillStyle='#fff'; ctx.fillText(text,x+9,y-3);ctx.restore();}
   function roundRect(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath();}
-  function drawTransect(f){ if(p1){let p=px(p1.x,p1.y); ctx.fillStyle='#d62828';ctx.beginPath();ctx.arc(p[0],p[1],7,0,Math.PI*2);ctx.fill();label(p[0]+10,p[1]-8,'P1');} if(p2){let p=px(p2.x,p2.y);ctx.fillStyle='#d62828';ctx.beginPath();ctx.arc(p[0],p[1],7,0,Math.PI*2);ctx.fill();label(p[0]+10,p[1]-8,'P2');} if(p1&&p2){let a=px(p1.x,p1.y),b=px(p2.x,p2.y);ctx.strokeStyle='#d62828';ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke();} }
-  function setMode(m){mode=m; document.querySelectorAll('.tool-btn').forEach(b=>b.classList.toggle('active',b.dataset.mode===m)); perimProgress=m==='perimetro'?0:perimProgress; if(m==='perimetro') animatePerimeter(); if(m==='espejo') flashRed(); updatePanel(); render(); drawChart();}
+  function drawProfileLines(f){ Object.keys(transectLines).forEach(k=>{ const t=transectLines[k]; const a=px(t.a.x,t.a.y), b=px(t.b.x,t.b.y); ctx.strokeStyle=k===selectedProfile?'#ffb703':'rgba(214,40,40,.85)'; ctx.lineWidth=k===selectedProfile?4.2:2.6; ctx.beginPath(); ctx.moveTo(a[0],a[1]); ctx.lineTo(b[0],b[1]); ctx.stroke(); ctx.fillStyle='#ffffff'; label(a[0]+6,a[1]-8,k); }); }
+  function setMode(m){ mode=m; modeSelect.value=m; if(m==='perimetro'){perimProgress=0; animatePerimeter();} if(m==='espejo'){flashRed();} if(m==='profmedia'){drop=P.meanDepthM; dropSlider.value=Math.round(drop);} if(m==='espejo'){drop=0; dropSlider.value=0;} updateMetrics(); updatePanel(); render(); drawChart(); }
   function updatePanel(){
+    const currentProfile=profileSets[selectedProfile];
     const texts={
-      general:['Vista general',`Área superficial: <b>${P.areaKm2} km²</b><br>Volumen: <b>${P.volumeKm3} km³</b><br>Perímetro: <b>${P.perimeterKm} km</b><br>Forma: <b>${P.shape}</b>`],
-      perimetro:['Perímetro',`La línea roja recorre la línea de costa del lago.<br><br><span class="big-number">${P.perimeterKm} km</span><br>Índice de desarrollo de costa: ${P.coastDev}`],
-      espejo:['Espejo de agua',`La capa roja translúcida representa el área superficial reportada por el paper.<br><br><span class="big-number">${P.areaKm2} km²</span>`],
+      general:['Vista general',`Área superficial: <b>${P.areaKm2} km²</b><br>Volumen: <b>${P.volumeKm3} km³</b><br>Perímetro: <b>${P.perimeterKm} km</b><br>Forma del lago: <b>${P.shape}</b>`],
+      perimetro:['Perímetro',`La línea roja recorre progresivamente la línea de costa del lago.<br><br><span class="big-number">${P.perimeterKm} km</span><br>Índice de desarrollo de costa: ${P.coastDev}`],
+      espejo:['Espejo de agua',`La capa translúcida resalta el área superficial del lago.<br><br><span class="big-number">${P.areaKm2} km²</span>`],
       volumen:['Volumen',`Mueve el controlador para simular el descenso del nivel del lago.<br><br><b>Así se vería el lago si bajara <span id="dropInline">${Math.round(drop)} m</span>.</b>`],
-      profmax:['Profundidad máxima',`El punto rojo marca la zona más profunda del DEM batimétrico.<br><br><span class="big-number">${P.maxDepthM} m</span>`],
-      profmedia:['Profundidad media',`La capa naranja representa el corte asociado a la profundidad media.<br><br><span class="big-number">${P.meanDepthM} m</span>`],
-      transecto:['Transectos',`Haz clic en dos puntos sobre el lago. El perfil se dibuja en la gráfica inferior. El primer punto se conserva como P1 hasta seleccionar P2.`],
-      hipso:['Curva hipsográfica',`La curva relaciona el área relativa del espejo de agua con la profundidad. El paper clasifica la forma del lago como <b>cóncava</b>.`]
+      profmax:['Profundidad máxima',`El punto rojo marca la zona más profunda del lago.<br><br><span class="big-number">${P.maxDepthM} m</span>`],
+      profmedia:['Profundidad media',`La simulación muestra cómo se vería el lago si el nivel descendiera hasta la profundidad media.<br><br><span class="big-number">${P.meanDepthM} m</span>`],
+      perfiles:['Perfiles transversales A, B, C y D',`<b>${currentProfile.name}</b> (${currentProfile.distance} km)<br>${currentProfile.desc}`],
+      hipso:['Curva hipsográfica',`La curva relaciona el área relativa del espejo de agua con la profundidad y ayuda a interpretar la forma <b>${P.shape.toLowerCase()}</b> del lago.`]
     };
     panelTitle.textContent=texts[mode][0]; panelText.innerHTML=texts[mode][1];
-    mapHint.textContent={general:'Vista general del modelo batimétrico.',perimetro:'Animación: el perímetro se traza progresivamente en rojo.',espejo:'La capa roja translúcida identifica el espejo de agua.',volumen:'Usa el controlador de descenso para ver cómo cambia el volumen y el área del espejo de agua.',profmax:'Marcador de profundidad máxima.',profmedia:'Corte visual de la profundidad media.',transecto:'Haz clic en dos puntos para generar un perfil batimétrico.',hipso:'Observa la curva hipsográfica vinculada al descenso.'}[mode];
+    mapHint.textContent={general:'Vista general del espejo de agua y de la batimetría del lago.',perimetro:'Animación del perímetro del lago.',espejo:'Representación del área superficial o espejo de agua.',volumen:'Controla el descenso para observar cambios de volumen y área.',profmax:'Ubicación de la profundidad máxima.',profmedia:'Vista asociada a la profundidad media del lago.',perfiles:'Transectos de referencia A, B, C y D.',hipso:'Curva hipsográfica del lago.'}[mode];
+    document.getElementById('profileTabs').classList.toggle('show', mode==='perfiles');
+    document.getElementById('chartCard').classList.toggle('inactive', !['volumen','perfiles','hipso'].includes(mode));
+    const inline=document.getElementById('dropInline'); if(inline) inline.textContent=Math.round(drop)+' m';
   }
   function animatePerimeter(){ cancelAnimationFrame(animReq); const start=performance.now(), dur=2300; function step(t){perimProgress=Math.min(1,(t-start)/dur); render(); if(perimProgress<1) animReq=requestAnimationFrame(step);} animReq=requestAnimationFrame(step);}
   function flashRed(){ redAlpha=0.7; const start=performance.now(); function step(t){let u=(t-start)/1800; redAlpha=Math.max(0,0.7*(1-u)); render(); if(u<1) requestAnimationFrame(step);} requestAnimationFrame(step);}
   function depthAt(x,y){let ix=Math.round(x),iy=Math.round(y); if(ix<0||iy<0||ix>=W||iy>=H)return NaN; let dm=depthDm[iy*W+ix]; return dm>=0?dm/10:NaN;}
   function sampleProfile(){ if(!p1||!p2) return null; let n=260, ds=[],zs=[]; for(let i=0;i<n;i++){let u=i/(n-1),x=p1.x*(1-u)+p2.x*u,y=p1.y*(1-u)+p2.y*u,d=depthAt(x,y); if(Number.isFinite(d)){let dist=Math.hypot(x-p1.x,y-p1.y)/W*18.91; ds.push(dist); zs.push(d);}} return {ds,zs};}
   function drawChart(){
-    const w=chart.clientWidth,h=chart.clientHeight;cctx.clearRect(0,0,w,h);cctx.fillStyle='#f8fbff';cctx.fillRect(0,0,w,h);cctx.strokeStyle='#d5e3f0';cctx.strokeRect(.5,.5,w-1,h-1);
-    cctx.font='14px Times New Roman'; cctx.fillStyle='#0a1628';
+    const w=chart.clientWidth,h=chart.clientHeight; cctx.clearRect(0,0,w,h);
+    if(!['volumen','hipso','perfiles'].includes(mode)) return;
+    cctx.fillStyle='#f8fbff'; cctx.fillRect(0,0,w,h); cctx.strokeStyle='#d5e3f0'; cctx.strokeRect(.5,.5,w-1,h-1); cctx.font='14px Times New Roman'; cctx.fillStyle='#0a1628';
     if(mode==='volumen') drawCurve(D.curves.drops,D.curves.volumes,drop,interpMetric(D.curves.volumes),'Descenso (m)','Volumen restante (km³)');
     else if(mode==='hipso') drawCurve(D.curves.areas.map(a=>a/P.areaKm2),D.curves.drops,metrics().area/P.areaKm2,drop,'Área relativa','Profundidad (m)',true);
-    else if(mode==='transecto'){let pr=sampleProfile(); if(pr&&pr.ds.length>2) drawProfile(pr.ds,pr.zs); else centerText('Seleccione dos puntos sobre el lago');}
-    else if(mode==='profmax') centerText('Profundidad máxima: 327.56 m');
-    else if(mode==='profmedia') centerText('Profundidad media: 202.40 m');
-    else centerText('Valores reportados por Reyes Morales et al. (2018), p. 54');
+    else if(mode==='perfiles'){ let pr=profileSets[selectedProfile].series; drawProfile(pr.ds,pr.zs, profileSets[selectedProfile].name); }
   }
   function centerText(t){const w=chart.clientWidth,h=chart.clientHeight;cctx.fillStyle='#0a1628';cctx.textAlign='center';cctx.font='16px Times New Roman';cctx.fillText(t,w/2,h/2);cctx.textAlign='left';}
   function drawCurve(xs,ys,cx,cy,xlab,ylab,invertY=false){const w=chart.clientWidth,h=chart.clientHeight,ml=48,mr=18,mt=28,mb=38; let xmin=Math.min(...xs),xmax=Math.max(...xs),ymin=Math.min(...ys),ymax=Math.max(...ys); function X(x){return ml+(x-xmin)/(xmax-xmin)*(w-ml-mr)} function Y(y){let t=(y-ymin)/(ymax-ymin); if(!invertY)t=1-t; return mt+t*(h-mt-mb)} cctx.strokeStyle='#d5e3f0';cctx.lineWidth=1; for(let i=0;i<4;i++){let y=mt+i*(h-mt-mb)/3;cctx.beginPath();cctx.moveTo(ml,y);cctx.lineTo(w-mr,y);cctx.stroke();} cctx.strokeStyle='#083b7a';cctx.lineWidth=2.4;cctx.beginPath(); xs.forEach((x,i)=>{let xx=X(x),yy=Y(ys[i]); if(i)cctx.lineTo(xx,yy);else cctx.moveTo(xx,yy);});cctx.stroke(); cctx.fillStyle='#d62828'; cctx.beginPath(); cctx.arc(X(cx),Y(cy),5,0,Math.PI*2); cctx.fill(); cctx.fillStyle='#0a1628';cctx.font='12px Times New Roman';cctx.fillText(xlab,ml,h-10);cctx.save();cctx.translate(12,h/2);cctx.rotate(-Math.PI/2);cctx.fillText(ylab,0,0);cctx.restore();}
-  function drawProfile(ds,zs){const w=chart.clientWidth,h=chart.clientHeight,ml=48,mr=18,mt=24,mb=38;let xmax=Math.max(...ds),ymax=Math.max(...zs,P.meanDepthM);function X(x){return ml+x/xmax*(w-ml-mr)}function Y(d){return mt+d/ymax*(h-mt-mb)} cctx.strokeStyle='#d5e3f0'; for(let i=0;i<4;i++){let y=mt+i*(h-mt-mb)/3;cctx.beginPath();cctx.moveTo(ml,y);cctx.lineTo(w-mr,y);cctx.stroke();} cctx.beginPath(); ds.forEach((x,i)=>{let xx=X(x),yy=Y(zs[i]); if(i)cctx.lineTo(xx,yy);else cctx.moveTo(xx,yy);}); cctx.lineTo(X(ds[ds.length-1]),mt); cctx.lineTo(X(ds[0]),mt); cctx.closePath(); cctx.fillStyle='#d8efff';cctx.fill(); cctx.strokeStyle='#083b7a';cctx.lineWidth=2.2;cctx.beginPath();ds.forEach((x,i)=>{let xx=X(x),yy=Y(zs[i]); if(i)cctx.lineTo(xx,yy);else cctx.moveTo(xx,yy);});cctx.stroke(); cctx.strokeStyle='#ff9f1c';cctx.setLineDash([6,4]);cctx.beginPath();cctx.moveTo(ml,Y(P.meanDepthM));cctx.lineTo(w-mr,Y(P.meanDepthM));cctx.stroke();cctx.setLineDash([]); cctx.fillStyle='#0a1628';cctx.font='12px Times New Roman';cctx.fillText('Distancia del transecto (km)',ml,h-10);cctx.save();cctx.translate(12,h/2);cctx.rotate(-Math.PI/2);cctx.fillText('Profundidad (m)',0,0);cctx.restore();}
-  document.querySelectorAll('.tool-btn').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
+  function drawProfile(ds,zs,title='Perfil'){const w=chart.clientWidth,h=chart.clientHeight,ml=48,mr=18,mt=24,mb=38;let xmax=Math.max(...ds),ymax=Math.max(...zs,P.meanDepthM);function X(x){return ml+x/xmax*(w-ml-mr)}function Y(d){return mt+d/ymax*(h-mt-mb)} cctx.strokeStyle='#d5e3f0'; for(let i=0;i<4;i++){let y=mt+i*(h-mt-mb)/3;cctx.beginPath();cctx.moveTo(ml,y);cctx.lineTo(w-mr,y);cctx.stroke();} cctx.fillStyle='#0a1628'; cctx.font='12px Times New Roman'; cctx.fillText(title,ml,14); cctx.beginPath(); ds.forEach((x,i)=>{let xx=X(x),yy=Y(zs[i]); if(i)cctx.lineTo(xx,yy);else cctx.moveTo(xx,yy);}); cctx.lineTo(X(ds[ds.length-1]),mt); cctx.lineTo(X(ds[0]),mt); cctx.closePath(); cctx.fillStyle='#d8efff';cctx.fill(); cctx.strokeStyle='#083b7a';cctx.lineWidth=2.2;cctx.beginPath();ds.forEach((x,i)=>{let xx=X(x),yy=Y(zs[i]); if(i)cctx.lineTo(xx,yy);else cctx.moveTo(xx,yy);});cctx.stroke(); cctx.strokeStyle='#ff9f1c';cctx.setLineDash([6,4]);cctx.beginPath();cctx.moveTo(ml,Y(P.meanDepthM));cctx.lineTo(w-mr,Y(P.meanDepthM));cctx.stroke();cctx.setLineDash([]); cctx.fillStyle='#0a1628';cctx.font='12px Times New Roman';cctx.fillText('Distancia del transecto (km)',ml,h-10);cctx.save();cctx.translate(12,h/2);cctx.rotate(-Math.PI/2);cctx.fillText('Profundidad (m)',0,0);cctx.restore();}
+  const modeSelect=document.getElementById('modeSelect');
+  modeSelect.addEventListener('change',e=>setMode(e.target.value));
+  document.querySelectorAll('.profile-tab').forEach(b=>b.addEventListener('click',()=>{selectedProfile=b.dataset.profile; document.querySelectorAll('.profile-tab').forEach(x=>x.classList.toggle('active',x===b)); updatePanel(); render(); drawChart();}));
   dropSlider.max=Math.round(P.maxDepthM); dropSlider.addEventListener('input',e=>{drop=Number(e.target.value); updateMetrics(); updatePanel(); render(); drawChart();});
   document.querySelectorAll('[data-drop]').forEach(b=>b.addEventListener('click',()=>{drop=Math.min(P.maxDepthM,Number(b.dataset.drop)); dropSlider.value=Math.round(drop); updateMetrics(); updatePanel(); render(); drawChart();}));
-  canvas.addEventListener('click',e=>{if(mode!=='transecto')return; const r=canvas.getBoundingClientRect(); const [x,y]=invPx(e.clientX-r.left,e.clientY-r.top); if(x<0||y<0||x>=W||y>=H||!Number.isFinite(depthAt(x,y)))return; if(!p1||p2){p1={x,y};p2=null;profile=null;} else {p2={x,y};} render(); drawChart();});
-  window.addEventListener('resize',resize); makeBase(); updateMetrics(); updatePanel(); resize();
+  window.addEventListener('resize',resize); makeBase(); updateMetrics(); updatePanel(); resize(); setMode('espejo');
 })();
 </script>
 </body>
