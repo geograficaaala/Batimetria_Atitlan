@@ -723,17 +723,18 @@
 
 
 
+
   /* ==========================================================
      Simulación profesional: procesamiento batimétrico
      ========================================================== */
   .lab-process{
-    margin:1.8rem 0 2.6rem;
-    border:1px solid rgba(142,197,232,0.28);
+    margin:2rem 0 2.8rem;
+    border:1px solid rgba(142,197,232,0.30);
     background:
-      radial-gradient(circle at 76% 8%,rgba(93,163,217,0.10),transparent 34%),
-      linear-gradient(180deg,rgba(16,35,61,0.82),rgba(8,19,35,0.88));
-    box-shadow:0 24px 70px rgba(0,0,0,0.28);
-    padding:1rem;
+      radial-gradient(circle at 78% 8%,rgba(93,163,217,0.12),transparent 33%),
+      linear-gradient(180deg,rgba(15,34,59,0.90),rgba(7,18,33,0.93));
+    box-shadow:0 26px 70px rgba(0,0,0,0.30);
+    padding:1.1rem;
   }
 
   .lab-toolbar{
@@ -744,14 +745,14 @@
     margin-bottom:1rem;
   }
 
-  .lab-tabs{display:flex;gap:0.6rem;flex-wrap:wrap;}
+  .lab-tabs{display:flex;gap:0.65rem;flex-wrap:wrap;}
   .lab-tab,.lab-btn{
     font-family:'Times New Roman',Times,serif;
-    font-size:11.4pt;
+    font-size:11.5pt;
     color:var(--gris-texto);
     background:rgba(240,244,248,0.055);
     border:1px solid rgba(142,197,232,0.30);
-    padding:0.62rem 0.86rem;
+    padding:0.66rem 0.92rem;
     cursor:pointer;
     transition:background 0.2s,color 0.2s,border-color 0.2s,transform 0.2s;
   }
@@ -763,25 +764,25 @@
 
   .lab-workspace{
     display:grid;
-    grid-template-columns:minmax(250px,0.82fr) minmax(460px,1.55fr) minmax(260px,0.85fr);
-    gap:0.9rem;
-    min-height:620px;
+    grid-template-columns:minmax(300px,0.95fr) minmax(560px,1.72fr) minmax(340px,1fr);
+    gap:0.95rem;
+    min-height:700px;
   }
 
   .lab-console,.lab-viewport,.lab-inspector{
     border:1px solid rgba(142,197,232,0.22);
-    background:rgba(8,18,33,0.72);
+    background:rgba(8,18,33,0.76);
     min-width:0;
   }
 
   .lab-window-bar{
-    height:34px;
+    height:36px;
     border-bottom:1px solid rgba(142,197,232,0.18);
     background:linear-gradient(180deg,rgba(240,244,248,0.07),rgba(240,244,248,0.025));
     display:flex;
     align-items:center;
     gap:0.42rem;
-    padding:0 0.75rem;
+    padding:0 0.78rem;
     color:var(--gris-texto);
     font-size:10.5pt;
   }
@@ -791,87 +792,93 @@
   .lab-window-bar strong{margin-left:0.35rem;font-weight:normal;color:var(--blanco);}
 
   .lab-console-content{
-    padding:0.8rem;
-    height:calc(100% - 34px);
-    overflow:hidden;
+    padding:0.9rem;
+    height:calc(100% - 36px);
+    overflow:auto;
   }
 
-  .software-tree{font-size:10.8pt;color:var(--gris-texto);line-height:1.35;}
-  .software-tree h4,.code-card h4{font-size:11.5pt;color:var(--acento-claro);font-style:italic;font-weight:normal;margin:0 0 0.5rem;}
-  .tree-item{padding:0.28rem 0;border-bottom:1px solid rgba(142,197,232,0.10);}
-  .tree-item.active{color:var(--blanco);background:rgba(93,163,217,0.10);padding-left:0.35rem;border-left:2px solid var(--acento-claro);}
+  .software-tree{font-size:11.05pt;color:var(--gris-texto);line-height:1.4;}
+  .software-tree h4,.code-card h4{font-size:11.8pt;color:var(--acento-claro);font-style:italic;font-weight:normal;margin:0 0 0.55rem;}
+  .tree-item{padding:0.32rem 0;border-bottom:1px solid rgba(142,197,232,0.10);}
+  .tree-item.active{color:var(--blanco);background:rgba(93,163,217,0.10);padding-left:0.42rem;border-left:2px solid var(--acento-claro);}
+  .mini-note{margin-top:0.7rem;font-size:10.4pt;color:var(--gris-texto);line-height:1.35;}
 
-  .xyz-table{width:100%;border-collapse:collapse;margin-top:0.65rem;font-size:9.6pt;color:var(--gris-texto);font-family:Consolas,'Courier New',monospace;}
-  .xyz-table th,.xyz-table td{border-bottom:1px solid rgba(142,197,232,0.13);padding:0.22rem;text-align:right;}
+  .xyz-table{width:100%;border-collapse:collapse;margin-top:0.75rem;font-size:9.8pt;color:var(--gris-texto);font-family:Consolas,'Courier New',monospace;}
+  .xyz-table th,.xyz-table td{border-bottom:1px solid rgba(142,197,232,0.13);padding:0.24rem;text-align:right;}
   .xyz-table th{color:var(--acento-claro);font-weight:normal;}
 
   .surfer-log,.terminal-log{
-    margin-top:0.7rem;
-    padding:0.65rem;
+    margin-top:0.75rem;
+    padding:0.7rem;
     background:rgba(0,0,0,0.24);
     border:1px solid rgba(142,197,232,0.14);
     font-family:Consolas,'Courier New',monospace;
-    font-size:9.4pt;
+    font-size:9.55pt;
     color:#d6ecff;
-    min-height:118px;
+    min-height:132px;
     white-space:pre-wrap;
   }
 
   .code-card pre{
     margin:0;
-    padding:0.65rem;
+    padding:0.72rem;
     background:rgba(0,0,0,0.28);
     border:1px solid rgba(142,197,232,0.14);
     overflow:hidden;
     font-family:Consolas,'Courier New',monospace;
-    font-size:9.45pt;
-    line-height:1.36;
+    font-size:9.65pt;
+    line-height:1.40;
     color:#d8e9fa;
   }
-  .code-line{display:block;padding:0.04rem 0.25rem;border-left:2px solid transparent;}
+  .code-line{display:block;padding:0.05rem 0.25rem;border-left:2px solid transparent;}
   .code-line.hot{background:rgba(93,163,217,0.18);border-left-color:var(--acento-claro);color:#ffffff;}
-  .code-line.dim{opacity:0.58;}
+  .code-line.dim{opacity:0.55;}
   .code-comment{color:#8ec5e8;opacity:0.85;}
   .code-key{color:#f8d866;}.code-fn{color:#8ee8d2;}.code-str{color:#ffb4a8;}
 
-  .lab-viewport{position:relative;overflow:hidden;background:linear-gradient(180deg,#0e213b,#071427);}
+  .lab-viewport{position:relative;overflow:hidden;background:linear-gradient(180deg,#102845,#071326);}
   .lab-raster-head{
-    height:34px;
+    height:36px;
     display:flex;
     justify-content:space-between;
     gap:1rem;
     align-items:center;
-    padding:0 0.8rem;
+    padding:0 0.85rem;
     border-bottom:1px solid rgba(142,197,232,0.18);
     color:var(--gris-texto);
-    font-size:10.2pt;
+    font-size:10.25pt;
   }
   #labStageBadge{color:var(--acento-claro);font-style:italic;}
-  #labCanvas{width:100%;height:calc(100% - 34px);display:block;min-height:586px;}
+  #labCanvas{width:100%;height:calc(100% - 36px);display:block;min-height:662px;}
 
-  .lab-inspector{padding:0.9rem;}
-  .lab-inspector h3{color:var(--acento-claro);font-size:14pt;font-style:italic;font-weight:normal;margin:0 0 0.55rem;}
-  .lab-inspector p{font-size:11.8pt;line-height:1.35;text-align:justify;color:var(--blanco);}
-  .lab-metrics{display:grid;grid-template-columns:1fr;gap:0.48rem;margin:0.85rem 0;}
-  .lab-metric{border-bottom:1px solid rgba(142,197,232,0.18);padding-bottom:0.36rem;}
-  .lab-metric span{display:block;color:var(--gris-texto);font-size:9.8pt;}
-  .lab-metric strong{display:block;color:var(--blanco);font-size:11.2pt;font-weight:normal;}
-  .lab-progress{height:7px;border:1px solid rgba(142,197,232,0.25);background:rgba(240,244,248,0.04);margin:0.85rem 0;overflow:hidden;}
+  .lab-inspector{padding:0.95rem;display:flex;flex-direction:column;}
+  .lab-inspector h3{color:var(--acento-claro);font-size:14.4pt;font-style:italic;font-weight:normal;margin:0 0 0.55rem;}
+  .lab-inspector p{font-size:12.1pt;line-height:1.38;text-align:justify;color:var(--blanco);}
+  .lab-details{margin:0.8rem 0 0.9rem;display:grid;gap:0.45rem;}
+  .lab-detail{padding:0.48rem 0.6rem;border:1px solid rgba(142,197,232,0.14);background:rgba(240,244,248,0.035);font-size:10.75pt;color:var(--gris-texto);line-height:1.33;}
+  .lab-detail strong{color:var(--acento-claro);font-weight:normal;}
+
+  .lab-metrics{display:grid;grid-template-columns:1fr;gap:0.52rem;margin:0.25rem 0 0.85rem;}
+  .lab-metric{border-bottom:1px solid rgba(142,197,232,0.18);padding-bottom:0.40rem;}
+  .lab-metric span{display:block;color:var(--gris-texto);font-size:9.9pt;}
+  .lab-metric strong{display:block;color:var(--blanco);font-size:11.25pt;font-weight:normal;}
+  .lab-progress{height:8px;border:1px solid rgba(142,197,232,0.25);background:rgba(240,244,248,0.04);margin:0.2rem 0 0.9rem;overflow:hidden;}
   #labProgressBar{height:100%;width:0%;background:linear-gradient(90deg,var(--acento),var(--acento-claro));transition:width 0.22s;}
-  .lab-timeline{display:grid;grid-template-columns:1fr;gap:0.38rem;margin-top:0.65rem;}
-  .lab-step-chip{font-size:9.8pt;color:var(--gris-texto);border:1px solid rgba(142,197,232,0.16);padding:0.36rem 0.45rem;background:rgba(240,244,248,0.035);}
+  .lab-timeline{display:grid;grid-template-columns:1fr;gap:0.40rem;margin-top:auto;}
+  .lab-step-chip{font-size:10pt;color:var(--gris-texto);border:1px solid rgba(142,197,232,0.16);padding:0.42rem 0.48rem;background:rgba(240,244,248,0.035);}
   .lab-step-chip.active{color:var(--blanco);border-color:rgba(142,197,232,0.55);background:rgba(93,163,217,0.13);}
 
-  @media(max-width:1120px){
+  @media(max-width:1180px){
     .lab-workspace{grid-template-columns:1fr;}
-    #labCanvas{height:560px;min-height:560px;}
+    #labCanvas{height:620px;min-height:620px;}
     .lab-console-content{min-height:300px;}
   }
   @media(max-width:640px){
     .lab-toolbar{display:block;}
     .lab-actions{justify-content:flex-start;margin-top:0.6rem;}
-    #labCanvas{height:420px;min-height:420px;}
+    #labCanvas{height:460px;min-height:460px;}
   }
+
 </style>
 </head>
 
@@ -1109,6 +1116,7 @@
   <h2>Simulación del procesamiento batimétrico</h2>
   <p>Después del levantamiento en campo, los registros de profundidad se convierten en una superficie batimétrica mediante revisión, organización de puntos, interpolación y generación de curvas. Este bloque recrea dos flujos de procesamiento: uno con software hidrográfico especializado y otro con un flujo reproducible actual en Python, usando como fuente el raster batimétrico <code>batimetria_atitlan_optimizada_repo.tif</code>.</p>
 
+  
   <section class="lab-process" aria-label="Simulación profesional de procesamiento batimétrico">
     <div class="lab-toolbar">
       <div class="lab-tabs" role="tablist">
@@ -1140,8 +1148,9 @@
 
       <aside class="lab-inspector">
         <h3 id="labStepTitle">Flujo listo</h3>
-        <p id="labStepText">Selecciona una pestaña y reproduce el flujo. La visualización usa datos derivados del GeoTIFF batimétrico optimizado.</p>
+        <p id="labStepText">Selecciona una pestaña y reproduce el flujo. La reconstrucción usa el raster batimétrico derivado del GeoTIFF para mostrar, de forma técnica y más legible, cómo se organizan los registros, se controlan y se convierten en un producto batimétrico final.</p>
 
+        <div id="labDetails" class="lab-details"></div>
         <div id="labMetrics" class="lab-metrics"></div>
 
         <div class="lab-progress">
@@ -1152,6 +1161,7 @@
       </aside>
     </div>
   </section>
+
 
   <h2>Cálculo del fetch efectivo</h2>
   <p>Para obtener el fetch efectivo —la distancia máxima sobre la cual el viento puede actuar sobre el espejo de agua y producir oleaje— se analizaron datos de dirección del viento provenientes de cinco estaciones climatológicas de AMSCLAE: tres ubicadas en la parte norte de la cuenca y dos en la parte sur. Después de obtener la orientación promedio de acción del viento, se estimó la longitud mediante planos digitalizados.</p>
@@ -1692,6 +1702,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <script>
 (function(){
   const BATHY_ASSET = {"image":"data:image/webp;base64,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","width":1000,"height":825,"contours":[{"level":-25,"paths":[[[221.2,778.0],[229.8,773.0],[237.0,757.8],[257.8,730.0],[279.2,719.0],[287.0,709.8],[316.1,688.0],[315.0,686.0],[303.0,681.3],[296.4,673.0],[294.6,666.0],[294.8,648.0],[299.0,637.2],[303.0,632.5],[309.0,629.8],[325.0,628.5],[328.7,623.0],[329.2,610.0],[325.0,606.9],[319.4,597.0],[322.7,585.0],[328.7,576.0],[315.7,556.0],[320.0,545.2],[327.0,537.2],[336.0,538.8],[346.0,530.5],[347.2,522.0],[345.7,515.0],[348.0,511.5],[355.0,512.3],[367.0,520.2],[376.0,516.2],[378.9,508.0],[376.2,497.0],[405.0,503.0],[407.7,494.0],[406.3,487.0],[409.3,484.0],[416.0,483.2],[425.0,487.1],[436.0,488.4],[447.0,482.5],[456.0,481.0],[467.0,485.9],[477.0,484.9],[485.3,491.0],[485.0,493.0],[486.0,491.4],[491.0,492.7],[499.0,491.3],[508.0,493.6],[511.4,490.0],[511.4,483.0],[515.2,477.0],[512.6,469.0],[514.0,461.3],[517.0,456.5],[524.0,451.9],[535.0,450.4],[544.0,452.1],[551.0,446.6],[570.0,446.9],[601.0,439.6],[618.0,444.2],[622.3,437.0],[627.0,438.0],[632.0,435.1],[639.0,437.0],[648.0,443.5],[655.4,439.0],[658.4,434.0],[667.0,429.6],[675.5,431.0],[683.0,436.0],[691.0,430.7],[702.0,428.8],[707.7,430.0],[720.0,447.6],[721.7,458.0],[720.6,468.0],[728.3,481.0],[748.0,480.0],[750.0,489.0],[756.0,487.5],[761.0,489.0],[762.0,501.0],[767.0,496.0],[771.0,486.1],[776.0,485.6],[788.0,479.6],[791.0,482.9],[792.1,494.0],[801.0,498.1],[812.0,498.3],[812.4,511.0],[798.7,519.0],[798.0,527.0],[802.0,528.5],[804.2,534.0],[796.7,543.0],[797.0,547.0],[799.0,549.7],[809.0,553.8],[816.0,553.1],[830.0,557.3],[837.8,565.0],[838.3,572.0],[847.0,576.2],[850.9,591.0],[847.6,602.0],[849.2,608.0],[863.0,617.2],[865.6,622.0],[862.0,632.6],[849.8,638.0],[849.1,644.0],[871.0,659.0],[882.0,647.0],[886.4,625.0],[899.2,608.0],[897.0,600.0],[899.0,599.0],[898.0,598.0],[897.0,599.8],[894.0,593.0],[883.4,582.0],[882.0,579.0],[883.2,575.0],[900.0,568.4],[911.0,565.7],[913.0,567.0],[926.7,555.0],[936.1,542.0],[931.2,525.0],[936.0,519.2],[939.3,519.0],[937.4,518.0],[940.0,515.8],[960.0,516.0],[966.0,519.2],[971.0,525.0],[986.0,524.7],[991.0,522.0],[995.0,510.2],[995.3,490.0],[993.6,482.0],[995.5,477.0],[992.3,471.0],[993.8,470.0],[992.0,470.7],[991.0,469.0],[989.6,462.0],[991.0,455.0],[998.8,445.0],[997.0,441.0],[990.0,436.3],[986.0,429.0],[986.4,413.0],[982.5,404.0],[981.3,393.0],[982.7,383.0],[978.0,370.0],[986.5,351.0],[983.5,345.0],[986.6,338.0],[986.6,323.0],[980.0,317.7],[976.0,308.6],[964.0,299.7],[948.0,296.6],[942.2,292.0],[930.0,286.8],[927.2,278.0],[915.0,275.0],[911.0,272.3],[910.3,269.0],[912.3,264.0],[909.0,260.0],[908.9,256.0],[915.3,242.0],[908.1,230.0],[904.4,200.0],[897.7,192.0],[895.0,181.0],[887.3,170.0],[872.0,161.2],[861.0,165.5],[857.1,153.0],[850.0,141.3],[848.4,127.0],[843.0,117.5],[831.0,106.3],[819.0,104.6],[812.0,97.5],[806.0,95.8],[776.0,97.0],[754.0,87.9],[747.6,83.0],[725.7,55.0],[721.0,46.4],[716.3,32.0],[719.2,20.0],[719.0,14.4],[717.0,12.4],[709.0,9.0],[703.0,9.0],[694.0,2.3],[686.0,3.8],[686.0,1.1],[683.1,4.0],[684.3,5.0],[679.0,8.0],[680.4,9.0],[679.0,10.5],[677.0,10.0],[678.5,11.0],[672.0,21.7],[663.0,29.0],[658.0,38.0],[645.8,48.0],[632.0,53.9],[626.0,54.1],[605.0,48.7],[588.0,38.4],[578.0,36.3],[557.0,37.9],[551.6,42.0],[552.0,47.0],[548.0,53.2],[537.0,57.4],[529.0,56.4],[513.0,42.5],[507.9,42.0],[495.0,49.8],[489.0,51.2],[473.0,50.8],[461.9,47.0],[453.6,52.0],[448.8,60.0],[435.3,71.0],[404.0,71.5],[386.0,74.3],[380.0,80.5],[378.0,80.0],[379.3,81.0],[370.0,93.0],[361.0,99.5],[353.0,103.0],[340.0,103.1],[334.0,105.0],[328.0,111.0],[325.0,120.1],[317.0,119.5],[302.0,107.2],[296.0,108.8],[287.0,102.2],[283.0,102.7],[263.0,118.7],[259.5,129.0],[260.5,143.0],[259.0,147.8],[221.0,159.1],[190.0,156.3],[174.0,167.6],[165.0,170.3],[154.0,166.7],[144.0,151.3],[138.0,150.6],[128.4,158.0],[124.0,171.6],[118.0,182.1],[100.3,194.0],[83.1,215.0],[69.1,220.0],[56.0,219.4],[49.0,226.3],[39.0,228.4],[34.4,232.0],[29.0,244.5],[20.4,256.0],[18.5,263.0],[20.7,269.0],[36.3,291.0],[42.0,294.4],[64.0,299.5],[70.0,303.8],[88.0,303.7],[98.0,297.6],[105.0,296.8],[114.0,297.9],[123.0,303.6],[127.2,310.0],[129.0,327.6],[139.3,338.0],[155.0,363.2],[166.0,368.8],[183.0,389.0],[196.0,399.3],[204.0,403.0],[215.0,404.2],[226.0,411.4],[236.0,412.4],[245.0,419.6],[254.0,433.1],[270.7,452.0],[271.2,471.0],[277.3,488.0],[295.1,508.0],[292.7,520.0],[283.7,535.0],[283.3,540.0],[289.2,549.0],[302.0,557.7],[309.1,575.0],[306.2,581.0],[299.0,587.7],[291.0,592.0],[284.2,600.0],[279.6,621.0],[283.9,635.0],[283.5,640.0],[275.0,649.3],[263.0,650.7],[262.0,649.0],[256.0,652.9],[253.0,657.9],[251.0,670.0],[248.0,674.6],[230.6,681.0],[223.2,686.0],[219.0,694.5],[217.0,694.0],[218.9,695.0],[215.0,709.0],[199.3,728.0],[203.8,762.0],[213.7,776.0],[221.2,778.0]]]},{"level":-50,"paths":[[[871.0,648.0],[881.0,640.1],[885.4,626.0],[887.0,622.8],[888.9,623.0],[887.3,622.0],[896.4,606.0],[895.1,598.0],[896.9,597.0],[895.0,597.7],[892.6,594.0],[893.9,593.0],[892.0,593.3],[891.9,591.0],[890.0,591.2],[879.3,580.0],[878.1,577.0],[879.3,574.0],[888.0,568.1],[917.0,563.0],[926.0,555.5],[934.4,544.0],[930.0,529.6],[930.3,525.0],[941.0,513.7],[961.0,514.6],[971.0,522.1],[976.0,523.2],[986.5,520.0],[991.1,513.0],[993.3,501.0],[991.6,486.0],[993.5,477.0],[989.3,469.0],[988.3,462.0],[990.5,453.0],[995.7,445.0],[988.6,437.0],[984.6,428.0],[985.5,413.0],[979.6,395.0],[980.3,383.0],[977.0,371.0],[977.9,364.0],[983.2,352.0],[981.9,344.0],[984.8,326.0],[974.0,311.6],[961.5,301.0],[948.0,299.5],[931.0,289.6],[922.0,278.9],[910.0,273.0],[909.8,263.0],[907.5,257.0],[912.5,243.0],[905.8,231.0],[905.6,216.0],[902.3,202.0],[895.2,193.0],[891.7,181.0],[883.7,171.0],[872.0,164.2],[860.0,168.5],[857.0,154.9],[848.3,141.0],[844.0,120.9],[830.0,108.6],[819.0,107.5],[808.6,99.0],[776.0,99.7],[764.0,95.5],[748.2,87.0],[719.0,49.9],[713.6,34.0],[716.2,21.0],[710.0,14.5],[692.0,7.4],[688.0,7.4],[679.0,13.9],[665.2,30.0],[656.8,45.0],[646.2,52.0],[633.0,56.6],[625.0,56.9],[603.0,52.8],[582.0,41.3],[573.0,39.2],[558.8,40.0],[548.0,54.1],[538.0,56.1],[537.0,57.7],[529.0,56.7],[522.0,49.1],[514.0,45.6],[506.0,46.6],[497.0,53.4],[492.0,54.7],[478.0,54.7],[466.0,50.4],[457.6,54.0],[451.0,61.5],[438.0,71.2],[387.0,77.3],[371.9,93.0],[357.0,103.0],[339.7,105.0],[334.0,107.5],[326.0,121.4],[321.0,120.9],[320.0,119.1],[319.0,120.8],[317.0,119.9],[312.0,116.0],[312.0,114.1],[311.0,115.1],[305.0,111.5],[296.0,112.0],[287.0,106.2],[283.0,106.5],[270.5,116.0],[263.2,125.0],[261.5,133.0],[263.0,150.9],[254.0,150.5],[222.0,160.9],[193.0,159.5],[178.8,171.0],[167.0,174.0],[162.3,173.0],[154.0,167.4],[145.0,156.4],[138.0,156.6],[130.8,162.0],[120.0,186.1],[103.9,197.0],[87.5,218.0],[75.7,224.0],[61.0,226.1],[41.0,236.8],[33.7,245.0],[30.8,262.0],[39.2,279.0],[44.0,283.5],[58.0,288.5],[78.0,300.6],[87.0,300.1],[96.0,294.3],[105.0,292.6],[126.0,283.8],[139.0,283.0],[145.0,286.7],[151.1,307.0],[149.1,312.0],[142.0,318.1],[140.8,325.0],[153.1,339.0],[159.1,353.0],[172.0,365.9],[180.0,379.0],[197.0,392.9],[206.0,397.7],[216.0,398.3],[225.0,402.0],[234.0,403.1],[244.0,409.9],[256.0,428.1],[268.6,443.0],[276.6,464.0],[281.0,484.2],[298.4,512.0],[297.6,521.0],[291.6,536.0],[291.7,544.0],[305.0,555.1],[309.0,553.5],[326.0,532.6],[337.0,532.1],[341.7,529.0],[343.7,524.0],[344.4,509.0],[352.8,498.0],[361.0,494.2],[387.7,491.0],[391.9,487.0],[397.0,477.0],[405.0,471.0],[409.0,472.0],[412.0,476.0],[422.0,477.3],[427.0,476.6],[439.0,470.3],[442.0,472.0],[442.8,476.0],[449.0,478.0],[457.0,478.5],[468.0,475.5],[475.0,479.6],[484.8,489.0],[496.0,490.7],[505.8,488.0],[509.0,484.7],[512.4,477.0],[511.7,466.0],[513.3,460.0],[519.0,453.3],[525.0,450.4],[542.0,448.7],[568.0,438.4],[586.0,440.4],[611.0,438.1],[629.0,428.6],[649.0,433.1],[666.0,428.1],[682.0,431.1],[707.0,428.1],[713.6,433.0],[721.7,446.0],[726.6,459.0],[735.0,465.9],[741.0,474.8],[765.0,473.9],[778.0,479.1],[789.0,476.3],[795.4,491.0],[800.0,495.4],[808.2,487.0],[814.9,483.0],[820.4,483.0],[825.0,486.8],[831.0,505.2],[819.0,520.0],[808.0,527.0],[803.1,546.0],[810.0,551.0],[831.0,555.6],[847.7,575.0],[851.7,588.0],[852.4,605.0],[863.2,614.0],[866.7,620.0],[865.1,629.0],[859.1,638.0],[866.0,645.9],[871.0,648.0]],[[226.0,748.0],[254.0,718.5],[260.0,714.3],[274.2,709.0],[284.0,694.3],[299.0,687.0],[298.9,681.0],[287.9,667.0],[288.3,654.0],[286.0,650.0],[278.6,655.0],[264.8,657.0],[262.9,659.0],[261.7,669.0],[250.6,683.0],[244.0,686.5],[234.7,688.0],[227.0,693.9],[223.4,710.0],[215.0,730.0],[216.0,745.0],[226.0,748.0]]]},{"level":-75,"paths":[[[873.0,643.0],[880.0,634.8],[893.3,604.0],[891.0,596.4],[875.9,581.0],[874.8,576.0],[877.0,571.3],[890.0,559.5],[902.0,564.1],[921.1,558.0],[930.8,545.0],[928.7,525.0],[940.0,512.1],[962.0,512.8],[977.0,520.0],[984.0,517.3],[988.0,511.0],[990.0,500.0],[990.1,477.0],[986.5,462.0],[991.9,445.0],[981.2,426.0],[982.1,411.0],[977.3,395.0],[978.0,383.0],[975.9,370.0],[981.0,354.0],[979.1,344.0],[980.1,327.0],[975.0,316.9],[969.0,310.5],[961.0,306.0],[949.0,303.5],[930.2,293.0],[922.0,282.0],[908.3,274.0],[905.7,254.0],[909.0,243.0],[901.2,231.0],[902.3,217.0],[899.3,202.0],[876.1,170.0],[870.0,168.0],[862.0,173.6],[859.0,172.9],[853.6,154.0],[846.2,141.0],[840.8,122.0],[831.0,113.3],[818.6,112.0],[806.0,103.5],[774.0,103.8],[746.4,90.0],[713.5,50.0],[709.5,35.0],[710.2,22.0],[707.1,19.0],[691.0,12.8],[684.0,14.0],[668.0,31.2],[660.0,49.0],[650.0,56.0],[639.0,59.9],[628.0,61.4],[606.0,59.1],[580.0,45.4],[564.0,43.2],[558.0,44.5],[550.0,55.5],[544.0,58.1],[528.0,56.7],[526.1,56.0],[527.0,54.4],[526.0,56.0],[518.0,49.3],[514.0,48.6],[507.0,49.7],[499.0,56.3],[494.0,58.1],[479.0,59.0],[465.0,54.5],[438.0,72.3],[425.4,72.0],[406.0,79.0],[387.0,81.2],[377.6,91.0],[357.8,105.0],[337.0,109.7],[326.0,124.0],[315.0,120.4],[306.0,114.8],[295.0,114.3],[285.0,110.0],[271.0,121.9],[265.5,129.0],[264.1,137.0],[265.7,152.0],[255.0,152.5],[224.0,162.7],[195.0,161.7],[182.0,173.0],[169.0,177.1],[160.8,175.0],[151.0,168.0],[145.2,160.0],[140.0,159.5],[133.2,165.0],[130.0,175.7],[123.0,188.0],[107.0,199.3],[91.1,220.0],[80.0,226.2],[62.0,230.4],[44.0,239.3],[37.7,246.0],[36.4,256.0],[43.0,276.7],[48.0,280.2],[59.0,283.1],[82.0,297.6],[107.0,287.5],[124.1,274.0],[135.0,270.8],[144.0,265.0],[152.0,264.2],[159.8,269.0],[161.1,276.0],[153.7,291.0],[156.9,304.0],[156.9,312.0],[154.0,316.9],[146.0,321.1],[145.3,326.0],[157.1,335.0],[166.5,352.0],[176.0,360.3],[180.9,373.0],[185.2,378.0],[204.0,391.2],[237.0,396.8],[249.4,408.0],[260.0,426.4],[272.0,440.4],[282.1,461.0],[283.6,476.0],[289.8,492.0],[303.8,514.0],[304.5,521.0],[299.3,541.0],[300.7,546.0],[304.0,548.8],[307.0,548.5],[317.0,539.7],[325.0,528.7],[335.0,527.6],[339.0,523.6],[339.7,518.0],[338.0,512.3],[324.1,498.0],[326.0,492.1],[337.0,492.6],[345.0,485.7],[352.0,483.7],[370.0,489.2],[378.0,488.5],[389.6,482.0],[407.0,459.2],[410.1,460.0],[420.0,469.8],[428.0,471.2],[433.0,467.6],[439.0,457.8],[451.9,446.0],[458.0,444.1],[465.1,452.0],[462.5,466.0],[478.1,476.0],[487.0,487.1],[495.0,488.3],[503.0,485.0],[509.0,477.8],[509.9,462.0],[516.0,453.5],[525.0,448.2],[541.1,446.0],[557.3,435.0],[553.4,427.0],[540.7,415.0],[538.9,408.0],[540.3,396.0],[535.0,391.3],[533.1,386.0],[537.1,378.0],[551.0,372.3],[556.7,375.0],[554.5,382.0],[556.0,385.5],[560.0,386.9],[568.5,385.0],[572.7,390.0],[579.5,410.0],[574.8,426.0],[580.7,435.0],[588.0,436.4],[608.5,435.0],[628.0,423.6],[649.0,429.1],[662.0,426.0],[668.0,422.5],[681.0,428.2],[704.0,423.6],[711.0,426.6],[715.3,431.0],[724.1,444.0],[729.0,455.8],[739.0,460.5],[747.0,469.4],[753.0,470.3],[767.0,467.3],[779.0,473.4],[789.0,472.0],[800.0,491.3],[807.7,484.0],[815.0,480.2],[821.0,479.7],[826.0,482.5],[832.6,494.0],[833.8,506.0],[822.0,522.4],[812.0,531.3],[808.6,545.0],[812.1,548.0],[835.0,554.9],[851.0,573.6],[854.2,582.0],[856.3,604.0],[866.5,614.0],[868.9,619.0],[864.6,638.0],[869.0,642.9],[873.0,643.0]]]},{"level":-100,"paths":[[[880.4,625.0],[887.8,609.0],[888.4,601.0],[886.2,596.0],[875.0,585.3],[871.5,577.0],[873.7,571.0],[883.0,558.9],[890.0,554.7],[898.0,560.4],[903.0,561.3],[922.0,554.1],[927.7,545.0],[927.0,525.0],[940.0,509.9],[962.0,510.8],[978.0,516.1],[982.0,515.0],[985.2,510.0],[987.4,499.0],[987.4,477.0],[984.5,461.0],[988.8,445.0],[978.1,425.0],[979.4,411.0],[974.9,395.0],[975.7,383.0],[973.9,367.0],[978.7,354.0],[976.0,344.0],[977.3,333.0],[965.3,316.0],[925.2,294.0],[919.5,283.0],[906.4,275.0],[902.8,255.0],[906.3,242.0],[896.6,231.0],[899.1,219.0],[896.5,202.0],[872.0,172.5],[869.0,172.4],[862.0,177.3],[858.0,175.7],[840.4,129.0],[835.0,120.8],[830.0,116.9],[817.0,115.2],[801.0,107.3],[781.0,108.5],[772.0,107.3],[741.9,93.0],[703.0,44.2],[701.6,40.0],[702.7,30.0],[697.2,24.0],[686.0,22.9],[679.0,25.3],[662.8,54.0],[649.0,62.9],[641.0,65.6],[628.0,67.1],[607.0,64.9],[591.0,58.5],[578.0,49.8],[563.0,47.2],[558.0,48.4],[551.0,57.9],[545.0,60.7],[529.0,59.2],[517.0,52.7],[511.0,52.1],[495.6,62.0],[479.0,63.0],[466.0,58.9],[441.7,73.0],[426.0,73.5],[405.0,83.4],[389.0,84.7],[358.0,107.4],[337.6,113.0],[326.6,126.0],[305.0,117.7],[286.0,114.8],[273.3,126.0],[268.3,133.0],[267.3,140.0],[271.2,150.0],[268.8,153.0],[255.0,154.4],[226.0,164.7],[199.0,163.8],[183.0,175.8],[169.0,180.0],[159.0,177.5],[145.0,165.9],[143.0,166.1],[135.0,174.8],[126.0,191.1],[110.9,202.0],[102.5,216.0],[93.0,226.0],[86.0,231.0],[63.4,240.0],[57.3,246.0],[53.3,257.0],[55.3,265.0],[89.0,285.7],[105.0,284.4],[125.0,269.5],[143.0,261.5],[153.0,260.5],[160.0,264.6],[167.2,273.0],[167.7,276.0],[161.4,294.0],[159.3,316.0],[153.1,324.0],[161.3,331.0],[169.0,344.0],[179.3,355.0],[188.0,373.1],[207.0,385.7],[236.9,390.0],[255.2,405.0],[261.4,421.0],[275.5,436.0],[289.4,463.0],[290.1,479.0],[297.0,496.4],[310.5,517.0],[311.5,529.0],[315.0,534.9],[318.0,533.2],[324.0,523.6],[334.2,516.0],[325.0,508.7],[319.3,498.0],[320.7,491.0],[329.0,479.4],[344.0,472.3],[368.0,484.9],[375.0,485.9],[380.0,484.5],[389.0,479.2],[401.3,464.0],[408.0,452.3],[415.0,448.0],[419.0,450.4],[422.4,464.0],[427.0,467.0],[430.0,464.5],[435.0,454.3],[448.0,443.2],[454.0,441.3],[460.0,442.2],[464.1,445.0],[469.2,454.0],[469.2,464.0],[470.9,468.0],[481.3,475.0],[489.0,484.1],[495.0,485.1],[501.0,482.9],[506.1,477.0],[506.5,465.0],[514.0,452.6],[523.0,446.8],[540.0,442.6],[548.4,435.0],[545.5,426.0],[535.9,414.0],[527.4,391.0],[530.0,378.6],[533.1,374.0],[546.0,367.5],[555.0,367.0],[591.2,384.0],[606.1,407.0],[610.0,408.6],[619.0,405.0],[621.0,414.1],[625.0,417.7],[649.0,425.1],[652.9,423.0],[660.0,412.9],[670.0,411.1],[677.0,413.2],[680.5,421.0],[687.0,422.2],[693.5,419.0],[699.0,410.1],[702.9,410.0],[712.0,415.1],[718.6,426.0],[728.9,433.0],[729.0,446.6],[732.2,446.0],[734.0,442.0],[740.0,442.7],[748.0,439.4],[751.0,440.7],[752.3,446.0],[745.5,456.0],[749.0,464.4],[768.0,460.6],[789.0,468.1],[793.9,473.0],[800.0,486.8],[806.0,481.9],[818.0,476.5],[827.8,480.0],[833.7,486.0],[836.5,493.0],[837.2,503.0],[835.0,514.5],[838.0,525.0],[834.0,527.9],[818.0,531.4],[814.6,537.0],[814.8,543.0],[817.2,546.0],[833.0,550.8],[847.2,560.0],[856.7,576.0],[859.2,595.0],[862.7,606.0],[878.0,625.0],[880.4,625.0]]]},{"level":-150,"paths":[[[902.9,556.0],[921.0,546.5],[923.2,541.0],[924.7,522.0],[939.0,506.3],[942.0,505.0],[958.0,506.7],[979.0,505.1],[981.9,501.0],[980.8,464.0],[982.4,447.0],[972.7,425.0],[973.9,410.0],[970.2,394.0],[969.8,365.0],[973.8,354.0],[969.6,343.0],[970.4,333.0],[964.0,323.6],[952.0,312.8],[940.0,308.5],[931.0,302.4],[922.0,302.5],[919.0,300.6],[910.0,284.1],[900.6,272.0],[897.9,254.0],[900.5,242.0],[888.8,232.0],[892.6,218.0],[892.0,204.4],[873.0,184.6],[861.0,184.0],[854.7,178.0],[835.5,133.0],[831.0,126.3],[824.0,123.1],[809.0,122.1],[796.0,116.6],[772.0,116.0],[741.0,102.6],[730.1,94.0],[719.3,81.0],[706.7,70.0],[700.0,57.9],[690.0,47.2],[686.0,48.5],[658.0,74.5],[641.0,80.4],[620.0,80.1],[599.0,76.5],[560.0,56.1],[547.0,64.8],[512.0,61.6],[496.0,70.6],[480.0,71.0],[469.0,68.9],[458.0,74.8],[424.0,77.9],[415.6,82.0],[407.0,89.6],[387.0,94.9],[357.0,112.9],[340.0,117.6],[328.0,130.0],[316.0,126.9],[305.0,134.7],[301.4,132.0],[297.0,123.1],[294.4,123.0],[276.1,139.0],[275.4,143.0],[278.6,151.0],[273.2,155.0],[254.0,158.8],[229.0,169.4],[209.0,170.8],[189.0,186.3],[178.0,190.8],[163.0,193.1],[154.0,191.7],[146.0,187.7],[142.0,188.7],[130.0,201.0],[130.0,213.0],[125.0,222.2],[122.1,233.0],[110.0,248.0],[110.8,254.0],[122.0,259.6],[137.0,255.3],[151.0,254.9],[165.0,260.5],[174.0,260.2],[177.3,262.0],[184.1,283.0],[176.5,293.0],[170.8,310.0],[178.4,326.0],[184.0,344.0],[192.3,353.0],[197.4,363.0],[202.0,366.8],[214.0,372.3],[228.0,371.2],[247.0,378.9],[254.0,387.6],[268.0,399.6],[269.8,404.0],[268.7,414.0],[270.0,417.7],[277.9,426.0],[289.7,434.0],[295.0,447.8],[306.0,459.0],[316.0,440.8],[320.0,440.4],[328.0,444.4],[338.0,438.8],[343.9,426.0],[347.0,423.1],[365.0,422.9],[369.0,426.9],[366.4,441.0],[372.4,455.0],[363.2,466.0],[362.5,473.0],[369.0,478.6],[380.1,479.0],[386.3,475.0],[389.0,465.6],[398.6,460.0],[406.0,446.0],[405.6,442.0],[396.0,426.0],[398.4,421.0],[407.0,414.9],[425.0,419.8],[437.0,417.2],[446.7,424.0],[452.4,435.0],[466.2,437.0],[471.0,439.9],[477.6,452.0],[476.1,465.0],[497.0,476.6],[499.7,474.0],[501.4,463.0],[506.3,455.0],[517.0,445.0],[533.4,438.0],[537.0,434.0],[534.6,424.0],[515.0,393.0],[515.8,387.0],[525.0,369.5],[538.0,358.5],[543.0,357.0],[569.0,361.8],[581.0,367.7],[607.0,366.2],[618.0,371.0],[633.3,372.0],[634.5,375.0],[631.2,384.0],[632.3,389.0],[641.0,400.2],[646.0,402.6],[675.0,400.0],[691.0,392.5],[701.0,394.8],[719.0,405.1],[731.0,401.2],[748.0,400.4],[749.4,405.0],[744.3,413.0],[744.8,417.0],[750.0,420.4],[761.0,421.7],[769.0,429.0],[779.0,431.7],[779.0,437.7],[769.0,440.4],[767.4,446.0],[771.0,448.7],[779.0,448.4],[782.5,450.0],[791.0,457.7],[799.0,471.5],[804.0,474.4],[812.0,473.0],[823.4,465.0],[823.8,451.0],[830.7,437.0],[850.0,423.3],[860.0,412.4],[865.0,411.4],[869.2,413.0],[871.0,424.8],[874.0,427.8],[888.0,431.6],[901.0,430.1],[917.7,443.0],[919.3,449.0],[917.6,456.0],[911.0,469.0],[902.7,476.0],[903.5,488.0],[901.0,495.1],[880.0,501.6],[872.0,502.3],[869.0,504.7],[866.3,518.0],[856.5,527.0],[858.7,536.0],[853.9,546.0],[860.0,549.4],[868.0,547.3],[880.0,550.7],[890.0,549.4],[900.0,555.9],[902.9,556.0]]]},{"level":-200,"paths":[[[906.5,548.0],[911.0,545.6],[916.0,539.0],[917.8,527.0],[924.0,515.0],[936.7,503.0],[945.0,499.5],[966.0,500.0],[972.5,497.0],[975.5,493.0],[975.8,456.0],[973.8,437.0],[966.9,423.0],[968.5,411.0],[966.3,394.0],[968.2,354.0],[962.5,334.0],[957.0,326.6],[933.0,308.2],[920.0,306.5],[907.0,291.6],[897.0,273.6],[893.6,255.0],[894.4,244.0],[882.4,232.0],[886.3,216.0],[885.0,208.1],[871.0,191.3],[860.0,188.9],[855.2,185.0],[848.0,174.0],[830.5,137.0],[823.0,130.9],[798.0,126.7],[772.0,126.3],[740.0,116.1],[719.0,103.6],[706.0,90.1],[686.0,80.3],[678.0,82.0],[665.0,95.3],[639.0,99.9],[608.0,94.7],[579.0,84.5],[571.9,80.0],[562.5,69.0],[558.0,66.6],[546.0,69.2],[518.0,68.7],[497.0,80.9],[480.0,79.8],[459.0,83.0],[447.0,80.1],[429.0,81.0],[424.0,83.0],[407.0,98.4],[376.0,106.6],[360.0,117.2],[339.0,126.1],[328.0,134.6],[316.0,131.3],[308.0,138.9],[299.0,141.3],[288.8,147.0],[280.8,157.0],[259.9,161.0],[240.7,171.0],[225.6,182.0],[217.8,193.0],[200.1,202.0],[184.6,213.0],[170.2,229.0],[169.9,236.0],[178.2,252.0],[200.2,272.0],[200.3,279.0],[193.4,297.0],[207.9,337.0],[218.0,348.7],[236.0,351.8],[244.0,355.3],[257.0,365.7],[267.0,377.9],[281.3,384.0],[282.9,388.0],[281.2,403.0],[283.9,412.0],[288.2,417.0],[300.0,422.4],[306.0,428.0],[313.8,415.0],[313.5,402.0],[317.0,393.4],[330.8,390.0],[339.4,383.0],[352.5,366.0],[362.0,362.6],[368.0,366.9],[368.5,382.0],[371.7,394.0],[371.3,405.0],[383.3,424.0],[375.6,434.0],[374.9,443.0],[378.5,450.0],[385.6,457.0],[392.7,456.0],[398.8,449.0],[398.8,444.0],[390.1,434.0],[388.4,426.0],[395.0,414.1],[403.0,410.4],[426.0,413.6],[437.0,411.2],[442.0,412.0],[449.0,416.2],[458.0,426.1],[469.7,428.0],[480.1,435.0],[488.0,449.2],[506.0,446.6],[516.0,437.5],[528.1,435.0],[529.0,430.6],[524.0,426.3],[513.0,427.0],[510.0,421.0],[514.8,412.0],[512.4,402.0],[508.0,398.2],[497.0,397.2],[486.8,385.0],[485.0,378.0],[488.0,369.5],[499.0,364.7],[504.4,359.0],[509.0,342.3],[515.7,342.0],[527.0,346.1],[536.0,339.3],[546.0,337.8],[553.1,342.0],[556.3,354.0],[575.0,355.7],[580.0,354.2],[591.6,344.0],[598.0,341.9],[611.3,350.0],[619.0,361.4],[625.0,350.1],[633.3,343.0],[640.0,331.9],[647.0,328.4],[655.0,328.3],[668.0,336.0],[673.6,350.0],[672.6,356.0],[667.4,365.0],[655.5,373.0],[656.7,377.0],[672.0,385.4],[697.0,387.9],[708.0,391.5],[729.0,392.0],[742.0,389.1],[750.0,391.2],[754.1,395.0],[760.0,409.3],[787.2,424.0],[786.9,436.0],[790.6,445.0],[799.0,459.1],[808.0,465.5],[811.2,465.0],[814.4,459.0],[816.3,428.0],[819.0,422.1],[831.0,419.0],[862.0,403.5],[868.0,403.0],[871.8,405.0],[877.0,417.3],[882.0,422.1],[889.0,423.0],[900.0,419.1],[907.0,419.3],[926.0,433.3],[927.6,436.0],[925.5,446.0],[927.8,459.0],[915.3,476.0],[908.8,496.0],[909.0,502.0],[895.6,507.0],[894.2,512.0],[895.2,523.0],[893.0,528.2],[889.0,530.0],[880.0,528.7],[875.8,534.0],[879.0,540.1],[890.0,541.3],[900.0,548.5],[906.5,548.0]]]},{"level":-250,"paths":[[[922.0,504.0],[930.0,498.7],[942.2,495.0],[950.0,488.8],[960.6,488.0],[964.2,483.0],[965.2,457.0],[962.9,446.0],[965.5,435.0],[961.5,423.0],[964.1,374.0],[962.5,358.0],[955.0,335.5],[945.5,323.0],[931.0,312.3],[918.0,309.3],[901.7,293.0],[893.1,274.0],[891.9,262.0],[886.2,243.0],[872.5,232.0],[878.8,216.0],[876.0,204.9],[871.0,198.1],[859.0,194.6],[851.0,188.0],[841.0,167.4],[835.0,160.2],[831.1,149.0],[818.0,138.1],[805.0,137.6],[787.0,141.6],[768.0,140.8],[733.0,131.9],[717.0,131.3],[710.0,128.9],[700.4,122.0],[691.0,119.8],[679.7,125.0],[670.0,133.9],[658.0,130.8],[648.0,133.2],[610.0,121.4],[595.8,111.0],[578.0,105.1],[568.0,97.0],[557.0,92.8],[549.0,81.0],[537.0,75.2],[521.0,77.8],[508.0,87.4],[497.0,92.1],[487.0,91.0],[464.0,93.4],[447.0,87.5],[435.2,88.0],[428.9,90.0],[420.1,101.0],[406.0,110.8],[390.0,116.9],[375.0,114.9],[355.0,128.5],[330.0,138.9],[319.1,141.0],[309.0,155.8],[296.0,167.8],[269.0,171.0],[255.9,181.0],[243.6,206.0],[226.6,222.0],[229.2,232.0],[225.9,241.0],[225.1,250.0],[228.6,271.0],[225.5,291.0],[232.7,315.0],[241.0,328.6],[257.3,337.0],[272.0,356.3],[285.4,363.0],[299.0,373.0],[301.0,377.0],[301.0,388.0],[304.0,393.0],[307.0,392.1],[310.8,382.0],[319.4,375.0],[317.3,364.0],[326.1,350.0],[337.9,352.0],[347.0,345.9],[364.0,341.6],[372.0,341.7],[387.7,350.0],[393.1,356.0],[393.3,366.0],[383.9,385.0],[400.5,404.0],[429.0,409.0],[444.2,405.0],[451.8,396.0],[458.0,393.8],[467.0,399.5],[479.2,415.0],[484.0,424.9],[497.0,429.3],[502.7,415.0],[480.9,385.0],[475.5,372.0],[477.3,364.0],[499.1,357.0],[501.9,352.0],[503.4,339.0],[509.0,332.0],[518.0,330.1],[529.0,335.2],[539.0,331.9],[554.7,324.0],[560.6,313.0],[569.0,310.0],[581.0,302.4],[591.0,303.7],[596.3,309.0],[596.5,314.0],[589.9,323.0],[591.0,326.0],[615.0,342.8],[619.0,343.4],[633.2,324.0],[621.0,314.9],[618.3,308.0],[618.6,303.0],[627.0,288.0],[638.0,282.9],[641.2,286.0],[643.1,292.0],[639.8,304.0],[640.0,314.0],[659.0,313.9],[670.5,323.0],[678.6,335.0],[689.0,345.9],[695.6,340.0],[700.0,338.8],[707.5,342.0],[715.0,348.2],[724.8,367.0],[725.0,373.0],[720.1,377.0],[710.0,379.6],[708.0,382.0],[709.0,384.0],[729.0,386.1],[740.0,379.9],[745.0,384.8],[756.5,391.0],[764.5,405.0],[777.4,413.0],[780.6,412.0],[782.1,407.0],[777.9,395.0],[779.0,392.8],[789.0,390.8],[801.1,395.0],[802.0,400.0],[800.0,407.1],[791.0,415.0],[795.9,424.0],[795.6,437.0],[800.0,447.4],[804.4,442.0],[805.9,427.0],[814.0,416.7],[818.9,403.0],[826.0,397.7],[847.0,390.4],[857.0,391.2],[875.2,401.0],[878.8,405.0],[881.7,414.0],[885.7,417.0],[891.5,417.0],[903.0,410.0],[911.0,407.7],[930.0,424.3],[939.0,421.5],[943.0,422.8],[945.0,426.0],[944.5,430.0],[934.7,446.0],[938.1,450.0],[948.1,455.0],[948.6,459.0],[943.5,467.0],[930.0,471.5],[921.0,480.8],[919.3,497.0],[922.0,504.0]]]},{"level":-300,"paths":[[[895.2,407.0],[898.9,405.0],[899.1,402.0],[885.4,385.0],[886.1,380.0],[890.0,374.6],[901.0,375.4],[911.6,389.0],[927.0,395.0],[933.2,395.0],[939.0,388.0],[943.0,388.1],[951.0,405.0],[953.4,388.0],[960.8,374.0],[960.0,364.8],[945.5,342.0],[940.0,325.7],[922.4,319.0],[895.5,297.0],[892.0,280.9],[884.9,272.0],[884.6,260.0],[880.7,248.0],[863.4,233.0],[869.4,220.0],[868.0,211.5],[859.0,203.0],[845.0,195.6],[837.8,175.0],[824.7,163.0],[819.0,154.7],[812.0,156.1],[795.0,169.0],[782.0,173.8],[768.0,173.1],[752.0,177.6],[737.7,177.0],[733.3,181.0],[728.0,192.0],[711.0,202.0],[692.0,200.6],[661.0,211.7],[648.0,214.0],[618.3,191.0],[606.3,187.0],[600.6,183.0],[582.0,156.0],[562.0,138.3],[546.0,127.4],[520.2,101.0],[513.0,100.0],[483.0,107.1],[461.0,105.5],[447.0,100.1],[437.0,109.4],[413.5,121.0],[396.0,132.4],[390.0,133.2],[376.0,130.8],[352.8,142.0],[342.6,152.0],[337.0,162.9],[320.0,180.0],[308.0,197.1],[300.1,203.0],[297.0,212.2],[281.7,224.0],[283.6,252.0],[286.5,264.0],[283.0,302.0],[291.9,322.0],[292.3,335.0],[304.0,352.4],[307.0,354.0],[315.0,350.3],[326.0,338.0],[341.0,339.1],[349.0,335.7],[358.0,328.7],[365.0,328.6],[399.7,353.0],[402.9,363.0],[397.9,375.0],[409.8,381.0],[415.0,395.6],[425.0,404.1],[432.0,402.5],[444.5,390.0],[455.0,384.4],[458.0,383.8],[466.0,388.6],[470.6,387.0],[472.8,382.0],[469.7,368.0],[472.7,361.0],[478.0,357.2],[492.7,355.0],[495.5,345.0],[503.0,330.1],[509.9,326.0],[522.0,324.0],[518.0,321.0],[501.0,318.6],[487.0,309.2],[482.7,304.0],[486.0,297.6],[505.0,288.1],[509.0,287.8],[518.0,296.4],[529.6,301.0],[536.4,316.0],[541.0,318.6],[548.0,315.8],[556.0,304.1],[562.0,299.2],[582.0,293.5],[592.0,288.7],[601.0,289.9],[609.0,299.8],[614.7,289.0],[614.1,263.0],[619.0,256.2],[628.0,262.0],[642.0,258.7],[648.0,261.6],[652.7,280.0],[648.4,293.0],[649.0,300.5],[652.0,303.0],[662.0,305.7],[679.0,322.0],[682.0,320.0],[686.0,311.9],[699.0,307.1],[708.0,308.8],[722.0,318.0],[749.0,318.9],[755.4,325.0],[755.3,344.0],[763.1,355.0],[769.0,369.9],[781.7,369.0],[797.0,384.0],[817.0,389.4],[821.0,388.2],[841.0,373.2],[857.0,384.8],[869.9,390.0],[885.0,400.6],[891.0,407.3],[895.2,407.0]]]}],"points":[[12.0,253.0,-9.0],[6.0,270.0,-3.8],[990.0,484.0,-66.5],[17.0,262.0,-22.1],[16.0,266.0,-19.6],[32.0,296.0,-14.7],[29.0,304.0,-5.5],[53.0,214.0,-13.7],[51.0,238.0,-83.4],[52.0,259.0,-98.6],[42.0,261.0,-87.6],[44.0,266.0,-88.4],[42.0,295.0,-23.9],[41.0,302.0,-12.8],[69.0,222.0,-34.2],[84.0,257.0,-127.6],[80.0,261.0,-120.2],[74.0,264.0,-110.9],[87.0,270.0,-118.7],[78.0,275.0,-104.3],[63.0,287.0,-68.2],[68.0,304.0,-21.7],[80.0,314.0,0.0],[64.0,315.0,-5.1],[100.0,197.0,-34.0],[106.0,198.0,-64.9],[98.0,205.0,-46.7],[106.0,207.0,-93.6],[102.0,216.0,-98.9],[90.0,226.0,-94.6],[97.0,227.0,-108.3],[91.0,231.0,-107.3],[89.0,241.0,-125.5],[109.0,256.0,-146.8],[98.0,290.0,-81.1],[95.0,299.0,-29.6],[137.0,145.0,-8.6],[129.0,148.0,-2.8],[124.0,165.0,-17.8],[122.0,201.0,-131.0],[122.0,205.0,-138.5],[121.0,219.0,-140.9],[127.0,238.0,-159.7],[120.0,241.0,-155.3],[127.0,246.0,-163.3],[116.0,251.0,-155.1],[119.0,251.0,-157.6],[127.0,266.0,-117.4],[132.0,287.0,-45.5],[123.0,297.0,-31.8],[136.0,301.0,-36.4],[137.0,322.0,-41.4],[126.0,323.0,-21.4],[143.0,151.0,-26.8],[147.0,161.0,-71.8],[158.0,184.0,-129.0],[145.0,184.0,-145.5],[155.0,185.0,-135.1],[154.0,186.0,-138.2],[151.0,195.0,-156.3],[143.0,202.0,-162.2],[152.0,203.0,-166.7],[142.0,205.0,-162.5],[141.0,214.0,-163.2],[160.0,250.0,-182.3],[147.0,297.0,-45.5],[151.0,306.0,-49.6],[147.0,317.0,-58.1],[155.0,327.0,-96.4],[152.0,328.0,-87.5],[150.0,332.0,-61.4],[162.0,355.0,-54.3],[158.0,360.0,-34.8],[152.0,365.0,-17.2],[162.0,371.0,-10.9],[168.0,162.0,-6.2],[180.0,166.0,-32.8],[170.0,166.0,-16.0],[168.0,181.0,-107.3],[169.0,190.0,-141.2],[183.0,190.0,-152.5],[164.0,204.0,-173.1],[177.0,222.0,-201.2],[174.0,228.0,-203.0],[165.0,229.0,-193.8],[174.0,244.0,-199.8],[168.0,245.0,-195.3],[181.0,261.0,-173.1],[174.0,283.0,-129.5],[185.0,284.0,-153.3],[166.0,291.0,-108.8],[171.0,292.0,-128.5],[163.0,306.0,-120.6],[186.0,313.0,-176.5],[183.0,315.0,-169.6],[183.0,320.0,-165.3],[177.0,328.0,-144.9],[176.0,334.0,-136.6],[183.0,344.0,-146.9],[185.0,379.0,-69.6],[175.0,386.0,-12.2],[186.0,388.0,-36.3],[179.0,391.0,-2.2],[187.0,394.0,-21.1],[198.0,166.0,-115.7],[204.0,170.0,-137.2],[210.0,185.0,-173.7],[208.0,193.0,-190.5],[190.0,206.0,-196.0],[205.0,212.0,-215.7],[197.0,214.0,-211.6],[201.0,216.0,-217.8],[203.0,217.0,-221.0],[193.0,230.0,-220.8],[207.0,233.0,-232.0],[212.0,239.0,-234.6],[196.0,252.0,-217.7],[197.0,256.0,-216.8],[200.0,257.0,-220.2],[191.0,263.0,-201.6],[188.0,270.0,-174.7],[201.0,273.0,-201.8],[210.0,283.0,-227.8],[207.0,343.0,-191.2],[197.0,348.0,-170.3],[195.0,349.0,-165.3],[188.0,354.0,-134.8],[210.0,356.0,-180.8],[212.0,372.0,-149.2],[197.0,378.0,-100.2],[193.0,383.0,-75.8],[199.0,405.0,-9.6],[212.0,406.0,-16.7],[204.0,406.0,-9.4],[207.0,720.0,-28.5],[191.0,730.0,-9.6],[196.0,750.0,-7.9],[196.0,758.0,-7.5],[200.0,770.0,-12.7],[192.0,777.0,-0.8],[205.0,784.0,-19.0],[212.0,792.0,-14.3],[198.0,793.0,-14.5],[201.0,793.0,-14.8],[237.0,154.0,-32.5],[228.0,156.0,-15.7],[233.0,158.0,-57.6],[220.0,165.0,-101.1],[223.0,169.0,-139.8],[232.0,173.0,-183.4],[232.0,180.0,-208.1],[237.0,182.0,-223.3],[231.0,200.0,-228.4],[218.0,213.0,-231.8],[231.0,229.0,-252.1],[223.0,243.0,-246.7],[219.0,266.0,-239.4],[223.0,270.0,-243.3],[235.0,272.0,-258.0],[226.0,280.0,-248.6],[236.0,286.0,-262.7],[228.0,298.0,-250.5],[222.0,313.0,-236.5],[230.0,341.0,-222.1],[223.0,347.0,-207.0],[231.0,363.0,-171.8],[218.0,371.0,-153.5],[229.0,378.0,-130.4],[216.0,395.0,-63.4],[237.0,399.0,-68.0],[234.0,420.0,0.0],[225.0,696.0,-48.4],[217.0,696.0,-18.3],[222.0,723.0,-50.0],[235.0,755.0,-31.8],[222.0,782.0,-20.0],[262.0,124.0,-37.8],[262.0,144.0,-48.3],[258.0,147.0,-13.9],[253.0,159.0,-147.6],[254.0,163.0,-195.5],[239.0,166.0,-152.6],[238.0,167.0,-157.1],[244.0,177.0,-229.0],[260.0,185.0,-256.6],[247.0,192.0,-244.3],[251.0,196.0,-252.5],[262.0,208.0,-274.5],[252.0,225.0,-277.7],[257.0,257.0,-282.2],[254.0,268.0,-281.7],[251.0,281.0,-278.0],[243.0,291.0,-269.5],[245.0,318.0,-261.6],[260.0,322.0,-271.6],[253.0,327.0,-261.2],[258.0,328.0,-262.8],[238.0,335.0,-238.8],[260.0,335.0,-255.9],[246.0,339.0,-237.6],[247.0,340.0,-236.4],[238.0,341.0,-226.5],[248.0,363.0,-189.9],[249.0,372.0,-170.1],[258.0,375.0,-182.9],[262.0,388.0,-168.4],[240.0,392.0,-99.5],[241.0,400.0,-73.9],[257.0,403.0,-110.1],[239.0,407.0,-46.5],[242.0,415.0,-30.2],[240.0,416.0,-22.9],[240.0,681.0,-32.3],[253.0,698.0,-55.0],[256.0,699.0,-55.0],[238.0,705.0,-55.0],[238.0,709.0,-55.0],[244.0,709.0,-55.0],[251.0,715.0,-52.6],[245.0,718.0,-52.6],[249.0,719.0,-51.6],[252.0,721.0,-49.7],[241.0,726.0,-50.9],[243.0,757.0,-19.1],[240.0,775.0,-4.3],[279.0,105.0,-27.1],[270.0,113.0,-32.6],[266.0,117.0,-34.7],[263.0,132.0,-62.3],[278.0,135.0,-144.8],[274.0,136.0,-134.0],[278.0,151.0,-146.2],[283.0,162.0,-231.3],[265.0,168.0,-239.8],[274.0,189.0,-273.2],[281.0,202.0,-286.0],[284.0,233.0,-301.4],[282.0,234.0,-299.9],[271.0,240.0,-292.2],[282.0,275.0,-298.5],[272.0,277.0,-294.4],[275.0,283.0,-296.0],[286.0,306.0,-300.8],[287.0,324.0,-295.0],[263.0,326.0,-269.3],[266.0,345.0,-256.2],[281.0,348.0,-274.5],[274.0,351.0,-262.4],[271.0,360.0,-241.7],[265.0,403.0,-128.8],[268.0,439.0,-60.6],[285.0,445.0,-121.2],[278.0,449.0,-85.8],[286.0,470.0,-86.8],[287.0,483.0,-78.1],[283.0,498.0,-12.6],[287.0,606.0,-46.0],[287.0,610.0,-47.2],[282.0,616.0,-30.6],[284.0,619.0,-39.5],[280.0,631.0,-16.2],[275.0,649.0,-23.8],[273.0,657.0,-54.0],[286.0,668.0,-55.0],[275.0,670.0,-55.0],[274.0,707.0,-50.9],[285.0,711.0,-26.6],[285.0,716.0,-19.5],[265.0,727.0,-23.1],[266.0,729.0,-18.2],[272.0,736.0,0.0],[311.0,123.0,-111.8],[309.0,173.0,-277.4],[308.0,200.0,-301.8],[301.0,209.0,-301.7],[293.0,222.0,-305.4],[305.0,231.0,-317.4],[298.0,238.0,-311.2],[292.0,260.0,-303.5],[309.0,261.0,-313.9],[306.0,280.0,-313.2],[304.0,281.0,-312.0],[299.0,283.0,-308.9],[289.0,287.0,-303.0],[299.0,304.0,-308.3],[305.0,308.0,-312.2],[305.0,317.0,-312.1],[292.0,335.0,-299.7],[294.0,361.0,-270.2],[302.0,361.0,-279.9],[296.0,363.0,-268.9],[305.0,378.0,-259.3],[295.0,408.0,-227.8],[304.0,424.0,-204.0],[306.0,438.0,-186.9],[291.0,457.0,-116.0],[293.0,474.0,-112.6],[289.0,475.0,-98.4],[304.0,482.0,-133.2],[289.0,482.0,-90.5],[296.0,506.0,-51.9],[306.0,551.0,-67.4],[310.0,563.0,-35.0],[306.0,612.0,-55.0],[305.0,612.0,-55.0],[290.0,615.0,-50.6],[307.0,618.0,-55.0],[312.0,621.0,-52.4],[297.0,630.0,-54.2],[297.0,631.0,-53.0],[288.0,637.0,-34.1],[300.0,675.0,-3.9],[306.0,685.0,-35.2],[299.0,690.0,-47.1],[293.0,694.0,-45.0],[311.0,698.0,-12.7],[309.0,707.0,0.0],[322.0,131.0,-179.8],[322.0,140.0,-248.6],[329.0,175.0,-304.2],[314.0,180.0,-292.8],[328.0,190.0,-315.5],[315.0,208.0,-310.6],[337.0,210.0,-320.6],[334.0,212.0,-320.4],[331.0,215.0,-320.3],[313.0,219.0,-313.6],[334.0,239.0,-321.5],[332.0,245.0,-321.4],[314.0,254.0,-317.4],[327.0,258.0,-321.2],[314.0,263.0,-317.3],[328.0,270.0,-321.8],[333.0,270.0,-322.6],[320.0,275.0,-320.6],[321.0,285.0,-320.9],[332.0,288.0,-323.1],[314.0,307.0,-319.8],[336.0,310.0,-323.8],[332.0,315.0,-323.1],[313.0,322.0,-318.4],[316.0,329.0,-320.0],[336.0,366.0,-213.9],[317.0,387.0,-217.2],[328.0,407.0,-179.9],[333.0,426.0,-162.4],[337.0,435.0,-155.1],[315.0,447.0,-135.1],[325.0,453.0,-137.1],[320.0,467.0,-115.0],[337.0,508.0,-65.6],[331.0,538.0,-24.8],[337.0,538.0,-26.1],[322.0,544.0,-18.0],[323.0,605.0,-29.5],[336.0,620.0,-4.3],[355.0,115.0,-161.9],[341.0,120.0,-164.2],[340.0,139.0,-269.8],[353.0,166.0,-318.3],[340.0,175.0,-313.2],[350.0,182.0,-320.2],[354.0,184.0,-320.6],[357.0,199.0,-321.6],[353.0,203.0,-321.5],[343.0,219.0,-321.5],[344.0,222.0,-321.8],[342.0,235.0,-322.2],[362.0,237.0,-324.0],[339.0,252.0,-322.3],[346.0,261.0,-323.7],[338.0,278.0,-323.8],[355.0,297.0,-325.0],[353.0,315.0,-325.0],[345.0,320.0,-325.0],[361.0,321.0,-325.0],[348.0,333.0,-319.5],[345.0,359.0,-224.4],[351.0,362.0,-210.1],[353.0,376.0,-195.5],[339.0,377.0,-204.0],[360.0,381.0,-193.9],[350.0,381.0,-192.7],[346.0,384.0,-190.9],[357.0,386.0,-191.2],[345.0,387.0,-188.2],[349.0,413.0,-163.0],[348.0,434.0,-139.2],[360.0,446.0,-131.3],[349.0,458.0,-119.0],[340.0,468.0,-105.4],[338.0,474.0,-100.3],[349.0,489.0,-65.6],[359.0,491.0,-58.4],[356.0,500.0,-46.4],[361.0,508.0,-37.1],[350.0,530.0,-5.6],[343.0,577.0,-5.5],[380.0,87.0,-68.1],[383.0,88.0,-90.1],[380.0,92.0,-96.0],[374.0,105.0,-179.8],[372.0,108.0,-192.3],[380.0,123.0,-276.1],[379.0,137.0,-311.0],[372.0,150.0,-318.4],[386.0,162.0,-321.0],[382.0,175.0,-321.7],[386.0,199.0,-323.5],[381.0,200.0,-323.2],[382.0,203.0,-323.5],[370.0,204.0,-322.7],[385.0,222.0,-324.7],[370.0,223.0,-323.7],[367.0,241.0,-324.7],[381.0,243.0,-325.0],[370.0,253.0,-325.0],[369.0,256.0,-325.0],[384.0,257.0,-325.0],[378.0,260.0,-325.0],[370.0,262.0,-325.0],[369.0,270.0,-325.0],[370.0,276.0,-325.0],[379.0,285.0,-325.0],[378.0,300.0,-325.0],[371.0,328.0,-323.1],[367.0,336.0,-272.6],[376.0,340.0,-273.7],[381.0,354.0,-210.0],[387.0,357.0,-210.0],[370.0,419.0,-176.0],[372.0,430.0,-166.5],[375.0,445.0,-196.4],[364.0,454.0,-120.0],[387.0,458.0,-197.4],[369.0,461.0,-154.0],[372.0,505.0,-32.9],[382.0,518.0,-12.7],[366.0,518.0,-26.7],[380.0,524.0,-11.2],[395.0,77.0,-53.8],[408.0,86.0,-129.6],[400.0,92.0,-152.4],[397.0,95.0,-166.7],[389.0,96.0,-160.3],[393.0,104.0,-203.4],[407.0,153.0,-320.8],[392.0,156.0,-320.8],[399.0,163.0,-321.4],[400.0,176.0,-322.4],[407.0,203.0,-324.2],[411.0,203.0,-324.2],[412.0,204.0,-324.2],[397.0,246.0,-325.0],[394.0,248.0,-325.0],[407.0,253.0,-325.0],[389.0,255.0,-325.0],[397.0,263.0,-325.0],[411.0,269.0,-325.0],[396.0,301.0,-325.0],[410.0,309.0,-325.0],[412.0,322.0,-325.0],[405.0,331.0,-325.0],[390.0,339.0,-318.1],[393.0,349.0,-289.3],[407.0,354.0,-321.5],[392.0,361.0,-235.9],[398.0,382.0,-278.5],[388.0,398.0,-235.5],[399.0,404.0,-245.6],[409.0,411.0,-191.6],[399.0,412.0,-195.2],[394.0,420.0,-177.0],[400.0,431.0,-144.7],[394.0,437.0,-193.9],[394.0,443.0,-215.0],[396.0,453.0,-201.0],[395.0,467.0,-126.6],[388.0,491.0,-49.7],[408.0,494.0,-24.2],[414.0,74.0,-52.8],[418.0,77.0,-103.1],[416.0,78.0,-105.3],[436.0,85.0,-230.7],[420.0,92.0,-222.4],[415.0,95.0,-213.1],[431.0,106.0,-285.3],[423.0,107.0,-278.1],[433.0,110.0,-296.7],[423.0,120.0,-307.9],[427.0,122.0,-314.0],[437.0,132.0,-320.0],[423.0,158.0,-321.3],[426.0,159.0,-321.5],[419.0,160.0,-321.3],[437.0,177.0,-322.5],[431.0,177.0,-322.6],[417.0,181.0,-322.7],[417.0,187.0,-323.1],[422.0,192.0,-323.3],[435.0,200.0,-323.8],[432.0,201.0,-323.8],[436.0,204.0,-324.0],[428.0,211.0,-324.5],[424.0,213.0,-324.7],[420.0,216.0,-325.0],[427.0,243.0,-325.0],[422.0,246.0,-325.0],[434.0,248.0,-325.0],[427.0,249.0,-325.0],[423.0,254.0,-325.0],[425.0,272.0,-325.0],[436.0,282.0,-325.0],[434.0,288.0,-325.0],[425.0,292.0,-325.0],[429.0,304.0,-325.0],[424.0,334.0,-325.0],[436.0,337.0,-325.0],[429.0,339.0,-325.0],[418.0,391.0,-317.7],[414.0,400.0,-282.1],[422.0,410.0,-232.0],[434.0,418.0,-148.3],[420.0,418.0,-153.2],[415.0,419.0,-138.4],[429.0,428.0,-110.6],[415.0,429.0,-114.8],[429.0,442.0,-121.3],[426.0,448.0,-124.8],[429.0,452.0,-124.1],[419.0,457.0,-92.4],[431.0,459.0,-107.7],[431.0,469.0,-77.8],[459.0,50.0,-31.8],[452.0,52.0,-20.5],[451.0,55.0,-21.9],[446.0,73.0,-124.2],[461.0,81.0,-192.0],[441.0,83.0,-221.9],[462.0,104.0,-295.2],[445.0,110.0,-311.6],[453.0,112.0,-316.2],[442.0,116.0,-315.3],[443.0,117.0,-316.5],[442.0,121.0,-320.0],[443.0,130.0,-320.0],[457.0,145.0,-320.4],[451.0,159.0,-321.3],[456.0,166.0,-321.6],[455.0,195.0,-323.2],[438.0,195.0,-323.5],[453.0,205.0,-323.7],[458.0,236.0,-324.9],[449.0,237.0,-325.0],[457.0,253.0,-325.0],[459.0,253.0,-325.0],[460.0,253.0,-325.0],[449.0,260.0,-325.0],[448.0,275.0,-325.0],[448.0,280.0,-325.0],[459.0,308.0,-325.0],[446.0,309.0,-325.0],[454.0,318.0,-325.0],[459.0,353.0,-325.0],[439.0,361.0,-325.0],[441.0,363.0,-325.0],[455.0,364.0,-325.0],[460.0,394.0,-252.5],[442.0,400.0,-270.7],[448.0,417.0,-192.6],[457.0,427.0,-193.7],[456.0,433.0,-172.4],[456.0,439.0,-124.0],[454.0,455.0,-42.8],[438.0,457.0,-80.0],[456.0,469.0,-65.8],[454.0,478.0,-53.1],[469.0,59.0,-100.3],[485.0,65.0,-114.1],[467.0,68.0,-143.6],[474.0,91.0,-242.9],[463.0,100.0,-280.4],[469.0,126.0,-320.0],[476.0,137.0,-320.0],[480.0,138.0,-320.0],[477.0,159.0,-321.0],[470.0,177.0,-321.9],[478.0,195.0,-322.3],[478.0,198.0,-322.4],[474.0,205.0,-322.9],[481.0,209.0,-322.8],[469.0,246.0,-325.0],[472.0,277.0,-325.0],[482.0,281.0,-322.3],[480.0,283.0,-322.4],[487.0,285.0,-320.5],[483.0,289.0,-320.3],[466.0,342.0,-325.0],[464.0,349.0,-325.0],[478.0,356.0,-310.0],[468.0,369.0,-315.0],[485.0,379.0,-200.3],[479.0,384.0,-262.4],[475.0,390.0,-283.1],[484.0,396.0,-271.7],[481.0,397.0,-285.9],[464.0,430.0,-186.6],[466.0,437.0,-149.7],[487.0,438.0,-215.0],[476.0,443.0,-159.5],[481.0,459.0,-165.3],[487.0,467.0,-170.9],[485.0,481.0,-96.4],[468.0,497.0,-9.9],[503.0,60.0,-117.5],[489.0,70.0,-145.3],[491.0,74.0,-166.0],[493.0,84.0,-214.3],[498.0,99.0,-285.4],[508.0,102.0,-301.1],[511.0,111.0,-309.2],[498.0,113.0,-311.1],[500.0,113.0,-311.1],[496.0,118.0,-313.7],[496.0,119.0,-314.2],[491.0,125.0,-316.3],[489.0,133.0,-318.1],[490.0,137.0,-318.6],[506.0,152.0,-318.1],[500.0,157.0,-319.5],[491.0,168.0,-320.6],[504.0,181.0,-320.6],[489.0,188.0,-321.6],[507.0,188.0,-320.7],[496.0,194.0,-321.5],[502.0,194.0,-321.2],[491.0,196.0,-321.8],[508.0,208.0,-321.6],[499.0,230.0,-323.0],[501.0,249.0,-323.6],[497.0,252.0,-324.0],[501.0,278.0,-321.4],[493.0,293.0,-306.5],[488.0,294.0,-309.6],[491.0,300.0,-276.1],[502.0,307.0,-251.6],[489.0,315.0,-316.5],[509.0,317.0,-277.4],[512.0,322.0,-309.2],[512.0,331.0,-246.6],[497.0,346.0,-293.2],[509.0,349.0,-194.5],[504.0,361.0,-194.1],[503.0,367.0,-189.0],[490.0,378.0,-190.0],[499.0,378.0,-186.4],[488.0,382.0,-189.7],[504.0,398.0,-200.3],[494.0,438.0,-220.1],[494.0,440.0,-217.2],[505.0,455.0,-156.0],[492.0,463.0,-182.0],[510.0,483.0,-50.0],[532.0,81.0,-269.5],[516.0,88.0,-273.5],[534.0,94.0,-281.6],[533.0,134.0,-309.3],[517.0,153.0,-316.8],[520.0,156.0,-316.8],[526.0,165.0,-317.3],[526.0,180.0,-318.9],[525.0,189.0,-319.8],[515.0,191.0,-320.5],[514.0,204.0,-321.1],[536.0,226.0,-320.7],[527.0,245.0,-321.6],[522.0,246.0,-322.1],[528.0,266.0,-320.0],[532.0,272.0,-320.0],[533.0,276.0,-320.0],[519.0,278.0,-320.0],[524.0,304.0,-280.2],[528.0,312.0,-280.0],[518.0,343.0,-199.6],[530.0,344.0,-193.9],[519.0,351.0,-193.1],[516.0,354.0,-191.0],[527.0,355.0,-186.0],[513.0,359.0,-187.6],[516.0,359.0,-187.4],[515.0,377.0,-171.2],[523.0,384.0,-126.1],[518.0,384.0,-147.8],[536.0,391.0,-71.4],[524.0,402.0,-133.2],[535.0,404.0,-89.9],[516.0,408.0,-192.1],[533.0,413.0,-114.9],[527.0,415.0,-156.1],[533.0,425.0,-163.9],[526.0,448.0,-74.6],[518.0,450.0,-93.4],[532.0,453.0,0.0],[517.0,456.0,-32.5],[542.0,80.0,-260.1],[558.0,90.0,-244.2],[541.0,113.0,-293.2],[556.0,126.0,-293.4],[552.0,135.0,-302.3],[562.0,142.0,-302.6],[542.0,148.0,-311.7],[557.0,154.0,-309.9],[548.0,160.0,-313.7],[556.0,163.0,-312.4],[561.0,170.0,-312.5],[544.0,172.0,-316.1],[546.0,177.0,-316.3],[548.0,178.0,-316.2],[559.0,186.0,-315.3],[553.0,188.0,-316.3],[546.0,203.0,-318.4],[541.0,209.0,-319.6],[555.0,221.0,-318.2],[559.0,303.0,-295.9],[543.0,303.0,-320.0],[553.0,306.0,-304.5],[554.0,318.0,-259.3],[550.0,331.0,-239.9],[557.0,350.0,-210.7],[554.0,357.0,-172.7],[560.0,366.0,-108.8],[541.0,382.0,-52.0],[541.0,394.0,-71.5],[560.0,395.0,-45.2],[548.0,417.0,-44.6],[547.0,436.0,-102.9],[552.0,441.0,-63.7],[551.0,445.0,-53.3],[569.0,48.0,-99.4],[570.0,67.0,-171.5],[579.0,87.0,-208.2],[567.0,101.0,-256.7],[572.0,104.0,-255.1],[574.0,112.0,-265.0],[587.0,122.0,-269.9],[585.0,125.0,-274.7],[577.0,137.0,-290.7],[573.0,138.0,-294.4],[568.0,146.0,-301.8],[577.0,157.0,-303.8],[566.0,160.0,-308.9],[569.0,163.0,-308.6],[579.0,173.0,-307.4],[575.0,174.0,-309.0],[569.0,184.0,-312.2],[587.0,188.0,-307.1],[577.0,202.0,-312.3],[565.0,206.0,-315.3],[567.0,210.0,-315.3],[571.0,213.0,-315.0],[572.0,227.0,-316.4],[572.0,251.0,-318.6],[586.0,252.0,-316.8],[565.0,252.0,-319.4],[563.0,256.0,-319.7],[574.0,258.0,-318.3],[567.0,259.0,-319.2],[578.0,274.0,-318.4],[582.0,286.0,-314.7],[572.0,286.0,-316.8],[567.0,295.0,-307.0],[582.0,307.0,-235.3],[580.0,333.0,-221.9],[574.0,340.0,-220.0],[573.0,340.0,-220.0],[579.0,354.0,-203.0],[573.0,355.0,-203.5],[583.0,358.0,-181.3],[578.0,360.0,-180.7],[578.0,366.0,-154.4],[584.0,370.0,-139.9],[565.0,376.0,-84.0],[581.0,397.0,-82.6],[565.0,405.0,-42.1],[587.0,428.0,-81.1],[568.0,430.0,-66.4],[587.0,435.0,-80.0],[609.0,68.0,-111.7],[591.0,77.0,-165.3],[597.0,89.0,-192.7],[606.0,98.0,-209.8],[601.0,107.0,-236.7],[610.0,120.0,-247.6],[611.0,129.0,-261.4],[607.0,134.0,-270.1],[608.0,139.0,-274.4],[597.0,140.0,-280.7],[611.0,146.0,-277.7],[606.0,155.0,-286.4],[602.0,170.0,-295.8],[610.0,171.0,-294.5],[601.0,172.0,-296.9],[589.0,174.0,-303.4],[588.0,187.0,-306.5],[605.0,191.0,-301.9],[599.0,196.0,-305.6],[604.0,201.0,-305.8],[590.0,210.0,-311.0],[612.0,214.0,-307.4],[602.0,224.0,-311.8],[607.0,232.0,-311.9],[588.0,259.0,-316.6],[602.0,280.0,-315.0],[610.0,296.0,-304.3],[588.0,298.0,-271.0],[589.0,302.0,-253.7],[599.0,322.0,-275.6],[595.0,334.0,-235.1],[608.0,339.0,-245.3],[609.0,350.0,-192.0],[593.0,355.0,-173.4],[606.0,371.0,-135.6],[612.0,373.0,-129.4],[604.0,404.0,-100.3],[593.0,404.0,-95.0],[596.0,438.0,-56.7],[614.0,49.0,-14.4],[627.0,82.0,-155.7],[636.0,90.0,-176.6],[632.0,92.0,-183.1],[628.0,93.0,-186.7],[630.0,110.0,-224.3],[630.0,112.0,-227.7],[615.0,116.0,-238.8],[621.0,121.0,-243.6],[635.0,132.0,-253.2],[616.0,153.0,-280.3],[637.0,159.0,-276.4],[616.0,166.0,-289.5],[618.0,173.0,-292.9],[630.0,189.0,-296.0],[635.0,198.0,-297.9],[617.0,199.0,-302.5],[613.0,227.0,-309.9],[613.0,244.0,-310.9],[637.0,271.0,-292.9],[616.0,281.0,-298.0],[620.0,286.0,-288.8],[619.0,292.0,-287.3],[637.0,296.0,-205.5],[634.0,306.0,-214.3],[620.0,309.0,-239.8],[624.0,313.0,-224.7],[617.0,327.0,-290.0],[615.0,339.0,-268.6],[631.0,341.0,-208.2],[637.0,356.0,-171.6],[629.0,387.0,-133.7],[617.0,399.0,-105.8],[619.0,400.0,-104.9],[636.0,406.0,-135.1],[635.0,418.0,-112.2],[626.0,420.0,-89.6],[657.0,48.0,-62.0],[640.0,57.0,-62.2],[652.0,68.0,-120.7],[638.0,82.0,-154.1],[653.0,96.0,-195.8],[652.0,104.0,-210.5],[638.0,107.0,-215.7],[642.0,126.0,-243.9],[655.0,128.0,-245.3],[642.0,132.0,-251.4],[657.0,139.0,-255.6],[649.0,181.0,-287.5],[651.0,208.0,-297.8],[646.0,221.0,-301.8],[649.0,227.0,-303.2],[658.0,234.0,-305.1],[640.0,256.0,-300.9],[645.0,264.0,-298.5],[654.0,283.0,-302.2],[656.0,294.0,-305.0],[644.0,301.0,-273.5],[650.0,308.0,-277.6],[642.0,328.0,-204.4],[641.0,333.0,-197.9],[645.0,345.0,-184.6],[646.0,349.0,-179.5],[641.0,359.0,-167.8],[654.0,367.0,-179.7],[662.0,383.0,-191.9],[659.0,395.0,-170.3],[661.0,410.0,-109.4],[643.0,410.0,-141.8],[643.0,446.0,-4.5],[685.0,3.0,-259.9],[681.0,25.0,-101.8],[679.0,28.0,-105.9],[673.0,37.0,-104.0],[678.0,51.0,-139.7],[680.0,55.0,-152.1],[683.0,68.0,-180.9],[669.0,74.0,-170.0],[675.0,76.0,-186.4],[666.0,78.0,-173.3],[673.0,79.0,-187.7],[685.0,83.0,-204.7],[685.0,109.0,-234.2],[676.0,128.0,-249.4],[670.0,134.0,-250.1],[666.0,156.0,-267.6],[687.0,170.0,-287.7],[666.0,175.0,-283.4],[665.0,176.0,-283.9],[677.0,193.0,-295.6],[677.0,201.0,-298.0],[682.0,202.0,-299.1],[671.0,205.0,-299.0],[669.0,213.0,-301.4],[669.0,220.0,-303.1],[685.0,225.0,-305.7],[678.0,229.0,-306.0],[679.0,229.0,-306.1],[676.0,230.0,-306.0],[681.0,239.0,-307.8],[678.0,258.0,-309.4],[663.0,259.0,-306.8],[684.0,263.0,-310.4],[681.0,266.0,-310.1],[667.0,278.0,-309.1],[669.0,287.0,-309.1],[684.0,289.0,-310.0],[664.0,299.0,-306.0],[671.0,319.0,-276.2],[676.0,327.0,-268.4],[676.0,336.0,-233.4],[687.0,342.0,-258.4],[664.0,343.0,-188.8],[676.0,368.0,-217.5],[686.0,371.0,-227.0],[671.0,387.0,-198.2],[682.0,396.0,-151.8],[676.0,399.0,-154.1],[683.0,407.0,-111.0],[669.0,419.0,-81.5],[711.0,11.0,-35.2],[691.0,12.0,-72.3],[699.0,16.0,-70.7],[689.0,18.0,-90.5],[689.0,25.0,-102.9],[711.0,41.0,-73.1],[702.0,70.0,-157.7],[689.0,71.0,-188.3],[700.0,91.0,-211.4],[710.0,92.0,-197.0],[706.0,99.0,-215.8],[698.0,99.0,-225.3],[688.0,106.0,-236.3],[697.0,109.0,-236.8],[712.0,110.0,-223.6],[697.0,114.0,-242.2],[699.0,116.0,-243.6],[701.0,129.0,-255.9],[699.0,135.0,-262.5],[712.0,144.0,-266.2],[699.0,153.0,-274.9],[700.0,155.0,-276.0],[693.0,157.0,-280.6],[711.0,164.0,-280.8],[690.0,182.0,-293.6],[689.0,192.0,-297.2],[698.0,196.0,-298.2],[704.0,198.0,-298.6],[692.0,200.0,-299.8],[704.0,217.0,-305.7],[699.0,222.0,-306.7],[707.0,232.0,-309.9],[693.0,249.0,-310.4],[698.0,266.0,-311.8],[692.0,269.0,-311.4],[699.0,286.0,-312.2],[702.0,304.0,-309.4],[688.0,306.0,-305.3],[701.0,307.0,-300.4],[711.0,325.0,-275.4],[706.0,335.0,-263.7],[711.0,338.0,-261.7],[697.0,342.0,-244.2],[709.0,352.0,-239.0],[705.0,362.0,-235.7],[710.0,374.0,-245.5],[689.0,423.0,-98.2],[705.0,427.0,-56.8],[719.0,12.0,-11.6],[723.0,95.0,-172.2],[719.0,101.0,-193.9],[737.0,113.0,-194.6],[719.0,128.0,-244.8],[717.0,130.0,-248.3],[726.0,132.0,-251.0],[730.0,146.0,-269.8],[728.0,155.0,-279.7],[721.0,173.0,-289.5],[728.0,187.0,-298.5],[725.0,195.0,-300.3],[732.0,202.0,-305.5],[727.0,211.0,-306.3],[714.0,219.0,-306.7],[726.0,225.0,-310.1],[736.0,229.0,-311.6],[728.0,243.0,-312.4],[715.0,244.0,-311.6],[730.0,249.0,-313.2],[736.0,256.0,-314.5],[733.0,282.0,-315.0],[715.0,289.0,-314.7],[726.0,309.0,-313.0],[722.0,361.0,-250.5],[720.0,366.0,-247.6],[726.0,391.0,-208.2],[722.0,394.0,-173.7],[733.0,398.0,-163.4],[721.0,404.0,-153.2],[736.0,420.0,-130.9],[732.0,433.0,-111.4],[736.0,439.0,-110.1],[724.0,443.0,-77.9],[735.0,443.0,-99.6],[722.0,469.0,-26.8],[728.0,483.0,-20.8],[749.0,91.0,-71.3],[759.0,106.0,-125.1],[758.0,110.0,-147.1],[747.0,119.0,-203.4],[753.0,129.0,-230.0],[753.0,134.0,-244.5],[741.0,137.0,-256.3],[753.0,144.0,-264.6],[755.0,154.0,-278.4],[755.0,172.0,-296.1],[754.0,204.0,-311.8],[757.0,210.0,-312.8],[738.0,212.0,-309.5],[751.0,216.0,-312.1],[742.0,218.0,-310.9],[744.0,219.0,-311.3],[742.0,225.0,-311.7],[741.0,237.0,-313.0],[743.0,246.0,-314.3],[761.0,260.0,-315.1],[757.0,265.0,-315.0],[746.0,267.0,-315.0],[760.0,303.0,-315.0],[751.0,311.0,-315.0],[757.0,313.0,-315.0],[759.0,325.0,-308.4],[741.0,334.0,-275.2],[760.0,345.0,-314.5],[761.0,352.0,-300.6],[760.0,385.0,-288.9],[752.0,388.0,-248.5],[760.0,403.0,-226.3],[744.0,414.0,-150.1],[749.0,428.0,-126.6],[749.0,431.0,-117.8],[750.0,437.0,-103.5],[742.0,446.0,-93.7],[743.0,476.0,-46.3],[745.0,500.0,-3.2],[781.0,94.0,-4.0],[766.0,121.0,-185.4],[778.0,131.0,-218.9],[773.0,137.0,-237.7],[776.0,142.0,-251.5],[777.0,142.0,-251.4],[775.0,150.0,-270.3],[771.0,155.0,-278.5],[764.0,155.0,-278.9],[785.0,177.0,-303.2],[783.0,181.0,-305.6],[763.0,203.0,-312.7],[765.0,204.0,-313.0],[782.0,227.0,-315.0],[779.0,241.0,-316.0],[763.0,296.0,-315.1],[779.0,320.0,-315.4],[778.0,321.0,-315.3],[784.0,323.0,-315.3],[776.0,337.0,-315.0],[763.0,347.0,-315.0],[774.0,348.0,-315.0],[774.0,349.0,-315.0],[781.0,384.0,-280.9],[770.0,386.0,-287.9],[773.0,393.0,-273.5],[772.0,405.0,-282.7],[771.0,415.0,-197.0],[777.0,417.0,-212.5],[766.0,419.0,-172.9],[777.0,430.0,-150.6],[774.0,433.0,-145.7],[781.0,439.0,-163.5],[784.0,441.0,-179.7],[764.0,455.0,-116.5],[786.0,462.0,-119.7],[766.0,470.0,-65.1],[764.0,483.0,-36.7],[770.0,506.0,-6.6],[783.0,520.0,-1.4],[805.0,102.0,-68.6],[808.0,114.0,-114.9],[804.0,116.0,-134.1],[799.0,118.0,-152.5],[801.0,121.0,-161.1],[797.0,154.0,-282.8],[802.0,157.0,-292.6],[810.0,177.0,-311.3],[795.0,184.0,-310.4],[792.0,191.0,-311.7],[788.0,204.0,-314.9],[788.0,216.0,-315.0],[810.0,230.0,-315.1],[790.0,237.0,-316.4],[809.0,241.0,-317.4],[809.0,243.0,-317.4],[800.0,250.0,-317.0],[797.0,252.0,-316.8],[807.0,254.0,-317.3],[812.0,265.0,-317.5],[795.0,267.0,-316.7],[795.0,270.0,-316.7],[802.0,284.0,-316.9],[789.0,288.0,-316.3],[804.0,291.0,-317.0],[799.0,298.0,-316.7],[801.0,299.0,-316.7],[809.0,319.0,-316.1],[789.0,341.0,-315.0],[797.0,365.0,-315.0],[804.0,381.0,-305.0],[795.0,411.0,-242.0],[797.0,417.0,-263.3],[805.0,442.0,-248.0],[810.0,450.0,-236.0],[794.0,469.0,-126.1],[805.0,470.0,-172.1],[790.0,476.0,-55.5],[810.0,478.0,-117.5],[809.0,482.0,-85.0],[803.0,486.0,-89.9],[796.0,512.0,-8.8],[790.0,514.0,-1.5],[793.0,514.0,-6.7],[806.0,529.0,-44.5],[798.0,536.0,0.0],[827.0,102.0,-2.4],[815.0,142.0,-271.9],[834.0,150.0,-232.0],[827.0,158.0,-288.3],[830.0,166.0,-297.3],[821.0,185.0,-315.0],[836.0,196.0,-314.9],[814.0,196.0,-315.0],[816.0,208.0,-315.0],[826.0,212.0,-315.0],[817.0,214.0,-315.0],[833.0,215.0,-315.0],[835.0,231.0,-315.0],[820.0,234.0,-316.7],[830.0,239.0,-318.3],[814.0,246.0,-317.6],[824.0,256.0,-318.1],[820.0,282.0,-317.7],[830.0,290.0,-317.8],[833.0,292.0,-317.8],[835.0,385.0,-281.9],[823.0,394.0,-283.0],[834.0,410.0,-208.8],[817.0,413.0,-242.0],[822.0,414.0,-224.7],[814.0,424.0,-219.8],[820.0,452.0,-158.8],[814.0,453.0,-207.2],[819.0,472.0,-126.7],[829.0,495.0,-51.9],[818.0,498.0,-32.8],[819.0,498.0,-34.1],[831.0,521.0,-91.9],[819.0,527.0,-83.5],[837.0,561.0,-55.3],[842.0,119.0,-49.3],[842.0,144.0,-133.7],[855.0,171.0,-106.3],[838.0,172.0,-293.8],[857.0,172.0,-89.7],[861.0,188.0,-188.6],[860.0,211.0,-313.6],[846.0,224.0,-315.0],[852.0,252.0,-319.4]],"profile":[[214.0,0.0],[219.0,-12.2],[223.0,-20.3],[228.0,-24.2],[232.0,-23.9],[237.0,-27.6],[241.0,-35.5],[246.0,-49.6],[250.0,-66.1],[255.0,-87.3],[260.0,-109.3],[264.0,-128.6],[269.0,-150.9],[273.0,-167.0],[278.0,-183.1],[282.0,-194.8],[287.0,-207.0],[292.0,-220.0],[296.0,-226.5],[301.0,-225.0],[305.0,-225.0],[310.0,-213.1],[314.0,-200.4],[319.0,-189.1],[323.0,-183.6],[328.0,-177.9],[333.0,-173.9],[337.0,-171.5],[342.0,-168.3],[346.0,-165.4],[351.0,-163.7],[355.0,-164.4],[360.0,-174.4],[365.0,-185.9],[369.0,-191.2],[374.0,-197.0],[378.0,-206.2],[383.0,-223.1],[387.0,-234.8],[392.0,-220.9],[396.0,-205.4],[401.0,-190.0],[406.0,-181.1],[410.0,-181.3],[415.0,-189.1],[419.0,-200.6],[424.0,-215.5],[428.0,-217.3],[433.0,-200.9],[438.0,-191.5],[442.0,-200.1],[447.0,-212.9],[451.0,-216.9],[456.0,-219.0],[460.0,-220.2],[465.0,-222.4],[469.0,-226.7],[474.0,-239.0],[479.0,-261.6],[483.0,-281.0],[488.0,-290.0],[492.0,-288.2],[497.0,-273.2],[501.0,-250.6],[506.0,-227.3],[511.0,-212.2],[515.0,-199.3],[520.0,-177.2],[524.0,-159.5],[529.0,-136.1],[533.0,-112.5],[538.0,-85.3],[542.0,-62.7],[547.0,-41.4],[552.0,-30.1],[556.0,-25.6],[561.0,-28.4],[565.0,-38.2],[570.0,-49.7],[574.0,-61.3],[579.0,-74.2],[584.0,-79.8],[588.0,-85.9],[593.0,-92.9],[597.0,-99.5],[602.0,-98.2],[606.0,-95.0],[611.0,-96.4],[615.0,-95.0],[620.0,-98.3],[625.0,-111.9],[629.0,-121.6],[634.0,-129.3],[638.0,-134.3],[643.0,-139.8],[647.0,-140.9],[652.0,-131.9],[657.0,-112.9],[661.0,-101.4],[666.0,-96.7],[670.0,-97.0],[675.0,-100.3],[679.0,-105.5],[684.0,-106.3],[688.0,-105.7],[693.0,-104.0],[698.0,-99.6],[702.0,-97.6],[707.0,-100.1],[711.0,-105.5],[716.0,-116.9],[720.0,-122.3],[725.0,-121.0],[730.0,-123.0],[734.0,-128.5],[739.0,-136.4],[743.0,-144.2],[748.0,-159.0],[752.0,-168.7],[757.0,-180.0],[761.0,-191.1],[766.0,-203.1],[771.0,-225.4],[775.0,-248.6],[780.0,-251.0],[784.0,-246.3],[789.0,-235.5],[793.0,-239.7],[798.0,-257.3],[803.0,-268.4],[807.0,-274.2],[812.0,-268.3],[816.0,-247.8],[821.0,-228.0],[825.0,-219.3],[830.0,-209.0],[834.0,-207.0],[839.0,-207.9],[844.0,-203.2],[848.0,-196.8],[853.0,-184.5],[857.0,-163.4],[862.0,-147.9],[866.0,-147.7],[871.0,-164.0],[876.0,-210.2],[880.0,-246.7],[885.0,-265.5],[889.0,-281.0],[894.0,-276.8],[898.0,-256.8],[903.0,-236.7],[907.0,-233.5],[912.0,-238.7],[917.0,-248.8],[921.0,-257.2],[926.0,-264.6],[930.0,-268.7],[935.0,-273.5],[939.0,-276.7],[944.0,-282.5],[949.0,-292.1],[953.0,-288.6],[958.0,-275.0],[962.0,-256.3],[967.0,-213.1],[971.0,-177.9],[976.0,-131.7],[980.0,-94.7],[985.0,-56.0]],"stats":{"source":"batimetria_atitlan_optimizada_repo.tif","originalWidth":2470,"originalHeight":2050,"renderWidth":1000,"renderHeight":825,"minDepth":-325.0,"maxDepth":0.0,"meanDepth":-200.0,"validPixels":2269141,"areaKm2":126.56,"pixelSizeX":7.47,"pixelSizeY":7.47,"crs":"ESRI:103598 / GTM","profileRow":412,"ranges":[{"range":"0 a -50 m","area":17.49,"percent":13.8},{"range":"-50 a -100 m","area":12.35,"percent":9.8},{"range":"-100 a -150 m","area":14.38,"percent":11.4},{"range":"-150 a -200 m","area":12.86,"percent":10.2},{"range":"-200 a -250 m","area":13.93,"percent":11.0},{"range":"-250 a -300 m","area":17.92,"percent":14.2},{"range":"-300 a -325 m","area":31.89,"percent":25.2}]}};
+  
   const canvas = document.getElementById('labCanvas');
   if(!canvas) return;
   const ctx = canvas.getContext('2d');
@@ -1702,40 +1713,52 @@ document.addEventListener("DOMContentLoaded", function(){
   const consoleContent = document.getElementById('labConsoleContent');
   const stepTitle = document.getElementById('labStepTitle');
   const stepText = document.getElementById('labStepText');
+  const detailsBox = document.getElementById('labDetails');
   const metrics = document.getElementById('labMetrics');
   const timeline = document.getElementById('labTimeline');
   const progressBar = document.getElementById('labProgressBar');
   const stageBadge = document.getElementById('labStageBadge');
   const img = new Image();
   img.src = BATHY_ASSET.image;
+
   let mode = 'classic';
   let token = 0;
   let dpr = 1;
   let cw = 0;
   let ch = 0;
+  const maskCanvas = document.createElement('canvas');
+  const maskCtx = maskCanvas.getContext('2d');
 
-  const classicSteps = ['Captura', 'XYZ', 'Control', 'Gridding', 'Contornos', 'Producto'];
-  const pythonSteps = ['Lectura', 'Máscara', 'Matriz', 'Contornos', 'Perfil', 'Exportación'];
+  const classicSteps = ['Planificación', 'Adquisición', 'Control XYZ', 'Gridding', 'Contornos', 'Producto'];
+  const pythonSteps = ['Lectura raster', 'Máscara NoData', 'Estadística', 'Contornos', 'Perfil', 'Salida'];
 
   function resizeCanvas(){
     const rect = canvas.getBoundingClientRect();
     dpr = window.devicePixelRatio || 1;
-    cw = Math.max(520, Math.floor(rect.width));
-    ch = Math.max(420, Math.floor(rect.height));
+    cw = Math.max(560, Math.floor(rect.width));
+    ch = Math.max(460, Math.floor(rect.height));
     canvas.width = Math.floor(cw * dpr);
     canvas.height = Math.floor(ch * dpr);
     ctx.setTransform(dpr,0,0,dpr,0,0);
+    maskCanvas.width = cw;
+    maskCanvas.height = ch;
   }
 
   function imageRect(){
-    const margin = 32;
-    const availableW = cw - margin*2;
-    const availableH = ch - margin*2;
+    const marginX = 34;
+    const marginY = 30;
+    const availableW = cw - marginX*2;
+    const availableH = ch - marginY*2;
     const ar = BATHY_ASSET.width / BATHY_ASSET.height;
     let w = availableW;
     let h = w / ar;
     if(h > availableH){ h = availableH; w = h * ar; }
-    return {x:(cw-w)/2,y:(ch-h)/2 + 4,w,h};
+    return {x:(cw-w)/2,y:(ch-h)/2,w,h};
+  }
+
+  function tx(pt){
+    const r = imageRect();
+    return [r.x + (pt[0]/BATHY_ASSET.width)*r.w, r.y + (pt[1]/BATHY_ASSET.height)*r.h];
   }
 
   function clearBase(){
@@ -1747,155 +1770,11 @@ document.addEventListener("DOMContentLoaded", function(){
     ctx.fillRect(0,0,cw,ch);
 
     ctx.save();
-    ctx.globalAlpha = 0.18;
-    ctx.strokeStyle = 'rgba(142,197,232,0.24)';
+    ctx.globalAlpha = 0.12;
+    ctx.strokeStyle = 'rgba(142,197,232,0.26)';
     ctx.lineWidth = 1;
-    for(let x=0;x<cw;x+=42){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,ch);ctx.stroke();}
-    for(let y=0;y<ch;y+=42){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(cw,y);ctx.stroke();}
-    ctx.restore();
-  }
-
-  function tx(pt){
-    const r = imageRect();
-    return [r.x + (pt[0]/BATHY_ASSET.width)*r.w, r.y + (pt[1]/BATHY_ASSET.height)*r.h];
-  }
-
-  function drawRaster(alpha=1, reveal=1){
-    const r = imageRect();
-    ctx.save();
-    ctx.globalAlpha = alpha;
-    if(reveal < 1){ ctx.beginPath(); ctx.rect(r.x, r.y, r.w*reveal, r.h); ctx.clip(); }
-    ctx.shadowColor = 'rgba(142,197,232,0.35)';
-    ctx.shadowBlur = 18;
-    ctx.drawImage(img, r.x, r.y, r.w, r.h);
-    ctx.restore();
-
-    ctx.save();
-    ctx.strokeStyle = 'rgba(216,238,251,0.42)';
-    ctx.lineWidth = 1;
-    ctx.strokeRect(r.x, r.y, r.w, r.h);
-    ctx.restore();
-  }
-
-  function drawPoints(progress=1, options={}){
-    const n = Math.floor(BATHY_ASSET.points.length * progress);
-    ctx.save();
-    ctx.globalCompositeOperation = 'screen';
-    for(let i=0;i<n;i++){
-      const p = BATHY_ASSET.points[i];
-      const [x,y] = tx(p);
-      const t = Math.min(1, Math.max(0, -p[2]/325));
-      ctx.fillStyle = options.flagged && i%31===0 ? 'rgba(255,111,111,0.85)' : `rgba(${Math.round(165-80*t)},${Math.round(235-100*t)},255,0.78)`;
-      ctx.beginPath();
-      ctx.arc(x,y, options.big ? 2.05 : 1.38,0,Math.PI*2);
-      ctx.fill();
-    }
-    ctx.restore();
-  }
-
-  function drawSurveySweep(progress=1){
-    const r = imageRect();
-    ctx.save();
-    ctx.translate(r.x+r.w/2,r.y+r.h/2);
-    ctx.rotate(140*Math.PI/180);
-    ctx.strokeStyle = 'rgba(255,91,91,0.42)';
-    ctx.lineWidth = 1;
-    const total=44;
-    const n=Math.floor(total*progress);
-    for(let i=-22;i<-22+n;i++){
-      ctx.beginPath();
-      ctx.moveTo(i*13,-r.w*0.72);
-      ctx.lineTo(i*13,r.w*0.72);
-      ctx.stroke();
-    }
-    ctx.restore();
-  }
-
-  function drawMesh(progress=1){
-    const r = imageRect();
-    ctx.save();
-    ctx.beginPath();ctx.rect(r.x,r.y,r.w,r.h);ctx.clip();
-    ctx.globalAlpha = 0.18 + 0.35*progress;
-    ctx.strokeStyle = 'rgba(248,216,102,0.75)';
-    ctx.lineWidth = 0.8;
-    const step = 36;
-    for(let x=r.x-r.h; x<r.x+r.w+r.h; x+=step){
-      ctx.beginPath();ctx.moveTo(x,r.y+r.h);ctx.lineTo(x+r.h*0.8,r.y);ctx.stroke();
-    }
-    ctx.strokeStyle = 'rgba(142,197,232,0.52)';
-    for(let y=r.y; y<r.y+r.h; y+=step){
-      ctx.beginPath();ctx.moveTo(r.x,y);ctx.lineTo(r.x+r.w,y+12*Math.sin(y*0.02));ctx.stroke();
-    }
-    ctx.restore();
-  }
-
-  function drawContours(progress=1){
-    ctx.save();
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-    let totalPaths = BATHY_ASSET.contours.reduce((s,c)=>s+c.paths.length,0);
-    let allowed = Math.ceil(totalPaths*progress);
-    let count = 0;
-    BATHY_ASSET.contours.forEach(c=>{
-      const t = Math.min(1, Math.max(0, -c.level/325));
-      ctx.strokeStyle = `rgba(236,248,255,${0.35+0.45*t})`;
-      ctx.lineWidth = c.level % 100 === 0 ? 1.2 : 0.75;
-      c.paths.forEach(path=>{
-        if(count++ > allowed) return;
-        ctx.beginPath();
-        path.forEach((pt,i)=>{ const [x,y]=tx(pt); if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y); });
-        ctx.stroke();
-      });
-    });
-    ctx.restore();
-  }
-
-  function drawProfile(progress=1){
-    const r = imageRect();
-    const p = BATHY_ASSET.profile;
-    if(!p || !p.length) return;
-    const yAsset = BATHY_ASSET.stats.profileRow;
-    const [x0,y0]=tx([p[0][0],yAsset]);
-    const [x1,y1]=tx([p[p.length-1][0],yAsset]);
-    ctx.save();
-    ctx.strokeStyle='rgba(248,216,102,0.92)';ctx.lineWidth=2;
-    ctx.setLineDash([8,5]);
-    ctx.beginPath();ctx.moveTo(x0,y0);ctx.lineTo(x1,y1);ctx.stroke();ctx.setLineDash([]);
-
-    const box={x:r.x+18,y:r.y+r.h-150,w:Math.min(360,r.w-36),h:118};
-    ctx.fillStyle='rgba(3,12,25,0.76)';ctx.fillRect(box.x,box.y,box.w,box.h);
-    ctx.strokeStyle='rgba(142,197,232,0.30)';ctx.strokeRect(box.x,box.y,box.w,box.h);
-    ctx.fillStyle='rgba(216,238,251,0.9)';ctx.font='12px Times New Roman';ctx.fillText('Perfil batimétrico extraído del raster',box.x+12,box.y+20);
-    ctx.strokeStyle='rgba(142,197,232,0.22)';ctx.beginPath();ctx.moveTo(box.x+28,box.y+32);ctx.lineTo(box.x+28,box.y+96);ctx.lineTo(box.x+box.w-18,box.y+96);ctx.stroke();
-    ctx.strokeStyle='rgba(248,216,102,0.95)';ctx.lineWidth=1.5;ctx.beginPath();
-    const limit=Math.max(2,Math.floor(p.length*progress));
-    for(let i=0;i<limit;i++){
-      const q=p[i];
-      const xx=box.x+28+(i/(p.length-1))*(box.w-50);
-      const yy=box.y+96-((-q[1])/325)*(box.h-54);
-      if(i===0)ctx.moveTo(xx,yy);else ctx.lineTo(xx,yy);
-    }
-    ctx.stroke();
-    ctx.restore();
-  }
-
-  function drawHypsometry(progress=1){
-    const ranges = BATHY_ASSET.stats.ranges || [];
-    const r = imageRect();
-    const box={x:r.x+r.w-260,y:r.y+24,w:238,h:164};
-    ctx.save();
-    ctx.fillStyle='rgba(3,12,25,0.70)';ctx.fillRect(box.x,box.y,box.w,box.h);
-    ctx.strokeStyle='rgba(142,197,232,0.30)';ctx.strokeRect(box.x,box.y,box.w,box.h);
-    ctx.fillStyle='rgba(216,238,251,0.9)';ctx.font='12px Times New Roman';ctx.fillText('Distribución por rangos',box.x+12,box.y+20);
-    const maxPct=Math.max(...ranges.map(d=>d.percent));
-    ranges.forEach((d,i)=>{
-      const y=box.y+36+i*17;
-      const ww=(box.w-112)*(d.percent/maxPct)*progress;
-      ctx.fillStyle='rgba(93,163,217,0.45)';ctx.fillRect(box.x+82,y-9,ww,10);
-      ctx.fillStyle='rgba(200,216,232,0.88)';ctx.font='10px Times New Roman';
-      ctx.fillText(d.range.replace(' a ','–'),box.x+10,y);
-      ctx.fillText(d.percent+'%',box.x+box.w-42,y);
-    });
+    for(let x=0;x<cw;x+=38){ ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,ch); ctx.stroke(); }
+    for(let y=0;y<ch;y+=38){ ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(cw,y); ctx.stroke(); }
     ctx.restore();
   }
 
@@ -1907,6 +1786,10 @@ document.addEventListener("DOMContentLoaded", function(){
     timeline.innerHTML = items.map((it,i)=>`<div class="lab-step-chip ${i===active?'active':''}">${String(i+1).padStart(2,'0')} · ${it}</div>`).join('');
   }
 
+  function setDetails(items){
+    detailsBox.innerHTML = items.map(it=>`<div class="lab-detail"><strong>${it[0]}.</strong> ${it[1]}</div>`).join('');
+  }
+
   function setStep(title,text,badge,progress){
     stepTitle.textContent = title;
     stepText.textContent = text;
@@ -1914,33 +1797,265 @@ document.addEventListener("DOMContentLoaded", function(){
     progressBar.style.width = `${Math.max(0,Math.min(100,progress))}%`;
   }
 
+  function drawRaster(alpha=1, reveal=1){
+    const r = imageRect();
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    if(reveal < 1){ ctx.beginPath(); ctx.rect(r.x, r.y, r.w*reveal, r.h); ctx.clip(); }
+    ctx.shadowColor = 'rgba(142,197,232,0.40)';
+    ctx.shadowBlur = 20;
+    ctx.drawImage(img, r.x, r.y, r.w, r.h);
+    ctx.restore();
+
+    ctx.save();
+    ctx.strokeStyle = 'rgba(216,238,251,0.48)';
+    ctx.lineWidth = 1.1;
+    ctx.strokeRect(r.x, r.y, r.w, r.h);
+    ctx.restore();
+  }
+
+  function withLakeMask(drawFn){
+    const r = imageRect();
+    maskCtx.clearRect(0,0,cw,ch);
+    drawFn(maskCtx, r);
+    maskCtx.globalCompositeOperation = 'destination-in';
+    maskCtx.drawImage(img, r.x, r.y, r.w, r.h);
+    maskCtx.globalCompositeOperation = 'source-over';
+    ctx.drawImage(maskCanvas, 0, 0);
+  }
+
+  function drawOutline(glow=1){
+    const r = imageRect();
+    ctx.save();
+    ctx.shadowColor = 'rgba(216,238,251,0.45)';
+    ctx.shadowBlur = 10 * glow;
+    ctx.strokeStyle = 'rgba(229,244,255,0.95)';
+    ctx.lineWidth = 1.3;
+    ctx.drawImage(img, r.x, r.y, r.w, r.h);
+    ctx.restore();
+  }
+
+  function drawTransectBundle(angle, spacing, progress, color, width, alpha=1){
+    const r = imageRect();
+    const diag = Math.sqrt(r.w*r.w + r.h*r.h) * 1.4;
+    const count = Math.ceil(diag/spacing) + 10;
+    const visible = Math.max(0, Math.min(count, Math.floor(count * progress)));
+    const start = -Math.floor(count/2);
+
+    withLakeMask((g)=>{
+      g.save();
+      g.translate(r.x + r.w/2, r.y + r.h/2);
+      g.rotate(angle * Math.PI / 180);
+      g.globalAlpha = alpha;
+      g.lineWidth = width;
+      g.strokeStyle = color;
+      g.shadowBlur = width * 3.6;
+      g.shadowColor = color;
+      for(let i=0;i<visible;i++){
+        const offset = (start + i) * spacing;
+        g.beginPath();
+        g.moveTo(offset, -diag);
+        g.lineTo(offset, diag);
+        g.stroke();
+      }
+      g.restore();
+    });
+  }
+
+  function drawNavigationPulse(progress, angle=140, spacing=11.2){
+    const r = imageRect();
+    const diag = Math.sqrt(r.w*r.w + r.h*r.h) * 1.42;
+    withLakeMask((g)=>{
+      g.save();
+      g.translate(r.x + r.w/2, r.y + r.h/2);
+      g.rotate(angle * Math.PI / 180);
+      g.lineWidth = 3.5;
+      g.strokeStyle = 'rgba(255,255,255,0.32)';
+      g.shadowBlur = 12;
+      g.shadowColor = 'rgba(248,216,102,0.95)';
+      const pulseCount = 4;
+      for(let k=0;k<pulseCount;k++){
+        const offset = (-2 + k*7) * spacing;
+        const t = (progress + k*0.17) % 1;
+        const y1 = -diag + diag*2*t;
+        const y0 = y1 - 88;
+        g.beginPath();
+        g.moveTo(offset, y0);
+        g.lineTo(offset, y1);
+        g.stroke();
+
+        g.fillStyle = 'rgba(248,216,102,0.95)';
+        g.beginPath();
+        g.arc(offset, y1, 3.1, 0, Math.PI*2);
+        g.fill();
+      }
+      g.restore();
+    });
+  }
+
+  function drawPoints(progress=1, options={}){
+    const n = Math.floor(BATHY_ASSET.points.length * progress);
+    ctx.save();
+    ctx.globalCompositeOperation = 'screen';
+    for(let i=0;i<n;i++){
+      const p = BATHY_ASSET.points[i];
+      const [x,y] = tx(p);
+      const t = Math.min(1, Math.max(0, -p[2]/325));
+      const flagged = options.flagged && i % 37 === 0;
+      ctx.fillStyle = flagged ? 'rgba(255,108,108,0.92)' : `rgba(${Math.round(168-74*t)},${Math.round(236-98*t)},255,0.82)`;
+      ctx.beginPath();
+      ctx.arc(x,y, options.big ? 2.15 : 1.38,0,Math.PI*2);
+      ctx.fill();
+    }
+    ctx.restore();
+  }
+
+  function drawMesh(progress=1){
+    const r = imageRect();
+    withLakeMask((g)=>{
+      g.save();
+      g.globalAlpha = 0.18 + 0.35*progress;
+      g.strokeStyle = 'rgba(248,216,102,0.68)';
+      g.lineWidth = 0.9;
+      const step1 = Math.max(20, 48 - 16*progress);
+      for(let x=r.x-r.h; x<r.x+r.w+r.h; x+=step1){
+        g.beginPath();
+        g.moveTo(x, r.y+r.h);
+        g.lineTo(x+r.h*0.92, r.y);
+        g.stroke();
+      }
+      g.strokeStyle = 'rgba(142,197,232,0.42)';
+      const step2 = Math.max(22, 46 - 14*progress);
+      for(let y=r.y-r.h*0.1; y<r.y+r.h*1.1; y+=step2){
+        g.beginPath();
+        g.moveTo(r.x-r.w*0.08, y);
+        g.lineTo(r.x+r.w*1.08, y + 6*Math.sin(y*0.028));
+        g.stroke();
+      }
+      g.restore();
+    });
+  }
+
+  function drawContours(progress=1){
+    ctx.save();
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    const totalPaths = BATHY_ASSET.contours.reduce((s,c)=>s+c.paths.length,0);
+    const allowed = Math.ceil(totalPaths * progress);
+    let count = 0;
+    BATHY_ASSET.contours.forEach(c=>{
+      const t = Math.min(1, Math.max(0, -c.level/325));
+      ctx.strokeStyle = `rgba(236,248,255,${0.35+0.48*t})`;
+      ctx.lineWidth = c.level % 100 === 0 ? 1.25 : 0.82;
+      c.paths.forEach(path=>{
+        if(count++ > allowed) return;
+        ctx.beginPath();
+        path.forEach((pt,i)=>{ const [x,y]=tx(pt); if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y); });
+        ctx.stroke();
+      });
+    });
+    ctx.restore();
+  }
+
+  function drawProfileLine(progress=1){
+    const p = BATHY_ASSET.profile;
+    if(!p || !p.length) return;
+    const yAsset = BATHY_ASSET.stats.profileRow;
+    const [x0,y0] = tx([p[0][0], yAsset]);
+    const [x1,y1] = tx([p[p.length-1][0], yAsset]);
+    ctx.save();
+    ctx.strokeStyle = 'rgba(248,216,102,0.98)';
+    ctx.lineWidth = 2.2;
+    ctx.setLineDash([8,6]);
+    ctx.beginPath();
+    ctx.moveTo(x0, y0);
+    const xm = x0 + (x1-x0) * progress;
+    const ym = y0 + (y1-y0) * progress;
+    ctx.lineTo(xm, ym);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    if(progress > 0.15){
+      const steps = Math.floor(12 * progress);
+      for(let i=0;i<steps;i++){
+        const t = i / 11;
+        const x = x0 + (x1-x0) * t;
+        const y = y0 + (y1-y0) * t;
+        ctx.fillStyle = 'rgba(248,216,102,0.92)';
+        ctx.beginPath(); ctx.arc(x,y,2.5,0,Math.PI*2); ctx.fill();
+      }
+    }
+    ctx.restore();
+  }
+
+  function drawLegendLabel(text){
+    const r = imageRect();
+    ctx.save();
+    const boxW = 220;
+    const boxH = 30;
+    const x = r.x + 14;
+    const y = r.y + 14;
+    ctx.fillStyle = 'rgba(3,12,25,0.66)';
+    ctx.fillRect(x,y,boxW,boxH);
+    ctx.strokeStyle = 'rgba(142,197,232,0.25)';
+    ctx.strokeRect(x,y,boxW,boxH);
+    ctx.fillStyle = 'rgba(216,238,251,0.92)';
+    ctx.font = '12px Times New Roman';
+    ctx.fillText(text, x+12, y+19);
+    ctx.restore();
+  }
+
   function xyzTable(rows=8){
     const pts = BATHY_ASSET.points.slice(0, rows);
-    return `<table class="xyz-table"><thead><tr><th>Este</th><th>Norte</th><th>Z</th></tr></thead><tbody>${pts.map((p,i)=>`<tr><td>${(415222+p[0]*7.47).toFixed(1)}</td><td>${(1628870+p[1]*7.47).toFixed(1)}</td><td>${p[2].toFixed(1)}</td></tr>`).join('')}</tbody></table>`;
+    return `<table class="xyz-table"><thead><tr><th>Este</th><th>Norte</th><th>Z</th></tr></thead><tbody>${pts.map(p=>`<tr><td>${(415222+p[0]*7.47).toFixed(1)}</td><td>${(1628870+p[1]*7.47).toFixed(1)}</td><td>${p[2].toFixed(1)}</td></tr>`).join('')}</tbody></table>`;
   }
 
   function classicConsole(stage){
-    const active = ['Proyecto / líneas de navegación','Sondajes XYZ','Control de datos','Grid en 3D Surfer','Curvas batimétricas','Producto final'];
     consoleTitle.textContent = 'HYPACK Max / 3D Surfer';
+    const active = [
+      'Planificación de líneas principales y líneas de control',
+      'Adquisición de sondajes con ecosonda y GPS/DGPS',
+      'Revisión, depuración y exportación XYZ',
+      'Gridding / interpolación en 3D Surfer 12',
+      'Extracción de curvas batimétricas',
+      'Composición del producto final'
+    ];
+    const stageNotes = [
+      'Las líneas se muestran únicamente dentro del espejo de agua. La cobertura visual busca reproducir una malla sistemática de ida y vuelta sobre todo el lago.',
+      'La nube de sondajes se intensifica conforme avanza la adquisición. Cada registro representa una tríada espacial X, Y, Z.',
+      'Los puntos marcados en rojo simbolizan observaciones revisadas o potencialmente inconsistentes antes del gridding.',
+      'La malla de interpolación convierte la nube XYZ en una superficie continua apta para modelar el fondo lacustre.',
+      'Las curvas sintetizan gradientes de profundidad y permiten leer cubetas, taludes y transiciones morfológicas.',
+      'El resultado integra superficie, contornos y control visual de la cobertura alcanzada.'
+    ];
+    const logs = [
+`PROJECT: Atitlán 2014
+Lines loaded successfully
+Primary spacing: 100 m
+Secondary control spacing: 1000 m`,
+`Hydrotrac echo sounder stream linked
+DGPS positions attached
+Incoming records: X, Y, Z
+Survey coverage expanding`,
+`QC pass initiated
+Spike review • neighboring check • depth continuity
+Validated points exported to XYZ`,
+`3D Surfer grid initialized
+Input: accepted XYZ soundings
+Interpolated surface building...`,
+`Contour extraction complete
+Levels derived from the continuous grid
+Map editing stage active`,
+`Surface + contours composed
+Hydrographic workflow ready for interpretation`
+    ];
     consoleContent.innerHTML = `
       <div class="software-tree">
         <h4>Proyecto hidrográfico</h4>
         ${active.map((a,i)=>`<div class="tree-item ${i===stage?'active':''}">${i<3?'HYPACK Max':'3D Surfer 12'} · ${a}</div>`).join('')}
         ${stage>=1 ? xyzTable(stage>=2?10:6) : ''}
-        <div class="surfer-log">${classicLog(stage)}</div>
+        <div class="surfer-log">${logs[stage]}</div>
+        <div class="mini-note">${stageNotes[stage]}</div>
       </div>`;
-  }
-
-  function classicLog(stage){
-    const logs = [
-      'Line plan loaded\nPrimary lines: 270 · spacing 100 m\nSecondary control: 13 · spacing 1000 m',
-      'Receiving depth stream...\nGPS/DGPS position attached to soundings\nExport queue: XYZ records',
-      'Quality control pass\nFlag spikes · compare neighboring soundings\nAccepted points prepared for gridding',
-      'Surfer grid initialized\nMethod: surface interpolation / gridding\nCell model built from XYZ soundings',
-      'Contour extraction\nLevels: -25, -50, -100, -150, -200, -250, -300 m',
-      'Map composition complete\nSurface + contours + morphometric interpretation'
-    ];
-    return logs[stage] || logs[0];
   }
 
   const codeLines = [
@@ -1956,33 +2071,49 @@ document.addEventListener("DOMContentLoaded", function(){
     'zmean = np.<span class="code-fn">nanmean</span>(z)',
     'levels = [-25,-50,-75,-100,-150,-200,-250,-300]',
     'contours = measure.<span class="code-fn">find_contours</span>(z, level=-100)',
-    '<span class="code-comment"># salida: raster, curvas, perfiles y métricas</span>'
+    'profile = z[src.height//2, :]',
+    '<span class="code-comment"># salida: raster, curvas, perfil y métricas</span>'
   ];
 
   function pythonConsole(stage){
     consoleTitle.textContent = 'Python / análisis reproducible';
-    const hotMap = [[0,1,2,3],[3,4,5],[6,7,8,9],[10,11],[12],[12]];
+    const hotMap = [[0,1,2,3,4,5],[6,7],[8,9],[10,11],[12],[13]];
     const hot = new Set(hotMap[stage] || []);
-    const pre = codeLines.map((l,i)=>`<span class="code-line ${hot.has(i)?'hot':(i<stage?'dim':'')}">${String(i+1).padStart(2,'0')}  ${l}</span>`).join('');
+    const pre = codeLines.map((l,i)=>`<span class="code-line ${hot.has(i)?'hot':(i<Math.max(0,stage*2)?'dim':'')}">${String(i+1).padStart(2,'0')}  ${l}</span>`).join('');
+    const logs=[
+`rasterio.open → ${BATHY_ASSET.stats.originalWidth} x ${BATHY_ASSET.stats.originalHeight} px
+CRS: ${BATHY_ASSET.stats.crs}
+Resolución: ${BATHY_ASSET.stats.pixelSizeX} m`,
+`NoData masked successfully
+Valores externos excluidos de la estadística
+Matriz lista para análisis`,
+`np.nanmin(z)  = ${BATHY_ASSET.stats.minDepth} m
+np.nanmean(z) = ${BATHY_ASSET.stats.meanDepth} m
+Valid cells     = ${BATHY_ASSET.stats.validPixels.toLocaleString('es-GT')}`,
+`marching squares extracting contour lines...
+levels = -25 a -300 m
+Curvas listas para visualización`,
+`Perfil transversal muestreado desde la grilla
+Se extrae una serie continua de profundidades
+Lista para interpretación`,
+`export complete
+visualización web compilada desde activos derivados del TIFF`
+    ];
+    const notes = [
+      'El TIFF se usa como fuente maestra: no es una imagen decorativa, sino la base cuantitativa de la reconstrucción visual.',
+      'La sustitución de NoData por NaN impide que el exterior del lago contamine mínimos, medias o contornos.',
+      'La matriz raster permite calcular métricas sin rehacer manualmente la cartografía cada vez.',
+      'Las curvas se derivan de niveles de profundidad y pueden reproducirse tantas veces como sea necesario.',
+      'El perfil muestrea una sección del fondo para ver cambios de pendiente y profundidades dominantes.',
+      'La lógica completa queda documentada y puede rehacerse o auditarse en un flujo reproducible.'
+    ];
     consoleContent.innerHTML = `
       <div class="code-card">
         <h4>Notebook de procesamiento</h4>
         <pre>${pre}</pre>
-        <div class="terminal-log">${pythonLog(stage)}</div>
+        <div class="terminal-log">${logs[stage]}</div>
+        <div class="mini-note">${notes[stage]}</div>
       </div>`;
-  }
-
-  function pythonLog(stage){
-    const s=BATHY_ASSET.stats;
-    const logs=[
-      `rasterio.open → ${s.originalWidth} x ${s.originalHeight} px\nCRS: ${s.crs}\nPixel: ${s.pixelSizeX} m`,
-      `NoData masked successfully\nValid raster cells: ${s.validPixels.toLocaleString('es-GT')}\nArea raster válida: ${s.areaKm2} km²`,
-      `np.nanmin(z)  = ${s.minDepth} m\nnp.nanmean(z) = ${s.meanDepth} m\nnp.nanmax(z)  = ${s.maxDepth} m`,
-      'marching squares extracting contour lines...\nlevels = -25 to -300 m\nSVG paths generated',
-      'profile sampled from raster grid\nhypsometric ranges computed\ncharts ready',
-      'export complete\nweb visualization assembled from TIFF-derived assets'
-    ];
-    return logs[stage] || logs[0];
   }
 
   function setMode(next){
@@ -1995,27 +2126,36 @@ document.addEventListener("DOMContentLoaded", function(){
     if(stop) token++;
     clearBase();
     drawRaster(0.88,1);
-    drawContours(0.55);
-    drawProfile(0.0);
+    drawContours(0.35);
+    drawLegendLabel('Vista base derivada del GeoTIFF');
+
     if(mode==='classic'){
       classicConsole(0);
       setTimeline(classicSteps,0);
-      setStep('Flujo listo','Reproduce el flujo para ver la transición desde sondajes XYZ hasta superficie interpolada y curvas batimétricas.','HYPACK Max / 3D Surfer',0);
+      setStep('Flujo listo','Reproduce el flujo para ver cómo una malla de navegación y una nube XYZ pueden conducir a una superficie interpolada y a curvas batimétricas comprensibles.','HYPACK Max / 3D Surfer',0);
+      setDetails([
+        ['Cobertura', 'Las líneas de navegación se dibujan solo dentro del espejo de agua para que la reconstrucción metodológica sea más coherente con la lógica del muestreo'],
+        ['Transición', 'El flujo avanza desde planificación y adquisición hasta gridding, contornos y producto final']
+      ]);
       setMetrics([
-        ['Fuente de datos','GeoTIFF batimétrico derivado del estudio'],
-        ['Profundidad mínima', BATHY_ASSET.stats.minDepth + ' m'],
-        ['Profundidad media raster', BATHY_ASSET.stats.meanDepth + ' m'],
-        ['Producto','Superficie + contornos']
+        ['Líneas principales', '270 · separación metodológica de 100 m'],
+        ['Líneas secundarias', '13 · separación metodológica de 1,000 m'],
+        ['Fuente de apoyo', 'Raster batimétrico derivado del GeoTIFF'],
+        ['Producto esperado', 'Superficie continua + curvas de profundidad']
       ]);
     } else {
       pythonConsole(0);
       setTimeline(pythonSteps,0);
-      setStep('Flujo listo','Reproduce el flujo para ver lectura raster, máscara NoData, cálculo de métricas, extracción de curvas y perfil batimétrico.','Python',0);
+      setStep('Flujo listo','Reproduce el flujo para ver lectura del raster, máscara de NoData, cálculo estadístico, extracción de contornos y trazado de un perfil, todo a partir del TIFF.','Python',0);
+      setDetails([
+        ['Reproducibilidad', 'Cada paso puede declararse, documentarse y repetirse sobre la misma fuente raster'],
+        ['Base de datos', 'El análisis usa como insumo el GeoTIFF batimétrico optimizado, no una simplificación dibujada a mano']
+      ]);
       setMetrics([
-        ['Archivo usado',BATHY_ASSET.stats.source],
-        ['Raster original',BATHY_ASSET.stats.originalWidth+' × '+BATHY_ASSET.stats.originalHeight+' px'],
-        ['Resolución',BATHY_ASSET.stats.pixelSizeX+' m por píxel'],
-        ['Área raster válida',BATHY_ASSET.stats.areaKm2+' km²']
+        ['Raster original', BATHY_ASSET.stats.originalWidth+' × '+BATHY_ASSET.stats.originalHeight+' px'],
+        ['Resolución', BATHY_ASSET.stats.pixelSizeX+' m por píxel'],
+        ['Área raster válida', BATHY_ASSET.stats.areaKm2+' km²'],
+        ['Rango de profundidades', BATHY_ASSET.stats.minDepth+' a '+BATHY_ASSET.stats.maxDepth+' m']
       ]);
     }
   }
@@ -2036,73 +2176,195 @@ document.addEventListener("DOMContentLoaded", function(){
 
   async function playClassic(){
     const local = ++token;
-    setMode('classic');
+    mode = 'classic';
+    tabs.forEach(t=>t.classList.toggle('active',t.dataset.mode==='classic'));
     playBtn.disabled = true;
     try{
       classicConsole(0); setTimeline(classicSteps,0);
-      setStep('Captura hidrográfica','Los sondajes se registran como puntos con coordenada y profundidad mientras la embarcación sigue líneas planificadas.','Captura de sondajes',8);
-      await animate(1500,p=>{clearBase();drawRaster(0.18);drawSurveySweep(p);drawPoints(p*0.45,{big:false});},local);
+      setStep('Planificación de líneas','La reconstrucción abre con una red de líneas principales y secundarias contenidas en el espejo de agua. La intención es enfatizar cobertura sistemática, no trayectorias fuera del lago.','Planificación hidrográfica',10);
+      setDetails([
+        ['Líneas principales', 'Aparecen como un barrido denso y uniforme que organiza la adquisición longitudinal del lago'],
+        ['Líneas secundarias', 'Funcionan como control transversal y ayudan a contrastar la continuidad del relieve sublacustre']
+      ]);
+      setMetrics([
+        ['Dirección principal', '140° / 320°'],
+        ['Dirección secundaria', '247° / 67°'],
+        ['Malla visible', 'Red sistemática recortada al espejo de agua'],
+        ['Cobertura visual', 'Alta, sobre toda la cubeta principal']
+      ]);
+      await animate(2400,p=>{ clearBase(); drawRaster(0.18,1); drawTransectBundle(140, 11.2, p, 'rgba(255,96,96,0.88)', 1.05, 0.95); drawTransectBundle(247, 74, p*0.9, 'rgba(248,216,102,0.86)', 1.7, 0.95); drawLegendLabel('Planificación de transectos'); }, local);
       if(local!==token) return;
 
       classicConsole(1); setTimeline(classicSteps,1);
-      setStep('Exportación XYZ','Los registros se organizan como tríadas X, Y, Z para alimentar el proceso de interpolación.','XYZ export',25);
-      await animate(1400,p=>{clearBase();drawRaster(0.25);drawPoints(0.25+p*0.45,{big:true});},local);
+      setStep('Adquisición de sondajes','La embarcación recorre las líneas planificadas y cada avance se traduce en puntos XYZ. El pulso luminoso sugiere el movimiento de navegación y el flujo de mediciones.','Adquisición hidrográfica',28);
+      setDetails([
+        ['Registro', 'Cada punto combina posición planimétrica y profundidad, de modo que la nube resultante ya es una base espacial de análisis'],
+        ['Representación', 'Los destellos móviles señalan una navegación activa sobre líneas ya definidas metodológicamente']
+      ]);
+      setMetrics([
+        ['Tipo de dato', 'Sondajes XYZ georreferenciados'],
+        ['Instrumentación reportada', 'Ecosonda Hydrotrac + GPS/DGPS'],
+        ['Cobertura visible', 'Transectos activos sobre el lago'],
+        ['Resultado inmediato', 'Nube progresiva de profundidades']
+      ]);
+      await animate(2800,p=>{ clearBase(); drawRaster(0.24,1); drawTransectBundle(140, 11.2, 1, 'rgba(255,96,96,0.62)', 0.95, 0.75); drawTransectBundle(247, 74, 1, 'rgba(248,216,102,0.72)', 1.55, 0.85); drawNavigationPulse(p); drawPoints(p*0.62,{big:false}); drawLegendLabel('Adquisición de sondajes'); }, local);
       if(local!==token) return;
 
       classicConsole(2); setTimeline(classicSteps,2);
-      setStep('Control de datos','La revisión identifica valores aislados, conserva sondajes consistentes y prepara la nube limpia.','Control de calidad',42);
-      await animate(1300,p=>{clearBase();drawRaster(0.35);drawPoints(0.82,{flagged:p<0.75,big:true});},local);
+      setStep('Control y depuración XYZ','Los registros pasan por control de consistencia. Los puntos resaltados en rojo simbolizan observaciones revisadas o descartables antes de la interpolación.','Control de calidad',46);
+      setDetails([
+        ['Depuración', 'La limpieza evita picos aislados y profundidades incoherentes que deformarían la superficie final'],
+        ['Preparación', 'Solo la nube validada alimenta la etapa de gridding en 3D Surfer']
+      ]);
+      setMetrics([
+        ['Objeto de control', 'Continuidad de profundidad y coherencia espacial'],
+        ['Formato de trabajo', 'Tabla XYZ lista para exportación'],
+        ['Lectura del paso', 'Depuración previa a la superficie'],
+        ['Resultado', 'Nube aceptada para interpolación']
+      ]);
+      await animate(2400,p=>{ clearBase(); drawRaster(0.36,1); drawPoints(0.88,{big:true, flagged:p<0.62}); drawLegendLabel('Revisión y control XYZ'); }, local);
       if(local!==token) return;
 
       classicConsole(3); setTimeline(classicSteps,3);
-      setStep('Interpolación en 3D Surfer','La nube XYZ se convierte en una grilla continua. Aquí se simula la construcción de la superficie batimétrica.','Gridding / superficie',61);
-      await animate(1600,p=>{clearBase();drawRaster(0.25+0.7*p,p);drawPoints(0.75*(1-p));drawMesh(p);},local);
+      setStep('Gridding e interpolación','La nube XYZ se transforma en una superficie continua. La malla aparece restringida al lago para subrayar que el modelo representa únicamente el fondo del espejo de agua.','Gridding en 3D Surfer',68);
+      setDetails([
+        ['Superficie', 'La interpolación rellena el espacio entre sondajes y permite representar un fondo continuo en vez de puntos aislados'],
+        ['Ventaja', 'Esta transición es la base para derivar contornos, visualizar cubetas y cuantificar morfometría']
+      ]);
+      setMetrics([
+        ['Entrada', 'Sondajes XYZ depurados'],
+        ['Proceso', 'Interpolación / gridding'],
+        ['Dominio del modelo', 'Espejo de agua recortado'],
+        ['Salida intermedia', 'Superficie batimétrica continua']
+      ]);
+      await animate(3000,p=>{ clearBase(); drawRaster(0.22 + 0.66*p, 1); drawMesh(p); drawPoints(0.45*(1-p)); drawLegendLabel('Construcción de superficie'); }, local);
       if(local!==token) return;
 
       classicConsole(4); setTimeline(classicSteps,4);
-      setStep('Curvas batimétricas','A partir de la superficie se extraen curvas de profundidad que resumen la forma del fondo lacustre.','Extracción de contornos',82);
-      await animate(1500,p=>{clearBase();drawRaster(0.92);drawMesh(0.55);drawContours(p);},local);
+      setStep('Extracción de contornos','Con la superficie ya consolidada, el flujo deriva curvas batimétricas. Estas líneas hacen legible la forma del relieve y ayudan a identificar profundidades dominantes.','Curvas de profundidad',86);
+      setDetails([
+        ['Contornos', 'Las curvas resumen la continuidad del fondo y mejoran la lectura morfológica de la cuenca lacustre'],
+        ['Interpretación', 'A partir de ellas pueden distinguirse taludes, sectores someros y cubetas profundas']
+      ]);
+      setMetrics([
+        ['Niveles representados', '-25 a -300 m'],
+        ['Base', 'Superficie interpolada'],
+        ['Lenguaje cartográfico', 'Curvas batimétricas'],
+        ['Uso', 'Interpretación morfométrica y cartográfica']
+      ]);
+      await animate(2700,p=>{ clearBase(); drawRaster(0.92,1); drawContours(p); drawLegendLabel('Extracción de contornos'); }, local);
       if(local!==token) return;
 
       classicConsole(5); setTimeline(classicSteps,5);
-      setStep('Producto batimétrico','El producto integra superficie continua, curvas de profundidad y lectura morfométrica del lago.','Producto final',100);
-      await animate(1000,p=>{clearBase();drawRaster(0.96);drawContours(1);drawProfile(p);},local);
+      setStep('Producto batimétrico final','El flujo concluye con un producto integrado: superficie, curvas y lectura espacial del relieve sublacustre. El resultado ya es apto para análisis y presentación.','Producto batimétrico',100);
+      setDetails([
+        ['Síntesis', 'La superficie coloreada y las curvas permiten comunicar con claridad la estructura del fondo del lago'],
+        ['Valor', 'Esta integración es la que conecta el trabajo de campo con el análisis morfométrico posterior']
+      ]);
+      setMetrics([
+        ['Profundidad máxima raster', BATHY_ASSET.stats.minDepth+' m'],
+        ['Profundidad media raster', BATHY_ASSET.stats.meanDepth+' m'],
+        ['Área raster válida', BATHY_ASSET.stats.areaKm2+' km²'],
+        ['Producto', 'Superficie + curvas + interpretación visual']
+      ]);
+      await animate(2400,p=>{ clearBase(); drawRaster(0.97,1); drawContours(1); drawLegendLabel('Producto batimétrico final'); }, local);
     } finally { playBtn.disabled = false; }
   }
 
   async function playPython(){
     const local = ++token;
-    setMode('python');
+    mode = 'python';
+    tabs.forEach(t=>t.classList.toggle('active',t.dataset.mode==='python'));
     playBtn.disabled = true;
     try{
       pythonConsole(0); setTimeline(pythonSteps,0);
-      setStep('Lectura del GeoTIFF','El flujo inicia leyendo el raster, su tamaño, resolución espacial y sistema de referencia.','rasterio.open()',8);
-      await animate(1300,p=>{clearBase();drawRaster(0.18+0.55*p,p);},local);
+      setStep('Lectura del GeoTIFF','El flujo parte de la apertura del archivo y de la lectura de metadatos básicos. La imagen se revela de forma gradual para subrayar que el TIFF es una superficie cuantitativa, no un simple fondo decorativo.','Lectura raster',10);
+      setDetails([
+        ['Entrada', 'El archivo conserva tamaño raster, resolución espacial y sistema de referencia útiles para el análisis'],
+        ['Propósito', 'Abrir correctamente el raster es la condición inicial para cualquier cálculo reproducible posterior']
+      ]);
+      setMetrics([
+        ['Archivo', BATHY_ASSET.stats.source],
+        ['Raster original', BATHY_ASSET.stats.originalWidth+' × '+BATHY_ASSET.stats.originalHeight+' px'],
+        ['Resolución', BATHY_ASSET.stats.pixelSizeX+' m por píxel'],
+        ['CRS', BATHY_ASSET.stats.crs]
+      ]);
+      await animate(2600,p=>{ clearBase(); drawRaster(0.16 + 0.72*p, p); drawLegendLabel('Apertura del GeoTIFF'); }, local);
       if(local!==token) return;
 
       pythonConsole(1); setTimeline(pythonSteps,1);
-      setStep('Máscara de NoData','Los valores sin información se separan de los píxeles válidos para evitar errores como profundidades irreales.','NoData → NaN',28);
-      await animate(1250,p=>{clearBase();drawRaster(0.85);drawContours(0.12*p);},local);
+      setStep('Máscara de NoData','Los valores sin información se transforman en NaN o se excluyen de la visualización, lo que evita falsos mínimos y asegura que el procesamiento se mantenga estrictamente dentro del lago.','Limpieza de NoData',30);
+      setDetails([
+        ['Control crítico', 'Este paso elimina la posibilidad de que el exterior del lago aparezca como profundidad real en estadísticas o contornos'],
+        ['Efecto visual', 'La reconstrucción deja visible únicamente el dominio válido de la superficie batimétrica']
+      ]);
+      setMetrics([
+        ['Celdas válidas', BATHY_ASSET.stats.validPixels.toLocaleString('es-GT')],
+        ['Área útil', BATHY_ASSET.stats.areaKm2+' km²'],
+        ['NoData', 'Excluido del análisis'],
+        ['Beneficio', 'Métricas y curvas físicamente coherentes']
+      ]);
+      await animate(2600,p=>{ clearBase(); drawRaster(0.9,1); drawContours(0.16*p); drawLegendLabel('Máscara del dominio válido'); }, local);
       if(local!==token) return;
 
       pythonConsole(2); setTimeline(pythonSteps,2);
-      setStep('Matriz de profundidad','NumPy permite calcular mínimo, media, rangos y distribución de profundidad directamente sobre la matriz raster.','NumPy stats',48);
-      await animate(1400,p=>{clearBase();drawRaster(0.94);drawHypsometry(p);},local);
+      setStep('Cálculo de métricas raster','Con la matriz ya limpia, Python puede calcular mínimos, medias, distribución por rangos y otras medidas sin rehacer manualmente el mapa. La superficie se mantiene visible para relacionar cada cifra con el espacio lacustre.','Estadística de la matriz',52);
+      setDetails([
+        ['Matriz Z', 'La batimetría se comporta como una matriz numérica sobre la que se aplican funciones de NumPy y SciPy'],
+        ['Lectura', 'Las métricas tienen valor porque siguen vinculadas a la geometría real del lago y a su continuidad espacial']
+      ]);
+      setMetrics([
+        ['Profundidad mínima', BATHY_ASSET.stats.minDepth+' m'],
+        ['Profundidad media', BATHY_ASSET.stats.meanDepth+' m'],
+        ['Profundidad máxima', BATHY_ASSET.stats.maxDepth+' m'],
+        ['Rango más extenso', '-300 a -325 m · '+BATHY_ASSET.stats.ranges[BATHY_ASSET.stats.ranges.length-1].percent+'%']
+      ]);
+      await animate(3000,p=>{ clearBase(); drawRaster(0.95,1); drawPoints(0.20 + 0.18*p,{big:false}); drawLegendLabel('Cálculo de métricas raster'); }, local);
       if(local!==token) return;
 
       pythonConsole(3); setTimeline(pythonSteps,3);
-      setStep('Extracción de curvas','Con algoritmos tipo marching squares se transforman niveles de profundidad en líneas batimétricas.','marching squares',68);
-      await animate(1600,p=>{clearBase();drawRaster(0.93);drawContours(p);},local);
+      setStep('Extracción de contornos','Una vez que el raster está limpio y entendido, algoritmos tipo marching squares convierten niveles de profundidad en líneas batimétricas. El dibujo progresivo hace visible la lógica de esa derivación.','Curvas con Python',74);
+      setDetails([
+        ['Algoritmo', 'Los contornos se construyen a partir de cruces de nivel dentro de la matriz raster'],
+        ['Resultado', 'Las curvas reproducen un lenguaje cartográfico equivalente al de un software especializado']
+      ]);
+      setMetrics([
+        ['Biblioteca orientativa', 'scikit-image / matplotlib'],
+        ['Niveles', '-25, -50, -75, -100, -150, -200, -250, -300 m'],
+        ['Entrada', 'Matriz raster batimétrica'],
+        ['Salida', 'Conjunto de curvas batimétricas']
+      ]);
+      await animate(3200,p=>{ clearBase(); drawRaster(0.93,1); drawContours(p); drawLegendLabel('Curvas derivadas del raster'); }, local);
       if(local!==token) return;
 
       pythonConsole(4); setTimeline(pythonSteps,4);
-      setStep('Perfil batimétrico','El raster permite extraer perfiles y gráficos derivados sin repetir manualmente el proceso cartográfico.','perfil raster',86);
-      await animate(1500,p=>{clearBase();drawRaster(0.93);drawContours(1);drawProfile(p);},local);
+      setStep('Extracción de un perfil batimétrico','El raster permite muestrear una sección transversal del lago sin abandonar el mismo flujo de trabajo. En la visualización, la línea discontinua representa el trayecto de muestreo del perfil.','Perfil a partir del raster',88);
+      setDetails([
+        ['Perfil', 'Una sola línea puede transformar la superficie continua en una serie ordenada de profundidades para análisis geomorfológico'],
+        ['Ventaja', 'El perfil puede cambiarse o repetirse sin recomenzar el procesamiento desde cero']
+      ]);
+      setMetrics([
+        ['Fila de muestreo', String(BATHY_ASSET.stats.profileRow)],
+        ['Extensión del perfil', 'Sección continua a través del raster'],
+        ['Dato derivado', 'Serie de profundidades ordenadas'],
+        ['Uso', 'Interpretación de pendientes y cubetas']
+      ]);
+      await animate(3200,p=>{ clearBase(); drawRaster(0.93,1); drawContours(1); drawProfileLine(p); drawLegendLabel('Muestreo de perfil batimétrico'); }, local);
       if(local!==token) return;
 
       pythonConsole(5); setTimeline(pythonSteps,5);
-      setStep('Salida reproducible','El resultado queda documentado: fuente raster, limpieza, métricas, contornos y visualización web.','exportación web',100);
-      await animate(900,p=>{clearBase();drawRaster(0.96);drawContours(1);drawHypsometry(1);drawProfile(1);},local);
+      setStep('Salida reproducible y visualización final','El flujo se cierra con un producto reproducible: raster controlado, métricas, curvas y perfil. A diferencia de un esquema puramente manual, cada decisión queda explícita y puede repetirse o auditarse.','Salida reproducible',100);
+      setDetails([
+        ['Reproducibilidad', 'La misma secuencia puede rehacerse con nuevos parámetros, nuevos perfiles o nuevas escalas de curvas sin perder trazabilidad'],
+        ['Potencia actual', 'Python integra lectura raster, análisis numérico y visualización web en un mismo ecosistema flexible']
+      ]);
+      setMetrics([
+        ['Librerías orientativas', 'Rasterio · NumPy · SciPy · scikit-image'],
+        ['Activos derivados', 'Raster · contornos · perfil · métricas'],
+        ['Salida', 'Visualización interactiva y auditable'],
+        ['Aporte', 'Mayor control metodológico y reproducibilidad']
+      ]);
+      await animate(2400,p=>{ clearBase(); drawRaster(0.98,1); drawContours(1); drawProfileLine(1); drawLegendLabel('Producto reproducible con Python'); }, local);
     } finally { playBtn.disabled = false; }
   }
 
