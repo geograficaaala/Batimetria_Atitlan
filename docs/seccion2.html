@@ -1248,6 +1248,307 @@ code{
   .nav-pie a{width:100%;}
 }
 
+
+
+/* === Correcciones finales solicitadas: cintillo en footer, logos clicables y jerarquía === */
+.site-header{
+  background:rgba(255,255,255,.96) !important;
+  border-bottom:1px solid rgba(43,174,232,.25) !important;
+  box-shadow:0 10px 28px rgba(25,128,177,.09) !important;
+}
+.header-inner{
+  width:min(1420px,100%) !important;
+  gap:1.25rem !important;
+  padding:.62rem 1.35rem !important;
+}
+.header-brand{
+  color:#0f5a7d !important;
+  font-size:12.7pt !important;
+  font-weight:bold !important;
+  font-style:italic !important;
+  line-height:1.13 !important;
+  letter-spacing:.015em !important;
+  max-width:520px !important;
+  white-space:normal !important;
+  padding:.28rem .45rem .28rem .2rem !important;
+  border-radius:18px !important;
+  transition:transform .18s ease, background .18s ease, color .18s ease !important;
+}
+.header-brand:hover{
+  transform:translateY(-1px);
+  background:#eef9ff !important;
+  color:#108fc4 !important;
+}
+.header-logo{
+  width:56px !important;
+  height:56px !important;
+  flex:0 0 auto !important;
+}
+.logo-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:26px;
+  padding:.35rem;
+  background:linear-gradient(180deg,#ffffff,#eef9ff);
+  border:1px solid rgba(43,174,232,.22);
+  box-shadow:0 14px 30px rgba(24,138,190,.12);
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.logo-link:hover{
+  transform:translateY(-2px);
+  border-color:rgba(43,174,232,.55);
+  box-shadow:0 18px 40px rgba(24,138,190,.18);
+}
+.logo-link .portada-logo{margin:.3rem auto !important;}
+.main-nav a{
+  border-radius:999px !important;
+  padding:.62rem 1.05rem !important;
+  border:1px solid rgba(43,174,232,.24) !important;
+  background:linear-gradient(180deg,#ffffff 0%,#eaf8ff 100%) !important;
+  color:#24536d !important;
+  box-shadow:0 7px 18px rgba(38,148,199,.09) !important;
+  font-weight:normal !important;
+}
+.main-nav a:hover{
+  background:linear-gradient(180deg,#fafdff 0%,#dff5ff 100%) !important;
+  border-color:rgba(43,174,232,.58) !important;
+  color:#0c8ec2 !important;
+}
+.main-nav a.activo{
+  background:linear-gradient(135deg,#20aee9 0%,#7ad9f8 100%) !important;
+  color:#ffffff !important;
+  border-color:#20aee9 !important;
+}
+.cintillo-banner.cintillo-footer{
+  position:relative !important;
+  z-index:2 !important;
+  width:100% !important;
+  margin:2.5rem 0 0 !important;
+  background:#ffffff !important;
+  border-top:1px solid rgba(43,174,232,.26) !important;
+  border-bottom:0 !important;
+  box-shadow:0 -12px 34px rgba(38,148,199,.08) !important;
+  overflow:hidden !important;
+}
+.cintillo-link{
+  display:block !important;
+  width:100% !important;
+  line-height:0 !important;
+}
+.cintillo-link img,
+.cintillo-banner img{
+  width:100% !important;
+  height:auto !important;
+  display:block !important;
+}
+.cintillo-link:hover img{filter:saturate(1.06) contrast(1.02);}
+.portada-main{padding-top:4.1rem !important;}
+.portada-main .simposio{
+  font-size:25pt !important;
+  line-height:1.18 !important;
+  max-width:960px !important;
+  margin:0 auto .65rem !important;
+  letter-spacing:.055em !important;
+  font-weight:bold !important;
+  font-style:italic !important;
+  color:#0c83b6 !important;
+  text-transform:uppercase !important;
+}
+.portada-main .curso{
+  font-size:20pt !important;
+  line-height:1.2 !important;
+  margin-bottom:2.15rem !important;
+  letter-spacing:.035em !important;
+  color:#166c92 !important;
+  font-style:italic !important;
+}
+.portada-main .titulo-paper{
+  font-size:24pt !important;
+  color:#123b55 !important;
+  margin-top:.35rem !important;
+}
+.portada-main .autores-paper{
+  font-size:14.5pt !important;
+  line-height:1.25 !important;
+  color:#0e8fc4 !important;
+  font-weight:bold !important;
+}
+.portada-main .doi{
+  font-size:12.5pt !important;
+  line-height:1.35 !important;
+  color:#45657b !important;
+  margin-bottom:1.35rem !important;
+}
+.tabla-integrantes td{
+  font-size:14pt !important;
+  line-height:1.25 !important;
+  padding:.82rem 1.1rem !important;
+}
+.tabla-integrantes td.tema{
+  font-size:12pt !important;
+  line-height:1.25 !important;
+  color:#45657b !important;
+}
+.fecha{font-size:14.5pt !important;}
+@media(max-width:980px){
+  .header-inner{flex-direction:column !important; align-items:center !important; gap:.75rem !important;}
+  .header-brand{max-width:100% !important; text-align:center !important; justify-content:center !important;}
+  .main-nav{justify-content:center !important; width:100% !important;}
+}
+@media(max-width:680px){
+  .portada-main .simposio{font-size:20pt !important;}
+  .portada-main .curso{font-size:17pt !important;}
+  .portada-main .titulo-paper{font-size:21pt !important;}
+  .tabla-integrantes td,.tabla-integrantes td.tema{display:block !important;text-align:left !important;width:100% !important;}
+}
+
+
+/* === Corrección Sección II: paneles y cuadros en blanco/celeste, sin bloques negros === */
+.animacion-wrap,
+.processing-block,
+.lab-process{
+  background:linear-gradient(180deg,#ffffff 0%,#f0fbff 100%) !important;
+  border:1px solid rgba(43,174,232,.28) !important;
+  border-radius:22px !important;
+  box-shadow:0 22px 58px rgba(19,91,130,.12) !important;
+  color:#17384f !important;
+}
+.animacion-titulo,
+.processing-info h3,
+.analisis h3,
+.fundamento-tecnico h3,
+.software-tree h4,
+.code-card h4,
+.lab-inspector h3{
+  color:#0f98cf !important;
+}
+.animacion-sub,
+.campo label,
+.checks label,
+.mapa-leyenda,
+.nota-mapa,
+.referencias-tecnicas,
+.processing-note,
+.lab-window-bar,
+.lab-raster-head,
+.software-tree,
+.mini-note,
+.lab-detail,
+.lab-step-chip,
+.lab-metric span{
+  color:#4d687a !important;
+}
+.campo select,
+.campo input{
+  background:#ffffff !important;
+  color:#17384f !important;
+  border:1px solid rgba(43,174,232,.32) !important;
+  border-radius:10px !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.92),0 6px 16px rgba(38,148,199,.06) !important;
+}
+.campo select option{background:#ffffff !important;color:#17384f !important;}
+.mapa-btn,
+.proc-tab,
+.processing-btn,
+.lab-tab,
+.lab-btn{
+  background:linear-gradient(180deg,#ffffff,#eaf8ff) !important;
+  color:#176083 !important;
+  border:1px solid rgba(43,174,232,.30) !important;
+  border-radius:12px !important;
+  box-shadow:0 7px 18px rgba(38,148,199,.08) !important;
+}
+.mapa-btn:hover,
+.proc-tab:hover,
+.processing-btn:hover,
+.lab-tab:hover,
+.lab-btn:hover{
+  background:linear-gradient(180deg,#fafdff,#dff5ff) !important;
+  color:#0b89bd !important;
+  border-color:rgba(43,174,232,.58) !important;
+}
+.mapa-btn.primario,
+.proc-tab.activo,
+.processing-btn.primary,
+.lab-tab.active,
+.lab-btn.primary{
+  background:linear-gradient(135deg,#22aee9,#79d7f6) !important;
+  color:#ffffff !important;
+  border-color:#22aee9 !important;
+}
+.checks label,
+.estado-card,
+.analisis,
+.fundamento-tecnico,
+.processing-info,
+.lab-console,
+.lab-inspector,
+.lab-detail,
+.lab-step-chip,
+.mini-pipeline span{
+  background:#ffffff !important;
+  border:1px solid rgba(43,174,232,.22) !important;
+  border-radius:14px !important;
+  box-shadow:0 10px 24px rgba(38,148,199,.06) !important;
+}
+.estado-card .v,
+.analisis-item .v,
+.lectura,
+.processing-info p,
+.processing-stats strong,
+.lab-window-bar strong,
+.lab-inspector p,
+.lab-metric strong,
+.fundamento-tecnico li,
+.fundamento-tecnico ul{
+  color:#17384f !important;
+}
+.estado-card .k,
+.analisis-item .k,
+.processing-stats span{color:#4d687a !important;}
+.mapa-frame,
+.processing-view,
+.lab-viewport{
+  background:linear-gradient(180deg,#f5fcff 0%,#e8f8ff 100%) !important;
+  border:1px solid rgba(43,174,232,.25) !important;
+  border-radius:18px !important;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.80) !important;
+}
+.lab-window-bar,
+.lab-raster-head{
+  background:linear-gradient(180deg,#ffffff,#eaf8ff) !important;
+  border-bottom:1px solid rgba(43,174,232,.22) !important;
+}
+.lab-console-content{background:#ffffff !important;}
+.tree-item{border-bottom:1px solid rgba(43,174,232,.13) !important;}
+.tree-item.active{
+  color:#0e8fc4 !important;
+  background:#eaf8ff !important;
+  border-left:3px solid #22aee9 !important;
+}
+.surfer-log,
+.terminal-log,
+.code-card pre{
+  background:#f7fcff !important;
+  color:#17384f !important;
+  border:1px solid rgba(43,174,232,.18) !important;
+  border-radius:12px !important;
+}
+.code-line.hot{background:#dff5ff !important;border-left-color:#22aee9 !important;color:#0f5a7d !important;}
+.code-line.run{background:#fff8d9 !important;border-left-color:#f0c94d !important;color:#4f4b1c !important;}
+.code-line.ellipsis{color:#6e8391 !important;}
+.code-comment{color:#0d8fc4 !important;}
+.code-key{color:#9a7600 !important;}.code-fn{color:#007b70 !important;}.code-str{color:#a34c35 !important;}
+.lab-progress{background:#eaf8ff !important;border-color:rgba(43,174,232,.24) !important;border-radius:999px !important;}
+.lab-step-chip.active{
+  background:linear-gradient(135deg,#22aee9,#79d7f6) !important;
+  color:#ffffff !important;
+  border-color:#22aee9 !important;
+}
+#labStageBadge{color:#0e8fc4 !important;}
+.swatch.lago{border-color:rgba(43,174,232,.35) !important;}
+
 </style>
 </head>
 
@@ -1267,9 +1568,9 @@ code{
 
 <header class="site-header">
   <div class="header-inner">
-    <a class="header-brand" href="../index.html" aria-label="Volver a portada">
+    <a class="header-brand" href="https://simposioatitlan.org.gt/" aria-label="Ir al sitio oficial del simposio">
       <img class="header-logo" src="simposio.png" alt="Logo del simposio">
-      <span>Batimetría Atitlán</span>
+      <span>V Simposio Internacional de Aguas Continentales de las Américas</span>
     </a>
     <nav class="main-nav" aria-label="Navegación principal">
       <a href="../index.html">Portada</a>
@@ -1280,9 +1581,6 @@ code{
     </nav>
   </div>
 </header>
-<div class="cintillo-banner">
-  <img src="cintillo.png" alt="Cintillo del V Simposio Internacional Aguas Continentales de las Américas">
-</div>
 <main class="section-main">
   <p class="seccion-label">Sección II &nbsp;·&nbsp; José Lisandro Alvarado Pol</p>
   <h1>Metodología batimétrica y procesamiento SIG</h1>
@@ -1555,6 +1853,12 @@ code{
     <a href="seccion3.html">III. Resultados →</a>
   </div>
 </main>
+<footer class="cintillo-banner cintillo-footer" aria-label="Cintillo del V Simposio Internacional Aguas Continentales de las Américas">
+  <a class="cintillo-link" href="https://simposioatitlan.org.gt/" aria-label="Ir al sitio oficial del simposio">
+    <img src="cintillo.png" alt="Cintillo del V Simposio Internacional Aguas Continentales de las Américas">
+  </a>
+</footer>
+
 
 <script>
 document.addEventListener("DOMContentLoaded", function(){
@@ -2147,14 +2451,14 @@ document.addEventListener("DOMContentLoaded", function(){
   function clearBase(){
     resizeCanvas();
     const grd = ctx.createLinearGradient(0,0,0,ch);
-    grd.addColorStop(0,'#102845');
-    grd.addColorStop(1,'#061326');
+    grd.addColorStop(0,'#f5fcff');
+    grd.addColorStop(1,'#e5f7ff');
     ctx.fillStyle = grd;
     ctx.fillRect(0,0,cw,ch);
 
     ctx.save();
     ctx.globalAlpha = 0.12;
-    ctx.strokeStyle = 'rgba(142,197,232,0.26)';
+    ctx.strokeStyle = 'rgba(43,174,232,0.22)';
     ctx.lineWidth = 1;
     for(let x=0;x<cw;x+=38){ ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,ch); ctx.stroke(); }
     for(let y=0;y<ch;y+=38){ ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(cw,y); ctx.stroke(); }
@@ -2216,7 +2520,7 @@ document.addEventListener("DOMContentLoaded", function(){
     ctx.restore();
 
     ctx.save();
-    ctx.strokeStyle = 'rgba(216,238,251,0.48)';
+    ctx.strokeStyle = 'rgba(43,174,232,0.45)';
     ctx.lineWidth = 1.1;
     ctx.strokeRect(r.x, r.y, r.w, r.h);
     ctx.restore();
