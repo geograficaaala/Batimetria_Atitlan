@@ -775,51 +775,51 @@ code{
 
 
 
-/* === Ajuste focalizado sección 3 · leyenda profesional + agua más real + controles premium === */
+/* === Reparación estable sección 3: estilo profesional sin romper lógica === */
 .explorador{
   background:linear-gradient(180deg,#ffffff 0%,#f8fdff 100%) !important;
-  border:1px solid rgba(62,179,230,.22) !important;
-  box-shadow:0 18px 48px rgba(28,120,167,.10) !important;
+  border:1px solid rgba(62,179,230,.23) !important;
+  box-shadow:0 18px 46px rgba(28,120,167,.10) !important;
 }
 .explorador-head{
-  background:linear-gradient(180deg,#fbfeff 0%,#f1faff 100%) !important;
-  border-bottom:1px solid rgba(62,179,230,.18) !important;
+  background:linear-gradient(180deg,#ffffff 0%,#eef9ff 100%) !important;
+  border-bottom:1px solid rgba(62,179,230,.20) !important;
 }
 .explorador-title{
-  color:#2b5876 !important;
-  letter-spacing:.08em !important;
+  color:#285877 !important;
   font-size:17pt !important;
+  letter-spacing:.08em !important;
 }
 .tool-row{
-  gap:.55rem !important;
+  gap:.58rem !important;
 }
 .tool-btn{
   border-radius:14px !important;
-  padding:.62rem .94rem !important;
+  padding:.62rem .96rem !important;
   background:linear-gradient(180deg,#ffffff 0%,#eff9ff 100%) !important;
-  border:1px solid rgba(62,179,230,.28) !important;
+  border:1px solid rgba(62,179,230,.30) !important;
   color:#315a75 !important;
-  font-size:12pt !important;
-  box-shadow:0 5px 14px rgba(37,139,189,.08), inset 0 1px 0 rgba(255,255,255,.92) !important;
+  font-size:11.8pt !important;
+  box-shadow:0 5px 14px rgba(37,139,189,.08), inset 0 1px 0 rgba(255,255,255,.95) !important;
   transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease !important;
 }
 .tool-btn:hover{
   transform:translateY(-1px) !important;
-  border-color:rgba(44,168,226,.56) !important;
-  box-shadow:0 10px 22px rgba(37,139,189,.14), inset 0 1px 0 rgba(255,255,255,.96) !important;
-  background:linear-gradient(180deg,#ffffff 0%,#e7f7ff 100%) !important;
+  border-color:rgba(44,168,226,.58) !important;
+  box-shadow:0 10px 22px rgba(37,139,189,.14), inset 0 1px 0 rgba(255,255,255,.98) !important;
+  background:linear-gradient(180deg,#ffffff 0%,#e6f7ff 100%) !important;
 }
 .tool-btn.active{
   color:#ffffff !important;
   border-color:#55c7f1 !important;
-  background:linear-gradient(180deg,#74cdf3 0%,#3bb2e8 100%) !important;
+  background:linear-gradient(180deg,#76d2f6 0%,#36aee6 100%) !important;
   box-shadow:0 12px 24px rgba(29,148,205,.24) !important;
 }
 .tool-btn kbd{
   min-width:22px !important;
   height:22px !important;
   border-radius:999px !important;
-  background:rgba(69,181,231,.10) !important;
+  background:rgba(69,181,231,.12) !important;
   color:#3a84ab !important;
   border:1px solid rgba(62,179,230,.28) !important;
 }
@@ -829,11 +829,11 @@ code{
   border-color:rgba(255,255,255,.75) !important;
 }
 .map-wrap{
-  background:linear-gradient(180deg,#fafdff 0%,#f3fbff 100%) !important;
+  background:linear-gradient(180deg,#fbfeff 0%,#f2fbff 100%) !important;
 }
 #mapCanvas{
   background:linear-gradient(180deg,#ffffff 0%,#f6fcff 100%) !important;
-  border:1px solid rgba(62,179,230,.15) !important;
+  border:1px solid rgba(62,179,230,.16) !important;
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.95), 0 10px 24px rgba(56,147,193,.07) !important;
 }
 .map-hint{
@@ -847,7 +847,7 @@ code{
 }
 .metric-card,
 .side-chart-panel{
-  background:rgba(255,255,255,.92) !important;
+  background:rgba(255,255,255,.94) !important;
   border:1px solid rgba(62,179,230,.20) !important;
   box-shadow:0 8px 22px rgba(35,132,181,.07) !important;
 }
@@ -864,7 +864,6 @@ code{
 .slider-scale,
 .legend-sub,
 .legend-foot,
-.chart-meta,
 .drain-note{
   color:#406279 !important;
 }
@@ -872,7 +871,7 @@ code{
 .scenario-btn,
 .auto-drain-btn{
   appearance:none;
-  border:1px solid rgba(62,179,230,.24);
+  border:1px solid rgba(62,179,230,.25);
   background:linear-gradient(180deg,#ffffff 0%,#eef9ff 100%);
   color:#355a73;
   border-radius:11px;
@@ -897,27 +896,65 @@ code{
   color:#fff;
   border-color:#54c8f2;
 }
-.scenario-row{
-  display:grid !important;
-  gap:.42rem !important;
+.auto-drain-wrap{
+  margin-top:.55rem;
+  display:grid;
+  gap:.4rem;
 }
-.auto-drain-wrap{margin-top:.55rem;display:grid;gap:.4rem;}
-.auto-drain-btn{font-weight:bold;letter-spacing:.02em;}
-.drain-note{font-size:9.5pt;line-height:1.28;}
-.side-chart-panel{padding:.7rem !important;}
-.side-chart-panel.is-visible{display:block !important;}
-.side-chart-panel .chart-head{font-size:10pt !important;font-weight:bold;letter-spacing:.08em !important;text-transform:uppercase;}
+.auto-drain-btn{
+  font-weight:bold;
+  letter-spacing:.02em;
+}
+.drain-note{
+  font-size:9.5pt;
+  line-height:1.28;
+}
+.side-chart-panel{
+  padding:.7rem !important;
+}
+.side-chart-panel.is-visible{
+  display:block !important;
+}
+.side-chart-panel .chart-head{
+  font-size:10pt !important;
+  font-weight:bold;
+  letter-spacing:.08em !important;
+  text-transform:uppercase;
+}
 #chartCanvas{
   background:#ffffff !important;
   border:1px solid rgba(62,179,230,.18) !important;
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.85) !important;
-  height:246px !important;
+  height:248px !important;
 }
-.legend-card-pro{padding:.72rem .78rem .82rem !important;}
-.legend-heading{display:flex;flex-direction:column;gap:.18rem;margin-bottom:.52rem;}
-.legend-sub{font-size:9.3pt;line-height:1.25;}
-.legend-pro{display:grid;grid-template-columns:30px 1fr;gap:.64rem;align-items:stretch;}
-.legend-stack{display:grid;grid-template-rows:repeat(7,1fr);height:156px;border-radius:10px;overflow:hidden;border:1px solid rgba(62,179,230,.20);box-shadow:inset 0 0 0 1px rgba(255,255,255,.55);}
+.legend-card-pro{
+  padding:.72rem .78rem .82rem !important;
+}
+.legend-heading{
+  display:flex;
+  flex-direction:column;
+  gap:.18rem;
+  margin-bottom:.52rem;
+}
+.legend-sub{
+  font-size:9.3pt;
+  line-height:1.25;
+}
+.legend-pro{
+  display:grid;
+  grid-template-columns:30px 1fr;
+  gap:.64rem;
+  align-items:stretch;
+}
+.legend-stack{
+  display:grid;
+  grid-template-rows:repeat(7,1fr);
+  height:156px;
+  border-radius:10px;
+  overflow:hidden;
+  border:1px solid rgba(62,179,230,.20);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.55);
+}
 .legend-step:nth-child(1){background:#dcfbf7;}
 .legend-step:nth-child(2){background:#a5efe3;}
 .legend-step:nth-child(3){background:#69d5d5;}
@@ -925,15 +962,39 @@ code{
 .legend-step:nth-child(5){background:#3e7dc2;}
 .legend-step:nth-child(6){background:#3a61b0;}
 .legend-step:nth-child(7){background:#4c4fa6;}
-.legend-labels{display:grid;grid-template-rows:repeat(7,1fr);gap:0;font-size:9.4pt;color:#355770;}
-.legend-labels div{display:flex;align-items:center;justify-content:space-between;border-bottom:1px dashed rgba(62,179,230,.16);padding-left:.05rem;gap:.5rem;}
+.legend-labels{
+  display:grid;
+  grid-template-rows:repeat(7,1fr);
+  gap:0;
+  font-size:9.4pt;
+  color:#355770;
+}
+.legend-labels div{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px dashed rgba(62,179,230,.16);
+  padding-left:.05rem;
+  gap:.5rem;
+}
 .legend-labels div:last-child{border-bottom:none;}
-.legend-range{font-weight:bold;color:#244f69;}
-.legend-foot{display:flex;justify-content:space-between;gap:.4rem;font-size:8.8pt;margin-top:.48rem;color:#5c7b90;}
-.legend-note{margin-top:.42rem;font-size:8.9pt;line-height:1.28;color:#5b788b;}
-@media(max-width:920px){
-  .legend-pro{grid-template-columns:24px 1fr;}
-  .legend-stack{height:144px;}
+.legend-range{
+  font-weight:bold;
+  color:#244f69;
+}
+.legend-foot{
+  display:flex;
+  justify-content:space-between;
+  gap:.4rem;
+  font-size:8.8pt;
+  margin-top:.48rem;
+  color:#5c7b90;
+}
+.legend-note{
+  margin-top:.42rem;
+  font-size:8.9pt;
+  line-height:1.28;
+  color:#5b788b;
 }
 
 </style>
@@ -1011,7 +1072,7 @@ code{
           </div>
           <div class="auto-drain-wrap">
             <button type="button" class="auto-drain-btn" id="autoDrainBtn">Vaciador automático dramatizado</button>
-            <div class="drain-note" id="drainNote">Animación visual intensificada para mostrar de manera más evidente la bajada del nivel del agua.</div>
+            <div class="drain-note" id="drainNote">Animación visual intensificada para mostrar mejor la bajada del nivel del agua.</div>
           </div>
         </div>
         <div class="metrics-grid" id="metricsBox">
@@ -1034,7 +1095,7 @@ code{
         <div class="metric-card legend-card legend-card-pro">
           <div class="legend-heading">
             <div class="legend-title">Leyenda batimétrica</div>
-            <div class="legend-sub">Rampa interpretativa de profundidad inspirada en cartografía limnológica profesional.</div>
+            <div class="legend-sub">Rampa interpretativa de profundidad para distinguir mejor las zonas someras, profundas y la cubeta máxima.</div>
           </div>
           <div class="legend-pro" aria-label="Leyenda de profundidad">
             <div class="legend-stack" role="presentation">
@@ -1057,7 +1118,7 @@ code{
             </div>
           </div>
           <div class="legend-foot"><span>Menor profundidad</span><span>Mayor profundidad</span></div>
-          <div class="legend-note">El cambio cromático resalta mejor la cubeta principal y las transiciones batimétricas del lago.</div>
+          <div class="legend-note">La paleta fue ajustada para que el lago tenga más contraste sin perder la lectura científica.</div>
         </div>
       </aside>
     </div>
@@ -1158,53 +1219,8 @@ code{
     }
     return stops[stops.length-1][1];
   }
-  function makeBase(){
-    const img=bctx.createImageData(W,H);
-    const sample=(x,y)=>{
-      x=Math.max(0,Math.min(W-1,x));
-      y=Math.max(0,Math.min(H-1,y));
-      const v=depthDm[y*W+x];
-      return v<0?NaN:v/10;
-    };
-    for(let y=0;y<H;y++){
-      for(let x=0;x<W;x++){
-        const i=y*W+x,j=i*4,dm=depthDm[i];
-        if(dm<0){img.data[j+3]=0;continue;}
-        const d=dm/10;
-        const c=bathyColor(d);
-        const dx=(sample(x+1,y)-sample(x-1,y));
-        const dy=(sample(x,y+1)-sample(x,y-1));
-        const slope=(Number.isFinite(dx)?dx:0)+(Number.isFinite(dy)?dy:0)*0.85;
-        const shade=Math.max(.82,Math.min(1.14,1-(slope/140)));
-        const coastBoost=Math.max(0,1-d/85)*10;
-        img.data[j]=Math.max(0,Math.min(255,Math.round(c[0]*shade+coastBoost)));
-        img.data[j+1]=Math.max(0,Math.min(255,Math.round(c[1]*shade+coastBoost)));
-        img.data[j+2]=Math.max(0,Math.min(255,Math.round(c[2]*shade+coastBoost*0.6)));
-        img.data[j+3]=255;
-      }
-    }
-    bctx.putImageData(img,0,0);
-  }
-  function makeWater(dropM,style='blue'){
-    const c=style==='red'?tctx:wctx,img=c.createImageData(W,H);
-    for(let i=0;i<depthDm.length;i++){
-      const dm=depthDm[i],j=i*4;
-      if(dm<0||dm/10<=dropM) continue;
-      const d=dm/10;
-      const rel=Math.max(0,Math.min(1,(d-dropM)/Math.max(1,(P.maxDepthM-dropM))));
-      if(style==='red'){
-        img.data[j]=236; img.data[j+1]=95; img.data[j+2]=109; img.data[j+3]=80;
-      }else if(style==='yellow'){
-        img.data[j]=118; img.data[j+1]=220; img.data[j+2]=228; img.data[j+3]=Math.round(96+44*rel);
-      }else{
-        img.data[j]=Math.round(98-20*rel);
-        img.data[j+1]=Math.round(219-42*rel);
-        img.data[j+2]=Math.round(233+10*rel);
-        img.data[j+3]=Math.round(92+58*rel);
-      }
-    }
-    c.putImageData(img,0,0);
-  }
+  function makeBase(){const img=bctx.createImageData(W,H);for(let i=0;i<depthDm.length;i++){let dm=depthDm[i],j=i*4;if(dm<0){img.data[j+3]=0;continue;}let c=bathyColor(dm/10);img.data[j]=c[0];img.data[j+1]=c[1];img.data[j+2]=c[2];img.data[j+3]=255;}bctx.putImageData(img,0,0);}
+  function makeWater(dropM,style='blue'){const c=style==='red'?tctx:wctx,img=c.createImageData(W,H);for(let i=0;i<depthDm.length;i++){let dm=depthDm[i],j=i*4;if(dm<0||dm/10<=dropM)continue;const rel=Math.max(0,Math.min(1,(dm/10-dropM)/Math.max(1,P.maxDepthM-dropM)));if(style==='red'){img.data[j]=236;img.data[j+1]=82;img.data[j+2]=96;img.data[j+3]=82;}else if(style==='yellow'){img.data[j]=122;img.data[j+1]=220;img.data[j+2]=228;img.data[j+3]=112;}else{img.data[j]=Math.round(96-18*rel);img.data[j+1]=Math.round(218-36*rel);img.data[j+2]=Math.round(235+8*rel);img.data[j+3]=Math.round(112+36*rel);}}c.putImageData(img,0,0);}
   function syncChartCanvas(){const r=chart.getBoundingClientRect();const dpr=Math.max(1,window.devicePixelRatio||1);const w=Math.max(260,Math.round(r.width*dpr));const h=Math.max(210,Math.round(r.height*dpr));if(chart.width!==w||chart.height!==h){chart.width=w;chart.height=h;cctx.setTransform(dpr,0,0,dpr,0,0);}}
   function resize(){const r=canvas.getBoundingClientRect(),dpr=Math.max(1,window.devicePixelRatio||1);canvas.width=Math.round(r.width*dpr);canvas.height=Math.round(r.height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);syncChartCanvas();render();drawChart();}
   function fit(){const cw=canvas.clientWidth,ch=canvas.clientHeight;const s=Math.min(cw/W,ch/H)*0.965;return{s,ox:(cw-W*s)/2,oy:(ch-H*s)/2};}
@@ -1218,58 +1234,7 @@ code{
   function drawRing(ring,part=1,color='rgba(220,240,255,.9)',lw=2.1){if(!ring||ring.length<2)return;const n=Math.max(2,Math.floor(ring.length*part));ctx.beginPath();let p=px(ring[0][0],ring[0][1]);ctx.moveTo(p[0],p[1]);for(let i=1;i<n;i++){p=px(ring[i][0],ring[i][1]);ctx.lineTo(p[0],p[1]);}if(part>=0.999)ctx.closePath();ctx.strokeStyle=color;ctx.lineWidth=lw;ctx.lineJoin='round';ctx.lineCap='round';ctx.stroke();}
   function drawAllBoundaries(color='rgba(220,240,255,.88)',lw=2.0){D.rings.forEach((r,i)=>drawRing(r,1,color,i===0?lw:1.15));}
   function roundedLabel(x,y,txt,bg='rgba(8,19,34,.88)'){ctx.save();ctx.font='13px Times New Roman';const pad=8,w=ctx.measureText(txt).width+pad*2,h=25;ctx.fillStyle=bg;ctx.strokeStyle='rgba(220,239,255,.28)';ctx.beginPath();ctx.roundRect(x,y-h,w,h,7);ctx.fill();ctx.stroke();ctx.fillStyle='#fff';ctx.fillText(txt,x+pad,y-7);ctx.restore();}
-  function drawWaterMotion(style){
-    const f=fit();
-    const isY=style==='yellow', isR=style==='red';
-    ctx.save();
-    mainPath();
-    ctx.clip();
-    // brillo superior para sensación más líquida
-    const gloss=ctx.createLinearGradient(0,f.oy,0,f.oy+H*f.s);
-    if(isR){
-      gloss.addColorStop(0,'rgba(255,235,238,.18)');
-      gloss.addColorStop(1,'rgba(255,110,130,0)');
-    }else if(isY){
-      gloss.addColorStop(0,'rgba(235,255,255,.22)');
-      gloss.addColorStop(1,'rgba(94,210,222,0)');
-    }else{
-      gloss.addColorStop(0,'rgba(255,255,255,.24)');
-      gloss.addColorStop(.26,'rgba(164,242,255,.16)');
-      gloss.addColorStop(1,'rgba(56,155,214,0)');
-    }
-    ctx.fillStyle=gloss;
-    ctx.fillRect(f.ox,f.oy,W*f.s,H*f.s);
-
-    ctx.globalCompositeOperation='screen';
-    ctx.lineCap='round';
-    ctx.lineJoin='round';
-    for(const q of waterStreaks){
-      const drift=(time*0.00002*q.s+q.p)%1;
-      const x=f.ox+((q.x+drift)%1)*W*f.s;
-      const y=f.oy+((q.y+0.016*Math.sin(time*0.001*q.s+q.p))%1)*H*f.s;
-      const len=q.l*W*f.s;
-      const amp=(1.6+2.2*q.s)*f.s;
-      const alpha=(isR?.10:(isY?.16:.18))*(0.55+0.45*Math.sin(time*0.0022+q.p));
-      ctx.globalAlpha=alpha;
-      ctx.strokeStyle=isR?'rgba(255,196,205,.86)':(isY?'rgba(220,255,255,.82)':'rgba(233,255,255,.96)');
-      ctx.lineWidth=(0.38+q.s*0.34)*f.s;
-      ctx.beginPath();
-      ctx.moveTo(x-len*.5,y);
-      ctx.bezierCurveTo(x-len*.2,y-amp,x+len*.2,y+amp,x+len*.5,y);
-      ctx.stroke();
-    }
-    ctx.globalAlpha=isY?.10:.09;
-    ctx.fillStyle=isY?'rgba(205,246,255,.9)':'rgba(230,251,255,.88)';
-    for(let i=0;i<26;i++){
-      const x=f.ox+((i*.119+(time*.000028))%1)*W*f.s;
-      const y=f.oy+((i*.213+Math.sin(time*.0008+i)*.06+1)%1)*H*f.s;
-      ctx.beginPath();
-      ctx.arc(x,y,1.0+Math.sin(time*.002+i)*.55,0,Math.PI*2);
-      ctx.fill();
-    }
-    ctx.restore();
-  }
-
+  function drawWaterMotion(style){const f=fit();ctx.save();mainPath();ctx.clip();const isY=style==='yellow', isR=style==='red';ctx.globalCompositeOperation='screen';ctx.lineCap='round';ctx.lineJoin='round';for(const q of waterStreaks){const drift=(time*0.000018*q.s+q.p)%1;const x=f.ox+((q.x+drift)%1)*W*f.s;const y=f.oy+((q.y+0.018*Math.sin(time*0.001*q.s+q.p))%1)*H*f.s;const len=q.l*W*f.s;const amp=(2.2+2.0*q.s)*f.s;const alpha=(isR?.13:(isY?.18:.16))*(0.55+0.45*Math.sin(time*0.002+q.p));ctx.globalAlpha=alpha;ctx.strokeStyle=isR?'rgba(255,190,190,.9)':(isY?'rgba(255,245,175,.95)':'rgba(190,248,255,.95)');ctx.lineWidth=(0.55+q.s*0.42)*f.s;ctx.beginPath();ctx.moveTo(x-len*.5,y);ctx.bezierCurveTo(x-len*.18,y-amp,x+len*.18,y+amp,x+len*.5,y);ctx.stroke();}ctx.globalAlpha=isY?.10:.08;ctx.fillStyle=isY?'#ffe58a':'#6fe8ff';for(let i=0;i<18;i++){const x=f.ox+((i*.137+(time*.00003))%1)*W*f.s;const y=f.oy+((i*.293+Math.sin(time*.0007+i)*.08+1)%1)*H*f.s;ctx.beginPath();ctx.arc(x,y,1.2+Math.sin(time*.002+i)*.5,0,Math.PI*2);ctx.fill();}ctx.restore();}
 
   function drawDeepest(){
     const p=px(D.deepest.x,D.deepest.y);
@@ -1352,7 +1317,7 @@ code{
       const Y=(y-cy)*0.42 + d*0.54;
       return [baseX+X*scale, baseY+Y*scale];
     }
-    ctx.fillStyle='#07111f';ctx.fillRect(0,0,cw,ch);
+    ctx.fillStyle='#f8fdff';ctx.fillRect(0,0,cw,ch);
     // sombra de la cubeta
     ctx.save();ctx.globalAlpha=.18;ctx.fillStyle='#000';
     ctx.beginPath();
@@ -1365,7 +1330,7 @@ code{
         const i=y*W+x, i2=y*W+x+step, i3=(y+step)*W+x+step, i4=(y+step)*W+x;
         const d1=depthDm[i]/10,d2=depthDm[i2]/10,d3=depthDm[i3]/10,d4=depthDm[i4]/10;
         if(d1<0||d2<0||d3<0||d4<0) continue;
-        const av=(d1+d2+d3+d4)/4; const c=colorDepth(av);
+        const av=(d1+d2+d3+d4)/4; const c=bathyColor(av);
         const shade=Math.max(.72,1-(y/H)*.18);
         ctx.fillStyle=`rgb(${Math.round(c[0]*shade)},${Math.round(c[1]*shade)},${Math.round(c[2]*shade)})`;
         const p1=pr(x,y,d1),p2=pr(x+step,y,d2),p3=pr(x+step,y+step,d3),p4=pr(x,y+step,d4);
@@ -1389,95 +1354,62 @@ code{
   function animatePerimeter(){cancelAnimationFrame(animReq);perimProgress=0;const step=()=>{perimProgress=Math.min(1,perimProgress+0.0075);render();if(perimProgress<1)animReq=requestAnimationFrame(step);};step();}
   function liveLoop(ts){time=ts||0;if(['volumen','profmedia','espejo','profmax'].includes(mode)){render();liveReq=requestAnimationFrame(liveLoop);}else liveReq=null;}
   function ensureLive(){if(!liveReq&&['volumen','profmedia','espejo','profmax'].includes(mode))liveReq=requestAnimationFrame(liveLoop);}
-  function updatePanel(){
-    const texts={
-      general:['Vista general',`Área superficial: <b>${P.areaKm2} km²</b><br>Volumen estimado: <b>${P.volumeKm3} km³</b><br>Profundidad máxima: <b>${P.maxDepthM} m</b><br>Profundidad media: <b>${P.meanDepthM} m</b>.`,'Vista general del modelo batimétrico del lago.'],
-      perimetro:['Perímetro',`El contorno del espejo de agua se traza a partir de la geometría vectorial del lago.<br><br><span class="big-number">${P.perimeterKm} km</span><br>Índice de desarrollo de costa: ${P.coastDev}.`,'Recorrido progresivo del perímetro lacustre.'],
-      espejo:['Espejo de agua',`La lámina superficial se resalta con una tinta celeste para distinguir el área del espejo de agua.<br><br><span class="big-number">${P.areaKm2} km²</span>.`,'Área superficial actual del lago resaltada.'],
-      volumen:['Volumen',`Controla el descenso del nivel del agua con el deslizador o usa los escenarios. El botón <b>Vaciador automático dramatizado</b> acelera el proceso para hacerlo visualmente más evidente.<br><br><b>Descenso actual:</b> ${Math.round(drop)} m.`,'Simulación del descenso del nivel del lago.'],
-      profmax:['Profundidad máxima',`El pulso rojo marca la cubeta más profunda del lago y facilita ubicar el punto de mayor profundidad.<br><span class="depth-badge"><b>${P.maxDepthM} m</b></span>`,'Localización de la profundidad máxima.'],
-      profmedia:['Profundidad media',`La visualización fija el descenso en <b>${P.meanDepthM} m</b>, equivalente a la profundidad media reportada.`,'Descenso equivalente a la profundidad media.'],
-      transecto:['Transectos',`Selecciona A–D para revisar los perfiles de referencia o usa <b>Manual</b> y marca dos puntos sobre el lago.<br><br><b>Eje X:</b> distancia (km). <b>Eje Y:</b> profundidad (m).`,'Trazado y análisis de perfiles batimétricos.'],
-      hipso:['Curva hipsográfica',`La curva hipsográfica vincula el porcentaje de área conservada con la profundidad y ayuda a interpretar la forma <b>${P.shape.toLowerCase()}</b> de la cubeta.`,'Relación entre profundidad y área relativa del lago.']
-    };
-    panelTitle.textContent=texts[mode][0];
-    panelText.innerHTML=texts[mode][1];
-    if(mode==='transecto'&&profileMode!=='manual'&&presetProfiles[profileMode]){
-      panelText.innerHTML='<b>'+presetProfiles[profileMode].label+'</b><br>'+presetProfiles[profileMode].desc;
-    }
-    mapHint.textContent=texts[mode][2];
-    const showChart=['volumen','transecto','hipso'].includes(mode);
-    chartPanel.classList.toggle('is-visible',showChart);
-    profileControls.classList.toggle('is-visible',mode==='transecto');
-    chartTitle.textContent=mode==='volumen'?'Volumen y descenso':(mode==='transecto'?'Perfil batimétrico':'Curva hipsográfica');
-    const showVol=['volumen','profmedia'].includes(mode);
-    volumeControls.classList.toggle('is-visible',showVol);
-    metricsBox.classList.toggle('is-visible',showVol);
-    syncChartCanvas();
-  }
-  function axes(x0,y0,w,h,xTicks,yTicks,xFmt,yFmt,xLab,yLab){cctx.strokeStyle='#b9e4f7';cctx.lineWidth=1;cctx.beginPath();cctx.moveTo(x0,y0);cctx.lineTo(x0,y0+h);cctx.lineTo(x0+w,y0+h);cctx.stroke();cctx.font='11px Times New Roman';cctx.fillStyle='#24445c';cctx.textAlign='center';xTicks.forEach(v=>{const x=x0+v.pos*w;cctx.strokeStyle='rgba(43,174,232,.18)';cctx.beginPath();cctx.moveTo(x,y0);cctx.lineTo(x,y0+h);cctx.stroke();cctx.fillText(xFmt(v.val),x,y0+h+16);});cctx.textAlign='right';yTicks.forEach(v=>{const y=y0+h-v.pos*h;cctx.strokeStyle='rgba(43,174,232,.18)';cctx.beginPath();cctx.moveTo(x0,y);cctx.lineTo(x0+w,y);cctx.stroke();cctx.fillText(yFmt(v.val),x0-6,y+4);});cctx.textAlign='center';cctx.fillText(xLab,x0+w/2,y0+h+34);cctx.save();cctx.translate(14,y0+h/2);cctx.rotate(-Math.PI/2);cctx.fillText(yLab,0,0);cctx.restore();}
-  function chartScaffold(w,h,title,subtitle=''){
-    cctx.clearRect(0,0,w,h);
-    const bg=cctx.createLinearGradient(0,0,0,h);
-    bg.addColorStop(0,'#ffffff');
-    bg.addColorStop(1,'#f4fbff');
-    cctx.fillStyle=bg;
-    cctx.fillRect(0,0,w,h);
-    cctx.fillStyle='#225775';
-    cctx.font='bold 13px Times New Roman';
-    cctx.fillText(title,16,18);
-    if(subtitle){cctx.fillStyle='#6b8799';cctx.font='10px Times New Roman';cctx.fillText(subtitle,16,33);}    
-  }
+  function updatePanel(){const texts={
+    general:['Vista general',`Área superficial: <b>${P.areaKm2} km²</b><br>Volumen: <b>${P.volumeKm3} km³</b><br>Profundidad máxima: <b>${P.maxDepthM} m</b><br>Profundidad media: <b>${P.meanDepthM} m</b>.`,'Vista general de la batimetría del lago.'],
+    perimetro:['Perímetro',`El perímetro se traza a partir del contorno vectorial del lago.<br><br><span class="big-number">${P.perimeterKm} km</span><br>Índice de desarrollo de costa: ${P.coastDev}.`,'Trazo progresivo del perímetro del lago.'],
+    espejo:['Espejo de agua',`La capa translúcida resalta el área superficial o espejo de agua.<br><br><span class="big-number">${P.areaKm2} km²</span>.`,'Área superficial del lago resaltada.'],
+    volumen:['Volumen',`Usa el control o un escenario para animar el descenso del nivel del lago.<br><br><b>Así se vería si el nivel descendiera ${Math.round(drop)} m.</b>`,'Relación entre descenso, volumen y área del espejo de agua.'],
+    profmax:['Profundidad máxima',`El pulso rojo localiza el punto más profundo del lago. La señal tipo sonar y la regla visual ayudan a explicar que la cubeta alcanza:<br><span class="depth-badge"><b>${P.maxDepthM} m</b></span>`,'Localización de la profundidad máxima.'],
+    profmedia:['Profundidad media',`El nivel del agua se representa a <b>${P.meanDepthM} m</b> de descenso y se diferencia con agua amarilla translúcida.`,'Descenso equivalente a la profundidad media.'],
+    transecto:['Transectos',`Selecciona A–D para perfiles de referencia o usa Manual y haz clic en dos puntos del lago. Un tercer clic reinicia el trazado.<br><br><b>Eje X:</b> distancia (km). <b>Eje Y:</b> profundidad (m).`,'Definición manual de perfiles batimétricos.'],
+    hipso:['Curva hipsográfica',`La curva relaciona el área relativa del espejo de agua con la profundidad y ayuda a interpretar la forma <b>${P.shape.toLowerCase()}</b>.`,'Curva hipsográfica del lago.']
+  };panelTitle.textContent=texts[mode][0];panelText.innerHTML=texts[mode][1];if(mode==='transecto'&&profileMode!=='manual'&&presetProfiles[profileMode]){panelText.innerHTML='<b>'+presetProfiles[profileMode].label+'</b><br>'+presetProfiles[profileMode].desc;}mapHint.textContent=texts[mode][2];const showChart=['volumen','transecto','hipso'].includes(mode);chartPanel.classList.toggle('is-visible',showChart);profileControls.classList.toggle('is-visible',mode==='transecto');chartTitle.textContent=mode==='volumen'?'Volumen vs descenso':(mode==='transecto'?'Perfil batimétrico':'Curva hipsográfica');const showVol=['volumen','profmedia'].includes(mode);volumeControls.classList.toggle('is-visible',showVol);metricsBox.classList.toggle('is-visible',showVol);syncChartCanvas();}
   function axes(x0,y0,w,h,xTicks,yTicks,xFmt,yFmt,xLab,yLab){
-    cctx.strokeStyle='#b6dff1';cctx.lineWidth=1;cctx.beginPath();cctx.moveTo(x0,y0);cctx.lineTo(x0,y0+h);cctx.lineTo(x0+w,y0+h);cctx.stroke();
-    cctx.font='11px Times New Roman';cctx.fillStyle='#32566f';
-    cctx.textAlign='center';
+    cctx.strokeStyle='#b6dff1';cctx.lineWidth=1;
+    cctx.beginPath();cctx.moveTo(x0,y0);cctx.lineTo(x0,y0+h);cctx.lineTo(x0+w,y0+h);cctx.stroke();
+    cctx.font='11px Times New Roman';cctx.fillStyle='#32566f';cctx.textAlign='center';
     xTicks.forEach(v=>{const x=x0+v.pos*w;cctx.strokeStyle='rgba(43,174,232,.14)';cctx.beginPath();cctx.moveTo(x,y0);cctx.lineTo(x,y0+h);cctx.stroke();cctx.fillText(xFmt(v.val),x,y0+h+18);});
     cctx.textAlign='right';
     yTicks.forEach(v=>{const y=y0+h-v.pos*h;cctx.strokeStyle='rgba(43,174,232,.14)';cctx.beginPath();cctx.moveTo(x0,y);cctx.lineTo(x0+w,y);cctx.stroke();cctx.fillText(yFmt(v.val),x0-8,y+4);});
     cctx.textAlign='center';cctx.fillStyle='#43677f';cctx.fillText(xLab,x0+w/2,y0+h+36);
     cctx.save();cctx.translate(16,y0+h/2);cctx.rotate(-Math.PI/2);cctx.fillText(yLab,0,0);cctx.restore();
   }
+  function chartTitleText(title,subtitle=''){
+    cctx.fillStyle='#225775';
+    cctx.font='bold 13px Times New Roman';
+    cctx.textAlign='left';
+    cctx.fillText(title,16,18);
+    if(subtitle){
+      cctx.fillStyle='#6b8799';
+      cctx.font='10px Times New Roman';
+      cctx.fillText(subtitle,16,33);
+    }
+  }
   function drawCurve(xs,ys,cx,cy,xLab,yLab,invertY=false,titleTxt='Curva',subtitle=''){
     const w=chart.clientWidth,h=chart.clientHeight,ml=54,mr=16,mt=42,mb=46;
     const xmin=Math.min(...xs),xmax=Math.max(...xs),ymin=Math.min(...ys),ymax=Math.max(...ys);
     const X=v=>ml+(v-xmin)/(xmax-xmin||1)*(w-ml-mr);
     const Y=v=>invertY?mt+(v-ymin)/(ymax-ymin||1)*(h-mt-mb):mt+(1-(v-ymin)/(ymax-ymin||1))*(h-mt-mb);
-    chartScaffold(w,h,titleTxt,subtitle);
+    cctx.fillStyle='#ffffff';cctx.fillRect(0,0,w,h);
+    chartTitleText(titleTxt,subtitle);
     axes(ml,mt,w-ml-mr,h-mt-mb,[0,.25,.5,.75,1].map(p=>({pos:p,val:xmin+p*(xmax-xmin)})),[0,.25,.5,.75,1].map(p=>({pos:p,val:ymin+p*(ymax-ymin)})),v=>xLab.includes('Área')?v.toFixed(2):Math.round(v),v=>Math.round(v),xLab,yLab);
     cctx.beginPath();
-    xs.forEach((x,i)=>{const xx=X(x),yy=Y(ys[i]); if(i) cctx.lineTo(xx,yy); else cctx.moveTo(xx,yy);});
-    const grad=cctx.createLinearGradient(0,mt,0,h-mb);
-    grad.addColorStop(0,'rgba(89,201,240,.30)');
-    grad.addColorStop(1,'rgba(89,201,240,.05)');
-    cctx.lineTo(X(xs[xs.length-1]),h-mb); cctx.lineTo(X(xs[0]),h-mb); cctx.closePath();
-    cctx.fillStyle=grad; cctx.fill();
-    cctx.beginPath();
-    xs.forEach((x,i)=>{const xx=X(x),yy=Y(ys[i]); if(i) cctx.lineTo(xx,yy); else cctx.moveTo(xx,yy);});
-    cctx.strokeStyle='#3db7ea'; cctx.lineWidth=2.6; cctx.stroke();
-    cctx.fillStyle='#1b5f82';
-    cctx.beginPath(); cctx.arc(X(cx),Y(cy),4.8,0,Math.PI*2); cctx.fill();
-    cctx.strokeStyle='#ffffff'; cctx.lineWidth=2; cctx.stroke();
+    xs.forEach((x,i)=>{const xx=X(x),yy=Y(ys[i]);if(i)cctx.lineTo(xx,yy);else cctx.moveTo(xx,yy);});
+    cctx.strokeStyle='#3db7ea';cctx.lineWidth=2.6;cctx.stroke();
+    cctx.fillStyle='#1b5f82';cctx.beginPath();cctx.arc(X(cx),Y(cy),4.8,0,Math.PI*2);cctx.fill();
+    cctx.strokeStyle='#ffffff';cctx.lineWidth=2;cctx.stroke();
   }
-  function drawProfile(ds,zs,title='Perfil'){
-    const w=chart.clientWidth,h=chart.clientHeight,ml=56,mr=14,mt=44,mb=46;
+  function drawProfile(ds,zs,titleTxt='Perfil'){
+    const w=chart.clientWidth,h=chart.clientHeight,ml=56,mr=14,mt=42,mb=46;
     const finite=zs.filter(z=>Number.isFinite(z));
     const xmax=Math.max(.01,...ds),ymax=Math.max(10,...finite,P.maxDepthM);
     const X=v=>ml+v/xmax*(w-ml-mr),Y=v=>mt+(v/ymax)*(h-mt-mb);
-    chartScaffold(w,h,title,'Perfil de profundidad a lo largo del transecto seleccionado');
+    cctx.fillStyle='#ffffff';cctx.fillRect(0,0,w,h);
+    chartTitleText(titleTxt,'Perfil de profundidad a lo largo del transecto seleccionado');
     axes(ml,mt,w-ml-mr,h-mt-mb,[0,.25,.5,.75,1].map(p=>({pos:p,val:p*xmax})),[0,.25,.5,.75,1].map(p=>({pos:p,val:p*ymax})),v=>v.toFixed(1),v=>Math.round(v),'Distancia del perfil (km)','Profundidad (m)');
-    cctx.beginPath();
-    let started=false;
-    ds.forEach((d,i)=>{const z=zs[i]; if(!Number.isFinite(z)){started=false;return;} const xx=X(d),yy=Y(z); if(!started){cctx.moveTo(xx,yy);started=true;} else cctx.lineTo(xx,yy);});
-    cctx.lineTo(X(ds[ds.length-1]),h-mb); cctx.lineTo(X(ds[0]),h-mb); cctx.closePath();
-    const grad=cctx.createLinearGradient(0,mt,0,h-mb);
-    grad.addColorStop(0,'rgba(92,201,239,.35)');
-    grad.addColorStop(1,'rgba(92,201,239,.08)');
-    cctx.fillStyle=grad; cctx.fill();
-    cctx.beginPath();
-    started=false;
-    ds.forEach((d,i)=>{const z=zs[i]; if(!Number.isFinite(z)){started=false;return;} const xx=X(d),yy=Y(z); if(!started){cctx.moveTo(xx,yy);started=true;} else cctx.lineTo(xx,yy);});
-    cctx.strokeStyle='#57c8f2'; cctx.lineWidth=2.5; cctx.stroke();
+    cctx.beginPath();let started=false;
+    ds.forEach((d,i)=>{const z=zs[i];if(!Number.isFinite(z)){started=false;return;}const xx=X(d),yy=Y(z);if(!started){cctx.moveTo(xx,yy);started=true;}else cctx.lineTo(xx,yy);});
+    cctx.strokeStyle='#57c8f2';cctx.lineWidth=2.5;cctx.stroke();
   }
   function sampleProfile(a,b){const n=220,ds=[],zs=[];let total=0,pxx=a.x,pyy=a.y;for(let i=0;i<n;i++){const t=i/(n-1),x=a.x*(1-t)+b.x*t,y=a.y*(1-t)+b.y*t;if(i>0){const dx=(x-pxx)*D.pixelKm.x,dy=(y-pyy)*D.pixelKm.y;total+=Math.sqrt(dx*dx+dy*dy);}pxx=x;pyy=y;ds.push(total);const z=depthAt(x,y);zs.push(Number.isFinite(z)?z:NaN);}return{ds,zs};}
   function drawChart(){
@@ -1489,27 +1421,22 @@ code{
       drawCurve(D.curves.drops,D.curves.volumes,drop,interp(D.curves.volumes),'Descenso del nivel (m)','Volumen restante (km³)',false,'Volumen y descenso','Relación entre vaciado del lago y volumen remanente');
     }else if(mode==='hipso'){
       const m=metrics();
-      drawCurve(D.curves.areas.map(a=>a/P.areaKm2),D.curves.drops,m.area/P.areaKm2,drop,'Área relativa','Profundidad (m)',true,'Curva hipsográfica relativa','Área acumulada del espejo de agua frente a la profundidad');
+      drawCurve(D.curves.areas.map(a=>a/P.areaKm2),D.curves.drops,m.area/P.areaKm2,drop,'Área relativa','Profundidad (m)',true,'Curva hipsográfica relativa','Área acumulada frente a profundidad');
     }else if(mode==='transecto'){
       if(profileMode!=='manual'&&presetProfiles[profileMode]){
         drawProfile(presetProfiles[profileMode].series.ds,presetProfiles[profileMode].series.zs,presetProfiles[profileMode].label);
       }else if(profile){
         drawProfile(profile.ds,profile.zs,'Perfil manual');
       }else{
-        chartScaffold(w,h,'Perfil batimétrico','Define un transecto manual o usa uno de referencia');
-        cctx.fillStyle='#4a667b'; cctx.font='13px Times New Roman';
+        cctx.fillStyle='#ffffff';cctx.fillRect(0,0,w,h);
+        chartTitleText('Perfil batimétrico','Define un transecto manual o usa uno de referencia');
+        cctx.fillStyle='#4a667b';cctx.font='13px Times New Roman';
         cctx.fillText('Manual: haz clic en dos puntos del lago.',18,68);
         cctx.fillText('A–D: usa los botones del panel lateral.',18,88);
       }
     }
   }
-  function setMode(m){
-    mode=m;
-    if(m!=='volumen' && drainAnimReq){cancelAnimationFrame(drainAnimReq);drainAnimReq=null;autoDrainRunning=false;const btn=document.getElementById('autoDrainBtn');if(btn)btn.classList.remove('active');}
-    document.querySelectorAll('.tool-btn').forEach(b=>b.classList.toggle('active',b.dataset.mode===m));
-    if(m==='profmedia'){drop=P.meanDepthM;dropSlider.value=Math.round(drop);}else if(m!=='volumen'){drop=0;dropSlider.value=0;}
-    updateMetrics();updatePanel();render();drawChart();if(m==='perimetro')animatePerimeter();ensureLive();
-  }
+  function setMode(m){mode=m;document.querySelectorAll('.tool-btn').forEach(b=>b.classList.toggle('active',b.dataset.mode===m));if(m==='profmedia'){drop=P.meanDepthM;dropSlider.value=Math.round(drop);}else if(m!=='volumen'){drop=0;dropSlider.value=0;}updateMetrics();updatePanel();render();drawChart();if(m==='perimetro')animatePerimeter();ensureLive();}
   document.querySelectorAll('.tool-btn').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
   document.querySelectorAll('.profile-btn').forEach(b=>b.addEventListener('click',()=>{profileMode=b.dataset.profile;document.querySelectorAll('.profile-btn').forEach(x=>x.classList.toggle('active',x===b));if(profileMode!=='manual'){profile=null;p1=null;p2=null;}updatePanel();render();requestAnimationFrame(()=>{syncChartCanvas();drawChart();});}));
   window.addEventListener('keydown',e=>{const map={'1':'general','2':'perimetro','3':'espejo','4':'volumen','5':'profmax','6':'profmedia','7':'transecto','8':'hipso'};if(map[e.key]){e.preventDefault();setMode(map[e.key]);}});
@@ -1517,6 +1444,7 @@ code{
   canvas.addEventListener('click',e=>{if(mode!=='transecto'||profileMode!=='manual')return;const r=canvas.getBoundingClientRect();const [x,y]=invPx(e.clientX-r.left,e.clientY-r.top);if(x<0||y<0||x>=W||y>=H||!Number.isFinite(depthAt(x,y)))return;if(!p1||(p1&&p2)){p1={x,y};p2=null;profile=null;}else{p2={x,y};profile=sampleProfile(p1,p2);chartPanel.classList.add('is-visible');}render();requestAnimationFrame(()=>{syncChartCanvas();drawChart();});});
 
   chartClose.addEventListener('click',()=>chartPanel.classList.remove('is-visible'));
+  let drainAnimReq=null,autoDrainRunning=false;
   function animateDropTo(target,durationOverride=null){
     setMode('volumen');
     if(drainAnimReq){cancelAnimationFrame(drainAnimReq);drainAnimReq=null;}
@@ -1528,7 +1456,7 @@ code{
       drop=start+(end-start)*e;
       dropSlider.value=Math.round(drop);
       updateMetrics();updatePanel();render();drawChart();ensureLive();
-      if(u<1) drainAnimReq=requestAnimationFrame(step); else drainAnimReq=null;
+      if(u<1)drainAnimReq=requestAnimationFrame(step);else drainAnimReq=null;
     }
     drainAnimReq=requestAnimationFrame(step);
   }
@@ -1537,24 +1465,41 @@ code{
   const drainNote=document.getElementById('drainNote');
   function runAutoDrain(){
     setMode('volumen');
-    autoDrainRunning=true; autoDrainBtn.classList.add('active');
-    drainNote.textContent='Animación dramatizada en curso: el descenso se exagera visualmente para hacer más evidente la pérdida del espejo de agua.';
+    autoDrainRunning=true;
+    autoDrainBtn.classList.add('active');
+    drainNote.textContent='Animación dramatizada en curso: el descenso se exagera visualmente para notar mejor la pérdida del espejo de agua.';
     if(drainAnimReq){cancelAnimationFrame(drainAnimReq);drainAnimReq=null;}
-    const target=P.maxDepthM*0.82;
-    const start=drop;
-    const t0=performance.now();
-    const dur=5200;
+    const start=drop,target=P.maxDepthM*.82,t0=performance.now(),dur=5200;
     function step(now){
       const u=Math.min(1,(now-t0)/dur);
       const eased=(u<.55)?(Math.pow(u/.55,1.35)*.72):(0.72+(1-Math.pow(1-(u-.55)/.45,2.4))*.28);
       drop=start+(target-start)*eased;
       dropSlider.value=Math.round(drop);
       updateMetrics();updatePanel();render();drawChart();ensureLive();
-      if(u<1){drainAnimReq=requestAnimationFrame(step);}else{autoDrainRunning=false;drainAnimReq=null;autoDrainBtn.classList.remove('active');drainNote.textContent='Vaciado dramatizado completado. Puedes ajustar el nivel con el deslizador o ejecutar de nuevo la animación.';}
+      if(u<1){
+        drainAnimReq=requestAnimationFrame(step);
+      }else{
+        autoDrainRunning=false;
+        drainAnimReq=null;
+        autoDrainBtn.classList.remove('active');
+        drainNote.textContent='Vaciado dramatizado completado. Puedes ajustar el nivel con el deslizador o ejecutarlo de nuevo.';
+      }
     }
     drainAnimReq=requestAnimationFrame(step);
   }
-  if(autoDrainBtn){autoDrainBtn.addEventListener('click',()=>{if(autoDrainRunning){if(drainAnimReq)cancelAnimationFrame(drainAnimReq);drainAnimReq=null;autoDrainRunning=false;autoDrainBtn.classList.remove('active');drainNote.textContent='Animación detenida. Usa el deslizador o vuelve a iniciar el vaciado automático.';return;}runAutoDrain();});}
+  if(autoDrainBtn){
+    autoDrainBtn.addEventListener('click',()=>{
+      if(autoDrainRunning){
+        if(drainAnimReq)cancelAnimationFrame(drainAnimReq);
+        drainAnimReq=null;autoDrainRunning=false;
+        autoDrainBtn.classList.remove('active');
+        drainNote.textContent='Animación detenida. Usa el deslizador o vuelve a iniciar el vaciador automático.';
+        return;
+      }
+      runAutoDrain();
+    });
+  }
+
   window.addEventListener('resize',resize);makeBase();updateMetrics();updatePanel();resize();setMode('general');
 })();
 
