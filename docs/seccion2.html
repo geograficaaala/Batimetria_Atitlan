@@ -902,6 +902,352 @@
     .lab-viewport{min-height:496px;}
   }
 
+
+
+/* === Unificación visual 2026: referencia Sección III + paleta blanca/celeste === */
+:root{
+  --azul-profundo:#f6fbff;
+  --azul-panel:#ffffff;
+  --azul-panel-2:#eaf8ff;
+  --acento:#2baee8;
+  --acento-claro:#57c8f2;
+  --blanco:#17384f;
+  --gris-texto:#4d687a;
+  --linea:rgba(43,174,232,.26);
+  --sombra:0 18px 45px rgba(19,91,130,.10);
+  --sombra-suave:0 10px 28px rgba(19,91,130,.08);
+}
+html{scroll-behavior:smooth;}
+body{
+  background:linear-gradient(180deg,#ffffff 0%,#f4fbff 46%,#eaf8ff 100%) !important;
+  color:var(--blanco) !important;
+  font-family:'Times New Roman',Times,serif !important;
+  font-size:15pt !important;
+  line-height:1.42 !important;
+  min-height:100vh;
+}
+.contour-bg{opacity:.42;}
+.contour-bg svg{opacity:.085 !important;}
+.site-header{
+  position:sticky !important;
+  top:0;
+  z-index:1000 !important;
+  background:rgba(255,255,255,.94) !important;
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--linea) !important;
+  box-shadow:0 8px 26px rgba(35,139,187,.08);
+}
+.header-inner{
+  width:min(1320px,100%);
+  margin:0 auto;
+  padding:.58rem 1.25rem;
+  display:flex;
+  align-items:center;
+  gap:1rem;
+}
+.header-inner-center{justify-content:center;}
+.header-brand{
+  display:flex;
+  align-items:center;
+  gap:.62rem;
+  min-width:max-content;
+  color:#114866;
+  text-decoration:none;
+  font-size:11.5pt;
+  font-style:italic;
+  letter-spacing:.03em;
+}
+.header-logo{
+  width:46px;
+  height:46px;
+  object-fit:contain;
+  display:block;
+  filter:drop-shadow(0 5px 10px rgba(18,126,178,.14));
+}
+header nav,
+.main-nav{
+  width:auto !important;
+  max-width:none !important;
+  height:auto !important;
+  margin:0 !important;
+  padding:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-end !important;
+  gap:.45rem !important;
+  overflow-x:auto !important;
+  flex:1;
+}
+.portada-header .main-nav{justify-content:center !important;flex:0 1 auto;}
+header nav a,
+.main-nav a{
+  height:auto !important;
+  border:1px solid rgba(43,174,232,.20) !important;
+  border-radius:999px !important;
+  padding:.54rem .9rem !important;
+  color:#29536b !important;
+  background:linear-gradient(180deg,#ffffff,#eef9ff) !important;
+  box-shadow:0 5px 16px rgba(38,148,199,.08) !important;
+  font-size:11.4pt !important;
+  line-height:1 !important;
+  text-decoration:none !important;
+  font-style:normal !important;
+  letter-spacing:.02em !important;
+  transition:transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease, box-shadow .18s ease !important;
+}
+header nav a:first-child,
+.main-nav a:first-child{border-left:1px solid rgba(43,174,232,.20) !important;}
+header nav a:hover,
+.main-nav a:hover{
+  transform:translateY(-1px);
+  color:#0e88bd !important;
+  border-color:rgba(43,174,232,.52) !important;
+  background:linear-gradient(180deg,#fafdff,#dff5ff) !important;
+  box-shadow:0 9px 22px rgba(38,148,199,.13) !important;
+}
+header nav a.activo,
+.main-nav a.activo{
+  color:#ffffff !important;
+  background:linear-gradient(135deg,#22aee9,#79d7f6) !important;
+  border-color:#22aee9 !important;
+  font-style:italic !important;
+  box-shadow:0 12px 28px rgba(34,174,233,.22) !important;
+}
+.cintillo-banner{
+  position:relative;
+  z-index:2;
+  width:100%;
+  background:#ffffff;
+  border-bottom:1px solid var(--linea);
+  box-shadow:0 14px 34px rgba(38,148,199,.08);
+  overflow:hidden;
+}
+.cintillo-banner img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+main,
+.section-main,
+.portada-main{
+  position:relative !important;
+  z-index:1 !important;
+  max-width:1280px !important;
+  margin:0 auto !important;
+  padding:3.5rem 2.2rem 5rem !important;
+}
+.portada-main{
+  max-width:980px !important;
+  min-height:auto !important;
+  justify-content:flex-start !important;
+  text-align:center !important;
+  align-items:center !important;
+}
+.texto{max-width:1140px;margin:0 auto;}
+main > h1, main > h2, main > p, main > table, main > ul, main > .dato-destacado, main > .referencia, main > .nav-pie,
+.section-main > h1, .section-main > h2, .section-main > p, .section-main > table, .section-main > ul, .section-main > .dato-destacado, .section-main > .referencia, .section-main > .nav-pie{
+  max-width:1140px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.seccion-label{
+  font-size:10.5pt !important;
+  letter-spacing:.2em !important;
+  text-transform:uppercase !important;
+  color:#169bd2 !important;
+  margin-bottom:.5rem !important;
+}
+h1,
+.titulo-paper{
+  font-size:27pt !important;
+  font-weight:normal !important;
+  font-style:italic !important;
+  line-height:1.25 !important;
+  color:#123b55 !important;
+  margin-bottom:.45rem !important;
+}
+.presentador,
+.doi,
+.curso{
+  color:#4d687a !important;
+}
+.presentador{
+  font-size:12pt !important;
+  margin-bottom:2.3rem !important;
+  padding-bottom:1.35rem !important;
+  border-bottom:1px solid var(--linea) !important;
+}
+h2{
+  font-size:17pt !important;
+  font-weight:bold !important;
+  color:#108fc4 !important;
+  margin:2.2rem auto .8rem !important;
+  letter-spacing:.03em !important;
+}
+p{
+  color:#17384f !important;
+  font-size:15pt !important;
+  line-height:1.42 !important;
+  text-align:justify !important;
+}
+.portada-main p{text-align:center !important;}
+.simposio{
+  color:#139fd8 !important;
+  font-size:11pt !important;
+  letter-spacing:.18em !important;
+  text-transform:uppercase;
+}
+.autores-paper{
+  color:#169bd2 !important;
+  font-size:12pt !important;
+}
+.portada-logo{
+  display:block;
+  width:min(220px,45vw);
+  height:auto;
+  margin:1.35rem auto 2rem;
+  filter:drop-shadow(0 12px 22px rgba(24,138,190,.16));
+}
+.linea-decorativa,
+.separador,
+.depth-bar{
+  background:linear-gradient(to right,transparent,#2baee8,transparent) !important;
+}
+.depth-bar{height:4px !important;}
+.dato-destacado{
+  border-left:4px solid #2baee8 !important;
+  padding:1rem 1.2rem !important;
+  margin:1.6rem auto !important;
+  background:linear-gradient(135deg,#effaff,#ffffff) !important;
+  color:#176083 !important;
+  border-radius:0 16px 16px 0 !important;
+  box-shadow:var(--sombra-suave) !important;
+  font-size:14.5pt !important;
+  line-height:1.35 !important;
+}
+.referencia{
+  color:#4d687a !important;
+  font-size:11.5pt !important;
+  line-height:1.35 !important;
+  border-top:1px solid var(--linea) !important;
+}
+.tabla-integrantes,
+.tabla-datos,
+.tabla-morfo,
+.tabla-comp{
+  border-collapse:separate !important;
+  border-spacing:0 !important;
+  background:#ffffff !important;
+  border:1px solid var(--linea) !important;
+  border-radius:18px !important;
+  overflow:hidden !important;
+  box-shadow:var(--sombra-suave) !important;
+}
+.tabla-integrantes tr,
+.tabla-datos tr,
+.tabla-morfo tr,
+.tabla-comp tr{border-bottom:none !important;}
+.tabla-integrantes tr:first-child{border-top:none !important;}
+.tabla-integrantes td,
+.tabla-datos td,
+.tabla-morfo td,
+.tabla-comp td{
+  color:#17384f !important;
+  border-bottom:1px solid rgba(43,174,232,.16) !important;
+  background:#ffffff !important;
+}
+.tabla-integrantes tr:last-child td,
+.tabla-datos tr:last-child td,
+.tabla-morfo tr:last-child td,
+.tabla-comp tr:last-child td{border-bottom:none !important;}
+.tabla-datos th,
+.tabla-morfo th,
+.tabla-comp th{
+  background:#e8f8ff !important;
+  color:#0d78a8 !important;
+  border-bottom:1px solid var(--linea) !important;
+}
+.tabla-morfo td.valor,
+.tabla-comp td.val,
+.tabla-datos td:nth-child(2),
+.tabla-datos td:nth-child(3){color:#0e8fc4 !important;}
+.tabla-comp td.dest,
+.tabla-morfo td.sigla{color:#176083 !important;}
+.perfil-grid{
+  border:1px solid var(--linea) !important;
+  border-radius:18px;
+  overflow:hidden;
+  background:#ffffff;
+  box-shadow:var(--sombra-suave);
+}
+.perfil-item{border-color:rgba(43,174,232,.16) !important;background:#ffffff;}
+.perfil-nombre{color:#0e8fc4 !important;}
+.perfil-desc{color:#17384f !important;}
+.lista-eventos li{
+  color:#17384f !important;
+  border-bottom:1px solid rgba(43,174,232,.18) !important;
+}
+.lista-eventos li::before{color:#22aee9 !important;}
+.nav-pie{
+  border-top:none !important;
+  padding-top:0 !important;
+  gap:1rem !important;
+}
+.nav-pie a{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-height:44px !important;
+  padding:.68rem 1.05rem !important;
+  border:1px solid rgba(43,174,232,.26) !important;
+  border-radius:999px !important;
+  background:linear-gradient(180deg,#ffffff,#eaf8ff) !important;
+  color:#176083 !important;
+  text-decoration:none !important;
+  font-style:italic !important;
+  font-size:12pt !important;
+  box-shadow:var(--sombra-suave) !important;
+  transition:transform .18s ease, color .18s ease, background .18s ease, border-color .18s ease !important;
+}
+.nav-pie a:hover{
+  transform:translateY(-1px);
+  color:#ffffff !important;
+  border-color:#22aee9 !important;
+  background:linear-gradient(135deg,#22aee9,#79d7f6) !important;
+}
+code{
+  color:#0e8fc4 !important;
+  background:#eaf8ff;
+  border:1px solid rgba(43,174,232,.18);
+  border-radius:6px;
+  padding:.04rem .25rem;
+}
+.fecha{
+  color:#169bd2 !important;
+  font-size:13pt !important;
+  font-weight:bold;
+  letter-spacing:.16em !important;
+}
+.explorador,
+.simulador-lab,
+.mapa-metodologia,
+.flujo-panel,
+.interactive-card{
+  box-shadow:0 20px 58px rgba(19,91,130,.12) !important;
+}
+@media(max-width:860px){
+  .header-inner{flex-direction:column;align-items:center;gap:.6rem;padding:.65rem .8rem;}
+  .header-brand{font-size:10.5pt;}
+  header nav,.main-nav{justify-content:flex-start !important;width:100% !important;}
+  header nav a,.main-nav a{font-size:10.5pt !important;padding:.5rem .72rem !important;}
+  main,.section-main,.portada-main{padding:2.4rem 1.15rem 4rem !important;}
+  h1,.titulo-paper{font-size:23pt !important;}
+  h2{font-size:15.5pt !important;}
+  p{font-size:13.5pt !important;}
+  .nav-pie{flex-direction:column;}
+  .nav-pie a{width:100%;}
+}
+
 </style>
 </head>
 
@@ -919,17 +1265,25 @@
 
 <div class="depth-bar"></div>
 
-<header>
-  <nav>
-    <a href="../index.html">Portada</a>
-    <a href="seccion1.html">I. Introducción</a>
-    <a href="seccion2.html" class="activo">II. Metodología</a>
-    <a href="seccion3.html">III. Resultados</a>
-    <a href="seccion4.html">IV. Discusión</a>
-  </nav>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="header-brand" href="../index.html" aria-label="Volver a portada">
+      <img class="header-logo" src="simposio.png" alt="Logo del simposio">
+      <span>Batimetría Atitlán</span>
+    </a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="../index.html">Portada</a>
+      <a href="seccion1.html">I. Introducción</a>
+      <a href="seccion2.html" class="activo">II. Metodología</a>
+      <a href="seccion3.html">III. Resultados</a>
+      <a href="seccion4.html">IV. Discusión</a>
+    </nav>
+  </div>
 </header>
-
-<main>
+<div class="cintillo-banner">
+  <img src="cintillo.png" alt="Cintillo del V Simposio Internacional Aguas Continentales de las Américas">
+</div>
+<main class="section-main">
   <p class="seccion-label">Sección II &nbsp;·&nbsp; José Lisandro Alvarado Pol</p>
   <h1>Metodología batimétrica y procesamiento SIG</h1>
   <p class="presentador">Reyes Morales, F., Ujpan, D. &amp; Valiente, S. (2018). <em>Batimetría y análisis morfométrico del lago de Atitlán (Guatemala)</em>. Revista Científica, 27(2), 48–58.</p>
