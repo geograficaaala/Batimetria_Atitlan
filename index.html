@@ -441,6 +441,161 @@ code{
   .nav-pie a{width:100%;}
 }
 
+
+
+/* === Correcciones finales solicitadas: cintillo en footer, logos clicables y jerarquía === */
+.site-header{
+  background:rgba(255,255,255,.96) !important;
+  border-bottom:1px solid rgba(43,174,232,.25) !important;
+  box-shadow:0 10px 28px rgba(25,128,177,.09) !important;
+}
+.header-inner{
+  width:min(1420px,100%) !important;
+  gap:1.25rem !important;
+  padding:.62rem 1.35rem !important;
+}
+.header-brand{
+  color:#0f5a7d !important;
+  font-size:12.7pt !important;
+  font-weight:bold !important;
+  font-style:italic !important;
+  line-height:1.13 !important;
+  letter-spacing:.015em !important;
+  max-width:520px !important;
+  white-space:normal !important;
+  padding:.28rem .45rem .28rem .2rem !important;
+  border-radius:18px !important;
+  transition:transform .18s ease, background .18s ease, color .18s ease !important;
+}
+.header-brand:hover{
+  transform:translateY(-1px);
+  background:#eef9ff !important;
+  color:#108fc4 !important;
+}
+.header-logo{
+  width:56px !important;
+  height:56px !important;
+  flex:0 0 auto !important;
+}
+.logo-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:26px;
+  padding:.35rem;
+  background:linear-gradient(180deg,#ffffff,#eef9ff);
+  border:1px solid rgba(43,174,232,.22);
+  box-shadow:0 14px 30px rgba(24,138,190,.12);
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.logo-link:hover{
+  transform:translateY(-2px);
+  border-color:rgba(43,174,232,.55);
+  box-shadow:0 18px 40px rgba(24,138,190,.18);
+}
+.logo-link .portada-logo{margin:.3rem auto !important;}
+.main-nav a{
+  border-radius:999px !important;
+  padding:.62rem 1.05rem !important;
+  border:1px solid rgba(43,174,232,.24) !important;
+  background:linear-gradient(180deg,#ffffff 0%,#eaf8ff 100%) !important;
+  color:#24536d !important;
+  box-shadow:0 7px 18px rgba(38,148,199,.09) !important;
+  font-weight:normal !important;
+}
+.main-nav a:hover{
+  background:linear-gradient(180deg,#fafdff 0%,#dff5ff 100%) !important;
+  border-color:rgba(43,174,232,.58) !important;
+  color:#0c8ec2 !important;
+}
+.main-nav a.activo{
+  background:linear-gradient(135deg,#20aee9 0%,#7ad9f8 100%) !important;
+  color:#ffffff !important;
+  border-color:#20aee9 !important;
+}
+.cintillo-banner.cintillo-footer{
+  position:relative !important;
+  z-index:2 !important;
+  width:100% !important;
+  margin:2.5rem 0 0 !important;
+  background:#ffffff !important;
+  border-top:1px solid rgba(43,174,232,.26) !important;
+  border-bottom:0 !important;
+  box-shadow:0 -12px 34px rgba(38,148,199,.08) !important;
+  overflow:hidden !important;
+}
+.cintillo-link{
+  display:block !important;
+  width:100% !important;
+  line-height:0 !important;
+}
+.cintillo-link img,
+.cintillo-banner img{
+  width:100% !important;
+  height:auto !important;
+  display:block !important;
+}
+.cintillo-link:hover img{filter:saturate(1.06) contrast(1.02);}
+.portada-main{padding-top:4.1rem !important;}
+.portada-main .simposio{
+  font-size:25pt !important;
+  line-height:1.18 !important;
+  max-width:960px !important;
+  margin:0 auto .65rem !important;
+  letter-spacing:.055em !important;
+  font-weight:bold !important;
+  font-style:italic !important;
+  color:#0c83b6 !important;
+  text-transform:uppercase !important;
+}
+.portada-main .curso{
+  font-size:20pt !important;
+  line-height:1.2 !important;
+  margin-bottom:2.15rem !important;
+  letter-spacing:.035em !important;
+  color:#166c92 !important;
+  font-style:italic !important;
+}
+.portada-main .titulo-paper{
+  font-size:24pt !important;
+  color:#123b55 !important;
+  margin-top:.35rem !important;
+}
+.portada-main .autores-paper{
+  font-size:14.5pt !important;
+  line-height:1.25 !important;
+  color:#0e8fc4 !important;
+  font-weight:bold !important;
+}
+.portada-main .doi{
+  font-size:12.5pt !important;
+  line-height:1.35 !important;
+  color:#45657b !important;
+  margin-bottom:1.35rem !important;
+}
+.tabla-integrantes td{
+  font-size:14pt !important;
+  line-height:1.25 !important;
+  padding:.82rem 1.1rem !important;
+}
+.tabla-integrantes td.tema{
+  font-size:12pt !important;
+  line-height:1.25 !important;
+  color:#45657b !important;
+}
+.fecha{font-size:14.5pt !important;}
+@media(max-width:980px){
+  .header-inner{flex-direction:column !important; align-items:center !important; gap:.75rem !important;}
+  .header-brand{max-width:100% !important; text-align:center !important; justify-content:center !important;}
+  .main-nav{justify-content:center !important; width:100% !important;}
+}
+@media(max-width:680px){
+  .portada-main .simposio{font-size:20pt !important;}
+  .portada-main .curso{font-size:17pt !important;}
+  .portada-main .titulo-paper{font-size:21pt !important;}
+  .tabla-integrantes td,.tabla-integrantes td.tema{display:block !important;text-align:left !important;width:100% !important;}
+}
+
 </style>
 </head>
 <body>
@@ -468,9 +623,6 @@ code{
     </nav>
   </div>
 </header>
-<div class="cintillo-banner">
-  <img src="docs/cintillo.png" alt="Cintillo del V Simposio Internacional Aguas Continentales de las Américas">
-</div>
 <main class="portada-main">
   <div class="linea-decorativa"></div>
   <p class="simposio">V Simposio Internacional de Aguas Continentales de las Américas</p>
@@ -478,7 +630,9 @@ code{
   <h1 class="titulo-paper">Batimetría y análisis morfométrico del lago de Atitlán (Guatemala)</h1>
   <p class="autores-paper">Reyes Morales, F., Ujpan, D. &amp; Valiente, S. (2018)</p>
   <p class="doi">Revista Científica, Vol. 27, No. 2, pp. 48–58 &nbsp;·&nbsp; DOI: 10.54495/Rev.Cientifica.v27i2.70</p>
-  <img class="portada-logo" src="docs/simposio.png" alt="Logo del V Simposio Internacional Aguas Continentales de las Américas">
+  <a class="logo-link" href="https://simposioatitlan.org.gt/" aria-label="Ir al sitio oficial del simposio">
+    <img class="portada-logo" src="docs/simposio.png" alt="Logo del V Simposio Internacional Aguas Continentales de las Américas">
+  </a>
   <div class="separador"></div>
   <p class="presentado-label">Presentado por</p>
   <table class="tabla-integrantes">
@@ -501,5 +655,11 @@ code{
   </table>
   <p class="fecha">2026</p>
 </main>
+<footer class="cintillo-banner cintillo-footer" aria-label="Cintillo del V Simposio Internacional Aguas Continentales de las Américas">
+  <a class="cintillo-link" href="https://simposioatitlan.org.gt/" aria-label="Ir al sitio oficial del simposio">
+    <img src="docs/cintillo.png" alt="Cintillo del V Simposio Internacional Aguas Continentales de las Américas">
+  </a>
+</footer>
+
 </body>
 </html>
