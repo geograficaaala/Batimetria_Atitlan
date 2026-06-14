@@ -755,6 +755,24 @@ code{
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.50),0 12px 28px rgba(19,91,130,.09) !important;
 }
 
+
+/* === Ajuste final sección III: mapa claro y sin rótulo flotante === */
+.explorador{
+  background:linear-gradient(180deg,#ffffff 0%,#f1fbff 100%) !important;
+}
+.map-wrap{
+  background:linear-gradient(180deg,#ffffff 0%,#eefaff 100%) !important;
+}
+#mapCanvas{
+  background:linear-gradient(180deg,#ffffff 0%,#eefaff 100%) !important;
+}
+.map-hint{
+  display:none !important;
+}
+#chartCanvas{
+  background:#ffffff !important;
+}
+
 </style>
 </head>
 <body>
@@ -932,7 +950,7 @@ code{
   const waterStreaks=Array.from({length:95},(_,i)=>({x:Math.random(),y:Math.random(),l:.018+Math.random()*.035,s:.4+Math.random()*1.2,p:Math.random()*Math.PI*2}));
 
   function bathyColor(d){
-    const stops=[[0,[223,252,255]],[.12,[141,231,247]],[.26,[66,197,232]],[.42,[29,142,214]],[.60,[20,98,189]],[.78,[10,52,144]],[1,[6,19,79]]];
+    const stops=[[0,[232,253,255]],[.12,[158,236,249]],[.26,[86,205,235]],[.42,[48,156,222]],[.60,[36,116,202]],[.78,[28,85,180]],[1,[18,66,158]]];
     const t=Math.max(0,Math.min(1,d/P.maxDepthM));
     for(let i=0;i<stops.length-1;i++) if(t>=stops[i][0]&&t<=stops[i+1][0]){const a=stops[i],b=stops[i+1],u=(t-a[0])/(b[0]-a[0]);return [0,1,2].map(k=>Math.round(a[1][k]*(1-u)+b[1][k]*u));}
     return stops[stops.length-1][1];
@@ -1035,7 +1053,7 @@ code{
       const Y=(y-cy)*0.42 + d*0.54;
       return [baseX+X*scale, baseY+Y*scale];
     }
-    ctx.fillStyle='#07111f';ctx.fillRect(0,0,cw,ch);
+    ctx.fillStyle='#f8fdff';ctx.fillRect(0,0,cw,ch);
     // sombra de la cubeta
     ctx.save();ctx.globalAlpha=.18;ctx.fillStyle='#000';
     ctx.beginPath();
@@ -1048,7 +1066,7 @@ code{
         const i=y*W+x, i2=y*W+x+step, i3=(y+step)*W+x+step, i4=(y+step)*W+x;
         const d1=depthDm[i]/10,d2=depthDm[i2]/10,d3=depthDm[i3]/10,d4=depthDm[i4]/10;
         if(d1<0||d2<0||d3<0||d4<0) continue;
-        const av=(d1+d2+d3+d4)/4; const c=colorDepth(av);
+        const av=(d1+d2+d3+d4)/4; const c=bathyColor(av);
         const shade=Math.max(.72,1-(y/H)*.18);
         ctx.fillStyle=`rgb(${Math.round(c[0]*shade)},${Math.round(c[1]*shade)},${Math.round(c[2]*shade)})`;
         const p1=pr(x,y,d1),p2=pr(x+step,y,d2),p3=pr(x+step,y+step,d3),p4=pr(x,y+step,d4);
@@ -1068,7 +1086,7 @@ code{
     ctx.font='14px Times New Roman';const w=ctx.measureText(text).width+18;ctx.fillStyle='rgba(5,14,26,.84)';roundRect(ctx,x,y-20,w,30,9);ctx.fill();ctx.strokeStyle='rgba(142,197,232,.28)';ctx.stroke();ctx.fillStyle='#eaf7ff';ctx.fillText(text,x+9,y);
   }
 
-  function render(){const f=fit();ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);ctx.fillStyle='#07111f';ctx.fillRect(0,0,canvas.clientWidth,canvas.clientHeight);ctx.imageSmoothingEnabled=true;ctx.drawImage(offBase,f.ox,f.oy,W*f.s,H*f.s);let style='blue';if(mode==='profmedia'||(mode==='volumen'&&drop>=P.meanDepthM))style='yellow';if(['volumen','profmedia'].includes(mode)){makeWater(drop,style);ctx.drawImage(offWater,f.ox,f.oy,W*f.s,H*f.s);drawWaterMotion(style);}if(mode==='espejo'){makeWater(0,'red');ctx.drawImage(offTint,f.ox,f.oy,W*f.s,H*f.s);drawWaterMotion('red');}drawAllBoundaries();if(mode==='perimetro')drawRing(D.rings[0],perimProgress,'#d62828',4.0);if(mode==='profmax')drawDeepest();if(mode==='transecto')drawTransect();}
+  function render(){const f=fit();ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);ctx.fillStyle='#f8fdff';ctx.fillRect(0,0,canvas.clientWidth,canvas.clientHeight);ctx.imageSmoothingEnabled=true;ctx.drawImage(offBase,f.ox,f.oy,W*f.s,H*f.s);let style='blue';if(mode==='profmedia'||(mode==='volumen'&&drop>=P.meanDepthM))style='yellow';if(['volumen','profmedia'].includes(mode)){makeWater(drop,style);ctx.drawImage(offWater,f.ox,f.oy,W*f.s,H*f.s);drawWaterMotion(style);}if(mode==='espejo'){makeWater(0,'red');ctx.drawImage(offTint,f.ox,f.oy,W*f.s,H*f.s);drawWaterMotion('red');}drawAllBoundaries();if(mode==='perimetro')drawRing(D.rings[0],perimProgress,'#d62828',4.0);if(mode==='profmax')drawDeepest();if(mode==='transecto')drawTransect();}
   function animatePerimeter(){cancelAnimationFrame(animReq);perimProgress=0;const step=()=>{perimProgress=Math.min(1,perimProgress+0.0075);render();if(perimProgress<1)animReq=requestAnimationFrame(step);};step();}
   function liveLoop(ts){time=ts||0;if(['volumen','profmedia','espejo','profmax'].includes(mode)){render();liveReq=requestAnimationFrame(liveLoop);}else liveReq=null;}
   function ensureLive(){if(!liveReq&&['volumen','profmedia','espejo','profmax'].includes(mode))liveReq=requestAnimationFrame(liveLoop);}
@@ -1082,11 +1100,11 @@ code{
     transecto:['Transectos',`Selecciona A–D para perfiles de referencia o usa Manual y haz clic en dos puntos del lago. Un tercer clic reinicia el trazado.<br><br><b>Eje X:</b> distancia (km). <b>Eje Y:</b> profundidad (m).`,'Definición manual de perfiles batimétricos.'],
     hipso:['Curva hipsográfica',`La curva relaciona el área relativa del espejo de agua con la profundidad y ayuda a interpretar la forma <b>${P.shape.toLowerCase()}</b>.`,'Curva hipsográfica del lago.']
   };panelTitle.textContent=texts[mode][0];panelText.innerHTML=texts[mode][1];if(mode==='transecto'&&profileMode!=='manual'&&presetProfiles[profileMode]){panelText.innerHTML='<b>'+presetProfiles[profileMode].label+'</b><br>'+presetProfiles[profileMode].desc;}mapHint.textContent=texts[mode][2];const showChart=['volumen','transecto','hipso'].includes(mode);chartPanel.classList.toggle('is-visible',showChart);profileControls.classList.toggle('is-visible',mode==='transecto');chartTitle.textContent=mode==='volumen'?'Volumen vs descenso':(mode==='transecto'?'Perfil batimétrico':'Curva hipsográfica');const showVol=['volumen','profmedia'].includes(mode);volumeControls.classList.toggle('is-visible',showVol);metricsBox.classList.toggle('is-visible',showVol);syncChartCanvas();}
-  function axes(x0,y0,w,h,xTicks,yTicks,xFmt,yFmt,xLab,yLab){cctx.strokeStyle='#294461';cctx.lineWidth=1;cctx.beginPath();cctx.moveTo(x0,y0);cctx.lineTo(x0,y0+h);cctx.lineTo(x0+w,y0+h);cctx.stroke();cctx.font='11px Times New Roman';cctx.fillStyle='#cfe7fb';cctx.textAlign='center';xTicks.forEach(v=>{const x=x0+v.pos*w;cctx.strokeStyle='rgba(159,195,226,.18)';cctx.beginPath();cctx.moveTo(x,y0);cctx.lineTo(x,y0+h);cctx.stroke();cctx.fillText(xFmt(v.val),x,y0+h+16);});cctx.textAlign='right';yTicks.forEach(v=>{const y=y0+h-v.pos*h;cctx.strokeStyle='rgba(159,195,226,.18)';cctx.beginPath();cctx.moveTo(x0,y);cctx.lineTo(x0+w,y);cctx.stroke();cctx.fillText(yFmt(v.val),x0-6,y+4);});cctx.textAlign='center';cctx.fillText(xLab,x0+w/2,y0+h+34);cctx.save();cctx.translate(14,y0+h/2);cctx.rotate(-Math.PI/2);cctx.fillText(yLab,0,0);cctx.restore();}
-  function drawCurve(xs,ys,cx,cy,xLab,yLab,invertY=false){const w=chart.clientWidth,h=chart.clientHeight,ml=50,mr=18,mt=18,mb=44;const xmin=Math.min(...xs),xmax=Math.max(...xs),ymin=Math.min(...ys),ymax=Math.max(...ys);const X=v=>ml+(v-xmin)/(xmax-xmin)*(w-ml-mr);const Y=v=>invertY?mt+(v-ymin)/(ymax-ymin)*(h-mt-mb):mt+(1-(v-ymin)/(ymax-ymin))*(h-mt-mb);cctx.fillStyle='#081526';cctx.fillRect(0,0,w,h);cctx.fillStyle='#dff5ff';cctx.font='12px Times New Roman';cctx.fillText(title,ml,16);axes(ml,mt,w-ml-mr,h-mt-mb,[0,.25,.5,.75,1].map(p=>({pos:p,val:xmin+p*(xmax-xmin)})),[0,.25,.5,.75,1].map(p=>({pos:p,val:ymin+p*(ymax-ymin)})),v=>xLab.includes('Área')?v.toFixed(2):Math.round(v),v=>Math.round(v),xLab,yLab);cctx.strokeStyle='#70d6ff';cctx.lineWidth=2.2;cctx.beginPath();xs.forEach((x,i)=>{const xx=X(x),yy=Y(ys[i]);if(i)cctx.lineTo(xx,yy);else cctx.moveTo(xx,yy);});cctx.stroke();cctx.fillStyle='#ff4646';cctx.beginPath();cctx.arc(X(cx),Y(cy),4.5,0,Math.PI*2);cctx.fill();}
-  function drawProfile(ds,zs,title='Perfil'){const w=chart.clientWidth,h=chart.clientHeight,ml=52,mr=18,mt=28,mb=44;const finite=zs.filter(z=>Number.isFinite(z));const xmax=Math.max(.01,...ds),ymax=Math.max(10,...finite,P.maxDepthM);const X=v=>ml+v/xmax*(w-ml-mr),Y=v=>mt+(v/ymax)*(h-mt-mb);cctx.fillStyle='#081526';cctx.fillRect(0,0,w,h);cctx.fillStyle='#dff5ff';cctx.font='12px Times New Roman';cctx.fillText(title,ml,16);axes(ml,mt,w-ml-mr,h-mt-mb,[0,.25,.5,.75,1].map(p=>({pos:p,val:p*xmax})),[0,.25,.5,.75,1].map(p=>({pos:p,val:p*ymax})),v=>v.toFixed(1),v=>Math.round(v),'Distancia del perfil (km)','Profundidad (m)');cctx.strokeStyle='#70d6ff';cctx.lineWidth=2.2;cctx.beginPath();let started=false;ds.forEach((d,i)=>{const z=zs[i];if(!Number.isFinite(z)){started=false;return;}const xx=X(d),yy=Y(z);if(!started){cctx.moveTo(xx,yy);started=true;}else cctx.lineTo(xx,yy);});cctx.stroke();}
+  function axes(x0,y0,w,h,xTicks,yTicks,xFmt,yFmt,xLab,yLab){cctx.strokeStyle='#b9e4f7';cctx.lineWidth=1;cctx.beginPath();cctx.moveTo(x0,y0);cctx.lineTo(x0,y0+h);cctx.lineTo(x0+w,y0+h);cctx.stroke();cctx.font='11px Times New Roman';cctx.fillStyle='#24445c';cctx.textAlign='center';xTicks.forEach(v=>{const x=x0+v.pos*w;cctx.strokeStyle='rgba(43,174,232,.18)';cctx.beginPath();cctx.moveTo(x,y0);cctx.lineTo(x,y0+h);cctx.stroke();cctx.fillText(xFmt(v.val),x,y0+h+16);});cctx.textAlign='right';yTicks.forEach(v=>{const y=y0+h-v.pos*h;cctx.strokeStyle='rgba(43,174,232,.18)';cctx.beginPath();cctx.moveTo(x0,y);cctx.lineTo(x0+w,y);cctx.stroke();cctx.fillText(yFmt(v.val),x0-6,y+4);});cctx.textAlign='center';cctx.fillText(xLab,x0+w/2,y0+h+34);cctx.save();cctx.translate(14,y0+h/2);cctx.rotate(-Math.PI/2);cctx.fillText(yLab,0,0);cctx.restore();}
+  function drawCurve(xs,ys,cx,cy,xLab,yLab,invertY=false){const w=chart.clientWidth,h=chart.clientHeight,ml=50,mr=18,mt=18,mb=44;const xmin=Math.min(...xs),xmax=Math.max(...xs),ymin=Math.min(...ys),ymax=Math.max(...ys);const X=v=>ml+(v-xmin)/(xmax-xmin)*(w-ml-mr);const Y=v=>invertY?mt+(v-ymin)/(ymax-ymin)*(h-mt-mb):mt+(1-(v-ymin)/(ymax-ymin))*(h-mt-mb);cctx.fillStyle='#ffffff';cctx.fillRect(0,0,w,h);cctx.fillStyle='#0f5a7d';cctx.font='12px Times New Roman';cctx.fillText(title,ml,16);axes(ml,mt,w-ml-mr,h-mt-mb,[0,.25,.5,.75,1].map(p=>({pos:p,val:xmin+p*(xmax-xmin)})),[0,.25,.5,.75,1].map(p=>({pos:p,val:ymin+p*(ymax-ymin)})),v=>xLab.includes('Área')?v.toFixed(2):Math.round(v),v=>Math.round(v),xLab,yLab);cctx.strokeStyle='#70d6ff';cctx.lineWidth=2.2;cctx.beginPath();xs.forEach((x,i)=>{const xx=X(x),yy=Y(ys[i]);if(i)cctx.lineTo(xx,yy);else cctx.moveTo(xx,yy);});cctx.stroke();cctx.fillStyle='#ff4646';cctx.beginPath();cctx.arc(X(cx),Y(cy),4.5,0,Math.PI*2);cctx.fill();}
+  function drawProfile(ds,zs,title='Perfil'){const w=chart.clientWidth,h=chart.clientHeight,ml=52,mr=18,mt=28,mb=44;const finite=zs.filter(z=>Number.isFinite(z));const xmax=Math.max(.01,...ds),ymax=Math.max(10,...finite,P.maxDepthM);const X=v=>ml+v/xmax*(w-ml-mr),Y=v=>mt+(v/ymax)*(h-mt-mb);cctx.fillStyle='#ffffff';cctx.fillRect(0,0,w,h);cctx.fillStyle='#0f5a7d';cctx.font='12px Times New Roman';cctx.fillText(title,ml,16);axes(ml,mt,w-ml-mr,h-mt-mb,[0,.25,.5,.75,1].map(p=>({pos:p,val:p*xmax})),[0,.25,.5,.75,1].map(p=>({pos:p,val:p*ymax})),v=>v.toFixed(1),v=>Math.round(v),'Distancia del perfil (km)','Profundidad (m)');cctx.strokeStyle='#70d6ff';cctx.lineWidth=2.2;cctx.beginPath();let started=false;ds.forEach((d,i)=>{const z=zs[i];if(!Number.isFinite(z)){started=false;return;}const xx=X(d),yy=Y(z);if(!started){cctx.moveTo(xx,yy);started=true;}else cctx.lineTo(xx,yy);});cctx.stroke();}
   function sampleProfile(a,b){const n=220,ds=[],zs=[];let total=0,pxx=a.x,pyy=a.y;for(let i=0;i<n;i++){const t=i/(n-1),x=a.x*(1-t)+b.x*t,y=a.y*(1-t)+b.y*t;if(i>0){const dx=(x-pxx)*D.pixelKm.x,dy=(y-pyy)*D.pixelKm.y;total+=Math.sqrt(dx*dx+dy*dy);}pxx=x;pyy=y;ds.push(total);const z=depthAt(x,y);zs.push(Number.isFinite(z)?z:NaN);}return{ds,zs};}
-  function drawChart(){syncChartCanvas();const w=chart.clientWidth,h=chart.clientHeight;cctx.clearRect(0,0,w,h);if(!['volumen','transecto','hipso'].includes(mode))return;if(mode==='volumen')drawCurve(D.curves.drops,D.curves.volumes,drop,interp(D.curves.volumes),'Descenso del nivel (m)','Volumen restante (km³)');else if(mode==='hipso'){const m=metrics();drawCurve(D.curves.areas.map(a=>a/P.areaKm2),D.curves.drops,m.area/P.areaKm2,drop,'Área relativa','Profundidad (m)',true);}else if(mode==='transecto'){if(profileMode!=='manual'&&presetProfiles[profileMode]){drawProfile(presetProfiles[profileMode].series.ds,presetProfiles[profileMode].series.zs,presetProfiles[profileMode].label);}else if(profile)drawProfile(profile.ds,profile.zs,'Perfil manual');else{cctx.fillStyle='#081526';cctx.fillRect(0,0,w,h);cctx.fillStyle='#cfe7fb';cctx.font='14px Times New Roman';cctx.fillText('Manual: haz clic en dos puntos del lago.',18,30);cctx.fillText('A–D: usa los botones del panel.',18,52);}}}
+  function drawChart(){syncChartCanvas();const w=chart.clientWidth,h=chart.clientHeight;cctx.clearRect(0,0,w,h);if(!['volumen','transecto','hipso'].includes(mode))return;if(mode==='volumen')drawCurve(D.curves.drops,D.curves.volumes,drop,interp(D.curves.volumes),'Descenso del nivel (m)','Volumen restante (km³)');else if(mode==='hipso'){const m=metrics();drawCurve(D.curves.areas.map(a=>a/P.areaKm2),D.curves.drops,m.area/P.areaKm2,drop,'Área relativa','Profundidad (m)',true);}else if(mode==='transecto'){if(profileMode!=='manual'&&presetProfiles[profileMode]){drawProfile(presetProfiles[profileMode].series.ds,presetProfiles[profileMode].series.zs,presetProfiles[profileMode].label);}else if(profile)drawProfile(profile.ds,profile.zs,'Perfil manual');else{cctx.fillStyle='#ffffff';cctx.fillRect(0,0,w,h);cctx.fillStyle='#24445c';cctx.font='14px Times New Roman';cctx.fillText('Manual: haz clic en dos puntos del lago.',18,30);cctx.fillText('A–D: usa los botones del panel.',18,52);}}}
   function setMode(m){mode=m;document.querySelectorAll('.tool-btn').forEach(b=>b.classList.toggle('active',b.dataset.mode===m));if(m==='profmedia'){drop=P.meanDepthM;dropSlider.value=Math.round(drop);}else if(m!=='volumen'){drop=0;dropSlider.value=0;}updateMetrics();updatePanel();render();drawChart();if(m==='perimetro')animatePerimeter();ensureLive();}
   document.querySelectorAll('.tool-btn').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
   document.querySelectorAll('.profile-btn').forEach(b=>b.addEventListener('click',()=>{profileMode=b.dataset.profile;document.querySelectorAll('.profile-btn').forEach(x=>x.classList.toggle('active',x===b));if(profileMode!=='manual'){profile=null;p1=null;p2=null;}updatePanel();render();requestAnimationFrame(()=>{syncChartCanvas();drawChart();});}));
