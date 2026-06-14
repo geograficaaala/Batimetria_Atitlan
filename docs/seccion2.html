@@ -902,6 +902,240 @@
     .lab-viewport{min-height:496px;}
   }
 
+
+  /* ==========================================================
+     Laboratorio metodológico ampliado
+     ========================================================== */
+  .mega-method{
+    margin:2.2rem 0 2.9rem;
+    border:1px solid rgba(142,197,232,0.30);
+    background:
+      radial-gradient(circle at 12% 10%,rgba(248,216,102,0.07),transparent 28%),
+      radial-gradient(circle at 88% 16%,rgba(93,163,217,0.13),transparent 34%),
+      linear-gradient(180deg,rgba(11,28,50,0.94),rgba(5,15,29,0.97));
+    box-shadow:0 30px 86px rgba(0,0,0,0.34);
+    padding:1.15rem;
+  }
+
+  .mega-head{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    gap:1rem;
+    align-items:start;
+    margin-bottom:1rem;
+  }
+
+  .mega-head h2{
+    margin:0 0 0.35rem 0;
+  }
+
+  .mega-head p{
+    margin:0;
+    color:var(--gris-texto);
+    font-size:12.4pt;
+    line-height:1.35;
+    text-align:justify;
+  }
+
+  .mega-actions{
+    display:flex;
+    gap:0.55rem;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+  }
+
+  .mega-btn,.mega-tab{
+    font-family:'Times New Roman',Times,serif;
+    font-size:11.35pt;
+    border:1px solid rgba(142,197,232,0.30);
+    background:rgba(240,244,248,0.055);
+    color:var(--gris-texto);
+    padding:0.58rem 0.78rem;
+    cursor:pointer;
+    transition:background 0.2s,color 0.2s,border-color 0.2s,transform 0.2s;
+  }
+
+  .mega-btn:hover,.mega-tab:hover{
+    transform:translateY(-1px);
+    color:var(--acento-claro);
+    background:rgba(93,163,217,0.13);
+  }
+
+  .mega-btn.primary{
+    color:var(--blanco);
+    background:rgba(93,163,217,0.24);
+    border-color:rgba(142,197,232,0.65);
+  }
+
+  .mega-tabs{
+    display:grid;
+    grid-template-columns:repeat(9,minmax(96px,1fr));
+    gap:0.45rem;
+    margin:0.75rem 0 1rem;
+  }
+
+  .mega-tab{
+    padding:0.5rem 0.35rem;
+    text-align:center;
+    font-size:10.25pt;
+  }
+
+  .mega-tab.active{
+    color:var(--blanco);
+    background:rgba(142,197,232,0.18);
+    border-color:rgba(142,197,232,0.75);
+    box-shadow:0 0 22px rgba(93,163,217,0.10) inset;
+  }
+
+  .mega-layout{
+    display:grid;
+    grid-template-columns:minmax(620px,2fr) minmax(320px,0.82fr);
+    gap:0.95rem;
+    align-items:stretch;
+  }
+
+  .mega-stage{
+    border:1px solid rgba(142,197,232,0.22);
+    background:
+      radial-gradient(circle at 50% 48%,rgba(93,163,217,0.08),transparent 48%),
+      linear-gradient(180deg,#102845,#071326);
+    min-height:690px;
+    position:relative;
+    overflow:hidden;
+  }
+
+  .mega-topbar{
+    height:36px;
+    border-bottom:1px solid rgba(142,197,232,0.18);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:1rem;
+    padding:0 0.85rem;
+    color:var(--gris-texto);
+    font-size:10.3pt;
+    background:linear-gradient(180deg,rgba(240,244,248,0.07),rgba(240,244,248,0.025));
+  }
+
+  #megaBadge{
+    color:var(--acento-claro);
+    font-style:italic;
+  }
+
+  #megaCanvas{
+    width:100%;
+    height:654px;
+    display:block;
+  }
+
+  .mega-info{
+    border:1px solid rgba(142,197,232,0.22);
+    background:rgba(7,18,34,0.74);
+    padding:0.95rem;
+    display:flex;
+    flex-direction:column;
+    min-height:690px;
+  }
+
+  .mega-info h3{
+    color:var(--acento-claro);
+    font-size:14.6pt;
+    font-style:italic;
+    font-weight:normal;
+    margin:0 0 0.5rem;
+  }
+
+  .mega-info p{
+    font-size:12.15pt;
+    line-height:1.38;
+    text-align:justify;
+    color:var(--blanco);
+    margin:0 0 0.75rem;
+  }
+
+  .mega-metrics{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:0.48rem;
+    margin:0.55rem 0 0.9rem;
+  }
+
+  .mega-metric{
+    border:1px solid rgba(142,197,232,0.14);
+    background:rgba(240,244,248,0.035);
+    padding:0.48rem 0.58rem;
+  }
+
+  .mega-metric span{
+    display:block;
+    color:var(--gris-texto);
+    font-size:9.7pt;
+  }
+
+  .mega-metric strong{
+    display:block;
+    color:var(--blanco);
+    font-weight:normal;
+    font-size:11.1pt;
+  }
+
+  .mega-progress{
+    height:8px;
+    border:1px solid rgba(142,197,232,0.25);
+    background:rgba(240,244,248,0.04);
+    overflow:hidden;
+    margin:0.2rem 0 0.85rem;
+  }
+
+  #megaProgress{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,var(--acento),var(--acento-claro),#f8d866);
+    transition:width 0.18s linear;
+  }
+
+  .mega-steps{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:0.38rem;
+    margin-top:auto;
+  }
+
+  .mega-step{
+    color:var(--gris-texto);
+    border:1px solid rgba(142,197,232,0.14);
+    background:rgba(240,244,248,0.03);
+    padding:0.36rem 0.42rem;
+    font-size:9.8pt;
+    line-height:1.25;
+  }
+
+  .mega-step.active{
+    color:var(--blanco);
+    border-color:rgba(142,197,232,0.55);
+    background:rgba(93,163,217,0.13);
+  }
+
+  .mega-note{
+    color:var(--gris-texto)!important;
+    font-size:10.7pt!important;
+    margin-top:0.7rem!important;
+  }
+
+  @media(max-width:1160px){
+    .mega-head{grid-template-columns:1fr;}
+    .mega-actions{justify-content:flex-start;}
+    .mega-tabs{grid-template-columns:repeat(3,1fr);}
+    .mega-layout{grid-template-columns:1fr;}
+    .mega-stage,.mega-info{min-height:auto;}
+    #megaCanvas{height:560px;}
+  }
+
+  @media(max-width:640px){
+    .mega-tabs{grid-template-columns:1fr 1fr;}
+    #megaCanvas{height:430px;}
+  }
+
 </style>
 </head>
 
@@ -1181,6 +1415,54 @@
         </div>
 
         <div id="labTimeline" class="lab-timeline"></div>
+      </aside>
+    </div>
+  </section>
+
+
+
+  <section class="mega-method" aria-label="Laboratorio metodológico ampliado">
+    <div class="mega-head">
+      <div>
+        <h2>Laboratorio visual de la metodología</h2>
+        <p>Este bloque complementa la metodología con animaciones derivadas del estudio: ubicación, adquisición con ecosonda y GPS/DGPS, densidad de muestreo, interpolación, perfiles, curva hipsográfica, parámetros morfométricos, fetch y comparación histórica. La idea es que cada fase muestre qué se obtiene y por qué importa.</p>
+      </div>
+      <div class="mega-actions">
+        <button id="megaPlay" class="mega-btn primary" type="button">Reproducir animación</button>
+        <button id="megaReset" class="mega-btn" type="button">Reiniciar</button>
+      </div>
+    </div>
+
+    <div class="mega-tabs" role="tablist">
+      <button class="mega-tab active" data-scene="location" type="button">Ubicación</button>
+      <button class="mega-tab" data-scene="sonar" type="button">Ecosonda + DGPS</button>
+      <button class="mega-tab" data-scene="density" type="button">Densidad</button>
+      <button class="mega-tab" data-scene="interpolation" type="button">Interpolación</button>
+      <button class="mega-tab" data-scene="profiles" type="button">Perfiles A–D</button>
+      <button class="mega-tab" data-scene="hypsometry" type="button">Hipsografía</button>
+      <button class="mega-tab" data-scene="morphometry" type="button">Parámetros</button>
+      <button class="mega-tab" data-scene="fetch" type="button">Fetch</button>
+      <button class="mega-tab" data-scene="comparison" type="button">1975 / 2014</button>
+    </div>
+
+    <div class="mega-layout">
+      <div class="mega-stage">
+        <div class="mega-topbar">
+          <span id="megaBadge">Escena lista</span>
+          <span>Animación metodológica basada en el estudio y en el raster batimétrico</span>
+        </div>
+        <canvas id="megaCanvas" aria-label="Animación ampliada de la metodología batimétrica"></canvas>
+      </div>
+
+      <aside class="mega-info">
+        <h3 id="megaTitle">Ubicación del área de estudio</h3>
+        <p id="megaText">Selecciona una escena y reproduce la animación. Cada escena explica una parte diferente de la metodología: desde localizar el lago hasta transformar datos crudos en perfiles, curvas y parámetros morfométricos.</p>
+
+        <div id="megaMetrics" class="mega-metrics"></div>
+        <div class="mega-progress"><div id="megaProgress"></div></div>
+        <div id="megaSteps" class="mega-steps"></div>
+
+        <p class="mega-note">Las animaciones son reconstrucciones didácticas. No reemplazan los datos originales del levantamiento, pero respetan la lógica metodológica reportada: medición de profundidad, georreferenciación, procesamiento, interpolación y análisis morfométrico.</p>
       </aside>
     </div>
   </section>
@@ -2505,6 +2787,714 @@ Hydrographic workflow ready for interpretation`
   window.addEventListener('resize',()=>resetView(false));
   img.onload = ()=>{ buildDensePoints(); resetView(false); };
   resetView(false);
+})();
+</script>
+
+
+<script>
+(function(){
+  const asset = window.BATHY_ASSET;
+  const canvas = document.getElementById('megaCanvas');
+  if(!asset || !canvas) return;
+  const ctx = canvas.getContext('2d');
+  const tabs = [...document.querySelectorAll('.mega-tab')];
+  const playBtn = document.getElementById('megaPlay');
+  const resetBtn = document.getElementById('megaReset');
+  const titleEl = document.getElementById('megaTitle');
+  const textEl = document.getElementById('megaText');
+  const badgeEl = document.getElementById('megaBadge');
+  const metricsEl = document.getElementById('megaMetrics');
+  const stepsEl = document.getElementById('megaSteps');
+  const progressEl = document.getElementById('megaProgress');
+
+  const img = new Image();
+  img.src = asset.image;
+
+  let scene = 'location';
+  let token = 0;
+  let cw = 0, ch = 0, dpr = 1;
+  let points = [];
+  const off = document.createElement('canvas');
+  const offCtx = off.getContext('2d');
+
+  const sceneInfo = {
+    location:{
+      title:'Ubicación y escala del área de estudio',
+      badge:'Guatemala → Sololá → Lago de Atitlán',
+      text:'La metodología puede abrir con una navegación espacial: país, altiplano occidental, cuenca endorreica y espejo de agua. Esto prepara al público antes de entrar en ecosonda, transectos y procesamiento.',
+      metrics:[['Contexto','Cuenca endorreica'],['Altitud reportada','1,556 m s. n. m.'],['Área de estudio','Lago de Atitlán'],['Uso visual','Ubicar antes de medir']],
+      steps:['Mapa nacional','Acercamiento regional','Aparición del lago','Inicio del levantamiento']
+    },
+    sonar:{
+      title:'Del pulso acústico al punto X,Y,Z',
+      badge:'Ecosonda multifrecuencia + GPS/DGPS',
+      text:'Cada punto batimétrico combina una medición de profundidad con una posición. La barca emite pulsos acústicos, recibe el eco del fondo y el GPS/DGPS completa la coordenada horizontal.',
+      metrics:[['Equipo reportado','Hydrotrac multifrecuencia'],['Posición','GPS/DGPS Hemisphere'],['Dato final','X · Y · Z'],['Valor didáctico','Explica qué es un sondaje']],
+      steps:['Navegación','Pulso acústico','Retorno del eco','Registro XYZ']
+    },
+    density:{
+      title:'Densidad de muestreo y separación entre líneas',
+      badge:'100 m principales · 1,000 m secundarias',
+      text:'La separación entre líneas controla cuánta información directa hay antes de interpolar. La escena compara una cobertura amplia, el patrón de 100 m y las líneas secundarias de control.',
+      metrics:[['Líneas principales','270'],['Separación principal','100 m'],['Líneas secundarias','13'],['Separación secundaria','1,000 m']],
+      steps:['Baja densidad','Diseño reportado','Control transversal','Lectura comparativa']
+    },
+    interpolation:{
+      title:'Puntos → malla → superficie → curvas',
+      badge:'Transformación de registros en superficie continua',
+      text:'El levantamiento produce puntos; el mapa necesita una superficie. Esta animación muestra la transición conceptual desde la nube XYZ hacia grilla, raster batimétrico y curvas de profundidad.',
+      metrics:[['Entrada','Nube XYZ'],['Proceso','Gridding / interpolación'],['Salida','Superficie batimétrica'],['Producto','Curvas de profundidad']],
+      steps:['Puntos medidos','Malla de interpolación','Superficie continua','Curvas batimétricas']
+    },
+    profiles:{
+      title:'Perfiles batimétricos A, B, C y D',
+      badge:'Lectura de transectos sobre la cubeta',
+      text:'Los perfiles son una forma poderosa de leer el fondo. La escena ilumina transectos sobre el lago y dibuja secciones de profundidad para distinguir pendientes abruptas y suaves.',
+      metrics:[['Perfiles del paper','A, B, C y D'],['Longitudes visibles','17.5, 16, 13 y 15 km'],['Lectura norte','Pendientes abruptas'],['Lectura sur','Pendientes más suaves']],
+      steps:['Transecto A','Transecto B','Transecto C','Transecto D']
+    },
+    hypsometry:{
+      title:'Curva hipsográfica: área acumulada y profundidad',
+      badge:'Área (%) vs profundidad',
+      text:'La curva hipsográfica resume cómo se distribuye el área del lago con la profundidad. En el estudio, esta lectura se usa para clasificar la forma del lago como cóncava.',
+      metrics:[['Eje X','Área acumulada (%)'],['Eje Y','Profundidad (m)'],['Forma reportada','Cóncava'],['Uso','Lectura morfométrica']],
+      steps:['Rangos de profundidad','Área acumulada','Dibujo de curva','Forma cóncava']
+    },
+    morphometry:{
+      title:'Del mapa batimétrico a los parámetros morfométricos',
+      badge:'Área · volumen · perímetro · profundidad',
+      text:'Los parámetros no aparecen de la nada: se derivan del contorno, de la superficie batimétrica y de los perfiles. Esta escena hace salir cada indicador desde su elemento espacial.',
+      metrics:[['Área superficial','125.77 km²'],['Perímetro','101.67 km'],['Volumen','25.46 km³'],['Profundidad máxima','327.56 m']],
+      steps:['Contorno','Superficie','Profundidad','Síntesis numérica']
+    },
+    fetch:{
+      title:'Fetch efectivo como análisis de viento',
+      badge:'Dirección del viento y distancia libre sobre agua',
+      text:'El fetch debe quedar separado de las rutas de navegación. En la metodología se obtiene a partir de estaciones climatológicas, dirección promedio del viento y longitud libre sobre el espejo de agua.',
+      metrics:[['Estaciones AMSCLAE','5'],['Norte de cuenca','3 estaciones'],['Sur de cuenca','2 estaciones'],['Fetch reportado','9.58 km · 23° NNE']],
+      steps:['Estaciones','Vectores de viento','Dirección promedio','Línea de fetch']
+    },
+    comparison:{
+      title:'Comparación visual 1975 / 2014',
+      badge:'Cambio cartográfico y zonas someras',
+      text:'La comparación histórica se puede enseñar con un control deslizante: contornos antiguos en gris, superficie 2014 en azul y énfasis en zonas someras cercanas a la orilla.',
+      metrics:[['Mapa base','IGN 1975'],['Mapa actualizado','Levantamiento 2014'],['Diferencias principales','Zonas someras/orilla'],['Cuidado','Comparación visual, no cálculo exacto']],
+      steps:['Contornos 1975','Superficie 2014','Deslizador temporal','Zonas de diferencia']
+    }
+  };
+
+  function resize(){
+    const rect = canvas.getBoundingClientRect();
+    dpr = window.devicePixelRatio || 1;
+    cw = Math.max(540, Math.floor(rect.width));
+    ch = Math.max(420, Math.floor(rect.height));
+    canvas.width = Math.floor(cw*dpr);
+    canvas.height = Math.floor(ch*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+
+  function fitRect(scale=0.78, yShift=0){
+    const ar = asset.width/asset.height;
+    let w = cw*scale;
+    let h = w/ar;
+    if(h > ch*0.78){ h = ch*0.78; w = h*ar; }
+    return {x:(cw-w)/2, y:(ch-h)/2 + yShift, w, h};
+  }
+
+  function tx(pt, r=fitRect()){
+    return [r.x + (pt[0]/asset.width)*r.w, r.y + (pt[1]/asset.height)*r.h];
+  }
+
+  function clear(){
+    resize();
+    const g = ctx.createLinearGradient(0,0,0,ch);
+    g.addColorStop(0,'#102845');
+    g.addColorStop(1,'#061326');
+    ctx.fillStyle = g;
+    ctx.fillRect(0,0,cw,ch);
+
+    ctx.save();
+    ctx.globalAlpha = 0.12;
+    ctx.strokeStyle = 'rgba(142,197,232,0.28)';
+    for(let x=0;x<cw;x+=40){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,ch);ctx.stroke();}
+    for(let y=0;y<ch;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(cw,y);ctx.stroke();}
+    ctx.restore();
+  }
+
+  function buildPoints(){
+    if(points.length || !img.complete) return;
+    off.width = asset.width;
+    off.height = asset.height;
+    offCtx.clearRect(0,0,off.width,off.height);
+    offCtx.drawImage(img,0,0,off.width,off.height);
+    const data = offCtx.getImageData(0,0,off.width,off.height).data;
+    const pts = [];
+    const step = 10;
+    for(let y=5;y<off.height;y+=step){
+      for(let x=5;x<off.width;x+=step){
+        const i=(y*off.width+x)*4;
+        if(data[i+3] > 8){
+          const light=(data[i]+data[i+1]+data[i+2])/3;
+          pts.push({x,y,light,key:((x*73856093)^(y*19349663))>>>0});
+        }
+      }
+    }
+    pts.sort((a,b)=>a.key-b.key);
+    points = pts;
+  }
+
+  function drawLake(alpha=0.95, scale=0.76, yShift=0){
+    const r = fitRect(scale,yShift);
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.shadowColor = 'rgba(142,197,232,0.36)';
+    ctx.shadowBlur = 18;
+    ctx.drawImage(img,r.x,r.y,r.w,r.h);
+    ctx.restore();
+    ctx.strokeStyle='rgba(216,238,251,0.40)';
+    ctx.lineWidth=1.1;
+    ctx.strokeRect(r.x,r.y,r.w,r.h);
+    return r;
+  }
+
+  function drawContours(progress=1, r=fitRect(0.76)){
+    let total = asset.contours.reduce((s,c)=>s+c.paths.length,0);
+    let allowed = Math.ceil(total*progress);
+    let count = 0;
+    ctx.save();
+    ctx.lineCap='round'; ctx.lineJoin='round';
+    asset.contours.forEach(c=>{
+      const t = Math.min(1,Math.max(0,-c.level/325));
+      ctx.strokeStyle = `rgba(236,248,255,${0.32+0.50*t})`;
+      ctx.lineWidth = c.level % 100 === 0 ? 1.25 : 0.78;
+      c.paths.forEach(path=>{
+        if(count++ > allowed) return;
+        ctx.beginPath();
+        path.forEach((pt,i)=>{ const [x,y] = tx(pt,r); if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y); });
+        ctx.stroke();
+      });
+    });
+    ctx.restore();
+  }
+
+  function drawDensePoints(progress=1, r=fitRect(0.76), size=1.18, flagged=false){
+    buildPoints();
+    const n = Math.floor(points.length*Math.max(0,Math.min(1,progress)));
+    ctx.save();
+    ctx.globalCompositeOperation='screen';
+    for(let i=0;i<n;i++){
+      const p = points[i];
+      const [x,y] = tx([p.x,p.y],r);
+      const d = 1 - p.light/255;
+      ctx.fillStyle = flagged && i%49===0 ? 'rgba(255,105,105,0.92)' : `rgba(${Math.round(170-70*d)},${Math.round(236-90*d)},255,0.80)`;
+      ctx.beginPath(); ctx.arc(x,y,size,0,Math.PI*2); ctx.fill();
+    }
+    ctx.restore();
+  }
+
+  function drawBoat(x,y,angle=0,scale=1){
+    ctx.save();
+    ctx.translate(x,y);
+    ctx.rotate(angle);
+    ctx.scale(scale,scale);
+
+    ctx.save();
+    ctx.globalAlpha=0.35;
+    ctx.strokeStyle='rgba(216,238,251,0.55)';
+    ctx.lineWidth=2;
+    for(let i=0;i<4;i++){
+      ctx.beginPath();
+      ctx.moveTo(-36-i*10,17+i*4);
+      ctx.bezierCurveTo(-20-i*8,22+i*5,10-i*4,22+i*4,34-i*3,16+i*3);
+      ctx.stroke();
+    }
+    ctx.restore();
+
+    const hull = ctx.createLinearGradient(-44,0,44,0);
+    hull.addColorStop(0,'#d6ecff');
+    hull.addColorStop(0.45,'#ffffff');
+    hull.addColorStop(1,'#8ec5e8');
+    ctx.fillStyle=hull;
+    ctx.strokeStyle='rgba(2,12,26,0.85)';
+    ctx.lineWidth=1.4;
+    ctx.beginPath();
+    ctx.moveTo(-50,4);
+    ctx.bezierCurveTo(-34,24,30,25,52,4);
+    ctx.bezierCurveTo(34,12,-35,12,-50,4);
+    ctx.closePath();
+    ctx.fill(); ctx.stroke();
+
+    ctx.fillStyle='#0b1f38';
+    ctx.beginPath();
+    ctx.moveTo(-20,2);
+    ctx.lineTo(-8,-19);
+    ctx.lineTo(25,-18);
+    ctx.lineTo(37,2);
+    ctx.closePath();
+    ctx.fill();
+    ctx.strokeStyle='rgba(216,238,251,0.55)';
+    ctx.stroke();
+
+    ctx.fillStyle='rgba(142,197,232,0.92)';
+    ctx.fillRect(-5,-15,11,8);
+    ctx.fillRect(10,-15,11,8);
+
+    ctx.strokeStyle='#f8d866';
+    ctx.lineWidth=2;
+    ctx.beginPath(); ctx.moveTo(26,-18); ctx.lineTo(36,-34); ctx.stroke();
+    ctx.fillStyle='#f8d866';
+    ctx.beginPath(); ctx.arc(37,-35,2.2,0,Math.PI*2); ctx.fill();
+
+    ctx.restore();
+  }
+
+  function drawSonar(x,y,phase=0){
+    ctx.save();
+    ctx.strokeStyle='rgba(248,216,102,0.38)';
+    ctx.fillStyle='rgba(248,216,102,0.10)';
+    ctx.lineWidth=1.4;
+    for(let i=0;i<4;i++){
+      const h = 36 + i*38 + phase*20;
+      ctx.beginPath();
+      ctx.moveTo(x-12,y+18);
+      ctx.lineTo(x-52-i*6,y+h);
+      ctx.lineTo(x+52+i*6,y+h);
+      ctx.closePath();
+      ctx.fill(); ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  function drawTransects(progress=1,r=fitRect(0.76),angle=140,spacing=14,color='rgba(255,96,96,0.72)',secondary=false){
+    const mask = document.createElement('canvas');
+    mask.width = cw; mask.height = ch;
+    const g = mask.getContext('2d');
+    g.clearRect(0,0,cw,ch);
+    g.save();
+    g.translate(r.x+r.w/2,r.y+r.h/2);
+    g.rotate(angle*Math.PI/180);
+    const diag = Math.sqrt(r.w*r.w+r.h*r.h)*1.35;
+    const count = Math.ceil(diag/spacing)+8;
+    const vis = Math.floor(count*progress);
+    const start = -Math.floor(count/2);
+    g.strokeStyle=color; g.lineWidth=secondary?1.7:0.9; g.shadowColor=color; g.shadowBlur=secondary?8:4;
+    for(let i=0;i<vis;i++){
+      const off=(start+i)*spacing;
+      g.beginPath(); g.moveTo(off,-diag); g.lineTo(off,diag); g.stroke();
+    }
+    g.restore();
+    g.globalCompositeOperation='destination-in';
+    g.drawImage(img,r.x,r.y,r.w,r.h);
+    g.globalCompositeOperation='source-over';
+    ctx.drawImage(mask,0,0);
+  }
+
+  function drawProfileBox(label,progress=1,color='#f8d866'){
+    const box = {x:44,y:ch-172,w:cw-88,h:126};
+    ctx.save();
+    ctx.fillStyle='rgba(3,12,25,0.74)';
+    ctx.fillRect(box.x,box.y,box.w,box.h);
+    ctx.strokeStyle='rgba(142,197,232,0.28)';
+    ctx.strokeRect(box.x,box.y,box.w,box.h);
+    ctx.fillStyle='rgba(216,238,251,0.95)';
+    ctx.font='14px Times New Roman';
+    ctx.fillText('Perfil '+label+' · profundidad relativa del transecto',box.x+14,box.y+20);
+    ctx.strokeStyle='rgba(142,197,232,0.22)';
+    ctx.beginPath(); ctx.moveTo(box.x+38,box.y+34); ctx.lineTo(box.x+38,box.y+102); ctx.lineTo(box.x+box.w-24,box.y+102); ctx.stroke();
+
+    ctx.strokeStyle=color; ctx.lineWidth=2;
+    ctx.beginPath();
+    const n=170;
+    const lim=Math.floor(n*progress);
+    for(let i=0;i<lim;i++){
+      const t=i/(n-1);
+      let d;
+      if(label==='A') d=0.08+0.85/(1+Math.exp(-18*(t-0.22))) - 0.76/(1+Math.exp(-24*(t-0.88))) + 0.07*Math.sin(t*22);
+      else if(label==='B') d=0.08+0.78/(1+Math.exp(-20*(t-0.48))) - 0.72/(1+Math.exp(-24*(t-0.90))) + 0.04*Math.sin(t*30);
+      else if(label==='C') d=0.12+0.68/(1+Math.exp(-17*(t-0.28))) - 0.55/(1+Math.exp(-12*(t-0.70))) + 0.05*Math.sin(t*24);
+      else d=0.10+0.55*Math.abs(Math.sin(t*4.0))*Math.exp(-t*1.5)+0.70/(1+Math.exp(-20*(t-0.82)));
+      d=Math.max(0.05,Math.min(0.96,d));
+      const x=box.x+38+t*(box.w-70);
+      const y=box.y+102-d*64;
+      if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function setPanel(sc, stepIndex=0, progress=0){
+    const info = sceneInfo[sc];
+    titleEl.textContent = info.title;
+    textEl.textContent = info.text;
+    badgeEl.textContent = info.badge;
+    metricsEl.innerHTML = info.metrics.map(m=>`<div class="mega-metric"><span>${m[0]}</span><strong>${m[1]}</strong></div>`).join('');
+    stepsEl.innerHTML = info.steps.map((s,i)=>`<div class="mega-step ${i===stepIndex?'active':''}">${String(i+1).padStart(2,'0')} · ${s}</div>`).join('');
+    progressEl.style.width = `${Math.max(0,Math.min(100,progress))}%`;
+  }
+
+  function wait(ms){return new Promise(r=>setTimeout(r,ms));}
+  async function animate(ms, draw, local){
+    const start = performance.now();
+    return new Promise(resolve=>{
+      function frame(now){
+        if(local!==token) return resolve(false);
+        const p=Math.min(1,(now-start)/ms);
+        draw(p);
+        if(p<1) requestAnimationFrame(frame); else resolve(true);
+      }
+      requestAnimationFrame(frame);
+    });
+  }
+
+  function setScene(sc){
+    scene=sc;
+    tabs.forEach(t=>t.classList.toggle('active',t.dataset.scene===scene));
+    token++;
+    setPanel(scene,0,0);
+    clear();
+    drawPreview(scene);
+  }
+
+  function drawPreview(sc){
+    clear();
+    if(sc==='location') drawLocation(0.42);
+    else if(sc==='sonar') drawSonarScene(0.25);
+    else if(sc==='density') drawDensity(0.62);
+    else if(sc==='interpolation') drawInterpolation(0.45);
+    else if(sc==='profiles') drawProfiles(0.20);
+    else if(sc==='hypsometry') drawHypsometry(0.45);
+    else if(sc==='morphometry') drawMorphometry(0.42);
+    else if(sc==='fetch') drawFetch(0.44);
+    else drawComparison(0.45);
+  }
+
+  function drawLocation(p){
+    clear();
+    ctx.save();
+    ctx.translate(cw*0.13,ch*0.15);
+    ctx.strokeStyle='rgba(216,238,251,0.75)';
+    ctx.fillStyle='rgba(142,197,232,0.10)';
+    ctx.lineWidth=2;
+    ctx.beginPath();
+    ctx.moveTo(80,20); ctx.lineTo(132,44); ctx.lineTo(124,90); ctx.lineTo(154,135); ctx.lineTo(118,194); ctx.lineTo(70,172); ctx.lineTo(42,122); ctx.lineTo(48,60); ctx.closePath();
+    ctx.fill(); ctx.stroke();
+    ctx.fillStyle='rgba(248,216,102,0.9)';
+    ctx.beginPath(); ctx.arc(92,116,5,0,Math.PI*2); ctx.fill();
+    ctx.font='15px Times New Roman'; ctx.fillStyle='rgba(216,238,251,0.92)';
+    ctx.fillText('Guatemala',42,228);
+    ctx.restore();
+
+    ctx.save();
+    ctx.globalAlpha=Math.min(1,p*2);
+    ctx.strokeStyle='rgba(142,197,232,0.42)';
+    ctx.lineWidth=1.4;
+    ctx.beginPath(); ctx.moveTo(cw*0.26,ch*0.28); ctx.lineTo(cw*0.48,ch*0.38); ctx.stroke();
+    ctx.restore();
+
+    const r=drawLake(Math.min(0.96,p+0.22),0.55,18);
+    ctx.save();
+    ctx.strokeStyle='rgba(248,216,102,0.9)';
+    ctx.lineWidth=2;
+    ctx.setLineDash([8,6]);
+    ctx.strokeRect(r.x-14,r.y-14,r.w+28,r.h+28);
+    ctx.setLineDash([]);
+    ctx.fillStyle='rgba(216,238,251,0.95)';
+    ctx.font='17px Times New Roman';
+    ctx.fillText('Lago de Atitlán · área de estudio',r.x+18,r.y+r.h+34);
+    ctx.restore();
+
+    if(p>0.55){
+      const bx = r.x+r.w*0.48, by=r.y+r.h*0.54;
+      drawBoat(bx,by,-0.15,0.62);
+    }
+  }
+
+  function drawSonarScene(p){
+    clear();
+    const r=drawLake(0.74,0.74);
+    const t=p;
+    const x=r.x+r.w*(0.14+0.72*t);
+    const y=r.y+r.h*(0.48+0.10*Math.sin(t*Math.PI*2));
+    drawTransects(1,r,140,14,'rgba(255,96,96,0.28)');
+    drawDensePoints(Math.max(0,p-0.16)*0.9,r,1.05);
+    drawSonar(x,y,(p*5)%1);
+    drawBoat(x,y,0.10+0.18*Math.sin(p*4),0.72);
+    ctx.save();
+    ctx.fillStyle='rgba(3,12,25,0.72)';
+    ctx.strokeStyle='rgba(142,197,232,0.24)';
+    ctx.fillRect(28,28,250,88); ctx.strokeRect(28,28,250,88);
+    ctx.fillStyle='rgba(142,197,232,0.95)';
+    ctx.font='14px Consolas, monospace';
+    ctx.fillText('GPS/DGPS  X,Y  vinculados',44,54);
+    ctx.fillText('Ecosonda   Z = profundidad',44,78);
+    ctx.fillStyle='rgba(248,216,102,0.95)';
+    ctx.fillText('registro XYZ → punto batimétrico',44,102);
+    ctx.restore();
+  }
+
+  function drawDensity(p){
+    clear();
+    const labels=['Separación amplia','Diseño reportado: 100 m','Secundarias de control'];
+    for(let i=0;i<3;i++){
+      const panel={x:36+i*(cw-72)/3,y:68,w:(cw-96)/3,h:ch-140};
+      ctx.save();
+      ctx.fillStyle='rgba(3,12,25,0.46)'; ctx.fillRect(panel.x,panel.y,panel.w,panel.h);
+      ctx.strokeStyle='rgba(142,197,232,0.25)'; ctx.strokeRect(panel.x,panel.y,panel.w,panel.h);
+      const ar=asset.width/asset.height;
+      let w=panel.w*0.88,h=w/ar;
+      if(h>panel.h*0.58){h=panel.h*0.58;w=h*ar;}
+      const r={x:panel.x+(panel.w-w)/2,y:panel.y+44,w,h};
+      ctx.globalAlpha=0.62; ctx.drawImage(img,r.x,r.y,r.w,r.h); ctx.globalAlpha=1;
+      drawTransects(Math.min(1,p*1.2),r,140,i===0?42:i===1?13:13,i===0?'rgba(255,96,96,0.55)':'rgba(255,96,96,0.78)');
+      if(i===2) drawTransects(Math.min(1,p*1.2),r,247,68,'rgba(248,216,102,0.84)',true);
+      if(i===1) drawDensePoints(p*0.55,r,0.72);
+      ctx.fillStyle='rgba(216,238,251,0.95)'; ctx.font='15px Times New Roman'; ctx.fillText(labels[i],panel.x+16,panel.y+25);
+      ctx.fillStyle='rgba(142,197,232,0.88)'; ctx.font='12px Times New Roman';
+      const desc=i===0?'más interpolación entre líneas':i===1?'mayor detalle espacial':'validación transversal';
+      ctx.fillText(desc,panel.x+16,panel.y+panel.h-22);
+      ctx.restore();
+    }
+  }
+
+  function drawInterpolation(p){
+    clear();
+    const r=drawLake(0.26+0.65*Math.min(1,Math.max(0,(p-0.42)/0.28)),0.74);
+    if(p<0.35){
+      drawDensePoints(p/0.35,r,1.1);
+    }else{
+      drawDensePoints(Math.max(0,1-(p-0.35)/0.25),r,1.0);
+    }
+    if(p>0.22){
+      const q=Math.min(1,(p-0.22)/0.38);
+      drawTransects(q,r,40,30,'rgba(248,216,102,0.36)');
+      drawTransects(q,r,130,30,'rgba(142,197,232,0.34)');
+    }
+    if(p>0.55){
+      drawContours(Math.min(1,(p-0.55)/0.45),r);
+    }
+    ctx.save();
+    ctx.fillStyle='rgba(216,238,251,0.95)';
+    ctx.font='18px Times New Roman';
+    const label=p<0.28?'1 · nube XYZ':p<0.55?'2 · malla de interpolación':p<0.78?'3 · superficie continua':'4 · curvas batimétricas';
+    ctx.fillText(label,34,42);
+    ctx.restore();
+  }
+
+  const profileLines = [
+    {label:'A',a:[80,435],b:[920,500],color:'#f8d866'},
+    {label:'B',a:[300,760],b:[520,90],color:'#8ee8d2'},
+    {label:'C',a:[720,735],b:[760,80],color:'#ffb4a8'},
+    {label:'D',a:[160,255],b:[900,650],color:'#d6ecff'}
+  ];
+  function drawProfiles(p){
+    clear();
+    const r=drawLake(0.88,0.67,-40);
+    drawContours(0.65,r);
+    const idx=Math.min(3,Math.floor(p*4));
+    const local=(p*4)-idx;
+    profileLines.forEach((ln,i)=>{
+      const [x1,y1]=tx(ln.a,r), [x2,y2]=tx(ln.b,r);
+      ctx.save();
+      ctx.globalAlpha=i===idx?1:0.22;
+      ctx.strokeStyle=ln.color; ctx.lineWidth=i===idx?2.6:1.2; ctx.setLineDash(i===idx?[]:[6,5]);
+      ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle=ln.color; ctx.font='16px Times New Roman';
+      ctx.fillText(ln.label,x1-12,y1-8); ctx.fillText(ln.label+"’",x2+6,y2+6);
+      ctx.restore();
+    });
+    drawProfileBox(profileLines[idx].label,Math.min(1,local*1.2),profileLines[idx].color);
+  }
+
+  function drawHypsometry(p){
+    clear();
+    const r=drawLake(0.92,0.58,-6);
+    const bands=[0.15,0.30,0.45,0.60,0.75,0.90,1.0];
+    bands.forEach((b,i)=>{
+      if(p > i/bands.length){
+        ctx.save();
+        ctx.globalAlpha=0.10;
+        ctx.strokeStyle=['#8ec5e8','#6fb0df','#4c8ec5','#356ba7','#234c83','#15335e','#091b35'][i];
+        ctx.lineWidth=8-i*0.65;
+        ctx.strokeRect(r.x+10+i*10,r.y+10+i*8,r.w-20-i*20,r.h-20-i*16);
+        ctx.restore();
+      }
+    });
+    drawContours(Math.min(1,p*1.4),r);
+
+    const box={x:cw*0.60,y:70,w:cw*0.33,h:ch-140};
+    ctx.save();
+    ctx.fillStyle='rgba(3,12,25,0.72)'; ctx.fillRect(box.x,box.y,box.w,box.h);
+    ctx.strokeStyle='rgba(142,197,232,0.28)'; ctx.strokeRect(box.x,box.y,box.w,box.h);
+    ctx.fillStyle='rgba(216,238,251,0.95)'; ctx.font='16px Times New Roman'; ctx.fillText('Curva hipsográfica',box.x+18,box.y+26);
+    ctx.strokeStyle='rgba(142,197,232,0.25)';
+    ctx.beginPath(); ctx.moveTo(box.x+44,box.y+48); ctx.lineTo(box.x+44,box.y+box.h-42); ctx.lineTo(box.x+box.w-24,box.y+box.h-42); ctx.stroke();
+    ctx.fillStyle='rgba(142,197,232,0.9)'; ctx.font='12px Times New Roman';
+    ctx.fillText('Área (%)',box.x+box.w-82,box.y+box.h-18);
+    ctx.save(); ctx.translate(box.x+18,box.y+box.h*0.58); ctx.rotate(-Math.PI/2); ctx.fillText('Profundidad (m)',0,0); ctx.restore();
+    ctx.strokeStyle='#f8d866'; ctx.lineWidth=2.4; ctx.beginPath();
+    const n=100, lim=Math.floor(n*p);
+    for(let i=0;i<lim;i++){
+      const t=i/(n-1);
+      const curve=Math.pow(t,0.62);
+      const x=box.x+44+t*(box.w-78);
+      const y=box.y+box.h-42-curve*(box.h-96);
+      if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+    if(p>0.82){
+      ctx.fillStyle='rgba(248,216,102,0.95)';
+      ctx.font='15px Times New Roman';
+      ctx.fillText('forma cóncava',box.x+box.w-130,box.y+62);
+    }
+    ctx.restore();
+  }
+
+  function drawMorphometry(p){
+    clear();
+    const r=drawLake(0.90,0.56,-20);
+    drawContours(0.95,r);
+    const cards=[
+      ['Área superficial','125.77 km²',r.x+r.w*0.05,r.y+20],
+      ['Perímetro','101.67 km',r.x+r.w*0.66,r.y+8],
+      ['Volumen','25.46 km³',r.x+r.w*0.62,r.y+r.h*0.74],
+      ['Dmáx','327.56 m',r.x+r.w*0.28,r.y+r.h*0.74],
+      ['Prof. media','202.40 m',r.x+r.w*0.38,r.y+r.h*0.10],
+      ['Forma','Cóncava',r.x+r.w*0.75,r.y+r.h*0.42]
+    ];
+    cards.forEach((c,i)=>{
+      if(p < i/cards.length) return;
+      const a=Math.min(1,(p-i/cards.length)*cards.length*1.5);
+      ctx.save(); ctx.globalAlpha=a;
+      ctx.fillStyle='rgba(3,12,25,0.75)'; ctx.strokeStyle='rgba(142,197,232,0.28)';
+      ctx.fillRect(c[2],c[3],130,48); ctx.strokeRect(c[2],c[3],130,48);
+      ctx.fillStyle='rgba(142,197,232,0.95)'; ctx.font='12px Times New Roman'; ctx.fillText(c[0],c[2]+9,c[3]+18);
+      ctx.fillStyle='rgba(255,255,255,0.96)'; ctx.font='16px Times New Roman'; ctx.fillText(c[1],c[2]+9,c[3]+38);
+      ctx.restore();
+    });
+  }
+
+  function drawFetch(p){
+    clear();
+    const r=drawLake(0.78,0.62);
+    drawContours(0.45,r);
+    const stations=[
+      [r.x+r.w*0.22,r.y+r.h*0.18],
+      [r.x+r.w*0.43,r.y+r.h*0.12],
+      [r.x+r.w*0.67,r.y+r.h*0.18],
+      [r.x+r.w*0.35,r.y+r.h*0.82],
+      [r.x+r.w*0.72,r.y+r.h*0.78]
+    ];
+    stations.forEach((s,i)=>{
+      if(p < i*0.10) return;
+      ctx.fillStyle='rgba(248,216,102,0.95)';
+      ctx.beginPath(); ctx.arc(s[0],s[1],5,0,Math.PI*2); ctx.fill();
+      ctx.strokeStyle='rgba(248,216,102,0.35)';
+      ctx.beginPath(); ctx.arc(s[0],s[1],13+8*Math.sin(p*8+i),0,Math.PI*2); ctx.stroke();
+      ctx.fillStyle='rgba(216,238,251,0.92)'; ctx.font='12px Times New Roman'; ctx.fillText('E'+(i+1),s[0]+8,s[1]-7);
+    });
+    if(p>0.34){
+      const q=Math.min(1,(p-0.34)/0.45);
+      ctx.save();
+      ctx.strokeStyle='rgba(216,238,251,0.75)'; ctx.lineWidth=1.8;
+      stations.forEach(s=>{
+        ctx.beginPath(); ctx.moveTo(s[0],s[1]); ctx.lineTo(s[0]+36*q,s[1]-68*q); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(s[0]+36*q,s[1]-68*q); ctx.lineTo(s[0]+22*q,s[1]-58*q); ctx.lineTo(s[0]+44*q,s[1]-54*q); ctx.stroke();
+      });
+      ctx.restore();
+    }
+    if(p>0.62){
+      const q=Math.min(1,(p-0.62)/0.38);
+      const a=[r.x+r.w*0.25,r.y+r.h*0.64], b=[r.x+r.w*0.64,r.y+r.h*0.18];
+      ctx.strokeStyle='rgba(248,216,102,0.98)'; ctx.lineWidth=3;
+      ctx.beginPath(); ctx.moveTo(a[0],a[1]); ctx.lineTo(a[0]+(b[0]-a[0])*q,a[1]+(b[1]-a[1])*q); ctx.stroke();
+      ctx.fillStyle='rgba(248,216,102,0.95)'; ctx.font='18px Times New Roman';
+      if(q>0.8) ctx.fillText('Fetch efectivo = 9.58 km · 23° NNE',r.x+r.w*0.23,r.y+r.h+28);
+    }
+  }
+
+  function drawComparison(p){
+    clear();
+    const r=drawLake(0.92,0.66);
+    const slider=r.x+r.w*(0.15+0.70*p);
+    ctx.save();
+    ctx.beginPath(); ctx.rect(r.x,r.y,Math.max(0,slider-r.x),r.h); ctx.clip();
+    ctx.globalAlpha=0.65; ctx.filter='grayscale(1) contrast(0.8)';
+    ctx.drawImage(img,r.x,r.y,r.w,r.h);
+    ctx.filter='none';
+    ctx.strokeStyle='rgba(220,220,220,0.55)';
+    ctx.lineWidth=1;
+    drawOldContours(r);
+    ctx.restore();
+
+    ctx.save();
+    ctx.beginPath(); ctx.rect(slider,r.y,r.x+r.w-slider,r.h); ctx.clip();
+    ctx.globalAlpha=0.96; ctx.drawImage(img,r.x,r.y,r.w,r.h);
+    drawContours(1,r);
+    ctx.restore();
+
+    ctx.strokeStyle='rgba(248,216,102,0.95)';
+    ctx.lineWidth=3;
+    ctx.beginPath(); ctx.moveTo(slider,r.y-8); ctx.lineTo(slider,r.y+r.h+8); ctx.stroke();
+    ctx.fillStyle='rgba(3,12,25,0.75)';
+    ctx.fillRect(slider-52,r.y-38,104,24);
+    ctx.fillStyle='rgba(248,216,102,0.95)';
+    ctx.font='14px Times New Roman';
+    ctx.fillText('1975 / 2014',slider-36,r.y-21);
+  }
+
+  function drawOldContours(r){
+    ctx.save();
+    ctx.strokeStyle='rgba(230,230,230,0.55)';
+    ctx.lineWidth=1;
+    for(let i=0;i<8;i++){
+      ctx.beginPath();
+      const yy=r.y+r.h*(0.16+i*0.085);
+      ctx.moveTo(r.x+r.w*0.10,yy);
+      for(let k=0;k<60;k++){
+        const t=k/59;
+        ctx.lineTo(r.x+r.w*(0.10+0.82*t), yy + Math.sin(t*8+i)*8 + i*1.2);
+      }
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  async function play(){
+    const local=++token;
+    playBtn.disabled=true;
+    try{
+      setPanel(scene,0,0);
+      const sc=scene;
+      if(sc==='location'){
+        await animate(4200,p=>{setPanel(sc,Math.min(3,Math.floor(p*4)),p*100);drawLocation(p);},local);
+      }else if(sc==='sonar'){
+        await animate(5200,p=>{setPanel(sc,Math.min(3,Math.floor(p*4)),p*100);drawSonarScene(p);},local);
+      }else if(sc==='density'){
+        await animate(4800,p=>{setPanel(sc,Math.min(3,Math.floor(p*4)),p*100);drawDensity(p);},local);
+      }else if(sc==='interpolation'){
+        await animate(5200,p=>{setPanel(sc,Math.min(3,Math.floor(p*4)),p*100);drawInterpolation(p);},local);
+      }else if(sc==='profiles'){
+        await animate(7600,p=>{setPanel(sc,Math.min(3,Math.floor(p*4)),p*100);drawProfiles(p);},local);
+      }else if(sc==='hypsometry'){
+        await animate(5200,p=>{setPanel(sc,Math.min(3,Math.floor(p*4)),p*100);drawHypsometry(p);},local);
+      }else if(sc==='morphometry'){
+        await animate(5400,p=>{setPanel(sc,Math.min(3,Math.floor(p*4)),p*100);drawMorphometry(p);},local);
+      }else if(sc==='fetch'){
+        await animate(5600,p=>{setPanel(sc,Math.min(3,Math.floor(p*4)),p*100);drawFetch(p);},local);
+      }else{
+        await animate(5600,p=>{setPanel(sc,Math.min(3,Math.floor(p*4)),p*100);drawComparison(p);},local);
+      }
+    } finally {
+      playBtn.disabled=false;
+    }
+  }
+
+  tabs.forEach(tab=>tab.addEventListener('click',()=>setScene(tab.dataset.scene)));
+  playBtn.addEventListener('click',play);
+  resetBtn.addEventListener('click',()=>setScene(scene));
+  window.addEventListener('resize',()=>setScene(scene));
+  img.onload=()=>{buildPoints();setScene(scene);};
+  setScene(scene);
 })();
 </script>
 
