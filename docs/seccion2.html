@@ -724,6 +724,7 @@
 
 
 
+
   /* ==========================================================
      Simulación profesional: procesamiento batimétrico
      ========================================================== */
@@ -732,7 +733,7 @@
     border:1px solid rgba(142,197,232,0.30);
     background:
       radial-gradient(circle at 78% 8%,rgba(93,163,217,0.12),transparent 33%),
-      linear-gradient(180deg,rgba(15,34,59,0.90),rgba(7,18,33,0.93));
+      linear-gradient(180deg,rgba(15,34,59,0.92),rgba(7,18,33,0.95));
     box-shadow:0 26px 70px rgba(0,0,0,0.30);
     padding:1.1rem;
   }
@@ -764,15 +765,20 @@
 
   .lab-workspace{
     display:grid;
-    grid-template-columns:minmax(300px,0.95fr) minmax(560px,1.72fr) minmax(340px,1fr);
+    grid-template-columns:minmax(280px,0.82fr) minmax(620px,2.05fr) minmax(310px,0.92fr);
     gap:0.95rem;
-    min-height:700px;
+    height:760px;
+    min-height:760px;
+    max-height:760px;
+    overflow:hidden;
   }
 
   .lab-console,.lab-viewport,.lab-inspector{
     border:1px solid rgba(142,197,232,0.22);
     background:rgba(8,18,33,0.76);
     min-width:0;
+    min-height:0;
+    overflow:hidden;
   }
 
   .lab-window-bar{
@@ -793,8 +799,8 @@
 
   .lab-console-content{
     padding:0.9rem;
-    height:calc(100% - 36px);
-    overflow:auto;
+    height:calc(760px - 36px);
+    overflow:hidden;
   }
 
   .software-tree{font-size:11.05pt;color:var(--gris-texto);line-height:1.4;}
@@ -815,7 +821,7 @@
     font-family:Consolas,'Courier New',monospace;
     font-size:9.55pt;
     color:#d6ecff;
-    min-height:132px;
+    min-height:128px;
     white-space:pre-wrap;
   }
 
@@ -829,16 +835,24 @@
     font-size:9.65pt;
     line-height:1.40;
     color:#d8e9fa;
+    max-height:400px;
   }
-  .code-line{display:block;padding:0.05rem 0.25rem;border-left:2px solid transparent;}
+  .code-line{display:block;padding:0.05rem 0.25rem;border-left:2px solid transparent;white-space:nowrap;}
   .code-line.hot{background:rgba(93,163,217,0.18);border-left-color:var(--acento-claro);color:#ffffff;}
-  .code-line.run{background:rgba(248,216,102,0.12);border-left-color:rgba(248,216,102,0.95);color:#fff7cf;}
+  .code-line.run{background:rgba(248,216,102,0.13);border-left-color:rgba(248,216,102,0.95);color:#fff7cf;box-shadow:0 0 18px rgba(248,216,102,0.10) inset;}
   .code-line.done{opacity:0.82;}
-  .code-line.dim{opacity:0.40;}
+  .code-line.dim{opacity:0.30;}
+  .code-line.ellipsis{opacity:0.45;color:var(--gris-texto);font-style:italic;}
   .code-comment{color:#8ec5e8;opacity:0.85;}
   .code-key{color:#f8d866;}.code-fn{color:#8ee8d2;}.code-str{color:#ffb4a8;}
 
-  .lab-viewport{position:relative;overflow:hidden;background:linear-gradient(180deg,#102845,#071326);}
+  .lab-viewport{
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 50% 50%,rgba(93,163,217,0.08),transparent 42%),
+      linear-gradient(180deg,#102845,#071326);
+  }
   .lab-raster-head{
     height:36px;
     display:flex;
@@ -851,9 +865,14 @@
     font-size:10.25pt;
   }
   #labStageBadge{color:var(--acento-claro);font-style:italic;}
-  #labCanvas{width:100%;height:calc(100% - 36px);display:block;min-height:662px;}
+  #labCanvas{width:100%;height:724px;display:block;min-height:724px;}
 
-  .lab-inspector{padding:0.95rem;display:flex;flex-direction:column;}
+  .lab-inspector{
+    padding:0.95rem;
+    display:flex;
+    flex-direction:column;
+    overflow:auto;
+  }
   .lab-inspector h3{color:var(--acento-claro);font-size:14.4pt;font-style:italic;font-weight:normal;margin:0 0 0.55rem;}
   .lab-inspector p{font-size:12.1pt;line-height:1.38;text-align:justify;color:var(--blanco);}
   .lab-details{margin:0.8rem 0 0.9rem;display:grid;gap:0.45rem;}
@@ -866,19 +885,21 @@
   .lab-metric strong{display:block;color:var(--blanco);font-size:11.25pt;font-weight:normal;}
   .lab-progress{height:8px;border:1px solid rgba(142,197,232,0.25);background:rgba(240,244,248,0.04);margin:0.2rem 0 0.9rem;overflow:hidden;}
   #labProgressBar{height:100%;width:0%;background:linear-gradient(90deg,var(--acento),var(--acento-claro));transition:width 0.22s;}
-  .lab-timeline{display:grid;grid-template-columns:1fr;gap:0.40rem;margin-top:auto;}
+  .lab-timeline{display:grid;grid-template-columns:1fr;gap:0.40rem;margin-top:0.65rem;}
   .lab-step-chip{font-size:10pt;color:var(--gris-texto);border:1px solid rgba(142,197,232,0.16);padding:0.42rem 0.48rem;background:rgba(240,244,248,0.035);}
   .lab-step-chip.active{color:var(--blanco);border-color:rgba(142,197,232,0.55);background:rgba(93,163,217,0.13);}
 
   @media(max-width:1180px){
-    .lab-workspace{grid-template-columns:1fr;}
+    .lab-workspace{grid-template-columns:1fr;height:auto;min-height:0;max-height:none;overflow:visible;}
+    .lab-console-content{height:auto;max-height:520px;overflow:hidden;}
     #labCanvas{height:620px;min-height:620px;}
-    .lab-console-content{min-height:300px;}
+    .lab-viewport{min-height:656px;}
   }
   @media(max-width:640px){
     .lab-toolbar{display:block;}
     .lab-actions{justify-content:flex-start;margin-top:0.6rem;}
     #labCanvas{height:460px;min-height:460px;}
+    .lab-viewport{min-height:496px;}
   }
 
 </style>
@@ -1754,8 +1775,9 @@ document.addEventListener("DOMContentLoaded", function(){
   function imageRect(){
     const marginX = 34;
     const marginY = 30;
-    const availableW = cw - marginX*2;
-    const availableH = ch - marginY*2;
+    const zoom = mode === 'python' ? 0.72 : 0.78;
+    const availableW = (cw - marginX*2) * zoom;
+    const availableH = (ch - marginY*2) * zoom;
     const ar = BATHY_ASSET.width / BATHY_ASSET.height;
     let w = availableW;
     let h = w / ar;
@@ -1998,20 +2020,7 @@ document.addEventListener("DOMContentLoaded", function(){
   }
 
   function drawLegendLabel(text){
-    const r = imageRect();
-    ctx.save();
-    const boxW = 246;
-    const boxH = 30;
-    const x = r.x + 14;
-    const y = r.y + 14;
-    ctx.fillStyle = 'rgba(3,12,25,0.66)';
-    ctx.fillRect(x,y,boxW,boxH);
-    ctx.strokeStyle = 'rgba(142,197,232,0.25)';
-    ctx.strokeRect(x,y,boxW,boxH);
-    ctx.fillStyle = 'rgba(216,238,251,0.92)';
-    ctx.font = '12px Times New Roman';
-    ctx.fillText(text, x+12, y+19);
-    ctx.restore();
+    /* Los títulos ya están en la barra superior y el inspector. No se dibuja etiqueta sobre el lago para no estorbar. */
   }
 
   function xyzTable(rows=8){
@@ -2179,17 +2188,31 @@ Hydrographic workflow ready for interpretation`
     const [start,end] = stageRanges[stage];
     const span = Math.max(1, end - start + 1);
     const executed = start + Math.min(span-1, Math.floor(progress * span));
-    const pre = codeLines.map((l,i)=>{
-      if(l==='') return '<span class="code-line">&nbsp;</span>';
+
+    const windowSize = 18;
+    let from = Math.max(0, executed - 7);
+    let to = Math.min(codeLines.length - 1, from + windowSize - 1);
+    from = Math.max(0, to - windowSize + 1);
+
+    const shown = [];
+    if(from > 0) shown.push('<span class="code-line ellipsis">··· líneas anteriores ejecutadas ···</span>');
+    for(let i=from;i<=to;i++){
+      const l = codeLines[i];
+      if(l===''){
+        shown.push('<span class="code-line">&nbsp;</span>');
+        continue;
+      }
       let cls = 'dim';
       if(i < start) cls = 'done';
       if(i >= start && i < executed) cls = 'done';
       if(i === executed) cls = 'run';
       if(i > executed) cls = 'dim';
-      return `<span class="code-line ${cls}">${String(i+1).padStart(2,'0')}  ${l}</span>`;
-    }).join('');
+      shown.push(`<span class="code-line ${cls}">${String(i+1).padStart(2,'0')}  ${l}</span>`);
+    }
+    if(to < codeLines.length - 1) shown.push('<span class="code-line ellipsis">··· continúa el pipeline ···</span>');
+
     const logs = pythonLogs[stage] || [];
-    const visibleLogs = logs.slice(0, Math.max(1, Math.ceil(progress * logs.length))).join('\n');
+    const visibleLogs = logs.slice(0, Math.max(1, Math.ceil(progress * logs.length))).join('\\n');
     const note = [
       'El flujo arranca con datos crudos de profundidad y navegación, no con el GeoTIFF final. La idea es mostrar una tubería más completa y sorprendente para el observador.',
       'La limpieza reduce errores obvios y separa observaciones que deben revisarse antes de pasar al modelado.',
@@ -2199,10 +2222,11 @@ Hydrographic workflow ready for interpretation`
       'A partir del raster se extraen estadísticas y curvas sin abandonar el mismo entorno de trabajo reproducible.',
       'El resultado final combina superficie, contornos, perfil y métricas en un flujo documentado y reutilizable.'
     ][stage];
+
     consoleContent.innerHTML = `
       <div class="code-card">
-        <h4>Notebook de procesamiento</h4>
-        <pre>${pre}</pre>
+        <h4>Notebook de procesamiento · ejecución por etapas</h4>
+        <pre>${shown.join('')}</pre>
         <div class="terminal-log">${visibleLogs}</div>
         <div class="mini-note">${note}</div>
       </div>`;
