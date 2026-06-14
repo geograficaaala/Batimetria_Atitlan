@@ -997,6 +997,13 @@ code{
   color:#5b788b;
 }
 
+
+
+/* === Sustitución de vista general/profundidad máxima por zonas batimétricas === */
+.zone-callout{
+  color:#315a75;
+}
+
 </style>
 </head>
 <body>
@@ -1031,21 +1038,20 @@ code{
     <p class="presentador">Reyes Morales, F., Ujpan, D. &amp; Valiente, S. (2018). <em>Batimetría y análisis morfométrico del lago de Atitlán (Guatemala)</em>. Revista Científica, 27(2), 48–58.</p>
     <h2>El mapa batimétrico de 2014</h2>
     <p>El resultado visual principal del estudio es el mapa batimétrico del lago de Atitlán, presentado en la Figura 2 del artículo junto con los perfiles de los transectos A, B, C y D. El mapa muestra que el lago es un cuerpo de agua profundo —327 m— y extenso —125 km²—, formado por una única cubeta principal y dos bahías. Las máximas pendientes se sitúan en la zona noroeste y este; las menores pendientes se dan en la zona sur (Reyes Morales et al., 2018, p. 54).</p>
-    <p>El bloque interactivo permite recorrer el perímetro, destacar el espejo de agua, simular el descenso del nivel del lago, ubicar la profundidad máxima y generar perfiles batimétricos automáticos o manuales.</p>
+    <p>El bloque interactivo permite recorrer el perímetro, destacar el espejo de agua, simular el descenso del nivel del lago, interpretar zonas batimétricas y generar perfiles automáticos o manuales.</p>
   </div>
 
   <section class="explorador" id="explorador-batimetrico">
     <div class="explorador-head">
       <div class="explorador-title">Resultados batimétricos</div>
       <div class="tool-row" id="toolRow">
-        <button class="tool-btn active" data-mode="general"><kbd>1</kbd>Vista general</button>
-        <button class="tool-btn" data-mode="perimetro"><kbd>2</kbd>Perímetro</button>
-        <button class="tool-btn" data-mode="espejo"><kbd>3</kbd>Espejo de agua</button>
-        <button class="tool-btn" data-mode="volumen"><kbd>4</kbd>Volumen</button>
-        <button class="tool-btn" data-mode="profmax"><kbd>5</kbd>Prof. máxima</button>
-        <button class="tool-btn" data-mode="profmedia"><kbd>6</kbd>Prof. media</button>
-        <button class="tool-btn" data-mode="transecto"><kbd>7</kbd>Transectos</button>
-        <button class="tool-btn" data-mode="hipso"><kbd>8</kbd>Hipsográfica</button>
+        <button class="tool-btn active" data-mode="perimetro"><kbd>1</kbd>Perímetro</button>
+        <button class="tool-btn" data-mode="espejo"><kbd>2</kbd>Espejo de agua</button>
+        <button class="tool-btn" data-mode="volumen"><kbd>3</kbd>Volumen</button>
+        <button class="tool-btn" data-mode="zonas"><kbd>4</kbd>Zonas batimétricas</button>
+        <button class="tool-btn" data-mode="profmedia"><kbd>5</kbd>Prof. media</button>
+        <button class="tool-btn" data-mode="transecto"><kbd>6</kbd>Transectos</button>
+        <button class="tool-btn" data-mode="hipso"><kbd>7</kbd>Hipsográfica</button>
       </div>
     </div>
     <div class="explorador-grid">
@@ -1186,7 +1192,7 @@ code{
   const offBase=document.createElement('canvas'),bctx=offBase.getContext('2d');offBase.width=W;offBase.height=H;
   const offWater=document.createElement('canvas'),wctx=offWater.getContext('2d');offWater.width=W;offWater.height=H;
   const offTint=document.createElement('canvas'),tctx=offTint.getContext('2d');offTint.width=W;offTint.height=H;
-  let mode='general',drop=0,perimProgress=0,animReq=null,liveReq=null,time=0;
+  let mode='perimetro',drop=0,perimProgress=0,animReq=null,liveReq=null,time=0;
   let p1=null,p2=null,profile=null,profileMode='manual';
   const profileControls=document.getElementById('profileControls');
   function makeSyntheticProfile(distance, depths){const n=190,ds=[],zs=[];for(let i=0;i<n;i++){const u=i/(n-1),p=u*(depths.length-1),k=Math.floor(p),t=p-k;const z=depths[Math.min(k,depths.length-1)]*(1-t)+depths[Math.min(k+1,depths.length-1)]*t;ds.push(u*distance);zs.push(z);}return{ds,zs};}
@@ -1350,10 +1356,91 @@ code{
     ctx.font='14px Times New Roman';const w=ctx.measureText(text).width+18;ctx.fillStyle='rgba(5,14,26,.84)';roundRect(ctx,x,y-20,w,30,9);ctx.fill();ctx.strokeStyle='rgba(142,197,232,.28)';ctx.stroke();ctx.fillStyle='#eaf7ff';ctx.fillText(text,x+9,y);
   }
 
-  function render(){const f=fit();ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);ctx.fillStyle='#f8fdff';ctx.fillRect(0,0,canvas.clientWidth,canvas.clientHeight);ctx.imageSmoothingEnabled=true;ctx.drawImage(offBase,f.ox,f.oy,W*f.s,H*f.s);let style='blue';if(mode==='profmedia'||(mode==='volumen'&&drop>=P.meanDepthM))style='yellow';if(['volumen','profmedia'].includes(mode)){makeWater(drop,style);ctx.drawImage(offWater,f.ox,f.oy,W*f.s,H*f.s);drawWaterMotion(style);}if(mode==='espejo'){makeWater(0,'red');ctx.drawImage(offTint,f.ox,f.oy,W*f.s,H*f.s);drawWaterMotion('red');}drawAllBoundaries();if(mode==='perimetro')drawRing(D.rings[0],perimProgress,'#d62828',4.0);if(mode==='profmax')drawDeepest();if(mode==='transecto')drawTransect();}
+  function drawDepthZones(){
+    const f=fit();
+    const levels=[
+      {v:40,label:'0–40 m',color:'rgba(30,170,160,.88)'},
+      {v:80,label:'40–80 m',color:'rgba(40,150,200,.86)'},
+      {v:120,label:'80–120 m',color:'rgba(45,125,210,.84)'},
+      {v:170,label:'120–170 m',color:'rgba(60,100,205,.82)'},
+      {v:230,label:'170–230 m',color:'rgba(78,82,190,.80)'},
+      {v:290,label:'230–290 m',color:'rgba(95,67,170,.78)'}
+    ];
+    ctx.save();
+    mainPath();
+    ctx.clip();
+
+    ctx.restore();
+
+    ctx.save();
+    mainPath();
+    ctx.clip();
+
+    // Contornos por profundidad mediante muestreo ligero del raster.
+    levels.forEach((lv,idx)=>{
+      ctx.beginPath();
+      for(let y=2;y<H-2;y+=4){
+        let drawing=false;
+        for(let x=2;x<W-2;x+=4){
+          const d=depthAt(x,y);
+          const dx=depthAt(x+3,y);
+          const dy=depthAt(x,y+3);
+          const cross=Number.isFinite(d)&&((Number.isFinite(dx)&&((d-lv.v)*(dx-lv.v)<=0))||(Number.isFinite(dy)&&((d-lv.v)*(dy-lv.v)<=0)));
+          if(cross){
+            const p=px(x,y);
+            if(!drawing){ctx.moveTo(p[0],p[1]);drawing=true;}
+            else ctx.lineTo(p[0],p[1]);
+          }else{
+            drawing=false;
+          }
+        }
+      }
+      ctx.strokeStyle=lv.color;
+      ctx.lineWidth=idx===levels.length-1?1.7:1.35;
+      ctx.setLineDash(idx%2?[5,5]:[]);
+      ctx.globalAlpha=.86;
+      ctx.stroke();
+      ctx.setLineDash([]);
+    });
+
+    // Área profunda: foco claro en la cubeta principal sin sonar/pulso.
+    ctx.globalCompositeOperation='multiply';
+    const g=ctx.createRadialGradient(f.ox+W*f.s*.55,f.oy+H*f.s*.39,15*f.s,f.ox+W*f.s*.55,f.oy+H*f.s*.39,190*f.s);
+    g.addColorStop(0,'rgba(78,62,180,.20)');
+    g.addColorStop(.52,'rgba(78,62,180,.09)');
+    g.addColorStop(1,'rgba(78,62,180,0)');
+    ctx.fillStyle=g;
+    ctx.fillRect(f.ox,f.oy,W*f.s,H*f.s);
+    ctx.restore();
+
+    // Etiquetas de zonas, más interpretativas que el punto rojo.
+    const labels=[
+      {x:95,y:135,t:'Zona somera'},
+      {x:365,y:122,t:'Cubeta profunda'},
+      {x:455,y:330,t:'Transición sur'},
+      {x:545,y:205,t:'Pendiente oriental'}
+    ];
+    ctx.save();
+    ctx.font='13px Times New Roman';
+    labels.forEach(o=>{
+      const p=px(o.x,o.y);
+      const w=ctx.measureText(o.t).width+18,h=26;
+      ctx.fillStyle='rgba(255,255,255,.88)';
+      ctx.strokeStyle='rgba(43,174,232,.25)';
+      ctx.beginPath();
+      ctx.roundRect(p[0],p[1]-h,w,h,9);
+      ctx.fill();
+      ctx.stroke();
+      ctx.fillStyle='#315a75';
+      ctx.fillText(o.t,p[0]+9,p[1]-8);
+    });
+    ctx.restore();
+  }
+
+  function render(){const f=fit();ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);ctx.fillStyle='#f8fdff';ctx.fillRect(0,0,canvas.clientWidth,canvas.clientHeight);ctx.imageSmoothingEnabled=true;ctx.drawImage(offBase,f.ox,f.oy,W*f.s,H*f.s);let style='blue';if(mode==='profmedia'||(mode==='volumen'&&drop>=P.meanDepthM))style='yellow';if(['volumen','profmedia'].includes(mode)){makeWater(drop,style);ctx.drawImage(offWater,f.ox,f.oy,W*f.s,H*f.s);drawWaterMotion(style);}if(mode==='espejo'){makeWater(0,'red');ctx.drawImage(offTint,f.ox,f.oy,W*f.s,H*f.s);drawWaterMotion('red');}drawAllBoundaries();if(mode==='perimetro')drawRing(D.rings[0],perimProgress,'#d62828',4.0);if(mode==='zonas')drawDepthZones();if(mode==='transecto')drawTransect();}
   function animatePerimeter(){cancelAnimationFrame(animReq);perimProgress=0;const step=()=>{perimProgress=Math.min(1,perimProgress+0.0075);render();if(perimProgress<1)animReq=requestAnimationFrame(step);};step();}
-  function liveLoop(ts){time=ts||0;if(['volumen','profmedia','espejo','profmax'].includes(mode)){render();liveReq=requestAnimationFrame(liveLoop);}else liveReq=null;}
-  function ensureLive(){if(!liveReq&&['volumen','profmedia','espejo','profmax'].includes(mode))liveReq=requestAnimationFrame(liveLoop);}
+  function liveLoop(ts){time=ts||0;if(['volumen','profmedia','espejo'].includes(mode)){render();liveReq=requestAnimationFrame(liveLoop);}else liveReq=null;}
+  function ensureLive(){if(!liveReq&&['volumen','profmedia','espejo'].includes(mode))liveReq=requestAnimationFrame(liveLoop);}
   function updatePanel(){const texts={
     general:['Vista general',`Área superficial: <b>${P.areaKm2} km²</b><br>Volumen: <b>${P.volumeKm3} km³</b><br>Profundidad máxima: <b>${P.maxDepthM} m</b><br>Profundidad media: <b>${P.meanDepthM} m</b>.`,'Vista general de la batimetría del lago.'],
     perimetro:['Perímetro',`El perímetro se traza a partir del contorno vectorial del lago.<br><br><span class="big-number">${P.perimeterKm} km</span><br>Índice de desarrollo de costa: ${P.coastDev}.`,'Trazo progresivo del perímetro del lago.'],
@@ -1439,11 +1526,11 @@ code{
   function setMode(m){mode=m;document.querySelectorAll('.tool-btn').forEach(b=>b.classList.toggle('active',b.dataset.mode===m));if(m==='profmedia'){drop=P.meanDepthM;dropSlider.value=Math.round(drop);}else if(m!=='volumen'){drop=0;dropSlider.value=0;}updateMetrics();updatePanel();render();drawChart();if(m==='perimetro')animatePerimeter();ensureLive();}
   document.querySelectorAll('.tool-btn').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
   document.querySelectorAll('.profile-btn').forEach(b=>b.addEventListener('click',()=>{profileMode=b.dataset.profile;document.querySelectorAll('.profile-btn').forEach(x=>x.classList.toggle('active',x===b));if(profileMode!=='manual'){profile=null;p1=null;p2=null;}updatePanel();render();requestAnimationFrame(()=>{syncChartCanvas();drawChart();});}));
-  window.addEventListener('keydown',e=>{const map={'1':'general','2':'perimetro','3':'espejo','4':'volumen','5':'profmax','6':'profmedia','7':'transecto','8':'hipso'};if(map[e.key]){e.preventDefault();setMode(map[e.key]);}});
+  window.addEventListener('keydown',e=>{const map={'1':'perimetro','2':'espejo','3':'volumen','4':'zonas','5':'profmedia','6':'transecto','7':'hipso'};if(map[e.key]){e.preventDefault();setMode(map[e.key]);}});
   dropSlider.max=Math.round(P.maxDepthM);dropSlider.addEventListener('input',e=>{drop=Number(e.target.value);updateMetrics();updatePanel();render();drawChart();ensureLive();});
   canvas.addEventListener('click',e=>{if(mode!=='transecto'||profileMode!=='manual')return;const r=canvas.getBoundingClientRect();const [x,y]=invPx(e.clientX-r.left,e.clientY-r.top);if(x<0||y<0||x>=W||y>=H||!Number.isFinite(depthAt(x,y)))return;if(!p1||(p1&&p2)){p1={x,y};p2=null;profile=null;}else{p2={x,y};profile=sampleProfile(p1,p2);chartPanel.classList.add('is-visible');}render();requestAnimationFrame(()=>{syncChartCanvas();drawChart();});});
 
-  chartClose.addEventListener('click',()=>chartPanel.classList.remove('is-visible'));
+  if(chartClose){chartClose.addEventListener('click',()=>chartPanel.classList.remove('is-visible'));}
   let drainAnimReq=null,autoDrainRunning=false;
   function animateDropTo(target,durationOverride=null){
     setMode('volumen');
@@ -1500,7 +1587,7 @@ code{
     });
   }
 
-  window.addEventListener('resize',resize);makeBase();updateMetrics();updatePanel();resize();setMode('general');
+  window.addEventListener('resize',resize);makeBase();updateMetrics();updatePanel();resize();setMode('perimetro');
 })();
 
 </script>
