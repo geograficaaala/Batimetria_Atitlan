@@ -85,6 +85,53 @@
   @media(max-width:1120px){.tool-row{grid-template-columns:repeat(4,minmax(0,1fr));}.explorador-grid{grid-template-columns:1fr;} .side{border-left:none;border-top:1px solid rgba(142,197,232,.22);} #mapCanvas{height:520px;}}
   @media(max-width:650px){.tool-row{grid-template-columns:repeat(2,minmax(0,1fr));}#mapCanvas{height:440px;}.metrics-grid{grid-template-columns:1fr;}}
 
+
+/* === Ajustes finales de presentación científica === */
+.explorador{max-width:1320px;border-radius:20px;background:linear-gradient(180deg,rgba(10,25,46,.98),rgba(5,13,25,.995));}
+.explorador-head{padding:.9rem 1.05rem .78rem;background:linear-gradient(180deg,rgba(16,36,62,.62),rgba(10,24,43,.42));}
+.explorador-title{font-size:14.5pt;letter-spacing:.08em;text-transform:uppercase;color:#dff5ff;margin-bottom:.72rem;}
+.tool-row{display:flex;flex-wrap:wrap;gap:.44rem;align-items:center;}
+.tool-btn{position:relative;display:inline-flex;align-items:center;gap:.45rem;border-radius:999px;border:1px solid rgba(126,190,227,.22);background:rgba(8,21,38,.72);padding:.46rem .7rem;color:#d9ecfa;font-size:9.8pt;letter-spacing:.015em;box-shadow:none;white-space:nowrap;text-align:center;}
+.tool-btn kbd{margin:0;min-width:20px;height:20px;border-radius:50%;background:rgba(100,154,190,.20);border:1px solid rgba(126,190,227,.34);color:#bfe7ff;font-size:8.4pt;}
+.tool-btn::after{content:'';position:absolute;left:.82rem;right:.82rem;bottom:-.36rem;height:2px;background:linear-gradient(90deg,transparent,#72d7ff,transparent);opacity:0;transform:scaleX(.35);transition:.18s;}
+.tool-btn:hover{transform:none;background:rgba(16,44,76,.82);border-color:rgba(126,190,227,.54);}
+.tool-btn.active{background:linear-gradient(180deg,rgba(20,68,110,.95),rgba(10,39,72,.98));border-color:#7ad8ff;color:#fff;box-shadow:0 0 0 1px rgba(122,216,255,.14),0 10px 28px rgba(0,0,0,.22);}
+.tool-btn.active::after{opacity:1;transform:scaleX(1);}
+.tool-btn.active kbd{background:#7ad8ff;color:#061325;border-color:#b9edff;}
+.explorador-grid{grid-template-columns:minmax(0,1fr) 286px;min-height:600px;}
+.map-wrap{padding:.75rem;}
+#mapCanvas{height:clamp(580px,68vh,720px);}
+.side{padding:.72rem;gap:.55rem;}
+.metric-card{border-radius:13px;padding:.68rem;background:rgba(255,255,255,.026);}
+.metric-title{font-size:9.5pt;margin-bottom:.35rem;}
+.metric-text{font-size:10.65pt;line-height:1.34;min-height:auto;}
+.metrics-grid{grid-template-columns:1fr 1fr;gap:.42rem;}
+.mini{min-height:54px;padding:.48rem;}
+.mini span{font-size:8.3pt;}
+.mini b{font-size:11.6pt;}
+.volume-panel,.metrics-grid{display:none;}
+.volume-panel.is-visible,.metrics-grid.is-visible{display:block;}
+.metrics-grid.is-visible{display:grid;}
+.scenario-title{margin:.62rem 0 .38rem;font-size:8.8pt;letter-spacing:.08em;text-transform:uppercase;color:#8ed2ff;}
+.scenario-row{display:grid;grid-template-columns:1fr;gap:.35rem;}
+.scenario-btn{appearance:none;border:1px solid rgba(142,197,232,.20);background:linear-gradient(180deg,rgba(21,48,79,.75),rgba(10,26,47,.9));color:#eaf6ff;border-radius:10px;padding:.42rem .48rem;font-family:inherit;font-size:9.2pt;text-align:left;cursor:pointer;transition:.15s;}
+.scenario-btn:hover{border-color:rgba(122,216,255,.7);background:linear-gradient(180deg,rgba(30,70,112,.95),rgba(14,38,68,.98));}
+.map-chart-panel{position:absolute;right:1.35rem;bottom:1.35rem;width:min(430px,43%);height:258px;border:1px solid rgba(142,197,232,.30);border-radius:16px;background:rgba(6,15,28,.88);box-shadow:0 18px 42px rgba(0,0,0,.38);backdrop-filter:blur(8px);padding:.62rem;opacity:0;pointer-events:none;transform:translateY(10px);transition:.18s ease;z-index:4;}
+.map-chart-panel.is-visible{opacity:1;pointer-events:auto;transform:translateY(0);}
+.chart-head{height:24px;display:flex;align-items:center;justify-content:space-between;margin-bottom:.35rem;color:#dff5ff;font-size:10pt;letter-spacing:.06em;text-transform:uppercase;}
+#chartClose{appearance:none;border:1px solid rgba(142,197,232,.25);background:rgba(255,255,255,.04);color:#dff5ff;border-radius:8px;width:24px;height:22px;cursor:pointer;}
+#chartCanvas{width:100%;height:205px;border-radius:12px;background:#081526;border:1px solid rgba(142,197,232,.16);}
+.chart-card{display:none!important;}
+.legend-card{padding:.62rem .7rem .58rem;}
+.legend-title{font-size:9pt;margin-bottom:.42rem;color:#cdefff;}
+.legend-ramp{height:12px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:linear-gradient(90deg,#cfffff 0%,#83e6ff 19%,#32b9f1 38%,#147bce 58%,#083b8f 78%,#030c3d 100%);box-shadow:0 0 18px rgba(49,174,241,.12);}
+.legend-axis{display:flex;justify-content:space-between;gap:.2rem;margin-top:.32rem;color:#d9eaff;font-size:8.3pt;}
+.bar,.legend-wrap,.legend-ticks{display:none!important;}
+.map-hint{font-size:10pt;max-width:54%;}
+.deep-card{position:absolute;pointer-events:none;}
+@media(max-width:1120px){.explorador-grid{grid-template-columns:1fr}.map-chart-panel{width:calc(100% - 2.7rem);height:248px}.map-hint{max-width:70%;}.side{border-left:none;border-top:1px solid rgba(142,197,232,.22)}}
+@media(max-width:700px){#mapCanvas{height:520px}.map-chart-panel{right:.9rem;left:.9rem;bottom:.9rem;width:auto}.tool-btn{font-size:9pt;padding:.42rem .58rem}.map-hint{display:none}}
+
 </style>
 </head>
 <body>
@@ -134,29 +181,39 @@
       <div class="map-wrap">
         <canvas id="mapCanvas"></canvas>
         <div class="map-hint" id="mapHint">Vista general de la batimetría del lago.</div>
+        <div class="map-chart-panel" id="chartPanel" aria-live="polite">
+          <div class="chart-head"><span id="chartTitle">Gráfica</span><button id="chartClose" type="button" title="Ocultar gráfica">×</button></div>
+          <canvas id="chartCanvas"></canvas>
+        </div>
       </div>
       <aside class="side">
         <div class="metric-card">
           <div class="metric-title" id="panelTitle">Vista general</div>
           <div class="metric-text" id="panelText"></div>
         </div>
-        <div class="metric-card" id="volumeControls">
+        <div class="metric-card volume-panel" id="volumeControls">
           <div class="control-label"><span>Descenso del nivel del lago</span><b id="dropReadout">0 m</b></div>
           <input type="range" id="dropSlider" min="0" max="328" value="0" step="1">
           <div class="slider-scale"><span>0 m</span><span>202 m</span><span>328 m</span></div>
+          <div class="scenario-title">Escenarios animados</div>
+          <div class="scenario-row">
+            <button type="button" class="scenario-btn" data-drop-target="0.3">Anual 2025 · 0.30 m</button>
+            <button type="button" class="scenario-btn" data-drop-target="0.56">Estacional 2020 · 0.56 m</button>
+            <button type="button" class="scenario-btn" data-drop-target="2">Sismo 1976 · 2 m</button>
+            <button type="button" class="scenario-btn" data-drop-target="12">Ciclo histórico · 12 m</button>
+            <button type="button" class="scenario-btn" data-drop-target="202.4">Prof. media · 202.40 m</button>
+          </div>
         </div>
-        <div class="metrics-grid">
+        <div class="metrics-grid" id="metricsBox">
           <div class="mini"><span>Volumen restante</span><b id="mVol">25.46 km³</b></div>
           <div class="mini"><span>Volumen perdido</span><b id="mLost">0.00 km³</b></div>
           <div class="mini"><span>Área del espejo de agua</span><b id="mArea">125.77 km²</b></div>
           <div class="mini"><span>Prof. máxima actual</span><b id="mMaxD">327.6 m</b></div>
         </div>
-        <div class="metric-card chart-card inactive" id="chartCard">
-          <canvas id="chartCanvas"></canvas>
-        </div>
-        <div class="metric-card">
-          <div class="legend-title">Leyenda batimétrica · Profundidad (m)</div>
-          <div class="legend-wrap"><div class="bar"></div><div class="legend-ticks"><div>0</div><div>80</div><div>160</div><div>240</div><div>327.56</div></div></div>
+        <div class="metric-card legend-card">
+          <div class="legend-title">Profundidad (m)</div>
+          <div class="legend-ramp"></div>
+          <div class="legend-axis"><span>0</span><span>80</span><span>160</span><span>240</span><span>327.56</span></div>
         </div>
       </aside>
     </div>
@@ -213,12 +270,15 @@
   const panelTitle=document.getElementById('panelTitle'),panelText=document.getElementById('panelText'),mapHint=document.getElementById('mapHint');
   const dropSlider=document.getElementById('dropSlider'),dropReadout=document.getElementById('dropReadout');
   const mVol=document.getElementById('mVol'),mLost=document.getElementById('mLost'),mArea=document.getElementById('mArea'),mMaxD=document.getElementById('mMaxD');
-  const chartCard=document.getElementById('chartCard');
+  const chartPanel=document.getElementById('chartPanel'), chartTitle=document.getElementById('chartTitle'), chartClose=document.getElementById('chartClose');
+  const volumeControls=document.getElementById('volumeControls'), metricsBox=document.getElementById('metricsBox');
   const offBase=document.createElement('canvas'),bctx=offBase.getContext('2d');offBase.width=W;offBase.height=H;
   const offWater=document.createElement('canvas'),wctx=offWater.getContext('2d');offWater.width=W;offWater.height=H;
   const offTint=document.createElement('canvas'),tctx=offTint.getContext('2d');offTint.width=W;offTint.height=H;
   let mode='general',drop=0,perimProgress=0,animReq=null,liveReq=null,time=0;
   let p1=null,p2=null,profile=null;
+  const scenarios={0.3:'Oscilación anual 2025',0.56:'Descenso estacional 2020',2:'Descenso asociado al sismo de 1976',12:'Fluctuación histórica multidecadal',202.4:'Profundidad media'};
+  const waterStreaks=Array.from({length:95},(_,i)=>({x:Math.random(),y:Math.random(),l:.018+Math.random()*.035,s:.4+Math.random()*1.2,p:Math.random()*Math.PI*2}));
 
   function bathyColor(d){
     const stops=[[0,[223,252,255]],[.12,[141,231,247]],[.26,[66,197,232]],[.42,[29,142,214]],[.60,[20,98,189]],[.78,[10,52,144]],[1,[6,19,79]]];
@@ -240,8 +300,8 @@
   function drawRing(ring,part=1,color='rgba(220,240,255,.9)',lw=2.1){if(!ring||ring.length<2)return;const n=Math.max(2,Math.floor(ring.length*part));ctx.beginPath();let p=px(ring[0][0],ring[0][1]);ctx.moveTo(p[0],p[1]);for(let i=1;i<n;i++){p=px(ring[i][0],ring[i][1]);ctx.lineTo(p[0],p[1]);}if(part>=0.999)ctx.closePath();ctx.strokeStyle=color;ctx.lineWidth=lw;ctx.lineJoin='round';ctx.lineCap='round';ctx.stroke();}
   function drawAllBoundaries(color='rgba(220,240,255,.88)',lw=2.0){D.rings.forEach((r,i)=>drawRing(r,1,color,i===0?lw:1.15));}
   function roundedLabel(x,y,txt,bg='rgba(8,19,34,.88)'){ctx.save();ctx.font='13px Times New Roman';const pad=8,w=ctx.measureText(txt).width+pad*2,h=25;ctx.fillStyle=bg;ctx.strokeStyle='rgba(220,239,255,.28)';ctx.beginPath();ctx.roundRect(x,y-h,w,h,7);ctx.fill();ctx.stroke();ctx.fillStyle='#fff';ctx.fillText(txt,x+pad,y-7);ctx.restore();}
-  function drawWaterMotion(style){const f=fit();ctx.save();mainPath();ctx.clip();ctx.globalAlpha=style==='yellow'?.26:.20;ctx.strokeStyle=style==='yellow'?'rgba(255,236,145,.85)':'rgba(185,246,255,.85)';ctx.lineWidth=1.15;const step=26*f.s;for(let y=f.oy+18+(time*0.018)%step;y<f.oy+H*f.s;y+=step){ctx.beginPath();for(let x=f.ox;x<f.ox+W*f.s;x+=10){const yy=y+Math.sin((x*0.025)+(time*0.003))*3.2; if(x===f.ox)ctx.moveTo(x,yy);else ctx.lineTo(x,yy);}ctx.stroke();}ctx.restore();}
-  function drawDeepest(){const p=px(D.deepest.x,D.deepest.y);const pulse=(time%1800)/1800;ctx.save();ctx.globalCompositeOperation='lighter';for(let i=0;i<3;i++){const u=(pulse+i/3)%1;ctx.globalAlpha=(1-u)*.55;ctx.strokeStyle='rgba(255,80,80,.95)';ctx.lineWidth=2.2;ctx.beginPath();ctx.arc(p[0],p[1],10+u*38,0,Math.PI*2);ctx.stroke();}ctx.restore();ctx.save();ctx.strokeStyle='rgba(255,220,220,.9)';ctx.lineWidth=1.4;ctx.setLineDash([5,5]);ctx.beginPath();ctx.moveTo(p[0],p[1]);ctx.lineTo(p[0]+44,p[1]-56);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#ff3030';ctx.beginPath();ctx.arc(p[0],p[1],7.5+Math.sin(time*.006)*1.5,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#ffd7d7';ctx.lineWidth=2;ctx.stroke();roundedLabel(p[0]+48,p[1]-58,'Punto más profundo · 327.56 m');ctx.restore();}
+  function drawWaterMotion(style){const f=fit();ctx.save();mainPath();ctx.clip();const isY=style==='yellow', isR=style==='red';ctx.globalCompositeOperation='screen';ctx.lineCap='round';ctx.lineJoin='round';for(const q of waterStreaks){const drift=(time*0.000018*q.s+q.p)%1;const x=f.ox+((q.x+drift)%1)*W*f.s;const y=f.oy+((q.y+0.018*Math.sin(time*0.001*q.s+q.p))%1)*H*f.s;const len=q.l*W*f.s;const amp=(2.2+2.0*q.s)*f.s;const alpha=(isR?.13:(isY?.18:.16))*(0.55+0.45*Math.sin(time*0.002+q.p));ctx.globalAlpha=alpha;ctx.strokeStyle=isR?'rgba(255,190,190,.9)':(isY?'rgba(255,245,175,.95)':'rgba(190,248,255,.95)');ctx.lineWidth=(0.55+q.s*0.42)*f.s;ctx.beginPath();ctx.moveTo(x-len*.5,y);ctx.bezierCurveTo(x-len*.18,y-amp,x+len*.18,y+amp,x+len*.5,y);ctx.stroke();}ctx.globalAlpha=isY?.10:.08;ctx.fillStyle=isY?'#ffe58a':'#6fe8ff';for(let i=0;i<18;i++){const x=f.ox+((i*.137+(time*.00003))%1)*W*f.s;const y=f.oy+((i*.293+Math.sin(time*.0007+i)*.08+1)%1)*H*f.s;ctx.beginPath();ctx.arc(x,y,1.2+Math.sin(time*.002+i)*.5,0,Math.PI*2);ctx.fill();}ctx.restore();}
+  function drawDeepest(){const p=px(D.deepest.x,D.deepest.y);const pulse=(time%2200)/2200;ctx.save();ctx.globalCompositeOperation='lighter';for(let i=0;i<4;i++){const u=(pulse+i/4)%1;ctx.globalAlpha=(1-u)*.58;ctx.strokeStyle='rgba(255,60,60,.92)';ctx.lineWidth=1.8+1.4*(1-u);ctx.beginPath();ctx.arc(p[0],p[1],12+u*58,0,Math.PI*2);ctx.stroke();}ctx.restore();ctx.save();ctx.strokeStyle='rgba(255,255,255,.78)';ctx.lineWidth=1.1;ctx.beginPath();ctx.moveTo(p[0]-18,p[1]);ctx.lineTo(p[0]+18,p[1]);ctx.moveTo(p[0],p[1]-18);ctx.lineTo(p[0],p[1]+18);ctx.stroke();const g=ctx.createRadialGradient(p[0],p[1],1,p[0],p[1],15);g.addColorStop(0,'#ffffff');g.addColorStop(.25,'#ff4b4b');g.addColorStop(1,'rgba(255,30,30,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(p[0],p[1],15,0,Math.PI*2);ctx.fill();ctx.strokeStyle='rgba(255,220,220,.9)';ctx.lineWidth=1.4;ctx.setLineDash([5,5]);ctx.beginPath();ctx.moveTo(p[0],p[1]);ctx.lineTo(p[0]+60,p[1]-70);ctx.stroke();ctx.setLineDash([]);const bx=p[0]+66,by=p[1]-86,bw=180,bh=58;ctx.fillStyle='rgba(5,14,26,.88)';roundRect(ctx,bx,by,bw,bh,12);ctx.fill();ctx.strokeStyle='rgba(255,90,90,.45)';ctx.stroke();ctx.fillStyle='#ffb3b3';ctx.font='10px Times New Roman';ctx.fillText('PROFUNDIDAD MÁXIMA',bx+12,by+18);ctx.fillStyle='#fff';ctx.font='bold 22px Times New Roman';ctx.fillText('327.56 m',bx+12,by+44);ctx.restore();}
   function drawTransect(){if(p1){let a=px(p1.x,p1.y);ctx.fillStyle='#ff3737';ctx.beginPath();ctx.arc(a[0],a[1],5.5,0,Math.PI*2);ctx.fill();roundedLabel(a[0]+8,a[1]-8,'P1');}if(p2){let b=px(p2.x,p2.y);ctx.fillStyle='#ff3737';ctx.beginPath();ctx.arc(b[0],b[1],5.5,0,Math.PI*2);ctx.fill();roundedLabel(b[0]+8,b[1]-8,'P2');}if(p1&&p2){let a=px(p1.x,p1.y),b=px(p2.x,p2.y);ctx.strokeStyle='#ff3737';ctx.lineWidth=3.2;ctx.setLineDash([8,6]);ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke();ctx.setLineDash([]);}}
   function render(){const f=fit();ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);ctx.fillStyle='#07111f';ctx.fillRect(0,0,canvas.clientWidth,canvas.clientHeight);ctx.imageSmoothingEnabled=true;ctx.drawImage(offBase,f.ox,f.oy,W*f.s,H*f.s);let style='blue';if(mode==='profmedia'||(mode==='volumen'&&drop>=P.meanDepthM))style='yellow';if(['volumen','profmedia'].includes(mode)){makeWater(drop,style);ctx.drawImage(offWater,f.ox,f.oy,W*f.s,H*f.s);drawWaterMotion(style);}if(mode==='espejo'){makeWater(0,'red');ctx.drawImage(offTint,f.ox,f.oy,W*f.s,H*f.s);drawWaterMotion('red');}drawAllBoundaries();if(mode==='perimetro')drawRing(D.rings[0],perimProgress,'#d62828',4.0);if(mode==='profmax')drawDeepest();if(mode==='transecto')drawTransect();}
   function animatePerimeter(){cancelAnimationFrame(animReq);perimProgress=0;const step=()=>{perimProgress=Math.min(1,perimProgress+0.0075);render();if(perimProgress<1)animReq=requestAnimationFrame(step);};step();}
@@ -251,22 +311,27 @@
     general:['Vista general',`Área superficial: <b>${P.areaKm2} km²</b><br>Volumen: <b>${P.volumeKm3} km³</b><br>Profundidad máxima: <b>${P.maxDepthM} m</b><br>Profundidad media: <b>${P.meanDepthM} m</b>.`,'Vista general de la batimetría del lago.'],
     perimetro:['Perímetro',`El perímetro se traza a partir del contorno vectorial del lago.<br><br><span class="big-number">${P.perimeterKm} km</span><br>Índice de desarrollo de costa: ${P.coastDev}.`,'Trazo progresivo del perímetro del lago.'],
     espejo:['Espejo de agua',`La capa translúcida resalta el área superficial o espejo de agua.<br><br><span class="big-number">${P.areaKm2} km²</span>.`,'Área superficial del lago resaltada.'],
-    volumen:['Volumen',`Usa el control para representar el descenso del nivel del lago.<br><br><b>Así se vería si el nivel descendiera ${Math.round(drop)} m.</b>`,'Relación entre descenso, volumen y área del espejo de agua.'],
+    volumen:['Volumen',`Usa el control o un escenario para animar el descenso del nivel del lago.<br><br><b>Así se vería si el nivel descendiera ${Math.round(drop)} m.</b>`,'Relación entre descenso, volumen y área del espejo de agua.'],
     profmax:['Profundidad máxima',`El pulso rojo marca el punto más profundo detectado en el modelo.<br><br><span class="big-number">${P.maxDepthM} m</span>.`,'Animación del punto más profundo del lago.'],
     profmedia:['Profundidad media',`El nivel del agua se representa a <b>${P.meanDepthM} m</b> de descenso y se diferencia con agua amarilla translúcida.`,'Descenso equivalente a la profundidad media.'],
     transecto:['Transectos',`Haz clic en dos puntos del lago para generar un perfil batimétrico. Un tercer clic reinicia el trazado.<br><br><b>Eje X:</b> distancia (km). <b>Eje Y:</b> profundidad (m).`,'Definición manual de perfiles batimétricos.'],
     hipso:['Curva hipsográfica',`La curva relaciona el área relativa del espejo de agua con la profundidad y ayuda a interpretar la forma <b>${P.shape.toLowerCase()}</b>.`,'Curva hipsográfica del lago.']
-  };panelTitle.textContent=texts[mode][0];panelText.innerHTML=texts[mode][1];mapHint.textContent=texts[mode][2];chartCard.classList.toggle('inactive',!['volumen','transecto','hipso'].includes(mode));}
+  };panelTitle.textContent=texts[mode][0];panelText.innerHTML=texts[mode][1];mapHint.textContent=texts[mode][2];const showChart=['volumen','transecto','hipso'].includes(mode);chartPanel.classList.toggle('is-visible',showChart);chartTitle.textContent=mode==='volumen'?'Volumen vs descenso':(mode==='transecto'?'Perfil batimétrico':'Curva hipsográfica');const showVol=['volumen','profmedia'].includes(mode);volumeControls.classList.toggle('is-visible',showVol);metricsBox.classList.toggle('is-visible',showVol);}
   function axes(x0,y0,w,h,xTicks,yTicks,xFmt,yFmt,xLab,yLab){cctx.strokeStyle='#294461';cctx.lineWidth=1;cctx.beginPath();cctx.moveTo(x0,y0);cctx.lineTo(x0,y0+h);cctx.lineTo(x0+w,y0+h);cctx.stroke();cctx.font='11px Times New Roman';cctx.fillStyle='#cfe7fb';cctx.textAlign='center';xTicks.forEach(v=>{const x=x0+v.pos*w;cctx.strokeStyle='rgba(159,195,226,.18)';cctx.beginPath();cctx.moveTo(x,y0);cctx.lineTo(x,y0+h);cctx.stroke();cctx.fillText(xFmt(v.val),x,y0+h+16);});cctx.textAlign='right';yTicks.forEach(v=>{const y=y0+h-v.pos*h;cctx.strokeStyle='rgba(159,195,226,.18)';cctx.beginPath();cctx.moveTo(x0,y);cctx.lineTo(x0+w,y);cctx.stroke();cctx.fillText(yFmt(v.val),x0-6,y+4);});cctx.textAlign='center';cctx.fillText(xLab,x0+w/2,y0+h+34);cctx.save();cctx.translate(14,y0+h/2);cctx.rotate(-Math.PI/2);cctx.fillText(yLab,0,0);cctx.restore();}
   function drawCurve(xs,ys,cx,cy,xLab,yLab,invertY=false){const w=chart.clientWidth,h=chart.clientHeight,ml=50,mr=18,mt=18,mb=44;const xmin=Math.min(...xs),xmax=Math.max(...xs),ymin=Math.min(...ys),ymax=Math.max(...ys);const X=v=>ml+(v-xmin)/(xmax-xmin)*(w-ml-mr);const Y=v=>invertY?mt+(v-ymin)/(ymax-ymin)*(h-mt-mb):mt+(1-(v-ymin)/(ymax-ymin))*(h-mt-mb);cctx.fillStyle='#081526';cctx.fillRect(0,0,w,h);axes(ml,mt,w-ml-mr,h-mt-mb,[0,.25,.5,.75,1].map(p=>({pos:p,val:xmin+p*(xmax-xmin)})),[0,.25,.5,.75,1].map(p=>({pos:p,val:ymin+p*(ymax-ymin)})),v=>xLab.includes('Área')?v.toFixed(2):Math.round(v),v=>Math.round(v),xLab,yLab);cctx.strokeStyle='#70d6ff';cctx.lineWidth=2.2;cctx.beginPath();xs.forEach((x,i)=>{const xx=X(x),yy=Y(ys[i]);if(i)cctx.lineTo(xx,yy);else cctx.moveTo(xx,yy);});cctx.stroke();cctx.fillStyle='#ff4646';cctx.beginPath();cctx.arc(X(cx),Y(cy),4.5,0,Math.PI*2);cctx.fill();}
   function drawProfile(ds,zs){const w=chart.clientWidth,h=chart.clientHeight,ml=52,mr=18,mt=18,mb=44;const finite=zs.filter(z=>Number.isFinite(z));const xmax=Math.max(.01,...ds),ymax=Math.max(10,...finite,P.maxDepthM);const X=v=>ml+v/xmax*(w-ml-mr),Y=v=>mt+(v/ymax)*(h-mt-mb);cctx.fillStyle='#081526';cctx.fillRect(0,0,w,h);axes(ml,mt,w-ml-mr,h-mt-mb,[0,.25,.5,.75,1].map(p=>({pos:p,val:p*xmax})),[0,.25,.5,.75,1].map(p=>({pos:p,val:p*ymax})),v=>v.toFixed(1),v=>Math.round(v),'Distancia del perfil (km)','Profundidad (m)');cctx.strokeStyle='#70d6ff';cctx.lineWidth=2.2;cctx.beginPath();let started=false;ds.forEach((d,i)=>{const z=zs[i];if(!Number.isFinite(z)){started=false;return;}const xx=X(d),yy=Y(z);if(!started){cctx.moveTo(xx,yy);started=true;}else cctx.lineTo(xx,yy);});cctx.stroke();}
   function sampleProfile(a,b){const n=220,ds=[],zs=[];let total=0,pxx=a.x,pyy=a.y;for(let i=0;i<n;i++){const t=i/(n-1),x=a.x*(1-t)+b.x*t,y=a.y*(1-t)+b.y*t;if(i>0){const dx=(x-pxx)*D.pixelKm.x,dy=(y-pyy)*D.pixelKm.y;total+=Math.sqrt(dx*dx+dy*dy);}pxx=x;pyy=y;ds.push(total);const z=depthAt(x,y);zs.push(Number.isFinite(z)?z:NaN);}return{ds,zs};}
-  function drawChart(){const w=chart.clientWidth,h=chart.clientHeight;cctx.clearRect(0,0,w,h);if(!['volumen','transecto','hipso'].includes(mode))return;if(mode==='volumen')drawCurve(D.curves.drops,D.curves.volumes,drop,interp(D.curves.volumes),'Descenso del nivel (m)','Volumen restante (km³)');else if(mode==='hipso'){const m=metrics();drawCurve(D.curves.areas.map(a=>a/P.areaKm2),D.curves.drops,m.area/P.areaKm2,drop,'Área relativa','Profundidad (m)',true);}else if(mode==='transecto'){if(profile)drawProfile(profile.ds,profile.zs);else{cctx.fillStyle='#081526';cctx.fillRect(0,0,w,h);cctx.fillStyle='#cfe7fb';cctx.font='14px Times New Roman';cctx.fillText('Haz clic en dos puntos del lago para generar el perfil.',18,30);}}}
+  function drawChart(){const w=chart.clientWidth,h=chart.clientHeight;cctx.clearRect(0,0,w,h);if(!['volumen','transecto','hipso'].includes(mode))return;if(mode==='volumen')drawCurve(D.curves.drops,D.curves.volumes,drop,interp(D.curves.volumes),'Descenso del nivel (m)','Volumen restante (km³)');else if(mode==='hipso'){const m=metrics();drawCurve(D.curves.areas.map(a=>a/P.areaKm2),D.curves.drops,m.area/P.areaKm2,drop,'Área relativa','Profundidad (m)',true);}else if(mode==='transecto'){if(profile)drawProfile(profile.ds,profile.zs);else{cctx.fillStyle='#081526';cctx.fillRect(0,0,w,h);cctx.fillStyle='#cfe7fb';cctx.font='14px Times New Roman';cctx.fillText('Haz clic en dos puntos del lago.',18,30);cctx.fillText('El perfil aparece aquí automáticamente.',18,52);}}}
   function setMode(m){mode=m;document.querySelectorAll('.tool-btn').forEach(b=>b.classList.toggle('active',b.dataset.mode===m));if(m==='profmedia'){drop=P.meanDepthM;dropSlider.value=Math.round(drop);}else if(m!=='volumen'){drop=0;dropSlider.value=0;}updateMetrics();updatePanel();render();drawChart();if(m==='perimetro')animatePerimeter();ensureLive();}
   document.querySelectorAll('.tool-btn').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
   window.addEventListener('keydown',e=>{const map={'1':'general','2':'perimetro','3':'espejo','4':'volumen','5':'profmax','6':'profmedia','7':'transecto','8':'hipso'};if(map[e.key]){e.preventDefault();setMode(map[e.key]);}});
   dropSlider.max=Math.round(P.maxDepthM);dropSlider.addEventListener('input',e=>{drop=Number(e.target.value);updateMetrics();updatePanel();render();drawChart();ensureLive();});
   canvas.addEventListener('click',e=>{if(mode!=='transecto')return;const r=canvas.getBoundingClientRect();const [x,y]=invPx(e.clientX-r.left,e.clientY-r.top);if(x<0||y<0||x>=W||y>=H||!Number.isFinite(depthAt(x,y)))return;if(!p1||(p1&&p2)){p1={x,y};p2=null;profile=null;}else{p2={x,y};profile=sampleProfile(p1,p2);}render();drawChart();});
+
+  chartClose.addEventListener('click',()=>chartPanel.classList.remove('is-visible'));
+  function animateDropTo(target){setMode('volumen');const start=drop,end=Math.max(0,Math.min(P.maxDepthM,target));const t0=performance.now(),dur=Math.min(2600,900+Math.abs(end-start)*12);function step(now){const u=Math.min(1,(now-t0)/dur);const e=1-Math.pow(1-u,3);drop=start+(end-start)*e;dropSlider.value=Math.round(drop);updateMetrics();updatePanel();render();drawChart();ensureLive();if(u<1)requestAnimationFrame(step);}requestAnimationFrame(step);}
+  document.querySelectorAll('.scenario-btn').forEach(b=>b.addEventListener('click',()=>animateDropTo(Number(b.dataset.dropTarget))));
+
   window.addEventListener('resize',resize);makeBase();updateMetrics();updatePanel();resize();setMode('general');
 })();
 
