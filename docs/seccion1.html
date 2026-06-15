@@ -529,6 +529,100 @@ code{
   .tabla-integrantes td,.tabla-integrantes td.tema{display:block !important;text-align:left !important;width:100% !important;}
 }
 
+
+/* === AJUSTE FINAL SOLICITADO: footer más pequeño + logo simposio sin cuadrito === */
+.logo-link,
+.logo-link:link,
+.logo-link:visited{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:0 !important;
+  margin:0 auto !important;
+  background:transparent !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  outline:none !important;
+}
+.logo-link:hover{
+  transform:none !important;
+  background:transparent !important;
+  border-color:transparent !important;
+  box-shadow:none !important;
+}
+.logo-link .portada-logo,
+.portada-logo{
+  display:block !important;
+  width:min(240px,42vw) !important;
+  max-width:240px !important;
+  height:auto !important;
+  margin:1rem auto 1.25rem !important;
+  padding:0 !important;
+  background:transparent !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  filter:drop-shadow(0 8px 14px rgba(24,138,190,.10)) !important;
+}
+
+/* Footer/cintillo reducido: conserva ancho completo, pero baja la altura visual. */
+.cintillo-footer,
+footer.cintillo-footer,
+.cintillo-banner.cintillo-footer{
+  position:relative !important;
+  z-index:2 !important;
+  width:100% !important;
+  margin:1rem 0 0 !important;
+  padding:0 !important;
+  background:#ffffff !important;
+  border-top:1px solid rgba(43,174,232,.18) !important;
+  border-bottom:0 !important;
+  box-shadow:0 -5px 16px rgba(38,148,199,.05) !important;
+  overflow:hidden !important;
+}
+.cintillo-link{
+  display:block !important;
+  width:100% !important;
+  height:clamp(56px,7.2vw,105px) !important;
+  line-height:0 !important;
+  overflow:hidden !important;
+  background:#ffffff !important;
+}
+.cintillo-link img,
+.cintillo-banner img,
+.cintillo-footer img{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  max-height:105px !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+}
+.cintillo-link:hover img{
+  filter:saturate(1.03) contrast(1.01) !important;
+}
+
+main,
+.section-main,
+.portada-main{
+  padding-bottom:2.2rem !important;
+}
+@media(max-width:760px){
+  .logo-link .portada-logo,
+  .portada-logo{
+    width:min(190px,54vw) !important;
+    max-width:190px !important;
+    margin:.85rem auto 1rem !important;
+  }
+  .cintillo-link{
+    height:clamp(48px,10vw,78px) !important;
+  }
+}
+
 </style>
 </head>
 <body>
