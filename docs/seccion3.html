@@ -999,52 +999,57 @@ code{
 
 
 
-/* === Rediseño estable de sección 3: distribución clara y gráficas visibles === */
+/* === Sección 3 · rediseño limpio tipo dashboard científico === */
 .explorador{
-  max-width:1360px !important;
-  background:linear-gradient(180deg,#ffffff 0%,#f8fdff 100%) !important;
+  max-width:1240px !important;
+  margin:2rem auto 2.6rem !important;
+  border-radius:20px !important;
+  background:#ffffff !important;
   border:1px solid rgba(62,179,230,.22) !important;
-  box-shadow:0 20px 52px rgba(28,120,167,.10) !important;
+  box-shadow:0 18px 42px rgba(28,120,167,.10) !important;
   overflow:hidden !important;
 }
 .explorador-head{
-  background:linear-gradient(180deg,#ffffff 0%,#eef9ff 100%) !important;
+  padding:.95rem 1rem .85rem !important;
+  background:linear-gradient(180deg,#ffffff 0%,#edf9ff 100%) !important;
   border-bottom:1px solid rgba(62,179,230,.18) !important;
 }
 .explorador-title{
-  color:#285877 !important;
-  font-size:17pt !important;
+  color:#244f69 !important;
+  font-size:16pt !important;
   letter-spacing:.08em !important;
+  margin-bottom:.72rem !important;
 }
 .tool-row{
-  gap:.6rem !important;
+  display:flex !important;
+  flex-wrap:wrap !important;
+  gap:.55rem !important;
 }
 .tool-btn{
-  border-radius:15px !important;
-  padding:.64rem 1rem !important;
-  background:linear-gradient(180deg,#ffffff 0%,#eff9ff 100%) !important;
+  border-radius:14px !important;
+  padding:.58rem .92rem !important;
+  background:linear-gradient(180deg,#ffffff 0%,#eef9ff 100%) !important;
   border:1px solid rgba(62,179,230,.30) !important;
   color:#315a75 !important;
-  font-size:11.8pt !important;
+  font-size:11.2pt !important;
   box-shadow:0 5px 14px rgba(37,139,189,.08), inset 0 1px 0 rgba(255,255,255,.95) !important;
-  transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease !important;
 }
 .tool-btn:hover{
   transform:translateY(-1px) !important;
-  border-color:rgba(44,168,226,.58) !important;
-  box-shadow:0 10px 22px rgba(37,139,189,.14), inset 0 1px 0 rgba(255,255,255,.98) !important;
+  border-color:rgba(44,168,226,.60) !important;
+  box-shadow:0 9px 18px rgba(37,139,189,.13) !important;
 }
 .tool-btn.active{
   color:#ffffff !important;
   border-color:#55c7f1 !important;
   background:linear-gradient(180deg,#76d2f6 0%,#36aee6 100%) !important;
-  box-shadow:0 12px 24px rgba(29,148,205,.24) !important;
+  box-shadow:0 10px 20px rgba(29,148,205,.22) !important;
 }
 .tool-btn kbd{
   min-width:22px !important;
   height:22px !important;
   border-radius:999px !important;
-  background:rgba(69,181,231,.12) !important;
+  background:rgba(69,181,231,.13) !important;
   color:#3a84ab !important;
   border:1px solid rgba(62,179,230,.28) !important;
 }
@@ -1052,43 +1057,50 @@ code{
   background:#ffffff !important;
   color:#2ea8df !important;
 }
-.explorador-grid-redesign{
+.explorador-grid{
   display:grid !important;
-  grid-template-columns:minmax(0,1fr) 330px !important;
+  grid-template-columns:minmax(0,1fr) 310px !important;
   gap:0 !important;
-  min-height:auto !important;
+  min-height:0 !important;
 }
 .map-wrap{
-  background:linear-gradient(180deg,#fbfeff 0%,#f3fbff 100%) !important;
   padding:1rem !important;
+  background:linear-gradient(180deg,#fbfeff 0%,#f5fbff 100%) !important;
 }
 #mapCanvas{
-  height:clamp(560px,64vh,700px) !important;
+  width:100% !important;
+  height:auto !important;
+  aspect-ratio:620 / 515 !important;
+  max-height:none !important;
+  display:block !important;
   background:#ffffff !important;
   border:1px solid rgba(62,179,230,.16) !important;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.95), 0 10px 24px rgba(56,147,193,.07) !important;
+  border-radius:16px !important;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.95),0 10px 24px rgba(56,147,193,.07) !important;
 }
 .map-hint{
-  background:rgba(255,255,255,.92) !important;
+  left:1.75rem !important;
+  bottom:1.75rem !important;
+  background:rgba(255,255,255,.94) !important;
   color:#3b5f77 !important;
   border:1px solid rgba(62,179,230,.22) !important;
   box-shadow:0 8px 18px rgba(31,121,169,.10) !important;
+  max-width:56% !important;
 }
 .side{
-  background:linear-gradient(180deg,#fbfeff 0%,#f5fbff 100%) !important;
   border-left:1px solid rgba(62,179,230,.18) !important;
-  padding:.9rem !important;
-  gap:.72rem !important;
-  max-height:none !important;
-  overflow:visible !important;
+  background:linear-gradient(180deg,#fbfeff 0%,#f3fbff 100%) !important;
+  padding:.85rem !important;
+  gap:.68rem !important;
+  display:flex !important;
+  flex-direction:column !important;
 }
 .metric-card,
-.side-chart-panel,
 .graph-card{
-  background:rgba(255,255,255,.95) !important;
+  background:rgba(255,255,255,.96) !important;
   border:1px solid rgba(62,179,230,.20) !important;
-  border-radius:16px !important;
-  box-shadow:0 8px 22px rgba(35,132,181,.07) !important;
+  border-radius:15px !important;
+  box-shadow:0 7px 18px rgba(35,132,181,.06) !important;
 }
 .metric-title,
 .legend-title,
@@ -1103,9 +1115,20 @@ code{
 .slider-scale,
 .legend-sub,
 .legend-foot,
-.drain-note,
-.mode-explain{
+.drain-note{
   color:#406279 !important;
+}
+.volume-panel:not(.is-visible),
+.metrics-grid:not(.is-visible){
+  display:none !important;
+}
+.volume-panel.is-visible{
+  display:block !important;
+}
+.metrics-grid.is-visible{
+  display:grid !important;
+  grid-template-columns:1fr 1fr !important;
+  gap:.5rem !important;
 }
 .profile-btn,
 .scenario-btn,
@@ -1115,20 +1138,19 @@ code{
   background:linear-gradient(180deg,#ffffff 0%,#eef9ff 100%);
   color:#355a73;
   border-radius:11px;
-  padding:.5rem .64rem;
+  padding:.46rem .56rem;
   font-family:inherit;
-  font-size:10.2pt;
+  font-size:9.8pt;
   line-height:1.2;
   cursor:pointer;
   transition:all .15s ease;
-  box-shadow:0 4px 10px rgba(46,153,203,.08);
+  box-shadow:0 4px 10px rgba(46,153,203,.07);
 }
 .profile-btn:hover,
 .scenario-btn:hover,
 .auto-drain-btn:hover{
   transform:translateY(-1px);
   border-color:rgba(62,179,230,.52);
-  box-shadow:0 8px 16px rgba(46,153,203,.14);
 }
 .profile-btn.active,
 .auto-drain-btn.active{
@@ -1136,78 +1158,42 @@ code{
   color:#fff;
   border-color:#54c8f2;
 }
-.volume-panel{
-  display:block !important;
-}
-.metrics-grid{
-  display:grid !important;
-  grid-template-columns:1fr 1fr !important;
-}
 .auto-drain-wrap{
-  margin-top:.55rem;
+  margin-top:.5rem;
   display:grid;
-  gap:.4rem;
+  gap:.36rem;
 }
 .auto-drain-btn{
   font-weight:bold;
-  letter-spacing:.02em;
 }
 .drain-note{
-  font-size:9.5pt;
-  line-height:1.28;
-}
-.side-chart-panel{
-  display:block !important;
-  padding:.7rem !important;
-}
-.side-chart-panel .chart-head,
-.graph-card .chart-head{
-  height:auto !important;
-  margin-bottom:.45rem !important;
-  font-size:10.2pt !important;
-  font-weight:bold !important;
-  letter-spacing:.08em !important;
-  text-transform:uppercase !important;
-}
-#chartClose{
-  display:none !important;
-}
-.profile-controls{
-  display:grid !important;
-  grid-template-columns:repeat(5,minmax(0,1fr)) !important;
-  gap:.32rem !important;
-  margin:.24rem 0 .55rem !important;
-}
-#chartCanvas{
-  background:#ffffff !important;
-  border:1px solid rgba(62,179,230,.18) !important;
-  height:210px !important;
-  border-radius:12px !important;
+  font-size:9.2pt;
+  line-height:1.25;
 }
 .legend-card-pro{
-  padding:.72rem .78rem .82rem !important;
+  padding:.68rem .72rem .74rem !important;
 }
 .legend-heading{
   display:flex;
   flex-direction:column;
-  gap:.18rem;
-  margin-bottom:.52rem;
+  gap:.16rem;
+  margin-bottom:.45rem;
 }
 .legend-sub{
-  font-size:9.3pt;
-  line-height:1.25;
+  font-size:9pt;
+  line-height:1.22;
 }
 .legend-pro{
   display:grid;
-  grid-template-columns:28px 1fr;
-  gap:.62rem;
+  grid-template-columns:26px 1fr;
+  gap:.56rem;
   align-items:stretch;
 }
 .legend-stack{
   display:grid;
   grid-template-rows:repeat(7,1fr);
-  height:142px;
-  border-radius:10px;
+  height:128px;
+  border-radius:9px;
   overflow:hidden;
   border:1px solid rgba(62,179,230,.20);
 }
@@ -1221,7 +1207,7 @@ code{
 .legend-labels{
   display:grid;
   grid-template-rows:repeat(7,1fr);
-  font-size:8.9pt;
+  font-size:8.4pt;
   color:#355770;
 }
 .legend-labels div{
@@ -1239,46 +1225,213 @@ code{
 .legend-foot{
   display:flex;
   justify-content:space-between;
-  gap:.4rem;
-  font-size:8.6pt;
-  margin-top:.45rem;
-  color:#5c7b90;
+  font-size:8.2pt;
+  margin-top:.4rem;
 }
 .legend-note{
-  margin-top:.38rem;
-  font-size:8.7pt;
-  line-height:1.25;
+  margin-top:.34rem;
+  font-size:8.35pt;
+  line-height:1.22;
   color:#5b788b;
 }
 .graph-dashboard{
   display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:1rem;
+  grid-template-columns:1.08fr 1fr 1fr;
+  gap:.9rem;
   padding:1rem;
   border-top:1px solid rgba(62,179,230,.18);
-  background:linear-gradient(180deg,#f8fdff 0%,#eef9ff 100%);
+  background:linear-gradient(180deg,#f8fdff 0%,#edf9ff 100%);
 }
 .graph-card{
-  padding:.9rem;
-  min-height:250px;
+  padding:.78rem;
+  min-height:238px;
+}
+.graph-card .chart-head{
+  height:auto !important;
+  margin-bottom:.45rem !important;
+  font-size:10.1pt !important;
+  font-weight:bold !important;
+  letter-spacing:.08em !important;
+  text-transform:uppercase !important;
+}
+.profile-controls{
+  display:grid !important;
+  grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+  gap:.32rem !important;
+  margin:.1rem 0 .5rem !important;
+}
+#chartClose{
+  display:none !important;
 }
 .graph-card canvas{
-  width:100%;
-  height:205px;
-  display:block;
-  background:#ffffff;
-  border:1px solid rgba(62,179,230,.18);
-  border-radius:12px;
+  width:100% !important;
+  height:170px !important;
+  display:block !important;
+  background:#ffffff !important;
+  border:1px solid rgba(62,179,230,.18) !important;
+  border-radius:12px !important;
 }
-.mode-explain{
-  font-size:12pt;
-  line-height:1.42;
-  padding:.7rem .2rem;
+.profile-graph-card canvas{
+  height:170px !important;
 }
-@media(max-width:1180px){
-  .explorador-grid-redesign{grid-template-columns:1fr !important;}
+@media(max-width:1100px){
+  .explorador-grid{grid-template-columns:1fr !important;}
   .side{border-left:none !important;border-top:1px solid rgba(62,179,230,.18) !important;}
   .graph-dashboard{grid-template-columns:1fr !important;}
+}
+
+/* ============================================================
+   CORRECCIÓN GLOBAL DE ESPACIADO Y ESCALA — bloque final
+   Reemplaza todos los conflictos acumulados arriba.
+   ============================================================ */
+
+/* 1 · Tipografía base: fuera del modo "impresión", usar px relativos */
+html { font-size: 16px !important; }
+body {
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+}
+p { font-size: 15px !important; }
+h1, .titulo-paper { font-size: clamp(22px, 3vw, 32px) !important; }
+h2 { font-size: clamp(16px, 2.2vw, 22px) !important; }
+
+/* 2 · Layout principal: usar todo el ancho disponible */
+main,
+.section-main {
+  max-width: 100% !important;
+  padding: 2rem 1.5rem 4rem !important;
+  box-sizing: border-box !important;
+}
+.texto {
+  max-width: min(1100px, 100%) !important;
+  margin: 0 auto !important;
+}
+
+/* 3 · Explorador: ocupa todo el ancho del contenedor, sin límite fijo */
+.explorador {
+  max-width: 100% !important;
+  margin: 1.5rem 0 2rem !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+/* 4 · Grid principal mapa + panel: el mapa crece, el lateral es compacto */
+.explorador-grid {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 300px !important;
+  min-height: 0 !important;
+  align-items: stretch !important;
+}
+
+/* 5 · Canvas del mapa: responsive con aspect-ratio, sin clamp rígido */
+#mapCanvas {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 4 / 3 !important;
+  max-height: 70vh !important;
+  min-height: 320px !important;
+  display: block !important;
+}
+
+/* 6 · Dashboard de gráficas inferior: tres columnas que se expanden */
+.graph-dashboard {
+  display: grid !important;
+  grid-template-columns: 1.1fr 1fr 1fr !important;
+  gap: 1rem !important;
+  padding: 1rem !important;
+  border-top: 1px solid rgba(62,179,230,.18) !important;
+  background: linear-gradient(180deg,#f8fdff 0%,#edf9ff 100%) !important;
+  align-items: stretch !important;
+}
+
+/* 7 · Tarjetas de gráfica: crecen para llenar su columna */
+.graph-card {
+  display: flex !important;
+  flex-direction: column !important;
+  padding: .85rem !important;
+  min-height: 0 !important;
+}
+
+/* 8 · Canvas dentro de cada tarjeta: altura flexible, ocupa el espacio */
+.graph-card canvas {
+  width: 100% !important;
+  flex: 1 1 auto !important;
+  min-height: 160px !important;
+  height: auto !important;
+  aspect-ratio: unset !important;
+  display: block !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(62,179,230,.18) !important;
+  border-radius: 10px !important;
+}
+
+/* Override explícito de la altura fija de 170px */
+.profile-graph-card canvas,
+#chartCanvas,
+#volumeChartCanvas,
+#hipsoChartCanvas {
+  height: auto !important;
+  min-height: 160px !important;
+}
+
+/* 9 · Botones de herramientas: tamaño legible sin ser enormes */
+.tool-btn {
+  font-size: 13px !important;
+  padding: .5rem .85rem !important;
+}
+
+/* 10 · Controles de perfil */
+.profile-controls {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0,1fr)) !important;
+  gap: .3rem !important;
+  margin: .2rem 0 .5rem !important;
+}
+.profile-btn {
+  font-size: 11px !important;
+  padding: .35rem .3rem !important;
+}
+
+/* 11 · Panel lateral: scroll si hay overflow */
+.side {
+  overflow-y: auto !important;
+  max-height: 80vh !important;
+}
+
+/* 12 · Tabla morfométrica: legible */
+.tabla-morfo th,
+.tabla-morfo td {
+  font-size: 13px !important;
+  padding: .5rem .7rem !important;
+}
+
+/* 13 · Responsivo: tablet */
+@media (max-width: 1100px) {
+  .explorador-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .side {
+    max-height: none !important;
+    border-left: none !important;
+    border-top: 1px solid rgba(62,179,230,.18) !important;
+  }
+  #mapCanvas {
+    aspect-ratio: 16 / 9 !important;
+    min-height: 240px !important;
+  }
+  .graph-dashboard {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+/* 14 · Responsivo: móvil */
+@media (max-width: 640px) {
+  main, .section-main { padding: 1rem .8rem 3rem !important; }
+  .explorador { border-radius: 10px !important; }
+  .graph-dashboard { grid-template-columns: 1fr !important; gap: .75rem !important; }
+  .tool-btn { font-size: 11px !important; padding: .42rem .6rem !important; }
+  #mapCanvas { aspect-ratio: 4 / 3 !important; min-height: 200px !important; }
+  .side { max-height: none !important; }
 }
 
 </style>
@@ -1330,14 +1483,14 @@ code{
         <button class="tool-btn" data-mode="hipso"><kbd>6</kbd>Hipsográfica</button>
       </div>
     </div>
-    <div class="explorador-grid explorador-grid-redesign">
+    <div class="explorador-grid">
       <div class="map-wrap">
         <canvas id="mapCanvas"></canvas>
-        <div class="map-hint" id="mapHint">Recorrido del perímetro lacustre.</div>
+        <div class="map-hint" id="mapHint">Vista general de la batimetría del lago.</div>
       </div>
       <aside class="side">
-        <div class="metric-card principal-card">
-          <div class="metric-title" id="panelTitle">Perímetro</div>
+        <div class="metric-card">
+          <div class="metric-title" id="panelTitle">Vista general</div>
           <div class="metric-text" id="panelText"></div>
         </div>
         <div class="metric-card volume-panel" id="volumeControls">
@@ -1356,10 +1509,6 @@ code{
             <button type="button" class="auto-drain-btn" id="autoDrainBtn">Vaciador automático dramatizado</button>
             <div class="drain-note" id="drainNote">Animación visual intensificada para mostrar mejor la bajada del nivel del agua.</div>
           </div>
-          <div class="auto-drain-wrap">
-            <button type="button" class="auto-drain-btn" id="autoDrainBtn">Vaciador automático dramatizado</button>
-            <div class="drain-note" id="drainNote">Animación visual intensificada para mostrar mejor la bajada del nivel del agua.</div>
-          </div>
         </div>
         <div class="metrics-grid" id="metricsBox">
           <div class="mini"><span>Volumen restante</span><b id="mVol">25.46 km³</b></div>
@@ -1367,17 +1516,7 @@ code{
           <div class="mini"><span>Área del espejo de agua</span><b id="mArea">125.77 km²</b></div>
           <div class="mini"><span>Prof. máxima actual</span><b id="mMaxD">327.6 m</b></div>
         </div>
-        <div class="side-chart-panel profile-panel is-visible" id="chartPanel" aria-live="polite">
-          <div class="chart-head"><span id="chartTitle">Perfil batimétrico</span><button id="chartClose" type="button" title="Ocultar gráfica">×</button></div>
-          <div class="profile-controls is-visible" id="profileControls">
-            <button type="button" class="profile-btn active" data-profile="manual">Manual</button>
-            <button type="button" class="profile-btn" data-profile="A">A–AF</button>
-            <button type="button" class="profile-btn" data-profile="B">B–BF</button>
-            <button type="button" class="profile-btn" data-profile="C">C–CF</button>
-            <button type="button" class="profile-btn" data-profile="D">D–DF</button>
-          </div>
-          <canvas id="chartCanvas"></canvas>
-        </div>
+
         <div class="metric-card legend-card legend-card-pro">
           <div class="legend-heading">
             <div class="legend-title">Leyenda batimétrica</div>
@@ -1409,20 +1548,27 @@ code{
       </aside>
     </div>
 
-    <div class="graph-dashboard" aria-label="Gráficas batimétricas visibles">
+    <div class="graph-dashboard">
+      <article class="graph-card profile-graph-card side-chart-panel is-visible" id="chartPanel" aria-live="polite">
+        <div class="chart-head"><span id="chartTitle">Perfil batimétrico</span><button id="chartClose" type="button" title="Mantener gráfica visible">×</button></div>
+        <div class="profile-controls is-visible" id="profileControls">
+          <button type="button" class="profile-btn active" data-profile="manual">Manual</button>
+          <button type="button" class="profile-btn" data-profile="A">A–AF</button>
+          <button type="button" class="profile-btn" data-profile="B">B–BF</button>
+          <button type="button" class="profile-btn" data-profile="C">C–CF</button>
+          <button type="button" class="profile-btn" data-profile="D">D–DF</button>
+        </div>
+        <canvas id="chartCanvas"></canvas>
+      </article>
+
       <article class="graph-card">
         <div class="chart-head"><span>Volumen vs descenso</span></div>
         <canvas id="volumeChartCanvas"></canvas>
       </article>
+
       <article class="graph-card">
         <div class="chart-head"><span>Curva hipsográfica</span></div>
         <canvas id="hipsoChartCanvas"></canvas>
-      </article>
-      <article class="graph-card graph-card-wide">
-        <div class="chart-head"><span>Lectura del modo activo</span></div>
-        <div class="mode-explain" id="modeExplain">
-          Selecciona un botón superior para resaltar el perímetro, el espejo de agua, el vaciador, la profundidad media, los transectos o la curva hipsográfica. Las gráficas principales permanecen visibles para evitar saltos de diseño.
-        </div>
       </article>
     </div>
   </section>
@@ -1485,7 +1631,7 @@ code{
   const dropSlider=document.getElementById('dropSlider'),dropReadout=document.getElementById('dropReadout');
   const mVol=document.getElementById('mVol'),mLost=document.getElementById('mLost'),mArea=document.getElementById('mArea'),mMaxD=document.getElementById('mMaxD');
   const chartPanel=document.getElementById('chartPanel'), chartTitle=document.getElementById('chartTitle'), chartClose=document.getElementById('chartClose');
-  const volumeChart=document.getElementById('volumeChartCanvas'), hipsoChart=document.getElementById('hipsoChartCanvas'), modeExplain=document.getElementById('modeExplain');
+  const volumeChart=document.getElementById('volumeChartCanvas'), hipsoChart=document.getElementById('hipsoChartCanvas');
   const vctx=volumeChart?volumeChart.getContext('2d'):null, hctx=hipsoChart?hipsoChart.getContext('2d'):null;
   const volumeControls=document.getElementById('volumeControls'), metricsBox=document.getElementById('metricsBox');
   const offBase=document.createElement('canvas'),bctx=offBase.getContext('2d');offBase.width=W;offBase.height=H;
@@ -1526,21 +1672,16 @@ code{
   }
   function makeBase(){const img=bctx.createImageData(W,H);for(let i=0;i<depthDm.length;i++){let dm=depthDm[i],j=i*4;if(dm<0){img.data[j+3]=0;continue;}let c=bathyColor(dm/10);img.data[j]=c[0];img.data[j+1]=c[1];img.data[j+2]=c[2];img.data[j+3]=255;}bctx.putImageData(img,0,0);}
   function makeWater(dropM,style='blue'){const c=style==='red'?tctx:wctx,img=c.createImageData(W,H);for(let i=0;i<depthDm.length;i++){let dm=depthDm[i],j=i*4;if(dm<0||dm/10<=dropM)continue;const rel=Math.max(0,Math.min(1,(dm/10-dropM)/Math.max(1,P.maxDepthM-dropM)));if(style==='red'){img.data[j]=236;img.data[j+1]=82;img.data[j+2]=96;img.data[j+3]=82;}else if(style==='yellow'){img.data[j]=122;img.data[j+1]=220;img.data[j+2]=228;img.data[j+3]=112;}else{img.data[j]=Math.round(96-18*rel);img.data[j+1]=Math.round(218-36*rel);img.data[j+2]=Math.round(235+8*rel);img.data[j+3]=Math.round(112+36*rel);}}c.putImageData(img,0,0);}
-  function syncOneCanvas(el,context,minW=240,minH=180){
+  function syncOneCanvas(el,context,minW=240,minH=160){
     if(!el||!context)return;
-    const r=el.getBoundingClientRect();
-    const dpr=Math.max(1,window.devicePixelRatio||1);
-    const w=Math.max(minW,Math.round(r.width*dpr));
-    const h=Math.max(minH,Math.round(r.height*dpr));
-    if(el.width!==w||el.height!==h){
-      el.width=w;el.height=h;
-      context.setTransform(dpr,0,0,dpr,0,0);
-    }
+    const r=el.getBoundingClientRect(),dpr=Math.max(1,window.devicePixelRatio||1);
+    const w=Math.max(minW,Math.round(r.width*dpr)),h=Math.max(minH,Math.round(r.height*dpr));
+    if(el.width!==w||el.height!==h){el.width=w;el.height=h;context.setTransform(dpr,0,0,dpr,0,0);}
   }
   function syncChartCanvas(){
-    syncOneCanvas(chart,cctx,260,210);
-    syncOneCanvas(volumeChart,vctx,260,190);
-    syncOneCanvas(hipsoChart,hctx,260,190);
+    syncOneCanvas(chart,cctx,260,160);
+    syncOneCanvas(volumeChart,vctx,260,160);
+    syncOneCanvas(hipsoChart,hctx,260,160);
   }
   function resize(){const r=canvas.getBoundingClientRect(),dpr=Math.max(1,window.devicePixelRatio||1);canvas.width=Math.round(r.width*dpr);canvas.height=Math.round(r.height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);syncChartCanvas();render();drawChart();}
   function fit(){const cw=canvas.clientWidth,ch=canvas.clientHeight;const s=Math.min(cw/W,ch/H)*0.965;return{s,ox:(cw-W*s)/2,oy:(ch-H*s)/2};}
@@ -1678,30 +1819,29 @@ code{
     general:['Vista general',`Área superficial: <b>${P.areaKm2} km²</b><br>Volumen: <b>${P.volumeKm3} km³</b><br>Profundidad máxima: <b>${P.maxDepthM} m</b><br>Profundidad media: <b>${P.meanDepthM} m</b>.`,'Vista general de la batimetría del lago.'],
     perimetro:['Perímetro',`El perímetro se traza a partir del contorno vectorial del lago.<br><br><span class="big-number">${P.perimeterKm} km</span><br>Índice de desarrollo de costa: ${P.coastDev}.`,'Trazo progresivo del perímetro del lago.'],
     espejo:['Espejo de agua',`La capa translúcida resalta el área superficial o espejo de agua.<br><br><span class="big-number">${P.areaKm2} km²</span>.`,'Área superficial del lago resaltada.'],
-    volumen:['Volumen / vaciador',`Usa el deslizador, los escenarios o el vaciador automático dramatizado para observar cómo cambia el espejo de agua y el volumen.<br><br><b>Descenso actual:</b> ${Math.round(drop)} m.`,'Simulación del descenso del nivel del lago.'],
-
-    profmedia:['Profundidad media',`El nivel se fija en <b>${P.meanDepthM} m</b> para comparar la profundidad media con el volumen remanente y la curva hipsográfica.`,'Descenso equivalente a la profundidad media.'],
+    volumen:['Volumen',`Usa el control o un escenario para animar el descenso del nivel del lago.<br><br><b>Así se vería si el nivel descendiera ${Math.round(drop)} m.</b>`,'Relación entre descenso, volumen y área del espejo de agua.'],
+    profmax:['Profundidad máxima',`El pulso rojo localiza el punto más profundo del lago. La señal tipo sonar y la regla visual ayudan a explicar que la cubeta alcanza:<br><span class="depth-badge"><b>${P.maxDepthM} m</b></span>`,'Localización de la profundidad máxima.'],
+    profmedia:['Profundidad media',`El nivel del agua se representa a <b>${P.meanDepthM} m</b> de descenso y se diferencia con agua amarilla translúcida.`,'Descenso equivalente a la profundidad media.'],
     transecto:['Transectos',`Selecciona A–D para perfiles de referencia o usa Manual y haz clic en dos puntos del lago. Un tercer clic reinicia el trazado.<br><br><b>Eje X:</b> distancia (km). <b>Eje Y:</b> profundidad (m).`,'Definición manual de perfiles batimétricos.'],
     hipso:['Curva hipsográfica',`La curva relaciona el área relativa del espejo de agua con la profundidad y ayuda a interpretar la forma <b>${P.shape.toLowerCase()}</b>.`,'Curva hipsográfica del lago.']
-  };panelTitle.textContent=texts[mode][0];panelText.innerHTML=texts[mode][1];if(mode==='transecto'&&profileMode!=='manual'&&presetProfiles[profileMode]){panelText.innerHTML='<b>'+presetProfiles[profileMode].label+'</b><br>'+presetProfiles[profileMode].desc;}mapHint.textContent=texts[mode][2];chartPanel.classList.add('is-visible');profileControls.classList.add('is-visible');chartTitle.textContent='Perfil batimétrico';volumeControls.classList.add('is-visible');metricsBox.classList.add('is-visible');if(modeExplain){modeExplain.innerHTML='<b>'+texts[mode][0]+':</b> '+texts[mode][2]+' Las gráficas de volumen e hipsografía quedan visibles abajo para comparar sin cambiar de pantalla.';}syncChartCanvas();}
+  };panelTitle.textContent=texts[mode][0];panelText.innerHTML=texts[mode][1];if(mode==='transecto'&&profileMode!=='manual'&&presetProfiles[profileMode]){panelText.innerHTML='<b>'+presetProfiles[profileMode].label+'</b><br>'+presetProfiles[profileMode].desc;}mapHint.textContent=texts[mode][2];chartPanel.classList.add('is-visible');profileControls.classList.add('is-visible');chartTitle.textContent='Perfil batimétrico';const showVol=['volumen','profmedia'].includes(mode);volumeControls.classList.toggle('is-visible',showVol);metricsBox.classList.toggle('is-visible',showVol);syncChartCanvas();}
   function axesOn(g,x0,y0,w,h,xTicks,yTicks,xFmt,yFmt,xLab,yLab){
     g.strokeStyle='#b6dff1';g.lineWidth=1;
     g.beginPath();g.moveTo(x0,y0);g.lineTo(x0,y0+h);g.lineTo(x0+w,y0+h);g.stroke();
-    g.font='11px Times New Roman';g.fillStyle='#32566f';g.textAlign='center';
-    xTicks.forEach(v=>{const x=x0+v.pos*w;g.strokeStyle='rgba(43,174,232,.14)';g.beginPath();g.moveTo(x,y0);g.lineTo(x,y0+h);g.stroke();g.fillText(xFmt(v.val),x,y0+h+18);});
+    g.font='10px Times New Roman';g.fillStyle='#32566f';g.textAlign='center';
+    xTicks.forEach(v=>{const x=x0+v.pos*w;g.strokeStyle='rgba(43,174,232,.14)';g.beginPath();g.moveTo(x,y0);g.lineTo(x,y0+h);g.stroke();g.fillText(xFmt(v.val),x,y0+h+16);});
     g.textAlign='right';
-    yTicks.forEach(v=>{const y=y0+h-v.pos*h;g.strokeStyle='rgba(43,174,232,.14)';g.beginPath();g.moveTo(x0,y);g.lineTo(x0+w,y);g.stroke();g.fillText(yFmt(v.val),x0-8,y+4);});
-    g.textAlign='center';g.fillStyle='#43677f';g.fillText(xLab,x0+w/2,y0+h+36);
-    g.save();g.translate(16,y0+h/2);g.rotate(-Math.PI/2);g.fillText(yLab,0,0);g.restore();
+    yTicks.forEach(v=>{const y=y0+h-v.pos*h;g.strokeStyle='rgba(43,174,232,.14)';g.beginPath();g.moveTo(x0,y);g.lineTo(x0+w,y);g.stroke();g.fillText(yFmt(v.val),x0-7,y+4);});
+    g.textAlign='center';g.fillStyle='#43677f';g.fillText(xLab,x0+w/2,y0+h+32);
+    g.save();g.translate(14,y0+h/2);g.rotate(-Math.PI/2);g.fillText(yLab,0,0);g.restore();
   }
   function titleOn(g,titleTxt,subtitle=''){
-    g.fillStyle='#225775';g.font='bold 13px Times New Roman';g.textAlign='left';
-    g.fillText(titleTxt,16,18);
-    if(subtitle){g.fillStyle='#6b8799';g.font='10px Times New Roman';g.fillText(subtitle,16,33);}
+    g.fillStyle='#225775';g.font='bold 12px Times New Roman';g.textAlign='left';g.fillText(titleTxt,15,17);
+    if(subtitle){g.fillStyle='#6b8799';g.font='9px Times New Roman';g.fillText(subtitle,15,31);}
   }
   function drawCurveOn(g,canvasEl,xs,ys,cx,cy,xLab,yLab,invertY=false,titleTxt='Curva',subtitle=''){
     if(!g||!canvasEl)return;
-    const w=canvasEl.clientWidth,h=canvasEl.clientHeight,ml=54,mr=16,mt=42,mb=46;
+    const w=canvasEl.clientWidth,h=canvasEl.clientHeight,ml=50,mr=14,mt=38,mb=42;
     const xmin=Math.min(...xs),xmax=Math.max(...xs),ymin=Math.min(...ys),ymax=Math.max(...ys);
     const X=v=>ml+(v-xmin)/(xmax-xmin||1)*(w-ml-mr);
     const Y=v=>invertY?mt+(v-ymin)/(ymax-ymin||1)*(h-mt-mb):mt+(1-(v-ymin)/(ymax-ymin||1))*(h-mt-mb);
@@ -1710,9 +1850,9 @@ code{
     axesOn(g,ml,mt,w-ml-mr,h-mt-mb,[0,.25,.5,.75,1].map(p=>({pos:p,val:xmin+p*(xmax-xmin)})),[0,.25,.5,.75,1].map(p=>({pos:p,val:ymin+p*(ymax-ymin)})),v=>xLab.includes('Área')?v.toFixed(2):Math.round(v),v=>Math.round(v),xLab,yLab);
     g.beginPath();
     xs.forEach((x,i)=>{const xx=X(x),yy=Y(ys[i]);if(i)g.lineTo(xx,yy);else g.moveTo(xx,yy);});
-    g.strokeStyle='#3db7ea';g.lineWidth=2.6;g.stroke();
+    g.strokeStyle='#3db7ea';g.lineWidth=2.4;g.stroke();
     if(Number.isFinite(cx)&&Number.isFinite(cy)){
-      g.fillStyle='#1b5f82';g.beginPath();g.arc(X(cx),Y(cy),4.8,0,Math.PI*2);g.fill();
+      g.fillStyle='#1b5f82';g.beginPath();g.arc(X(cx),Y(cy),4.4,0,Math.PI*2);g.fill();
       g.strokeStyle='#ffffff';g.lineWidth=2;g.stroke();
     }
   }
@@ -1720,23 +1860,22 @@ code{
   function chartTitleText(title,subtitle=''){titleOn(cctx,title,subtitle);}
   function drawCurve(xs,ys,cx,cy,xLab,yLab,invertY=false,titleTxt='Curva',subtitle=''){drawCurveOn(cctx,chart,xs,ys,cx,cy,xLab,yLab,invertY,titleTxt,subtitle);}
   function drawProfile(ds,zs,titleTxt='Perfil'){
-    const w=chart.clientWidth,h=chart.clientHeight,ml=56,mr=14,mt=42,mb=46;
+    const w=chart.clientWidth,h=chart.clientHeight,ml=50,mr=14,mt=38,mb=42;
     const finite=zs.filter(z=>Number.isFinite(z));
     const xmax=Math.max(.01,...ds),ymax=Math.max(10,...finite,P.maxDepthM);
     const X=v=>ml+v/xmax*(w-ml-mr),Y=v=>mt+(v/ymax)*(h-mt-mb);
     cctx.fillStyle='#ffffff';cctx.fillRect(0,0,w,h);
     titleOn(cctx,titleTxt,'Perfil de profundidad a lo largo del transecto seleccionado');
-    axesOn(cctx,ml,mt,w-ml-mr,h-mt-mb,[0,.25,.5,.75,1].map(p=>({pos:p,val:p*xmax})),[0,.25,.5,.75,1].map(p=>({pos:p,val:p*ymax})),v=>v.toFixed(1),v=>Math.round(v),'Distancia del perfil (km)','Profundidad (m)');
+    axesOn(cctx,ml,mt,w-ml-mr,h-mt-mb,[0,.25,.5,.75,1].map(p=>({pos:p,val:p*xmax})),[0,.25,.5,.75,1].map(p=>({pos:p,val:p*ymax})),v=>v.toFixed(1),v=>Math.round(v),'Distancia (km)','Profundidad (m)');
     cctx.beginPath();let started=false;
     ds.forEach((d,i)=>{const z=zs[i];if(!Number.isFinite(z)){started=false;return;}const xx=X(d),yy=Y(z);if(!started){cctx.moveTo(xx,yy);started=true;}else cctx.lineTo(xx,yy);});
-    cctx.strokeStyle='#57c8f2';cctx.lineWidth=2.5;cctx.stroke();
+    cctx.strokeStyle='#57c8f2';cctx.lineWidth=2.4;cctx.stroke();
   }
   function sampleProfile(a,b){const n=220,ds=[],zs=[];let total=0,pxx=a.x,pyy=a.y;for(let i=0;i<n;i++){const t=i/(n-1),x=a.x*(1-t)+b.x*t,y=a.y*(1-t)+b.y*t;if(i>0){const dx=(x-pxx)*D.pixelKm.x,dy=(y-pyy)*D.pixelKm.y;total+=Math.sqrt(dx*dx+dy*dy);}pxx=x;pyy=y;ds.push(total);const z=depthAt(x,y);zs.push(Number.isFinite(z)?z:NaN);}return{ds,zs};}
   function drawDashboardCharts(){
     syncChartCanvas();
     drawCurveOn(vctx,volumeChart,D.curves.drops,D.curves.volumes,drop,interp(D.curves.volumes),'Descenso (m)','Volumen (km³)',false,'Volumen vs descenso','Vaciado simulado del lago');
-    const relAreas=D.curves.areas.map(a=>a/P.areaKm2);
-    drawCurveOn(hctx,hipsoChart,relAreas,D.curves.drops,metrics().area/P.areaKm2,drop,'Área relativa','Profundidad (m)',true,'Curva hipsográfica','Área relativa frente a profundidad');
+    drawCurveOn(hctx,hipsoChart,D.curves.areas.map(a=>a/P.areaKm2),D.curves.drops,metrics().area/P.areaKm2,drop,'Área relativa','Profundidad (m)',true,'Curva hipsográfica','Área relativa frente a profundidad');
   }
   function drawChart(){
     syncChartCanvas();
@@ -1748,10 +1887,10 @@ code{
       drawProfile(profile.ds,profile.zs,'Perfil manual');
     }else{
       cctx.fillStyle='#ffffff';cctx.fillRect(0,0,w,h);
-      titleOn(cctx,'Perfil batimétrico','Visible siempre para no perder la gráfica');
-      cctx.fillStyle='#4a667b';cctx.font='13px Times New Roman';
-      cctx.fillText('Manual: haz clic en dos puntos del lago.',18,68);
-      cctx.fillText('A–D: usa los botones del panel lateral.',18,88);
+      titleOn(cctx,'Perfil batimétrico','Usa A–D o marca dos puntos en modo Transectos');
+      cctx.fillStyle='#4a667b';cctx.font='12px Times New Roman';
+      cctx.fillText('Manual: haz clic en dos puntos del lago.',16,62);
+      cctx.fillText('A–D: usa los botones superiores de este panel.',16,80);
     }
     drawDashboardCharts();
   }
