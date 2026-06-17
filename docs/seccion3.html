@@ -383,6 +383,253 @@ main,
   }
 }
 
+
+
+/* === Ajustes responsivos automáticos: teléfono, tablet y computadora === */
+html{
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+body{overflow-x:hidden;}
+img{max-width:100%;height:auto;}
+main,.section-main,.portada-main,.texto,.explorador,.animacion-wrap,.lab-process{max-width:100%;}
+table{max-width:100%;}
+
+@media (min-width:1025px){
+  .section-main,.portada-main{
+    padding-left:clamp(1.25rem,3vw,2.5rem) !important;
+    padding-right:clamp(1.25rem,3vw,2.5rem) !important;
+  }
+}
+
+@media (min-width:641px) and (max-width:1024px){
+  .header-inner{
+    flex-wrap:wrap !important;
+    justify-content:center !important;
+    gap:.75rem !important;
+    padding:.65rem 1rem !important;
+  }
+  .header-brand{
+    min-width:0 !important;
+    max-width:100% !important;
+    justify-content:center !important;
+    text-align:center !important;
+  }
+  header nav,.main-nav{
+    flex:1 1 100% !important;
+    width:100% !important;
+    justify-content:center !important;
+    flex-wrap:wrap !important;
+    gap:.42rem !important;
+    padding:.15rem .25rem .35rem !important;
+  }
+  header nav a,.main-nav a{
+    min-height:40px !important;
+    padding:.55rem .82rem !important;
+    font-size:clamp(10.5pt,1.7vw,11.5pt) !important;
+  }
+  .section-main,.portada-main{
+    width:100% !important;
+    padding:clamp(1.8rem,4vw,3rem) clamp(1.15rem,3vw,2rem) 4rem !important;
+  }
+  .texto{width:100% !important;}
+  h1,.titulo-paper{font-size:clamp(26px,4.8vw,38px) !important;}
+  h2{font-size:clamp(20px,3vw,27px) !important;}
+  p{font-size:clamp(16px,2.1vw,18px) !important;}
+  .nav-pie{gap:1rem !important;}
+}
+
+@media (max-width:640px){
+  body{
+    font-size:clamp(15px,4vw,17px) !important;
+    line-height:1.5 !important;
+  }
+  .site-header{
+    position:sticky !important;
+    top:0 !important;
+  }
+  .header-inner{
+    flex-wrap:wrap !important;
+    justify-content:center !important;
+    gap:.45rem !important;
+    padding:.5rem .65rem !important;
+  }
+  .header-logo{
+    width:40px !important;
+    height:40px !important;
+  }
+  .header-brand{
+    min-width:0 !important;
+    max-width:100% !important;
+    justify-content:center !important;
+    text-align:center !important;
+    font-size:10.5pt !important;
+    line-height:1.15 !important;
+  }
+  header nav,.main-nav{
+    flex:1 1 100% !important;
+    width:100% !important;
+    justify-content:flex-start !important;
+    flex-wrap:nowrap !important;
+    overflow-x:auto !important;
+    gap:.36rem !important;
+    padding:.15rem .1rem .35rem !important;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    scroll-snap-type:x proximity;
+  }
+  header nav::-webkit-scrollbar,.main-nav::-webkit-scrollbar{display:none;}
+  header nav a,.main-nav a{
+    flex:0 0 auto !important;
+    min-height:40px !important;
+    padding:.56rem .72rem !important;
+    font-size:10pt !important;
+    line-height:1.05 !important;
+    scroll-snap-align:start;
+  }
+  .section-main,.portada-main{
+    width:100% !important;
+    padding:1.45rem .95rem 3.8rem !important;
+  }
+  .texto{width:100% !important;}
+  .seccion-label,.presentado-label,.simposio,.curso,.autores-paper,.doi,.fecha,.presentador{
+    overflow-wrap:anywhere;
+  }
+  h1,.titulo-paper{
+    font-size:clamp(24px,7.2vw,32px) !important;
+    line-height:1.14 !important;
+    overflow-wrap:anywhere;
+  }
+  h2{
+    font-size:clamp(19px,5vw,23px) !important;
+    line-height:1.22 !important;
+  }
+  p,li{
+    font-size:clamp(16px,4.3vw,18px) !important;
+    line-height:1.5 !important;
+  }
+  p{text-align:left !important;}
+  .dato-destacado,.referencia{
+    font-size:clamp(14px,3.8vw,16px) !important;
+    line-height:1.45 !important;
+    overflow-wrap:anywhere;
+  }
+  .tabla-integrantes{
+    display:block !important;
+    width:100% !important;
+    border-collapse:separate !important;
+    border-spacing:0 .55rem !important;
+    margin-bottom:2rem !important;
+  }
+  .tabla-integrantes tbody,.tabla-integrantes tr,.tabla-integrantes td{
+    display:block !important;
+    width:100% !important;
+  }
+  .tabla-integrantes tr{
+    border:1px solid var(--linea) !important;
+    border-radius:14px !important;
+    overflow:hidden !important;
+    background:rgba(255,255,255,.58) !important;
+  }
+  .tabla-integrantes td{
+    text-align:left !important;
+    padding:.7rem .85rem !important;
+  }
+  .tabla-integrantes td.tema{padding-top:0 !important;}
+  .tabla-datos,.tabla-comp,.tabla-morfo{
+    display:block !important;
+    width:100% !important;
+    overflow-x:auto !important;
+    -webkit-overflow-scrolling:touch;
+  }
+  .tabla-datos th,.tabla-datos td,
+  .tabla-comp th,.tabla-comp td,
+  .tabla-morfo th,.tabla-morfo td{
+    font-size:clamp(13px,3.8vw,15px) !important;
+    line-height:1.35 !important;
+  }
+  .nav-pie{
+    display:flex !important;
+    flex-direction:column !important;
+    gap:.65rem !important;
+  }
+  .nav-pie a{
+    display:block !important;
+    width:100% !important;
+    text-align:center !important;
+    padding:.72rem .85rem !important;
+    border:1px solid var(--linea) !important;
+    border-radius:999px !important;
+    background:rgba(255,255,255,.56) !important;
+  }
+  .cintillo-banner{padding:.45rem .65rem !important;}
+  .cintillo-img{max-width:100% !important;}
+}
+
+@media (max-width:420px){
+  .section-main,.portada-main{padding-left:.78rem !important;padding-right:.78rem !important;}
+  header nav a,.main-nav a{font-size:9.5pt !important;padding:.52rem .64rem !important;}
+}
+
+
+/* === Responsive específico de resultados e interactivo batimétrico === */
+@media (max-width:1024px){
+  .map-stage{
+    height:auto !important;
+    min-height:0 !important;
+    overflow:visible !important;
+  }
+  #mapCanvas{
+    position:relative !important;
+    inset:auto !important;
+    width:100% !important;
+    height:clamp(340px,62vh,580px) !important;
+    border-radius:18px 18px 0 0 !important;
+  }
+  .map-toolbar,.map-panel,.map-hint{
+    position:relative !important;
+    left:auto !important;
+    right:auto !important;
+    top:auto !important;
+    bottom:auto !important;
+    width:auto !important;
+    max-width:none !important;
+    margin:.75rem !important;
+    pointer-events:auto !important;
+  }
+  .map-toolbar{
+    flex-direction:column !important;
+    align-items:stretch !important;
+  }
+  .tool-row{justify-content:flex-start !important;}
+  .profile-controls{grid-template-columns:repeat(3,minmax(0,1fr)) !important;}
+}
+
+@media (max-width:640px){
+  .explorador{margin:1rem auto 1.7rem !important;}
+  .map-stage{border-radius:18px !important;}
+  #mapCanvas{height:clamp(330px,58vh,500px) !important;}
+  .tool-row,.scenario-row,.metrics-grid.is-visible,.profile-controls{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:.42rem !important;
+  }
+  .tool-btn,.scenario-btn,.profile-btn,.auto-drain-btn{
+    width:100% !important;
+    justify-content:center !important;
+    min-height:38px !important;
+  }
+  .map-panel,.profile-card,.legend-card-pro{
+    padding:.85rem !important;
+    border-radius:16px !important;
+  }
+  .control-label,.slider-scale,.legend-foot{
+    font-size:12px !important;
+  }
+  #chartCanvas{height:220px !important;}
+  .perfil-grid{grid-template-columns:1fr !important;}
+}
+
 </style>
 </head>
 <body>
