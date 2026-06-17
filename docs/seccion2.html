@@ -420,6 +420,7 @@
     width:100%;
     height:100%;
     display:block;
+    shape-rendering:geometricPrecision;
   }
 
   .mapa-leyenda{
@@ -2271,7 +2272,8 @@ document.addEventListener("DOMContentLoaded", function(){
     for(let i=0;i<current.primary.length;i++){
       await animateLine(current.primary[i], soloEsquema.checked ? 120 : 22);
       if(stopRequested) break;
-      const shown = soloEsquema.checked ? Math.round(((i+1)/current.primary.length)*270) : i+1;
+      const scaleUp = soloEsquema.checked || current.lineSkip > 1;
+      const shown = scaleUp ? Math.round(((i+1)/current.primary.length)*270) : i+1;
       contadorPrincipal.textContent = String(Math.min(270,shown));
     }
 
@@ -2341,6 +2343,16 @@ document.addEventListener("DOMContentLoaded", function(){
     }
   }
 
+  function getRenderScale(){
+    // Ancho real en pantalla del SVG (en px CSS). El viewBox interno siempre
+    // es 1000x700, así que esto nos dice cuánto se está "comprimiendo" el
+    // dibujo. En pantallas angostas, muchas líneas casi paralelas y muy
+    // juntas (270 principales) generan moiré si no ajustamos densidad/ancho.
+    const rect = svg.getBoundingClientRect();
+    const cssWidth = rect.width || svg.clientWidth || 1000;
+    return cssWidth / 1000;
+  }
+
   function draw(sc){
     stopRequested = true;
     isAnimating = false;
@@ -2348,6 +2360,15 @@ document.addEventListener("DOMContentLoaded", function(){
     btnPause.textContent = "Pausar";
 
     svg.innerHTML = "";
+
+    const renderScale = getRenderScale();
+    // < 1 en móvil (p.ej. ~0.36 si el SVG mide ~360px de ancho en pantalla).
+    // Con eso decidimos cuántas líneas "saltar" y qué grosor usar para que
+    // las 270 líneas principales no se aplasten unas sobre otras.
+    const isCompact = renderScale < 0.55;
+    const lineSkip = renderScale < 0.40 ? 3 : (renderScale < 0.55 ? 2 : 1);
+    const primaryWidth = soloEsquema.checked ? 2.2 : (isCompact ? 1.7 : 1.35);
+    const secondaryWidth = soloEsquema.checked ? 3 : (isCompact ? 2.6 : 2.05);
 
     const defs = make("defs",{});
     const clip = make("clipPath",{id:"lakeClip"});
@@ -2382,16 +2403,21 @@ document.addEventListener("DOMContentLoaded", function(){
     if(soloEsquema.checked){
       primary = primary.filter((_,i)=>i%8===0);
       secondary = secondary.filter((_,i)=>i%2===0);
+    }else if(lineSkip > 1){
+      // En pantallas angostas se omiten líneas intermedias para que el
+      // patrón de transectos siga siendo legible en vez de convertirse
+      // en una franja sólida con aliasing (rayas onduladas).
+      primary = primary.filter((_,i)=>i%lineSkip===0);
     }
 
     primary.forEach(e=>{
-      lineLayer.appendChild(addLine(e,"#ff5b5b",soloEsquema.checked ? 2.2 : 1.35,"0.95"));
+      lineLayer.appendChild(addLine(e,"#ff5b5b",primaryWidth,"0.95"));
       prepareLine(e);
     });
 
     if(mostrarSecundarias.checked){
       secondary.forEach(e=>{
-        lineLayer.appendChild(addLine(e,"#f8d866",soloEsquema.checked ? 3 : 2.05,"0.95"));
+        lineLayer.appendChild(addLine(e,"#f8d866",secondaryWidth,"0.95"));
         prepareLine(e);
       });
     }else{
@@ -2409,7 +2435,7 @@ document.addEventListener("DOMContentLoaded", function(){
     });
     lineLayer.appendChild(dot);
 
-    current = {primary,secondary,sc};
+    current = {primary,secondary,sc,lineSkip};
     contadorPrincipal.textContent = "0";
     contadorSecundaria.textContent = "0";
     escenarioActivo.textContent = sc.name;
@@ -2464,6 +2490,16 @@ document.addEventListener("DOMContentLoaded", function(){
         draw(getScenario());
       }
     });
+  });
+
+  let resizeTimer = null;
+  window.addEventListener("resize", ()=>{
+    // Redibuja con debounce al rotar el teléfono o cambiar tamaño de
+    // ventana, así renderScale/lineSkip se recalculan con el ancho real.
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(()=>{
+      if(current) draw(current.sc);
+    },180);
   });
 
   init();
